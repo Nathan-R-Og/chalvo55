@@ -63,10 +63,10 @@ git submodule update --remote
 This [**should be it**](#development) for the Linux side.
 
 # Development
-The repo should now be setup!
+The repo should now be set up!
 Lastly, get a Chalvo 55 rom from your nearest 100% legal rom dumper.
 Make sure to match the [**hash**](https://www.romhacking.net/hash/) of your rom to one provided at the top.
-If the hash matches, throw it in the Chavlo repo. You can change the name or whatever, just make sure it ends in `.gb`.
+If the hash matches, throw it in the Chalvo repo. You can change the name or whatever, just make sure it ends in `.gb`.
 
 The rest of this section will be for `contributing`. If you wish to simply [**build**](#building), head on forward!
 
