@@ -7778,7 +7778,7 @@ Call_000_294b:
     cp $0c
     jp z, Jump_000_29ea
 
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     cp $13
     jr z, jr_000_2993
 
@@ -7794,7 +7794,7 @@ Call_000_294b:
     cp $17
     jr z, jr_000_29ab
 
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     cp $27
     jr z, jr_000_29b1
 
@@ -7900,7 +7900,7 @@ jr_000_29db:
     jr jr_000_2a03
 
 Jump_000_29e1:
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jr z, jr_000_29f4
 
@@ -7942,7 +7942,7 @@ Call_000_2a0c:
     cp $20
     jp z, Jump_000_2a9d
 
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     cp $13
     jr z, jr_000_2a4f
 
@@ -7958,7 +7958,7 @@ Call_000_2a0c:
     cp $17
     jr z, jr_000_2a67
 
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     cp $27
     jr z, jr_000_2a6d
 
@@ -8066,7 +8066,7 @@ jr_000_2a97:
     jr jr_000_2aaa
 
 Jump_000_2a9d:
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jr z, jr_000_2aa6
 
@@ -10299,9 +10299,9 @@ jr_000_3647:
     ld [$c9ff], a
     set 2, [hl]
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
-    jr z, jr_000_372d
+    jr z, Player_Init
 
     ld a, $0e
     ld [$c80b], a
@@ -10310,7 +10310,7 @@ jr_000_3647:
     ret
 
 
-jr_000_372d:
+Player_Init::
     ld a, c
     or a
     jr nz, jr_000_3745
@@ -10611,7 +10611,7 @@ Call_000_382c:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jr nz, jr_000_39a0
 
@@ -11000,7 +11000,7 @@ Call_000_3bd2:
 
 
 Call_000_3be9:
-    ld a, [$c974]
+    ld a, [diamonds]
     ld de, $010c
     ld hl, $61ad
 

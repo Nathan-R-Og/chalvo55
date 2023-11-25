@@ -44,9 +44,9 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
 
 
     xor a
-    ld [$c817], a
-    ld [$c975], a
-    ld [$c974], a
+    ld [playerState], a
+    ld [levelDiamondsBitFlag], a
+    ld [diamonds], a
     ld [$c978], a
     ld [$c983], a
     ld b, $10
@@ -536,9 +536,9 @@ jr_005_42e7:
 
 
     xor a
-    ld [$c817], a
-    ld [$c975], a
-    ld [$c974], a
+    ld [playerState], a
+    ld [levelDiamondsBitFlag], a
+    ld [diamonds], a
     ld [$c978], a
     call Call_000_23ec
     ld de, $ff40
@@ -777,9 +777,9 @@ Jump_005_4478:
 
 
     xor a
-    ld [$c817], a
-    ld [$c975], a
-    ld [$c974], a
+    ld [playerState], a
+    ld [levelDiamondsBitFlag], a
+    ld [diamonds], a
     ld [$c978], a
     call Call_000_23ec
     ld de, $ff40
@@ -3447,7 +3447,7 @@ jr_005_50d5:
     bit 6, [hl]
     jr z, jr_005_50f7
 
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jr z, jr_005_5100
 
@@ -3455,7 +3455,7 @@ jr_005_50d5:
 
 jr_005_50f7:
     xor a
-    ld [$cb23], a
+    ld [demoing], a
     ld [$cb2c], a
     jr jr_005_5125
 
@@ -3470,7 +3470,7 @@ jr_005_5107:
     ld hl, $c818
     dec [hl]
     ld a, $01
-    ld [$cb23], a
+    ld [demoing], a
     ld a, $0e
     ld [$c80b], a
     xor a
@@ -11811,7 +11811,7 @@ jr_005_74b8:
     ld a, [$cb2c]
     push af
     xor a
-    ld [$cb23], a
+    ld [demoing], a
     ld [$c983], a
     ld [$cb24], a
     ld [$cb25], a

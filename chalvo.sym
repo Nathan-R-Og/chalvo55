@@ -837,8 +837,55 @@
 
 
 ; actual variables
+00:c817 playerState
+00:c974 diamonds
+00:c975 levelDiamondsBitFlag
+00:c977 levelLivesBitFlag
 00:c9fc playerLives
+00:cb23 demoing
 
 ; function/jr names
+00:372d Player_Init
+
+02:51df SwitchOnTileContact
+
+02:528b BlackHole
+02:5309 SpikeUp
+02:532c SpikeDown
+02:534f LastHitBreakable
+02:53c2 FirstHitBreakable
+02:5464 InvisibleGlass
+02:5445 SpringBlock
+02:548a WarpBox
+02:5498 InvincibilityPickup
+02:54d8 UpBouncePickup
+
+02:5510 DiamondPickup_SetFlag0
+02:5562 DiamondPickup_SetFlag1
+02:55b4 DiamondPickup_SetFlag2
+02:5606 DiamondPickup_SetFlag3
+02:5658 DiamondPickup_SetFlag4
+
+02:56aa GoalCard
+02:5713 GoalCardDupe
+02:577c GoalWall
+02:57e5 BounceBall
+02:586d ConveyorRight
+02:5898 ConveyorLeft
+
+02:58c3 LifePickup_SetFlag0
+02:5902 LifePickup_SetFlag1
+02:5941 LifePickup_SetFlag2
+02:5980 LifePickup_SetFlag3
+02:59bf LifePickup_SetFlag4
+02:59fe LifePickup_SetFlag5
+02:5a3d LifePickup_SetFlag6
+02:5a7c LifePickup_SetFlag7
+
+02:5abb BossBlockTrigger
+02:5b36 BossAirTrigger
+02:5b79 BossButtonLeft
+02:5b7f BossButtonRight
+
 03:696e Chalvo_RemoveLife
 03:6972 Chavlo_Respawn

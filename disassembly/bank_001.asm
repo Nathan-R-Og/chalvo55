@@ -9171,7 +9171,7 @@ jr_001_6b73:
     ld [$cb24], a
     ld [$cb25], a
     ld a, $01
-    ld [$cb23], a
+    ld [demoing], a
     ld a, $20
     call Call_000_0a84
     jr jr_001_6c24

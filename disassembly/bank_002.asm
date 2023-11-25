@@ -96,7 +96,7 @@ jr_002_404f:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 1, a
     jr nz, jr_002_40a0
 
@@ -623,7 +623,7 @@ jr_002_4344:
     ld [hl], a
     ld a, $01
     call Call_000_34c1
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_4368
 
@@ -1277,7 +1277,7 @@ jr_002_470d:
     ld hl, $001e
     add hl, bc
     ld [hl], a
-    ld hl, $c817
+    ld hl, playerState
     set 3, [hl]
 
 Jump_002_4723:
@@ -1353,7 +1353,7 @@ jr_002_478e:
     ld hl, $001e
     add hl, bc
     ld [hl], a
-    ld hl, $c817
+    ld hl, playerState
     set 3, [hl]
     xor a
     ld hl, $001f
@@ -3132,119 +3132,119 @@ Call_002_51b5:
     ld a, [hl]
     pop hl
     and a
-    jr nz, jr_002_51df
+    jr nz, SwitchOnTileContact
 
 Jump_002_51dd:
     res 1, [hl]
 
-jr_002_51df:
+SwitchOnTileContact::
     pop hl
     pop af
     push af
     push hl
     cp $0c
-    jp z, Jump_002_528b
+    jp z, BlackHole
 
     cp $0b
-    jp z, Jump_002_5309
+    jp z, SpikeUp
 
     cp $1f
-    jp z, Jump_002_532c
+    jp z, SpikeDown
 
     cp $01
-    jp z, Jump_002_534f
+    jp z, LastHitBreakable
 
     cp $02
-    jp z, Jump_002_53c2
+    jp z, FirstHitBreakable
 
     cp $09
-    jp z, Jump_002_5464
+    jp z, InvisibleGlass
 
     cp $08
-    jp z, Jump_002_5445
+    jp z, SpringBlock
 
     cp $0d
-    jp z, Jump_002_548a
+    jp z, WarpBox
 
     cp $11
-    jp z, Jump_002_5498
+    jp z, InvincibilityPickup
 
     cp $12
-    jp z, Jump_002_54d8
+    jp z, UpBouncePickup
 
     cp $13
-    jp z, Jump_002_5510
+    jp z, DiamondPickup_SetFlag0
 
     cp $14
-    jp z, Jump_002_5562
+    jp z, DiamondPickup_SetFlag1
 
     cp $15
-    jp z, Jump_002_55b4
+    jp z, DiamondPickup_SetFlag2
 
     cp $16
-    jp z, Jump_002_5606
+    jp z, DiamondPickup_SetFlag3
 
     cp $17
-    jp z, Jump_002_5658
+    jp z, DiamondPickup_SetFlag4
 
     cp $18
-    jp z, Jump_002_56aa
+    jp z, GoalCard
 
     cp $1a
-    jp z, Jump_002_5713
+    jp z, GoalCardDupe
 
     cp $1c
-    jp z, Jump_002_577c
+    jp z, GoalWall
 
     cp $0a
-    jp z, Jump_002_57e5
+    jp z, BounceBall
 
     cp $04
-    jp z, Jump_002_586d
+    jp z, ConveyorRight
 
     cp $1e
-    jp z, Jump_002_5898
+    jp z, ConveyorLeft
 
     cp $27
-    jp z, Jump_002_58c3
+    jp z, LifePickup_SetFlag0
 
     cp $47
-    jp z, Jump_002_5902
+    jp z, LifePickup_SetFlag1
 
     cp $48
-    jp z, Jump_002_5941
+    jp z, LifePickup_SetFlag2
 
     cp $49
-    jp z, Jump_002_5980
+    jp z, LifePickup_SetFlag3
 
     cp $4a
-    jp z, Jump_002_59bf
+    jp z, LifePickup_SetFlag4
 
     cp $4b
-    jp z, Jump_002_59fe
+    jp z, LifePickup_SetFlag5
 
     cp $4c
-    jp z, Jump_002_5a3d
+    jp z, LifePickup_SetFlag6
 
     cp $4d
-    jp z, Jump_002_5a7c
+    jp z, LifePickup_SetFlag7
 
     cp $2d
-    jp z, Jump_002_5abb
+    jp z, BossBlockTrigger
 
     cp $32
-    jp z, Jump_002_5b36
+    jp z, BossAirTrigger
 
     cp $2a
-    jp z, Jump_002_5b79
+    jp z, BossButtonLeft
 
     cp $2b
-    jp z, Jump_002_5b7f
+    jp z, BossButtonRight
 
     jp Jump_002_5b86
 
 
-Jump_002_528b:
+BlackHole::
     push hl
     ld hl, $0000
     add hl, bc
@@ -3316,7 +3316,7 @@ Jump_002_52c8:
     jp Jump_002_5b86
 
 
-Jump_002_5309:
+SpikeUp::
     ld hl, $001c
     add hl, bc
     ld a, [hl]
@@ -3339,7 +3339,7 @@ Jump_002_5309:
     jp Jump_002_5b86
 
 
-Jump_002_532c:
+SpikeDown::
     ld hl, $001c
     add hl, bc
     ld a, [hl]
@@ -3362,7 +3362,7 @@ Jump_002_532c:
     jp Jump_002_5b86
 
 
-Jump_002_534f:
+LastHitBreakable::
     push hl
     ld hl, $001c
     add hl, bc
@@ -3432,7 +3432,7 @@ jr_002_5393:
     jp Jump_002_5b86
 
 
-Jump_002_53c2:
+FirstHitBreakable::
     push hl
     ld hl, $001c
     add hl, bc
@@ -3511,7 +3511,7 @@ jr_002_5406:
     jp Jump_002_5b86
 
 
-Jump_002_5445:
+SpringBlock::
     push hl
     ld hl, $001c
     add hl, bc
@@ -3530,7 +3530,7 @@ Jump_002_5445:
     jp Jump_002_5b86
 
 
-Jump_002_5464:
+InvisibleGlass::
     push hl
     ld hl, $001c
     add hl, bc
@@ -3554,8 +3554,8 @@ Jump_002_5464:
     jp Jump_002_5b86
 
 
-Jump_002_548a:
-    ld hl, $c817
+WarpBox::
+    ld hl, playerState
     set 2, [hl]
     ld hl, $0000
     add hl, bc
@@ -3563,7 +3563,7 @@ Jump_002_548a:
     jp Jump_002_5b86
 
 
-Jump_002_5498:
+InvincibilityPickup::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -3601,7 +3601,7 @@ Jump_002_54c6:
     jp Jump_002_5b8a
 
 
-Jump_002_54d8:
+UpBouncePickup::
     call Call_002_5bce
     push hl
     push af
@@ -3633,7 +3633,7 @@ Jump_002_54d8:
     jp Jump_002_5b8a
 
 
-Jump_002_5510:
+DiamondPickup_SetFlag0::
     call Call_002_5bce
     ld [hl], $00
     ld a, [$c976]
@@ -3652,9 +3652,9 @@ Jump_002_5510:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     set 0, [hl]
-    ld hl, $c974
+    ld hl, diamonds
     inc [hl]
     push hl
     push af
@@ -3663,7 +3663,7 @@ Jump_002_5510:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jp nz, Jump_002_5b8a
 
@@ -3677,7 +3677,7 @@ Jump_002_5510:
     jp Jump_002_5b8a
 
 
-Jump_002_5562:
+DiamondPickup_SetFlag1::
     call Call_002_5bce
     ld [hl], $00
     ld a, [$c976]
@@ -3696,9 +3696,9 @@ Jump_002_5562:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     set 1, [hl]
-    ld hl, $c974
+    ld hl, diamonds
     inc [hl]
     push hl
     push af
@@ -3707,7 +3707,7 @@ Jump_002_5562:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jp nz, Jump_002_5b8a
 
@@ -3721,7 +3721,7 @@ Jump_002_5562:
     jp Jump_002_5b8a
 
 
-Jump_002_55b4:
+DiamondPickup_SetFlag2::
     call Call_002_5bce
     ld [hl], $00
     ld a, [$c976]
@@ -3740,9 +3740,9 @@ Jump_002_55b4:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     set 2, [hl]
-    ld hl, $c974
+    ld hl, diamonds
     inc [hl]
     push hl
     push af
@@ -3751,7 +3751,7 @@ Jump_002_55b4:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jp nz, Jump_002_5b8a
 
@@ -3765,7 +3765,7 @@ Jump_002_55b4:
     jp Jump_002_5b8a
 
 
-Jump_002_5606:
+DiamondPickup_SetFlag3::
     call Call_002_5bce
     ld [hl], $00
     ld a, [$c976]
@@ -3784,9 +3784,9 @@ Jump_002_5606:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     set 3, [hl]
-    ld hl, $c974
+    ld hl, diamonds
     inc [hl]
     push hl
     push af
@@ -3795,7 +3795,7 @@ Jump_002_5606:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jp nz, Jump_002_5b8a
 
@@ -3809,7 +3809,7 @@ Jump_002_5606:
     jp Jump_002_5b8a
 
 
-Jump_002_5658:
+DiamondPickup_SetFlag4::
     call Call_002_5bce
     ld [hl], $00
     ld a, [$c976]
@@ -3828,9 +3828,9 @@ Jump_002_5658:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c975
+    ld hl, levelDiamondsBitFlag
     set 4, [hl]
-    ld hl, $c974
+    ld hl, diamonds
     inc [hl]
     push hl
     push af
@@ -3839,7 +3839,7 @@ Jump_002_5658:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$c974]
+    ld a, [diamonds]
     cp $05
     jp nz, Jump_002_5b8a
 
@@ -3853,7 +3853,7 @@ Jump_002_5658:
     jp Jump_002_5b8a
 
 
-Jump_002_56aa:
+GoalCard::
     call Call_002_5bce
     call Call_002_5fa4
     push hl
@@ -3922,7 +3922,7 @@ jr_002_570c:
     jp Jump_002_5b8a
 
 
-Jump_002_5713:
+GoalCardDupe::
     call Call_002_5bce
     call Call_002_5fa4
     push hl
@@ -3991,7 +3991,7 @@ jr_002_5775:
     jp Jump_002_5b8a
 
 
-Jump_002_577c:
+GoalWall::
     call Call_002_5bce
     call Call_002_5fa4
     push hl
@@ -4060,7 +4060,7 @@ jr_002_57de:
     jp Jump_002_5b8a
 
 
-Jump_002_57e5:
+BounceBall::
     push hl
     ld hl, $001c
     add hl, bc
@@ -4144,7 +4144,7 @@ jr_002_5848:
     jp Jump_002_5b86
 
 
-Jump_002_586d:
+ConveyorRight::
     ld hl, $001c
     add hl, bc
     bit 2, [hl]
@@ -4170,7 +4170,7 @@ Jump_002_586d:
     jp Jump_002_5b86
 
 
-Jump_002_5898:
+ConveyorLeft::
     ld hl, $001c
     add hl, bc
     bit 2, [hl]
@@ -4196,7 +4196,7 @@ Jump_002_5898:
     jp Jump_002_5b86
 
 
-Jump_002_58c3:
+LifePickup_SetFlag0::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4213,7 +4213,7 @@ Jump_002_58c3:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 0, [hl]
     push hl
     push af
@@ -4222,7 +4222,7 @@ Jump_002_58c3:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4231,7 +4231,7 @@ Jump_002_58c3:
     jp Jump_002_5b8a
 
 
-Jump_002_5902:
+LifePickup_SetFlag1::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4248,7 +4248,7 @@ Jump_002_5902:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 1, [hl]
     push hl
     push af
@@ -4257,7 +4257,7 @@ Jump_002_5902:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4266,7 +4266,7 @@ Jump_002_5902:
     jp Jump_002_5b8a
 
 
-Jump_002_5941:
+LifePickup_SetFlag2::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4283,7 +4283,7 @@ Jump_002_5941:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 2, [hl]
     push hl
     push af
@@ -4292,7 +4292,7 @@ Jump_002_5941:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4301,7 +4301,7 @@ Jump_002_5941:
     jp Jump_002_5b8a
 
 
-Jump_002_5980:
+LifePickup_SetFlag3::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4318,7 +4318,7 @@ Jump_002_5980:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 3, [hl]
     push hl
     push af
@@ -4327,7 +4327,7 @@ Jump_002_5980:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4336,7 +4336,7 @@ Jump_002_5980:
     jp Jump_002_5b8a
 
 
-Jump_002_59bf:
+LifePickup_SetFlag4::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4353,7 +4353,7 @@ Jump_002_59bf:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 4, [hl]
     push hl
     push af
@@ -4362,7 +4362,7 @@ Jump_002_59bf:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4371,7 +4371,7 @@ Jump_002_59bf:
     jp Jump_002_5b8a
 
 
-Jump_002_59fe:
+LifePickup_SetFlag5::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4388,7 +4388,7 @@ Jump_002_59fe:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 5, [hl]
     push hl
     push af
@@ -4397,7 +4397,7 @@ Jump_002_59fe:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4406,7 +4406,7 @@ Jump_002_59fe:
     jp Jump_002_5b8a
 
 
-Jump_002_5a3d:
+LifePickup_SetFlag6::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4423,7 +4423,7 @@ Jump_002_5a3d:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 6, [hl]
     push hl
     push af
@@ -4432,7 +4432,7 @@ Jump_002_5a3d:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4441,7 +4441,7 @@ Jump_002_5a3d:
     jp Jump_002_5b8a
 
 
-Jump_002_5a7c:
+LifePickup_SetFlag7::
     call Call_002_5bce
     ld [hl], $00
     call Call_000_2ddb
@@ -4458,7 +4458,7 @@ Jump_002_5a7c:
     call Call_000_240e
     inc de
     call Call_000_240e
-    ld hl, $c977
+    ld hl, levelLivesBitFlag
     set 7, [hl]
     push hl
     push af
@@ -4467,7 +4467,7 @@ Jump_002_5a7c:
     call Call_000_0aa6
     pop af
     pop hl
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jp nz, Jump_002_5b8a
 
@@ -4476,7 +4476,7 @@ Jump_002_5a7c:
     jp Jump_002_5b8a
 
 
-Jump_002_5abb:
+BossBlockTrigger::
     xor a
     ld [$c81e], a
     ld hl, $0000
@@ -4548,7 +4548,7 @@ jr_002_5b0f:
     ld hl, $0000
     add hl, bc
     res 5, [hl]
-    ld hl, $c817
+    ld hl, playerState
     set 4, [hl]
     ld hl, $0017
     add hl, bc
@@ -4559,7 +4559,7 @@ jr_002_5b0f:
     jp Jump_002_5b8a
 
 
-Jump_002_5b36:
+BossAirTrigger::
     xor a
     ld [$c81e], a
     ld hl, $0000
@@ -4568,10 +4568,10 @@ Jump_002_5b36:
     call Call_000_0a65
     ld a, [$c818]
     cp $04
-    jp z, Jump_002_5abb
+    jp z, BossBlockTrigger
 
     cp $06
-    jp z, Jump_002_5abb
+    jp z, BossBlockTrigger
 
     cp $03
     jr z, jr_002_5b66
@@ -4592,7 +4592,7 @@ Jump_002_5b36:
 jr_002_5b66:
     ld a, $01
     ld [$c15e], a
-    ld hl, $c817
+    ld hl, playerState
     set 4, [hl]
     ld hl, $0017
     add hl, bc
@@ -4600,12 +4600,12 @@ jr_002_5b66:
     jp Jump_002_5b8a
 
 
-Jump_002_5b79:
+BossButtonLeft::
     call Call_002_5bd7
     jp Jump_002_5b86
 
 
-Jump_002_5b7f:
+BossButtonRight::
     dec hl
     call Call_002_5bd7
     jp Jump_002_5b86
@@ -4755,7 +4755,7 @@ jr_002_5c4b:
     ld a, $04
     ld de, $ff47
     call Call_000_240e
-    ld hl, $c817
+    ld hl, playerState
     set 4, [hl]
     ld a, $02
     ld [$c11e], a
@@ -5697,7 +5697,7 @@ jr_002_61c5:
     ret
 
 
-    ld hl, $c817
+    ld hl, playerState
     bit 4, [hl]
     jr z, jr_002_61f6
 
@@ -5719,7 +5719,7 @@ jr_002_61f6:
     jr z, jr_002_627d
 
     call Call_000_27e7
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     ld a, $02
     ld hl, $001e
@@ -6207,7 +6207,7 @@ jr_002_64af:
     and a
     jr nz, jr_002_64dd
 
-    ld hl, $c817
+    ld hl, playerState
     set 6, [hl]
 
 Jump_002_64dd:
@@ -6247,7 +6247,7 @@ jr_002_6504:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 4, a
     jr z, jr_002_651b
 
@@ -6368,7 +6368,7 @@ jr_002_6594:
     ret
 
 
-    ld hl, $c817
+    ld hl, playerState
     bit 4, [hl]
     jr z, jr_002_65c5
 
@@ -6390,7 +6390,7 @@ jr_002_65c5:
     jr z, jr_002_660e
 
     call Call_000_27e7
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     ld a, $02
     ld hl, $001e
@@ -6790,7 +6790,7 @@ jr_002_67fb:
     and a
     jr nz, jr_002_6829
 
-    ld hl, $c817
+    ld hl, playerState
     set 6, [hl]
 
 Jump_002_6829:
@@ -6798,7 +6798,7 @@ jr_002_6829:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 4, a
     jr nz, jr_002_683f
 
@@ -7086,7 +7086,7 @@ jr_002_6996:
     ret
 
 
-    ld hl, $c817
+    ld hl, playerState
     bit 4, [hl]
     jr z, jr_002_69cf
 
@@ -7112,7 +7112,7 @@ jr_002_69cf:
     add hl, bc
     ld [hl], a
     call Call_000_27e7
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     ld a, $02
     ld hl, $001e
@@ -7304,7 +7304,7 @@ jr_002_6ad7:
     and a
     jr nz, jr_002_6b05
 
-    ld hl, $c817
+    ld hl, playerState
     set 6, [hl]
 
 Jump_002_6b05:
@@ -7364,7 +7364,7 @@ jr_002_6b26:
     ret
 
 
-    ld hl, $c817
+    ld hl, playerState
     bit 4, [hl]
     jr z, jr_002_6b59
 
@@ -7386,7 +7386,7 @@ jr_002_6b59:
     jr z, jr_002_6b9b
 
     call Call_000_27e7
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     ld a, $02
     ld hl, $001e
@@ -7749,7 +7749,7 @@ jr_002_6d52:
     and a
     jr nz, jr_002_6d80
 
-    ld hl, $c817
+    ld hl, playerState
     set 6, [hl]
 
 Jump_002_6d80:
@@ -7782,7 +7782,7 @@ jr_002_6da1:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 4, a
     jr nz, jr_002_6db7
 
@@ -8027,7 +8027,7 @@ jr_002_6ebf:
     xor a
     ld [hl], a
     call Call_000_27e7
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     ld a, $04
     ld [$c15d], a
@@ -8169,7 +8169,7 @@ jr_002_6fae:
     ld hl, $001e
     add hl, bc
     ld [hl], a
-    ld hl, $c817
+    ld hl, playerState
     set 5, [hl]
     ret
 
@@ -8577,7 +8577,7 @@ jr_002_71f7:
     ld hl, $001f
     add hl, bc
     ld [hl], a
-    ld hl, $c817
+    ld hl, playerState
     res 5, [hl]
 
 jr_002_7209:
@@ -8642,7 +8642,7 @@ jr_002_7245:
 jr_002_7250:
     ld hl, $c983
     set 1, [hl]
-    ld hl, $c817
+    ld hl, playerState
     res 4, [hl]
     xor a
     ld [$c15e], a
@@ -8733,7 +8733,7 @@ jr_002_72ce:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_72fa
 
@@ -8944,7 +8944,7 @@ jr_002_73f5:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_7421
 
@@ -9145,7 +9145,7 @@ jr_002_7510:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_753c
 
@@ -9300,7 +9300,7 @@ jr_002_75c8:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_7602
 
@@ -9494,7 +9494,7 @@ jr_002_76e1:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 0, a
     jr z, jr_002_7708
 
@@ -10981,7 +10981,7 @@ Call_002_7ef7:
     ld hl, $000a
     add hl, bc
     ld [hl], a
-    ld hl, $c817
+    ld hl, playerState
     set 4, [hl]
     call Call_000_0a65
 
@@ -11022,7 +11022,7 @@ jr_002_7f72:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 4, a
     jr nz, jr_002_7f87
 

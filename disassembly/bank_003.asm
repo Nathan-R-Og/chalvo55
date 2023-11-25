@@ -8374,10 +8374,10 @@ jr_003_6660:
 
 
     xor a
-    ld [$c817], a
-    ld [$c975], a
-    ld [$c977], a
-    ld [$c974], a
+    ld [playerState], a
+    ld [levelDiamondsBitFlag], a
+    ld [levelLivesBitFlag], a
+    ld [diamonds], a
     ld [$c978], a
     ld b, $10
     ld hl, $cb13
@@ -8513,7 +8513,7 @@ jr_003_6723:
     jr z, jr_003_6784
 
     call Call_000_27cc
-    ld hl, $c817
+    ld hl, playerState
     set 0, [hl]
     ld hl, $cb2c
     res 5, [hl]
@@ -8525,7 +8525,7 @@ jr_003_6784:
     ret
 
 
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jr z, jr_003_67b3
 
@@ -8593,12 +8593,12 @@ jr_003_67e4:
     ld a, $02
     ld hl, $4001
     call Call_000_08ae
-    ld hl, $c817
+    ld hl, playerState
     bit 5, [hl]
     jp nz, Jump_003_6985
 
     call Call_003_70c6
-    ld a, [$c817]
+    ld a, [playerState]
     bit 2, a
     jp nz, Jump_003_68f0
 
@@ -8662,7 +8662,7 @@ jr_003_685e:
     cp $04
     jr z, jr_003_68ce
 
-    ld hl, $c817
+    ld hl, playerState
     set 1, [hl]
     res 0, [hl]
     xor a
@@ -8692,7 +8692,7 @@ jr_003_6890:
 
 
 jr_003_68ac:
-    ld hl, $c817
+    ld hl, playerState
     set 1, [hl]
     res 0, [hl]
     ld hl, $c983
@@ -8709,7 +8709,7 @@ jr_003_68ac:
 
 
 jr_003_68ce:
-    ld hl, $c817
+    ld hl, playerState
     set 1, [hl]
     res 0, [hl]
     ld hl, $c983
@@ -8737,7 +8737,7 @@ Jump_003_68f0:
     call Call_000_0619
     ld hl, $cb2c
     res 5, [hl]
-    ld hl, $c817
+    ld hl, playerState
     set 1, [hl]
     res 0, [hl]
     xor a
@@ -8767,7 +8767,7 @@ Jump_003_6935:
     call Call_000_0619
     ld hl, $cb2c
     res 5, [hl]
-    ld a, [$cb23]
+    ld a, [demoing]
     and a
     jr z, Chalvo_RemoveLife
 
@@ -8798,7 +8798,7 @@ Chalvo_RemoveLife::
     dec [hl]
 
 Chavlo_Respawn::
-    ld hl, $c817
+    ld hl, playerState
     set 1, [hl]
     res 0, [hl]
     ld a, $00
@@ -8881,7 +8881,7 @@ jr_003_69b0:
 
     ld a, $03
     ld [$c80c], a
-    ld hl, $c817
+    ld hl, playerState
     res 1, [hl]
     set 0, [hl]
 
@@ -9241,7 +9241,7 @@ jr_003_6c5d:
     call Call_000_2f39
     ld a, $03
     ld [$c80c], a
-    ld hl, $c817
+    ld hl, playerState
     res 1, [hl]
     res 2, [hl]
     set 0, [hl]
@@ -9393,7 +9393,7 @@ jr_003_6d6d:
 
     ld a, $03
     ld [$c80c], a
-    ld hl, $c817
+    ld hl, playerState
     res 1, [hl]
     set 0, [hl]
     res 3, [hl]
@@ -9479,7 +9479,7 @@ jr_003_6df6:
 
     ld a, $03
     ld [$c80c], a
-    ld hl, $c817
+    ld hl, playerState
     res 1, [hl]
     set 0, [hl]
 
@@ -9554,7 +9554,7 @@ jr_003_6e82:
 
     ld a, $03
     ld [$c80c], a
-    ld hl, $c817
+    ld hl, playerState
     res 1, [hl]
     set 0, [hl]
 
@@ -9562,7 +9562,7 @@ jr_003_6ef2:
     ret
 
 
-    ld a, [$c817]
+    ld a, [playerState]
     bit 6, a
     jp z, Jump_003_6f07
 

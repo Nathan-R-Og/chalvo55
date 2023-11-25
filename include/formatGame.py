@@ -1,10 +1,12 @@
 gamePath = "disassembly/game.asm"
 game = open(gamePath, "r", encoding="UTF-8").readlines()
+
 new = [
-"ramSymbols"
+"constants",
+"ramSymbols",
 ]
 for i in range(len(new)):
-    new[i] = 'INCLUDE "../include/'+new[i]+'.asm"'
+    new[i] = 'INCLUDE "../include/'+new[i]+'.asm"\n'
 
 
 for i in game:
