@@ -2,3 +2,4 @@ mgbdis/__pycache__/
 test/
 tmp/
 *.gb
+disassembly/

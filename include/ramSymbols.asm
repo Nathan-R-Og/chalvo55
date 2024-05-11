@@ -23,7 +23,14 @@ padding5:: db
 ; the flags to determine which lives have been gotten in the single level
 levelLivesBitFlag:: db
 
-padding2:: ds 132
+; these need way more research
+; bytes containing where chalvo will respawn on death
+chalvoPosCheckpointX:: db
+screenPosCheckpointX:: db
+chalvoPosCheckpointY:: db
+screenPosCheckpointY:: db
+
+padding2:: ds 128
 
 ; the amount of lives the player has at a given time
 playerLives:: db

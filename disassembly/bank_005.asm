@@ -47,7 +47,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ld [playerState], a
     ld [levelDiamondsBitFlag], a
     ld [diamonds], a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld [$c983], a
     ld b, $10
     ld hl, $cb13
@@ -539,7 +539,7 @@ jr_005_42e7:
     ld [playerState], a
     ld [levelDiamondsBitFlag], a
     ld [diamonds], a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     call Call_000_23ec
     ld de, $ff40
     ld a, [de]
@@ -780,7 +780,7 @@ Jump_005_4478:
     ld [playerState], a
     ld [levelDiamondsBitFlag], a
     ld [diamonds], a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     call Call_000_23ec
     ld de, $ff40
     ld a, [de]

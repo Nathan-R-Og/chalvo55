@@ -1887,7 +1887,7 @@ jr_002_4ac2:
     ld a, [hl]
     sub d
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     or $01
     jr jr_002_4b18
 
@@ -1934,7 +1934,7 @@ Jump_002_4af8:
     set 2, [hl]
 
 jr_002_4b13:
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     or $01
 
 jr_002_4b18:
@@ -2595,7 +2595,7 @@ jr_002_4f0e:
     ld a, [hl]
     sub d
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     or $01
     jr jr_002_4f78
 
@@ -2654,7 +2654,7 @@ Jump_002_4f3e:
     pop hl
 
 jr_002_4f73:
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     or $01
 
 Jump_002_4f78:
@@ -3855,7 +3855,7 @@ DiamondPickup_SetFlag4::
 
 GoalCard::
     call Call_002_5bce
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     push hl
     push af
     ld hl, $1e4d
@@ -3924,7 +3924,7 @@ jr_002_570c:
 
 GoalCardDupe::
     call Call_002_5bce
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     push hl
     push af
     ld hl, $1e4d
@@ -3993,7 +3993,7 @@ jr_002_5775:
 
 GoalWall::
     call Call_002_5bce
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     push hl
     push af
     ld hl, $1e4d
@@ -4614,14 +4614,14 @@ BossButtonRight::
 Jump_002_5b86:
     pop hl
     pop af
-    jr jr_002_5b8d
+    jr Tile_DefaultCaseHandler
 
 Jump_002_5b8a:
     pop hl
     pop af
     xor a
 
-jr_002_5b8d:
+Tile_DefaultCaseHandler::
     ret
 
 
@@ -5299,19 +5299,19 @@ Call_002_5f93:
     ld hl, $0013
     add hl, bc
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     ret
 
 
-Call_002_5fa4:
-    ld a, [$c978]
+SetCheckpointOnTouch::
+    ld a, [chalvoPosCheckpointX]
     and a
-    jr nz, jr_002_5faf
+    jr nz, ReturnIfInvalidCheckpoint
 
     ld a, $ff
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
 
-jr_002_5faf:
+ReturnIfInvalidCheckpoint::
     ret
 
 
@@ -8726,7 +8726,7 @@ jr_002_72c2:
     ld hl, $0013
     add hl, de
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     jr jr_002_72ce
 
 jr_002_72ce:
@@ -8937,7 +8937,7 @@ jr_002_73e9:
     ld hl, $0013
     add hl, de
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     jr jr_002_73f5
 
 jr_002_73f5:
@@ -9138,7 +9138,7 @@ jr_002_7504:
     ld hl, $0013
     add hl, de
     ld [hl], a
-    call Call_002_5fa4
+    call SetCheckpointOnTouch
     jr jr_002_7510
 
 jr_002_7510:

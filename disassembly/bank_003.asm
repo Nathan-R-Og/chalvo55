@@ -8378,7 +8378,7 @@ jr_003_6660:
     ld [levelDiamondsBitFlag], a
     ld [levelLivesBitFlag], a
     ld [diamonds], a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld b, $10
     ld hl, $cb13
 
@@ -8614,7 +8614,7 @@ jr_003_67e4:
     ld a, $01
     ld hl, $68f8
     call Call_000_08ae
-    ld a, [$c978]
+    ld a, [chalvoPosCheckpointX]
     cp $ff
     jp nz, Jump_003_6985
 
@@ -8631,17 +8631,17 @@ jr_003_67e4:
     ld hl, $0004
     add hl, bc
     ld a, [hl]
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld hl, $0005
     add hl, bc
     ld a, [hl]
-    ld [$c97b], a
+    ld [screenPosCheckpointY], a
     ld a, [$c803]
-    ld [$c979], a
+    ld [screenPosCheckpointX], a
     ld a, [$c804]
     ld [$c97c], a
     ld a, [$c81b]
-    ld [$c97a], a
+    ld [chalvoPosCheckpointY], a
     ld a, [$c81c]
     ld [$c97d], a
     jp Jump_003_6985
@@ -8666,7 +8666,7 @@ jr_003_685e:
     set 1, [hl]
     res 0, [hl]
     xor a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld a, $00
     ld d, $07
     call Call_000_2df8
@@ -8698,7 +8698,7 @@ jr_003_68ac:
     ld hl, $c983
     set 0, [hl]
     xor a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     call Call_000_0a65
     ld a, $00
     ld d, $07
@@ -8715,7 +8715,7 @@ jr_003_68ce:
     ld hl, $c983
     set 2, [hl]
     xor a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     call Call_000_0a65
     ld a, $00
     ld d, $07
@@ -8741,7 +8741,7 @@ Jump_003_68f0:
     set 1, [hl]
     res 0, [hl]
     xor a
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld hl, $c80c
     ld [hl], $0b
     ld a, $20
@@ -8773,7 +8773,7 @@ Jump_003_6935:
 
     ld a, [$cb2c]
     bit 7, a
-    jr nz, Chavlo_Respawn
+    jr nz, Chalvo_Respawn
 
 Jump_003_694a:
     call Call_000_0619
@@ -8797,7 +8797,7 @@ Chalvo_RemoveLife::
     ld hl, playerLives
     dec [hl]
 
-Chavlo_Respawn::
+Chalvo_Respawn::
     ld hl, playerState
     set 1, [hl]
     res 0, [hl]
@@ -9246,7 +9246,7 @@ jr_003_6c5d:
     res 2, [hl]
     set 0, [hl]
     ld a, $ff
-    ld [$c978], a
+    ld [chalvoPosCheckpointX], a
     ld hl, $c983
     bit 2, [hl]
     jr nz, jr_003_6cc1
@@ -9300,19 +9300,19 @@ jr_003_6cf5:
     ld hl, $001c
     add hl, de
     ld [hl], a
-    ld a, [$c978]
+    ld a, [chalvoPosCheckpointX]
     ld hl, $0004
     add hl, de
     ld [hl], a
-    ld a, [$c97b]
+    ld a, [screenPosCheckpointY]
     ld hl, $0005
     add hl, de
     ld [hl], a
-    ld a, [$c979]
+    ld a, [screenPosCheckpointX]
     ld [$c803], a
     ld a, [$c97c]
     ld [$c804], a
-    ld a, [$c97a]
+    ld a, [chalvoPosCheckpointY]
     ld [$c81b], a
     ld a, [$c97d]
     ld [$c81c], a

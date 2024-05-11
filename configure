@@ -1,0 +1,2 @@
+#$1 == filename
+rm -rf disassembly && ./mgbdis/mgbdis.py $1.gb && python3 include/formatGame.py

@@ -36,6 +36,15 @@ If everything goes smoothly, jump to [the instructions for **Linux**](#linux), t
 
 Open the terminal, and paste the following commands based on distro.
 
+### UPDATE
+I figured out how to stuff these into shell files! Run
+```bash
+./install NO_THREADS
+```
+to install all needed prereqs. `NO_THREADS` is how many threads you want to build rgbds with. This will unzip the latest(?) release of rgbds and install it next to your chalvo55 directory.
+
+You may continue reading if you want to set up rgbds and other prereqs manually, otherwise jump to [**development**](#development).
+
 ### Debian/Ubuntu
 
 ```bash
@@ -72,6 +81,16 @@ The rest of this section will be for `contributing`. If you wish to simply [**bu
 
 To split the game as if it was a new project (great for refreshing symbols), run
 ## Linux
+
+### UPDATE
+I also figured out how to stuff this into a shell file! Run
+```bash
+./configure ROM_NAME
+```
+to set up chalvo. `ROM_NAME` is the name of the rom you would like to use.
+
+You may continue reading if you want to learn how to configure the repository manually, or you may jump to [**symbols**](#symbols) or [**building**](#building).
+
 ### Debian/Ubuntu
 ```bash
 rm -rf disassembly && ./mgbdis/mgbdis.py [romname].gb && python3 include/formatGame.py
@@ -124,6 +143,14 @@ If you set up everything right, you should be able to split (see the start of th
 To build the repo, simply `build` the disassembly folder!
 
 ## Linux
+
+### UPDATE
+Last shell file! Run
+```bash
+./build
+```
+to build chalvo. This has the same effect as below, so there's not much different.
+
 ### Debian/Ubuntu
 ```bash
 cd disassembly && make && cd ..
