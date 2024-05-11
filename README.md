@@ -93,7 +93,7 @@ You may continue reading if you want to learn how to configure the repository ma
 
 ### Debian/Ubuntu
 ```bash
-rm -rf disassembly && ./mgbdis/mgbdis.py [romname].gb && python3 include/formatGame.py
+rm -rf disassembly && ./mgbdis/mgbdis.py [romname].gb && python3 tools/formatGame.py
 ```
 
 This will get rid of all of your old assets, split the rom into asm, and format `disassembly/game.asm` with `include` files.

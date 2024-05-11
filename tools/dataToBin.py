@@ -18,7 +18,7 @@ def dumpAsm(variable):
             rip = i.split("db", 1)[-1].replace("$","0x").strip().split(",")
             for number in rip: bin.append(int(number, 16))
     import os
-    newpath = "./src/"+"/".join(variable.split("_"))+".bin"
+    newpath = "src/"+"/".join(variable.split("_"))+".bin"
     newDir = newpath.split("/")
     newDir.pop(-1)
     newDir = "/".join(newDir)

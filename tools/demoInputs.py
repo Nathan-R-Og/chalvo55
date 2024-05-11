@@ -33,4 +33,4 @@ while i < len(buffer):
     output += f"    demo_input {inputs}, {time}\n"
     i += 2
 
-open("./demo_input_output.txt", "w", encoding="utf-8").write(output)
+open("tools/outputs/demo_input_output.txt", "w", encoding="utf-8").write(output)

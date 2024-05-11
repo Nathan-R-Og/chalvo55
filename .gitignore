@@ -3,3 +3,4 @@ test/
 tmp/
 *.gb
 disassembly/
+tools/outputs/
