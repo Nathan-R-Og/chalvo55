@@ -5,17 +5,28 @@
 01:6d0f titleScreenTiles
 01:6d0f .data:168
 
-01:6e77 .code:4C9
+01:6e77 .code:4BD
 
-01:7340 passwordEntryTiles
-01:7340 .data:168
+01:7332 PASSWORD_SPCLST
+01:7332 .data:6
 
-01:74a8 .code:D1
+01:7338 PASSWORD_JSSJSS
+01:7338 .data:6
 
-01:7579 passwordGetTiles
-01:7579 .data:168
+01:733E passwordEntryScreenTiles
+01:733E .data:16A
 
-01:76e1 .code:91F
+01:74A8 passwordEntryTiles
+01:74a8 .data:D1
+
+01:7577 passwordGetTiles
+01:7577 .data:16A
+
+01:76e1 passwordSpritePointers
+01:76e1 .data:4A
+
+01:772b bank1pad
+01:772b .data:8d5
 
 02:4000 .code:4000
 
@@ -345,6 +356,7 @@
 
 ; actual variables
 00:c817 playerState
+00:c818 currentStage
 00:c974 diamonds
 00:c975 levelDiamondsBitFlag
 00:c977 levelLivesBitFlag
@@ -352,12 +364,31 @@
 00:c979 screenPosCheckpointX
 00:c97A chalvoPosCheckpointY
 00:c97B screenPosCheckpointY
+
+00:c98e passwordStore
+00:c9f2 passwordLetter
+00:c9f3 passwordI
+00:c9f4 currentPassword1
+00:c9f5 currentPassword2
+00:c9f6 currentPassword3
+00:c9f7 currentPassword4
+00:c9f8 currentPassword5
+00:c9f9 currentPassword6
+
 00:c9fc playerLives
 
 00:cb23 demoing
 
+
+
 ; function/jr names
 00:372d Player_Init
+
+01:7203 LoadCheckPassword_SPCLST
+01:7211 CheckPassword_SPCLST
+01:7227 LoadCheckPassword_JSSJSS
+01:722f CheckPassword_JSSJSS
+01:7245 CheckPassword_ValidStage
 
 02:51df SwitchOnTileContact
 
@@ -405,3 +436,4 @@
 
 03:696e Chalvo_RemoveLife
 03:6972 Chalvo_Respawn
+

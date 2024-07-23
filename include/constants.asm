@@ -198,3 +198,15 @@ def INPUT_RIGHT equ 1 << 4 ; 0x10
 def INPUT_LEFT equ 1 << 5 ; 0x20
 def INPUT_UP equ 1 << 6 ; 0x40
 def INPUT_DOWN equ 1 << 7 ; 0x80
+
+; actor stuff
+def MAX_ACTORS equ 55 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once
+
+; actor struct
+; spritemode:: db
+; actorType:: db
+; 2 == player
+;
+
+; player stuff
+def STARTING_LIVES equ 5 ; self explanatory

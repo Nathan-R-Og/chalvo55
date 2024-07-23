@@ -7,10 +7,24 @@ paddingToEndAllPadding:: ds 2071
 ; until that point. (space wise)
 ; thats what this padding is for.
 
+
+; actual variables
+; 55 entries
+; 00:c120 chalvospriteRotationIndex ; ???? apart of a 0x20 struct
+; 00:c122 chalvosprite_frame
+; 00:c124 playerScreenX_origindistance ; is actually used to calculate the player's position
+; 00:c125 playerScreenY_origindistance
+
+; 00:c803 playerScreenX
+; 00:c804 playerScreenY
+; 00:c81b playerScreenX_origindistance_copy
+; 0:c81c playerScreenY_origindistance_copy
+
 ; the state of the player at any given time.
 playerState:: db
+currentStage:: db
 
-padding3:: ds 348
+padding3:: ds 347
 
 ; unsigned value for how many diamonds you have.
 ; why does the game support extreme values
@@ -30,7 +44,24 @@ screenPosCheckpointX:: db
 chalvoPosCheckpointY:: db
 screenPosCheckpointY:: db
 
-padding2:: ds 128
+padding2:: ds 18
+
+;increments across this copied version to confirm whether or not it is valid
+;technically size 6 but it doesnt know that
+passwordStore:: db
+
+paddingWOrd:: ds 99
+
+passwordLetter:: db
+passwordI:: db
+currentPassword1:: db
+currentPassword2:: db
+currentPassword3:: db
+currentPassword4:: db
+currentPassword5:: db
+currentPassword6:: db
+
+padding6:: ds 2
 
 ; the amount of lives the player has at a given time
 playerLives:: db
