@@ -52,16 +52,11 @@ passwordStore:: db
 
 paddingWOrd:: ds 99
 
+cursorIndex:: db
 passwordLetter:: db
-passwordI:: db
-currentPassword1:: db
-currentPassword2:: db
-currentPassword3:: db
-currentPassword4:: db
-currentPassword5:: db
-currentPassword6:: db
+currentPassword:: db
 
-padding6:: ds 2
+padding6:: ds 7
 
 ; the amount of lives the player has at a given time
 playerLives:: db
@@ -70,3 +65,7 @@ padding4:: ds 294
 
 ; whether or not the demo for that stage is playing
 demoing:: db
+
+; the time with no input in the title, so the demo can play
+; little endian
+titleDemoTimer:: dw

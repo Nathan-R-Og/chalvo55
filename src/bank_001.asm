@@ -9130,135 +9130,216 @@ jr_001_6b56:
     jr z, jr_001_6b56
 
     xor a
-    ld [passwordLetter], a
+    ld [cursorIndex], a
     call Call_001_6c29
 
-Jump_001_6b64:
-jr_001_6b64:
+Title_Loop_Jump:
+Title_Loop:
     call Call_001_6cac
+    ;load current (held) button input
     ldh [$9c], a
     and a
-    jr z, jr_001_6b73
+    ;if no input, jump straight to main title proc
+    jr z, Title_Main
 
+    ;else set a to 0 and reset the demo timer
     xor a
-    ld [$cb24], a
-    ld [$cb25], a
+    ld [titleDemoTimer], a
+    ld [titleDemoTimer+1], a
 
-jr_001_6b73:
-    ld a, [$cb24]
+
+Title_Main:
+    ;inc demoTimer
+    ld a, [titleDemoTimer]
     add $01
-    ld [$cb24], a
-    ld a, [$cb25]
+    ld [titleDemoTimer], a
+
+    ;inc demoTimer (hi) when demoTimer (lo) > $ff
+    ld a, [titleDemoTimer+1]
     adc $00
-    ld [$cb25], a
-    ld a, [$cb25]
+    ld [titleDemoTimer+1], a
+
+    ;allocate hi and lo
+    ld a, [titleDemoTimer+1]
     ld h, a
-    ld a, [$cb24]
+    ld a, [titleDemoTimer]
     ld l, a
-    ld de, $0708
+
+    def demoTime EQU $0708
+    ;load $0708 into d
+    ;this is basically a mask, $0708 is how much time is needed
+    ld de, demoTime
+
+    ;load and flip $07, turning it into $f8
     ld a, d
     cpl
+    ;stash result
     ld d, a
+
+    ;load and flip $08, turning it into $f7
     ld a, e
     cpl
+    ;stash result
     ld e, a
-    inc de
-    add hl, de
-    bit 7, h
-    jr nz, jr_001_6bad
 
+    inc de
+
+    ;add current timer and de
+    add hl, de
+
+    ;if bit 7 of the timer != 0, let player control
+    bit 7, h
+    jr nz, Title_Input
+    ;else go to demo
+
+    ;reset a
     xor a
-    ld [$cb24], a
-    ld [$cb25], a
+
+    ;reset the timer
+    ld [titleDemoTimer], a
+    ld [titleDemoTimer+1], a
+
+    ;set demoing to 1
     ld a, $01
     ld [demoing], a
+
+    ;start demo (?)
     ld a, $20
     call Call_000_0a84
     jr jr_001_6c24
 
-jr_001_6bad:
+Title_Input:
+    ;load current (held) button input
     ldh a, [$9c]
-    bit 0, a
-    jr nz, jr_001_6c05
 
-    bit 3, a
-    jr nz, jr_001_6c05
+    bit PADB_A, a
+    jr nz, Title_Progress
+    bit PADB_START, a
+    jr nz, Title_Progress
 
-    bit 6, a
-    jr nz, jr_001_6bc5
+    bit PADB_UP, a
+    jr nz, Title_MoveUp
 
-    bit 7, a
-    jr nz, jr_001_6be0
+    bit PADB_DOWN, a
+    jr nz, Title_MoveDown
 
-    bit 2, a
-    jr nz, jr_001_6bfd
+    bit PADB_SELECT, a
+    jr nz, Title_MoveToggle
 
-    jr jr_001_6b64
+    jr Title_Loop
 
-jr_001_6bc5:
-    ld a, [passwordLetter]
+Title_MoveUp:
+    ;load cursorIndex
+    ld a, [cursorIndex]
+
+    ;CHECK 1
+    ;if a == 0, jump to default process
     or a
-    jr z, jr_001_6b64
+    jr z, Title_Loop
 
+    ;else, move up
+    ;flip a
     xor a
-    ld [passwordLetter], a
+    ;set cursorIndex to 0
+    ld [cursorIndex], a
+
+    ;save data
     push hl
     push af
+
+    ;sfx
     ld hl, $2195
     ld a, $01
     call Call_000_0aa6
+    
+    ;load data
     pop af
     pop hl
+
+    ;???
     call Call_001_6c29
-    jr jr_001_6b64
+    jr Title_Loop
 
-jr_001_6be0:
-    ld a, [passwordLetter]
+Title_MoveDown:
+    ;load cursorIndex
+    ld a, [cursorIndex]
+
+    ;CHECK 1
+    ;if a == 1, jump to default process
     or a
-    jp nz, Jump_001_6b64
+    jp nz, Title_Loop_Jump
 
+    ;else, move down
+    ;inc a
     inc a
-    ld [passwordLetter], a
+    ld [cursorIndex], a
+
+    ;save data
     push hl
     push af
+
+    ;sfx
     ld hl, $2195
     ld a, $01
     call Call_000_0aa6
+
+    ;load data
     pop af
     pop hl
+
+    ;???
     call Call_001_6c59
-    jp Jump_001_6b64
+    jp Title_Loop_Jump
 
+Title_MoveToggle:
+    ;load cursorIndex
+    ld a, [cursorIndex]
 
-jr_001_6bfd:
-    ld a, [passwordLetter]
+    ;CHECK 1
+    ;if a == 0, move it down
     or a
-    jr z, jr_001_6be0
+    jr z, Title_MoveDown
+    ;else, move it up
+    jr Title_MoveUp
 
-    jr jr_001_6bc5
-
-jr_001_6c05:
+Title_Progress:
+    ;save data
     push hl
     push af
+
+    ;sfx
     ld hl, $21b0
     ld a, $01
     call Call_000_0aa6
+    
+    ;load data
     pop af
     pop hl
+
+    ;mus fade
     ld a, $10
     call Call_000_0a84
+
+    ;fade
     ld a, $00
     ld d, $07
+    ;nulling this out transitions IMMEDIATELY
     call Call_000_2df8
 
 jr_001_6c1d:
+    ;LOOP
+    ;change the actual scene
+    ;calls this func and loops until the fade is completed
     call Call_001_6ca6
     ld a, c
     or a
+    ;if a == 0, break
     jr z, jr_001_6c1d
+    ;LOOP
+
 
 jr_001_6c24:
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     ld c, a
     ret
 
@@ -9426,34 +9507,26 @@ jr_001_6d0a:
     ldh a, [$9c]
     ret
 
-
-    inc d
-    ld [de], a
-
 titleScreenTiles::
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $00
-    db $01, $02, $03, $04, $05, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $20, $21, $22, $23, $24, $25, $26, $27, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $4a, $4b, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $ff
-    db $ff, $f2, $f3, $ff, $ff, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $6a
-    db $6b, $6c, $6d, $6e, $6f, $70, $71, $ff, $ff, $80, $81, $82, $83, $84, $85, $86
-    db $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $90, $91, $ff, $ff, $a0, $a1, $a2
-    db $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $b0, $b1, $ff
-    db $ff, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce
-    db $cf, $d0, $d1, $ff, $ff, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea
-    db $eb, $ec, $ed, $ee, $ef, $f0, $f1, $ff, $ff, $ff, $08, $09, $0a, $0b, $0c, $0d
-    db $0e, $0f, $10, $11, $12, $13, $14, $15, $16, $17, $18, $ff, $ff, $ff, $28, $29
-    db $2a, $2b, $2c, $2d, $2e, $2f, $30, $31, $32, $33, $34, $35, $36, $37, $38, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $19, $1a, $1b, $1c, $1d, $1e
-    db $1f, $39, $3a, $3b, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $92, $93
-    db $94, $1d, $1e, $1f, $39, $3a, $3b, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $9c, $b2, $b3, $b4, $b5, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $76, $58, $7c, $58, $7a, $ff, $7f, $9a, $7f, $95, $5c
-    db $79, $ff, $7f, $96, $7c, $7c, $78, $9a
+    db $14, $12
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $00, $01, $02, $03, $04, $05, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $20, $21, $22, $23, $24, $25, $26, $27, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $4a, $4b, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $ff, $ff, $f2, $f3, $ff
+    db $ff, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $6a, $6b, $6c, $6d, $6e, $6f, $70, $71, $ff
+    db $ff, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f, $90, $91, $ff
+    db $ff, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $aa, $ab, $ac, $ad, $ae, $af, $b0, $b1, $ff
+    db $ff, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $c8, $c9, $ca, $cb, $cc, $cd, $ce, $cf, $d0, $d1, $ff
+    db $ff, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $e7, $e8, $e9, $ea, $eb, $ec, $ed, $ee, $ef, $f0, $f1, $ff
+    db $ff, $ff, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14, $15, $16, $17, $18, $ff
+    db $ff, $ff, $28, $29, $2a, $2b, $2c, $2d, $2e, $2f, $30, $31, $32, $33, $34, $35, $36, $37, $38, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $19, $1a, $1b, $1c, $1d, $1e, $1f, $39, $3a, $3b, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $92, $93, $94, $1d, $1e, $1f, $39, $3a, $3b, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $9c, $b2, $b3, $b4, $b5, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $76, $58, $7c, $58, $7a, $ff, $7f, $9a, $7f, $95, $5c, $79, $ff, $7f, $96, $7c, $7c, $78, $9a
 
     ld a, [bc]
     ld bc, $4f4e
@@ -9568,7 +9641,7 @@ jr_001_6f04:
 
 jr_001_6f0e:
     call Call_001_7189
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     inc a
     cp $11
     jr nz, jr_001_6f1a
@@ -9576,7 +9649,7 @@ jr_001_6f0e:
     xor a
 
 jr_001_6f1a:
-    ld [passwordLetter], a
+    ld [cursorIndex], a
     push hl
     push af
     ld hl, $2195
@@ -9589,7 +9662,7 @@ jr_001_6f1a:
 
 jr_001_6f2e:
     call Call_001_7189
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     dec a
     cp $ff
     jr nz, jr_001_6f3b
@@ -9597,7 +9670,7 @@ jr_001_6f2e:
     ld a, $10
 
 jr_001_6f3b:
-    ld [passwordLetter], a
+    ld [cursorIndex], a
     push hl
     push af
     ld hl, $2195
@@ -9620,19 +9693,19 @@ jr_001_6f4f:
     jr jr_001_6ef6
 
 jr_001_6f5f:
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     cp $10
     jr z, jr_001_6f8d
 
     ld c, a
-    ld hl, currentPassword1
-    ld a, [passwordI]
+    ld hl, currentPassword
+    ld a, [passwordLetter]
     ld d, $00
     ld e, a
     add hl, de
     ld [hl], c
     inc a
-    ld [passwordI], a
+    ld [passwordLetter], a
     cp $06
     jp z, Jump_001_7108
 
@@ -9649,7 +9722,7 @@ jr_001_6f5f:
 
 Jump_001_6f8d:
 jr_001_6f8d:
-    ld a, [passwordI]
+    ld a, [passwordLetter]
     or a
     jr nz, jr_001_6fa2
 
@@ -9665,7 +9738,7 @@ jr_001_6f8d:
 
 jr_001_6fa2:
     dec a
-    ld [passwordI], a
+    ld [passwordLetter], a
     push hl
     push af
     ld hl, $221b
@@ -9679,13 +9752,13 @@ jr_001_6fa2:
 
 Call_001_6fb8:
     ld c, $ff
-    ld hl, currentPassword1
-    ld a, [passwordI]
+    ld hl, currentPassword
+    ld a, [passwordLetter]
     ld d, $00
     ld e, a
     add hl, de
     ld [hl], c
-    ld a, [passwordI]
+    ld a, [passwordLetter]
     dec a
     rlca
     rlca
@@ -9699,7 +9772,7 @@ Call_001_6fb8:
     inc hl
     push hl
     push de
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     add $12
     rlca
     ld c, a
@@ -9748,13 +9821,13 @@ Call_001_6fb8:
 
 Call_001_7022:
     ld c, $ff
-    ld hl, currentPassword1
-    ld a, [passwordI]
+    ld hl, currentPassword
+    ld a, [passwordLetter]
     ld d, $00
     ld e, a
     add hl, de
     ld [hl], c
-    ld a, [passwordI]
+    ld a, [passwordLetter]
     dec a
     rlca
     rlca
@@ -9768,7 +9841,7 @@ Call_001_7022:
     inc hl
     push hl
     push de
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     add $12
     rlca
     ld c, a
@@ -9806,7 +9879,7 @@ Call_001_7022:
 
 
 Call_001_7072:
-    ld a, [passwordI]
+    ld a, [passwordLetter]
     rlca
     rlca
     ld c, a
@@ -9851,11 +9924,11 @@ Call_001_7072:
 
 Call_001_70c0:
     xor a
+    ld [cursorIndex], a
     ld [passwordLetter], a
-    ld [passwordI], a
     dec a
     ld b, $07
-    ld hl, currentPassword1
+    ld hl, currentPassword
 
 jr_001_70cd:
     ld [hl+], a
@@ -9900,17 +9973,17 @@ jr_001_70e6:
 Jump_001_7108:
     call Call_001_7022
     call Call_001_6cac
-    ld hl, currentPassword1
-    call Call_001_71fb
+    ld hl, currentPassword
+    call StartPasswordRead
     or a
     jr z, jr_001_712b
 
     call Call_001_7189
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     push af
     call Call_001_70c0
     pop af
-    ld [passwordLetter], a
+    ld [cursorIndex], a
     call Call_001_7184
     jp Jump_001_6eda
 
@@ -9918,7 +9991,7 @@ Jump_001_7108:
 jr_001_712b:
     ld c, $06
     ld de, $98e4
-    ld hl, currentPassword1
+    ld hl, currentPassword
 
 jr_001_7133:
     push bc
@@ -9993,7 +10066,7 @@ Call_001_7189:
 jr_001_718b:
     push af
     ld de, $99a2
-    ld a, [passwordLetter]
+    ld a, [cursorIndex]
     ld h, $00
     ld l, a
     add hl, de
@@ -10007,10 +10080,10 @@ jr_001_718b:
     ld de, $9800
     ld hl, passwordGetTiles
     call Call_000_0756
-    ld hl, currentPassword1
+    ld hl, currentPassword
     call Call_001_728b
     ld c, $06
-    ld hl, currentPassword1
+    ld hl, currentPassword
     ld de, $0408
 
 jr_001_71b4:
@@ -10070,27 +10143,36 @@ jr_001_71f3:
     ret
 
 
-Call_001_71fb:
+StartPasswordRead::
     push bc
     push de
     push hl
-    ld b, $06
+    ;ready to decrement
+    ld b, 6
 
 Call_001_7200:
+    ;save passwordStore pointer to de
     ld de, passwordStore
 
 LoadCheckPassword_SPCLST::
+    ;LOOP: store the user's entry to passwordStore
     ld a, [hl+]
     ld [de], a
     inc de
     dec b
+    ;if b == 0 (z), break
+    ;else, continue
     jr nz, LoadCheckPassword_SPCLST
+    ;LOOP
 
+    ;reset hl, load SPCLST and get ready for another loop
     ld hl, passwordStore
     ld de, PASSWORD_SPCLST
-    ld b, $06
+    ld b, 6
 
 CheckPassword_SPCLST::
+    ;LOOP
+    ;load SPCLST into a, and if not equal to hl, skip to JSSJSS
     ld a, [de]
     cp [hl]
     jr nz, LoadCheckPassword_JSSJSS
@@ -10098,21 +10180,29 @@ CheckPassword_SPCLST::
     inc de
     inc hl
     dec b
+    ;if b == 0 (z), break
+    ;else, continue
     jr nz, CheckPassword_SPCLST
+    ;LOOP
 
-    ld a, $32
+    ;by this point, you must have input SPCLST
+    ;go to Special Stage (Stage 9) with 50 lives
+    ld a, 50
     ld [playerLives], a
-    ld a, $08
+    ld a, 8
     ld [currentStage], a
     xor a
     jr jr_001_7283
 
 LoadCheckPassword_JSSJSS::
+    ;reset hl, load JSSJSS and get ready for another loop
     ld hl, passwordStore
     ld de, PASSWORD_JSSJSS
-    ld b, $06
+    ld b, 6
 
 CheckPassword_JSSJSS::
+    ;LOOP
+    ;load SPCLST into a, and if not equal to hl, skip to ValidStage checking
     ld a, [de]
     cp [hl]
     jr nz, CheckPassword_ValidStage
@@ -10120,16 +10210,22 @@ CheckPassword_JSSJSS::
     inc de
     inc hl
     dec b
+    ;if b == 0 (z), break
+    ;else, continue
     jr nz, CheckPassword_JSSJSS
+    ;LOOP
 
-    ld a, $32
+    ;by this point, you must have input JSSJSS
+    ;go to Stage 1 with 50 lives
+    ld a, 50
     ld [playerLives], a
-    ld a, $00
+    ld a, 0
     ld [currentStage], a
     xor a
     jr jr_001_7283
 
 CheckPassword_ValidStage::
+    ;reset hl
     ld hl, passwordStore
     ld a, [hl+]
     add [hl]
@@ -10141,12 +10237,16 @@ CheckPassword_ValidStage::
     ld b, a
     swap a
     and $0f
+
+    ;CHECK 1
     cp [hl]
     jr nz, jr_001_7287
 
     inc hl
     ld a, b
     and $0f
+
+    ;CHECK 2
     cp [hl]
     jr nz, jr_001_7287
 
@@ -10155,13 +10255,18 @@ CheckPassword_ValidStage::
     ld c, a
     xor [hl]
     inc hl
-    cp $08
+
+    ;CHECK 3 - keep stage# under 8 (special stage)
+    cp 8
     jr nc, jr_001_7287
 
-    cp $00
+    ;CHECK 4
+    cp 0
     jr z, jr_001_7287
 
+    ;set the current stage
     ld [currentStage], a
+
     ld a, c
     xor [hl]
     inc hl
@@ -10170,11 +10275,16 @@ CheckPassword_ValidStage::
     ld a, c
     xor [hl]
     or b
-    cp $64
+
+    ;CHECK 5
+    cp 100
     jr nc, jr_001_7287
 
-    ld a, $05
+    ;all checks have passed, load into whatever stage was picked
+    ;give the player 5 lives as if it was a new game
+    ld a, STARTING_LIVES
     ld [playerLives], a
+
     xor a
 
 jr_001_7283:
@@ -10351,7 +10461,6 @@ passwordEntryScreenTiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $eb, $ec, $ed, $ee, $ef, $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
 
 passwordEntryTiles::
     db $02, $02

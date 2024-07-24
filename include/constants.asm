@@ -189,15 +189,7 @@ MACRO demo_input
 	db \1, \2
 ENDM
 
-def INPUT_NONE equ 0 ; 0x0
-def INPUT_A equ 1 << 0 ; 0x1
-def INPUT_B equ 1 << 1 ; 0x2
-def INPUT_SELECT equ 1 << 2 ; 0x4
-def INPUT_START equ 1 << 3 ; 0x8
-def INPUT_RIGHT equ 1 << 4 ; 0x10
-def INPUT_LEFT equ 1 << 5 ; 0x20
-def INPUT_UP equ 1 << 6 ; 0x40
-def INPUT_DOWN equ 1 << 7 ; 0x80
+def PADF_NONE equ 0 ; 0x0
 
 ; actor stuff
 def MAX_ACTORS equ 55 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once

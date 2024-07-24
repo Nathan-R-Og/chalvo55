@@ -2,8 +2,8 @@
 00:0000 .code:4000
 01:4000 .code:2D0F
 
-01:6d0f titleScreenTiles
-01:6d0f .data:168
+01:6d0d titleScreenTiles
+01:6d0d .data:16A
 
 01:6e77 .code:4BD
 
@@ -239,56 +239,14 @@
 17:6000 levelMapConstTiles 
 17:6000 .data:016A
 
-17:616a stageNumberTiles
-17:616a .data:0008
+17:62C5 levelMapConstTilesPointers
+17:62C5 .data:22
 
-17:6172 unkTiles0
-17:6172 .data:0008
+17:62C5 unusedTiles
+17:62C5 .data:16A
 
-17:617a unkTiles1
-17:617a .data:0008
-
-17:6182 unkTiles2
-17:6182 .data:0008
-
-17:618a unkTiles3
-17:618a .data:0008
-
-17:6192 unkTiles4
-17:6192 .data:0008
-
-17:619a unkTiles5
-17:619a .data:0008
-
-17:61a2 unkTiles6
-17:61a2 .data:0008
-
-17:61aa unkTiles7
-17:61aa .data:0003
-
-17:61AD unkTiles8
-17:61AD .data:0006
-
-17:61B3 unkTiles9
-17:61B3 .data:0006
-
-17:61B9 unkTilesA
-17:61B9 .data:0006
-
-17:61BF unkTilesB
-17:61BF .data:0008
-
-17:61C7 unkTilesC
-17:61C7 .data:0008
-
-17:61CF unkTilesD_unused
-17:61CF .data:007b
-
-17:624a unkTilesE_unused
-17:624a .data:007b
-
-17:62C5 unkTilesF_unused
-17:62C5 .data:024E
+17:64F1 unusedTilesPointers
+17:64F1 .data:22
 
 17:6513 bank17pad
 17:6513 .data:1aed
@@ -366,24 +324,30 @@
 00:c97B screenPosCheckpointY
 
 00:c98e passwordStore
-00:c9f2 passwordLetter
-00:c9f3 passwordI
-00:c9f4 currentPassword1
-00:c9f5 currentPassword2
-00:c9f6 currentPassword3
-00:c9f7 currentPassword4
-00:c9f8 currentPassword5
-00:c9f9 currentPassword6
+00:c9f2 cursorIndex
+00:c9f3 passwordLetter
+00:c9f4 currentPassword
 
 00:c9fc playerLives
 
 00:cb23 demoing
+00:cb24 titleDemoTimer
 
 
 
 ; function/jr names
 00:372d Player_Init
 
+01:6b64 Title_Loop_Jump
+01:6b64 Title_Loop
+01:6b73 Title_Main
+01:6bad Title_Input
+01:6bc5 Title_MoveUp
+01:6be0 Title_MoveDown
+01:6bfd Title_MoveToggle
+01:6c05 Title_Progress
+
+01:71fb StartPasswordRead
 01:7203 LoadCheckPassword_SPCLST
 01:7211 CheckPassword_SPCLST
 01:7227 LoadCheckPassword_JSSJSS
