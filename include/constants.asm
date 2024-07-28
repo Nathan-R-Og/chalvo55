@@ -202,3 +202,45 @@ def MAX_ACTORS equ 55 ; incredibly arbitrary, especially since the game will pro
 
 ; player stuff
 def STARTING_LIVES equ 5 ; self explanatory
+
+
+; anim stuff
+; as far as i know, 
+def ANIM_FRAME_Chalvo_Walk1 EQU 0
+def ANIM_FRAME_Chalvo_Stand EQU 1
+def ANIM_FRAME_Chalvo_Walk2 EQU 2
+def ANIM_FRAME_Chalvo_BallUp EQU 3
+def ANIM_FRAME_Chalvo_BallDown EQU 4
+def ANIM_FRAME_Chalvo_BallDie EQU 5
+def ANIM_FRAME_Chalvo_Fall EQU 6
+def ANIM_FRAME_Chalvo_Die EQU 7
+def ANIM_FRAME_Chalvo_Jump EQU 8
+def ANIM_FRAME_Chalvo_Push1 EQU 9
+def ANIM_FRAME_Stage_PushCart EQU $A
+def ANIM_FRAME_Stage_SpringCart EQU $B
+def ANIM_FRAME_Stage_MovingBlock EQU $C
+def ANIM_FRAME_Chalvo_Push1_Copy EQU $D
+def ANIM_FRAME_Chalvo_PushStand EQU $E
+def ANIM_FRAME_Chalvo_Push2 EQU $F
+def ANIM_FRAME_Chalvo_DashDust EQU $10
+def ANIM_FRAME_Stage_OneHitEnemy1 EQU $11
+def ANIM_FRAME_Stage_OneHitEnemy2 EQU $12
+def ANIM_FRAME_Stage_OneHitEnemyDie EQU $13
+def ANIM_FRAME_Stage_TwoHitEnemy1 EQU $14
+def ANIM_FRAME_Stage_TwoHitEnemy2 EQU $15
+def ANIM_FRAME_Stage_TwoHitEnemyDie EQU $16
+def ANIM_FRAME_Stage_NoHitEnemy1 EQU $17
+def ANIM_FRAME_Stage_NoHitEnemy2 EQU $18
+def ANIM_FRAME_Stage_NoHitEnemyDie EQU $19
+def ANIM_FRAME_Chalvo_Ouch EQU $1A
+def ANIM_FRAME_Stage_SpringCart2 EQU $1B
+def ANIM_FRAME_nothing EQU $1C
+def ANIM_FRAME_Chalvo_PushSweat1 EQU $1D
+def ANIM_FRAME_Chalvo_PushSweat2 EQU $1E
+
+; each 'frame' is 4 bytes, half denoting time and the other denoting the frame
+; negative ones are commands, otherwise it is the length of the 'frame' in cpu frames
+def ANIM_COMMAND_STOP EQU $00ff
+; loop(0) == infinite
+def ANIM_COMMAND_LOOP EQU $00fe
+def ANIM_COMMAND_INDEFINITE EQU $00fd

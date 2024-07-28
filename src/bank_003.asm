@@ -4442,9297 +4442,1113 @@ jr_003_5244:
     ld d, e
     ld c, [hl]
     ld d, e
-    ld [bc], a
-    ld [bc], a
-    add h
-    add l
-    and h
-    and l
-    inc b
-    ld [bc], a
-    push af
-    or $f6
-    rst $30
-    push af
-    or $f6
-    rst $30
-    inc b
-    ld [bc], a
-    ld a, [c]
-    di
-    di
-    db $f4
-    push af
-    or $f6
-    rst $30
-    inc b
-    ld [bc], a
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    push af
-    or $f6
-    rst $30
-    inc b
-    ld [bc], a
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld a, [c]
-    di
-    di
-    db $f4
-    inc b
-    ld [bc], a
-    ld l, [hl]
-    ld l, a
-    xor [hl]
-    xor a
-    adc [hl]
-    adc a
-    adc $cf
-    inc b
-    ld [bc], a
-    jp z, $cccb
-
-    call $8f8e
-    adc $cf
-    inc b
-    inc b
-    ld b, b
-    ld b, c
-    ld b, d
-    ld b, e
-    ld h, b
-    ld h, c
-    ld h, d
-    ld h, e
-    add b
-    add c
-    add d
-    add e
-    and b
-    and c
-    and d
-    and e
-    inc b
-    inc b
-    ld b, b
-    ld b, c
-    ld b, d
-    ld b, e
-    ld b, h
-    ld b, l
-    ld h, h
-    ld h, l
-    add b
-    add c
-    add d
-    add e
-    and b
-    and c
-    and d
-    and e
-    ld [bc], a
-    ld [bc], a
-    jp $e3c4
-
-
-    db $e4
-    ld [bc], a
-    ld [bc], a
-    push bc
-    jp nz, $e6e5
-
-    ld [bc], a
-    ld [bc], a
-    add hl, bc
-    ld a, [bc]
-    dec bc
-    inc c
-    ld [bc], a
-    ld [bc], a
-    dec c
-    ld c, $aa
-    xor e
-    inc bc
-    inc bc
-    dec de
-    inc e
-    dec e
-    cp b
-    cp c
-    cp d
-    ret c
-
-    reti
-
-
-    jp c, $0303
-
-    dec de
-    inc e
-    dec e
-    dec sp
-    inc a
-    dec a
-    ld e, e
-    ld e, h
-    ld e, l
-    inc bc
-    inc bc
-    dec de
-    inc e
-    dec e
-    cp e
-    cp h
-    cp l
-    db $db
-    call c, $03dd
-    inc bc
-    dec de
-    inc e
-    dec e
-    ld hl, sp-$07
-    ld a, [$fcfb]
-    db $fd
-    inc bc
-    inc bc
-    ld e, $1f
-    ld a, [hl]
-    ld a, $3f
-    sbc [hl]
-    sbc $df
-    cp [hl]
-    ld b, $04
-    dec de
-    inc e
-    dec e
-    ld [hl], e
-    ld [hl], h
-    ld [hl], l
-    ld hl, sp-$07
-    ld a, [$9493]
-    sub l
-    or b
-    or c
-    or d
-    or e
-    or h
-    or l
-    ret nc
-
-    pop de
-    jp nc, $d4d3
-
-    push de
-    ld b, $04
-    dec de
-    inc e
-    dec e
-    ld [hl], e
-    ld [hl], h
-    ld [hl], l
-    dec sp
-    inc a
-    dec a
-    sub e
-    sub h
-    sub l
-    or b
-    or c
-    or d
-    or e
-    or h
-    or l
-    ret nc
-
-    pop de
-    jp nc, $d4d3
-
-    push de
-    ld b, $04
-    ld e, $1f
-    ld a, [hl]
-    ld [hl], e
-    ld [hl], h
-    ld [hl], l
-    ld a, $3f
-    sbc [hl]
-    sub e
-    sub h
-    sub l
-    or b
-    or c
-    or d
-    or e
-    or h
-    or l
-    ret nc
-
-    pop de
-    jp nc, $d4d3
-
-    push de
-    sbc b
-    ld d, e
-    sbc [hl]
-    ld d, e
-    xor b
-    ld d, e
-    or d
-    ld d, e
-    cp h
-    ld d, e
-    add $53
-    ret nc
-
-    ld d, e
-    jp c, $ec53
-
-    ld d, e
-    cp $53
-    inc b
-    ld d, h
-    ld a, [bc]
-    ld d, h
-    db $10
-    ld d, h
-    ld d, $54
-    ld hl, $2c54
-    ld d, h
-    scf
-    ld d, h
-    ld b, d
-    ld d, h
-    ld c, l
-    ld d, h
-    ld h, a
-    ld d, h
-    add c
-    ld d, h
-    inc d
-    ld [de], a
-    and $00
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $00
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $01
-    ld [bc], a
-    inc bc
-    inc b
-    dec b
-    ld b, $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    jr nz, @+$23
-
-    ld [hl+], a
-    inc hl
-    inc h
-    dec h
-    ld h, $27
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ld b, b
-    ld b, c
-    ld b, d
-    ld b, e
-    ld b, h
-    ld b, l
-    ld b, [hl]
-    ld b, a
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ld h, b
-    ld h, c
-    ld h, d
-    ld h, e
-    ld h, h
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    and $e6
-    and $e6
-    and $e6
-    and $00
-    and $e6
-    and $e6
-    add b
-    add c
-    add d
-    add e
-    add h
-    add l
-    add [hl]
-    add a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and b
-    and c
-    and d
-    and e
-    and h
-    and l
-    and [hl]
-    and a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ret nz
-
-    pop bc
-    jp nz, $c4c3
-
-    push bc
-    add $c7
-    and $e6
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $00
-    and $e1
-    ld [c], a
-    db $e3
-    db $e4
-    push hl
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $00
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    nop
-    and $e6
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    ldh [$e6], a
-    and $e6
-    and $e6
-    and $e6
-    and $e6
-    and $06
-    ld b, $08
-    add hl, bc
-    ld a, [bc]
-    dec bc
-    inc c
-    dec c
-    jr z, jr_003_5662
-
-    ld a, [hl+]
-    dec hl
-    inc l
-    dec l
-    ld c, b
-    ld c, c
-    ld c, d
-    ld c, e
-    ld c, h
-    ld c, l
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    ld l, h
-    ld l, l
-    adc b
-    adc c
-    adc d
-    adc e
-    adc h
-    adc l
-    xor b
-    xor c
-    xor d
-    xor e
-    xor h
-    xor l
-    inc d
-    ld [de], a
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-
-jr_003_5662:
-    push bc
-    push bc
-    push bc
-    push bc
-    ldh [$c5], a
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    adc [hl]
-    adc a
-    sub b
-    sub c
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    xor [hl]
-    xor a
-    or b
-    or c
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    adc $cf
-    ret nc
-
-    pop de
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    sub d
-    sub e
-    sub h
-    push bc
-    push bc
-    nop
-    push bc
-    xor $ef
-    ldh a, [$f1]
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    or d
-    or e
-    or h
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    jp nc, $d4d3
-
-    push bc
-    push bc
-    push bc
-    push bc
-    push bc
-    ldh [$c5], a
-    push bc
-    push bc
-    push bc
-    nop
-    push bc
-    push bc
-    push bc
-    push bc
-    ld c, $0f
-    db $10
-    ld de, $1312
-    ld de, $1211
-    db $10
-    db $10
-    db $10
-    db $10
-    ld de, $1312
-    push bc
-    push bc
-    push bc
-    nop
-    ld l, $2f
-    jr nc, jr_003_576c
-
-    ld [hl-], a
-    inc sp
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    push bc
-    push bc
-    push bc
-    push bc
-    ld c, [hl]
-    ld c, a
-    ld d, b
-    ld d, c
-    ld d, d
-    ld d, e
-    inc d
-    inc d
-    dec d
-    ld d, $17
-    rla
-    ld de, $1211
-    inc de
-    push bc
-    push bc
-    push bc
-    push bc
-    ld l, [hl]
-    ld l, a
-    ld [hl], b
-    ld [hl], c
-    ld [hl], d
-    ld [hl], e
-    scf
-    inc [hl]
-    dec [hl]
-    ld [hl], $37
-    scf
-    scf
-
-jr_003_576c:
-    scf
-    scf
-    jr c, jr_003_5780
-
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-
-jr_003_5780:
-    ld de, $1312
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    rlca
-    inc d
-    inc d
-    ld l, a
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    ld l, a
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc d
-    inc bc
-    inc bc
-    sub d
-    sub e
-    sub h
-    sub l
-    sub [hl]
-    sub a
-    or l
-    or [hl]
-    or a
-    inc bc
-    inc bc
-    inc e
-    dec e
-    ld e, $54
-    ld d, l
-    ld d, [hl]
-    ld [hl], h
-    ld [hl], l
-    db $76
-    inc bc
-    inc bc
-    inc e
-    dec e
-    ld e, $57
-    ld e, b
-    ld e, c
-    ld [hl], a
-    ld a, b
-    ld a, c
-    inc bc
-    inc bc
-    inc e
-    dec e
-    ld e, $5a
-    ld e, e
-    ld e, h
-    ld a, d
-    ld a, e
-    ld a, h
-    inc bc
-    inc bc
-    add hl, sp
-    ld a, [hl-]
-    dec sp
-    ld d, h
-    ld d, l
-    ld d, [hl]
-    ld [hl], h
-    ld [hl], l
-    db $76
-    inc bc
-    inc bc
-    add hl, sp
-    ld a, [hl-]
-    dec sp
-    ld d, a
-    ld e, b
-    ld e, c
-    ld [hl], a
-    ld a, b
-    ld a, c
-    inc bc
-    inc bc
-    add hl, sp
-    ld a, [hl-]
-    dec sp
-    ld e, d
-    ld e, e
-    ld e, h
-    ld a, d
-    ld a, e
-    ld a, h
-    inc bc
-    inc bc
-    inc a
-    dec a
-    ld a, $54
-    ld d, l
-    ld d, [hl]
-    ld [hl], h
-    ld [hl], l
-    db $76
-    inc bc
-    inc bc
-    inc a
-    dec a
-    ld a, $57
-    ld e, b
-    ld e, c
-    ld [hl], a
-    ld a, b
-    ld a, c
-    inc bc
-    inc bc
-    inc a
-    dec a
-    ld a, $5a
-    ld e, e
-    ld e, h
-    ld a, d
-    ld a, e
-    ld a, h
-    inc d
-    ld [de], a
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    ld h, l
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    rst $38
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld l, d
-    ld l, e
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    ld h, e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    add e
-    inc b
-    rlca
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    inc e
-    dec e
-    ld e, $1f
-    inc a
-    dec a
-    ld a, $3f
-    ld e, h
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld a, h
-    ld a, l
-    ld a, [hl]
-    ld a, a
-    sbc h
-    sbc l
-    sbc [hl]
-    sbc a
-    cp h
-    cp l
-    cp [hl]
-    cp a
-    inc b
-    rlca
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    jr jr_003_59d6
-
-    ld a, [de]
-    dec de
-    jr c, @+$3b
-
-    ld a, [hl-]
-    dec sp
-    ld e, b
-    ld e, c
-    ld e, d
-    ld e, e
-    ld a, b
-    ld a, c
-    ld a, d
-    ld a, e
-    sbc b
-    sbc c
-    sbc d
-    sbc e
-    cp b
-    cp c
-    cp d
-    cp e
-    inc b
-    rlca
-    ret c
-
-jr_003_59d6:
-    reti
-
-
-    jp c, $f8db
-
-    ld sp, hl
-    ld a, [$dcfb]
-    db $dd
-    sbc $df
-    ld e, h
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld a, h
-    ld a, l
-    ld a, [hl]
-    ld a, a
-    sbc h
-    sbc l
-    sbc [hl]
-    sbc a
-    cp h
-    cp l
-    cp [hl]
-    cp a
-    push bc
-    ld d, h
-    cpl
-    ld d, [hl]
-    ld d, l
-    ld d, [hl]
-    cp a
-    ld d, a
-    jp z, $d557
-
-    ld d, a
-    ldh [$57], a
-    db $eb
-    ld d, a
-    or $57
-    ld bc, $0c58
-    ld e, b
-    rla
-    ld e, b
-    ld [hl+], a
-    ld e, b
-    dec l
-    ld e, b
-    sub a
-    ld e, c
-    or l
-    ld e, c
-    db $d3
-    ld e, c
-    inc b
-    rlca
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    inc e
-    dec e
-    ld e, $1f
-    inc a
-    dec a
-    ld a, $3f
-    ld e, h
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld a, h
-    ld a, l
-    ld a, [hl]
-    ld a, a
-    sbc h
-    sbc l
-    sbc [hl]
-    sbc a
-    cp h
-    cp l
-    cp [hl]
-    cp a
-    inc b
-    rlca
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    jr jr_003_5a52
-
-    ld a, [de]
-    dec de
-    jr c, jr_003_5a76
-
-    ld a, [hl-]
-    dec sp
-    ld e, b
-    ld e, c
-    ld e, d
-    ld e, e
-    ld a, b
-    ld a, c
-    ld a, d
-    ld a, e
-    sbc b
-    sbc c
-    sbc d
-    sbc e
-    cp b
-    cp c
-    cp d
-    cp e
-    inc b
-    rlca
-    ret c
-
-jr_003_5a52:
-    reti
-
-
-    jp c, $f8db
-
-    ld sp, hl
-    ld a, [$dcfb]
-    db $dd
-    sbc $df
-    ld e, h
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld a, h
-    ld a, l
-    ld a, [hl]
-    ld a, a
-    sbc h
-    sbc l
-    sbc [hl]
-    sbc a
-    cp h
-    cp l
-    cp [hl]
-    cp a
-    ld [bc], a
-    inc bc
-    call nz, $e4c5
-    push hl
-    xor h
-    xor l
-    adc a
-
-jr_003_5a76:
-    ld e, d
-    rst $10
-    ld e, d
-    or a
-    ld e, e
-    call $e35b
-    ld e, e
-    ld sp, hl
-    ld e, e
-    ld a, a
-    ld e, h
-    rst $30
-    ld e, h
-    ld l, a
-    ld e, l
-    sub e
-    ld e, l
-    ld sp, $3f5e
-    ld e, [hl]
-    or a
-    ld e, [hl]
-    sub a
-    ld e, d
-    xor e
-    ld e, d
-    cp c
-    ld e, d
-    push bc
-    ld e, d
-    ld [$0000], sp
-    nop
-    ld [$0100], sp
-    nop
-    ld [$0200], sp
-    nop
-    ld [$0100], sp
-    nop
-    cp $00
-    nop
-    nop
-    rlca
-    nop
-    ld [bc], a
-    nop
-    rlca
-    nop
-    inc bc
-    nop
-    rlca
-    nop
-    inc b
-    nop
-    rst $38
-    nop
-    ld b, $00
-    dec e
-    nop
-    ld b, $00
-    ld e, $00
-    cp $00
-    nop
-    nop
-    rlca
-    nop
-    daa
-    nop
-    rlca
-    nop
-    jr z, jr_003_5acd
-
-jr_003_5acd:
-    rlca
-    nop
-    add hl, hl
-    nop
-    rlca
-    nop
-    ld a, [hl+]
-    nop
-    rst $38
-    nop
-    rst $28
-    ld e, d
-    push af
-    ld e, d
-    add hl, bc
-    ld e, e
-    rrca
-    ld e, e
-    dec d
-    ld e, e
-    add hl, hl
-    ld e, e
-    inc sp
-    ld e, e
-    add hl, sp
-    ld e, e
-    ld e, a
-    ld e, e
-    add l
-    ld e, e
-    sbc e
-    ld e, e
-    or c
-    ld e, e
-    db $fd
-    nop
-    ld bc, $ff00
-    nop
-    ld [$0000], sp
-    nop
-    ld [$0100], sp
-    nop
-    ld [$0200], sp
-    nop
-    ld [$0100], sp
-    nop
-    cp $00
-    nop
-    nop
-    db $fd
-    nop
-    ld b, $00
-    rst $38
-    nop
-    inc c
-    nop
-    ld [$ff00], sp
-    nop
-    stop
-    dec c
-    nop
-    stop
-    ld c, $00
-    stop
-    rrca
-    nop
-    stop
-    ld c, $00
-    cp $00
-    nop
-    nop
-    ld [$0800], sp
-    nop
-    db $fd
-    nop
-    ld b, $00
-    rst $38
-    nop
-    db $fd
-    nop
-    ld c, $00
-    rst $38
-    nop
-    inc b
-    nop
-    ld h, b
-    nop
-    inc b
-    nop
-    ld h, c
-    nop
-    inc b
-    nop
-    ld h, d
-    nop
-    inc b
-    nop
-    ld h, e
-    nop
-    inc b
-    nop
-    ld h, h
-    nop
-    inc b
-    nop
-    ld h, l
-    nop
-    ld [bc], a
-    nop
-    ld h, [hl]
-    nop
-    ld [bc], a
-    nop
-    ld h, a
-    nop
-    ld [bc], a
-    nop
-    ld l, b
-    nop
-    rst $38
-    nop
-    inc b
-    nop
-    ld l, [hl]
-    nop
-    inc b
-    nop
-    ld l, a
-    nop
-    inc b
-    nop
-    ld [hl], b
-    nop
-    inc b
-    nop
-    ld [hl], c
-    nop
-    inc b
-    nop
-    ld [hl], d
-    nop
-    inc b
-    nop
-    ld [hl], e
-    nop
-    ld [bc], a
-    nop
-    ld [hl], h
-    nop
-    ld [bc], a
-    nop
-    ld [hl], l
-    nop
-    ld [bc], a
-    nop
-    halt
-    rst $38
-    nop
-    ld b, $00
-    ld l, c
-    nop
-    ld b, $00
-    ld l, d
-    nop
-    ld b, $00
-    ld l, e
-    nop
-    ld b, $00
-    ld l, h
-    nop
-    ld b, $00
-    ld l, l
-    nop
-    rst $38
-    nop
-    ld b, $00
-    ld [hl], a
-    nop
-    ld b, $00
-    ld a, b
-    nop
-    ld b, $00
-    ld a, c
-    nop
-    ld b, $00
-    ld a, d
-    nop
-    ld b, $00
-    ld a, e
-    nop
-    rst $38
-    nop
-    ld b, b
-    nop
-    dec b
-    nop
-    rst $38
-    nop
-    cp e
-    ld e, e
-    rst $00
-    ld e, e
-    ld [$1100], sp
-    nop
-    ld [$1200], sp
-    nop
-    cp $00
-    nop
-    nop
-    db $fd
-    nop
-    inc de
-    nop
-    rst $38
-    nop
-    pop de
-    ld e, e
-    db $dd
-    ld e, e
-    ld [$1400], sp
-    nop
-    ld [$1500], sp
-    nop
-    cp $00
-    nop
-    nop
-    db $fd
-    nop
-    ld d, $00
-    rst $38
-    nop
-    rst $20
-    ld e, e
-    di
-    ld e, e
-    ld [$1700], sp
-    nop
-    ld [$1800], sp
-    nop
-    cp $00
-    nop
-    nop
-    db $fd
-    nop
-    add hl, de
-    nop
-    rst $38
-    nop
-    ld bc, $075c
-    ld e, h
-    ld h, l
-    ld e, h
-    ld l, e
-    ld e, h
-    db $fd
-    nop
-    ld hl, $ff00
-    nop
-    dec b
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    dec b
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    dec b
-    nop
-    ld hl, $0500
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    dec b
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    ld a, [bc]
-    nop
-    ld hl, $0500
-    nop
-    inc hl
-    nop
-    dec b
-    nop
-    ld hl, $1e00
-    nop
-    inc hl
-    nop
-    rst $38
-    nop
-    ld d, b
-    nop
-    inc h
-    nop
-    rst $38
-    nop
-    ld [$2000], sp
-    nop
-    ld [$2100], sp
-    nop
-    ld [$2200], sp
-    nop
-    ld [$2100], sp
-    nop
-    cp $00
-    nop
-    nop
-    add l
-    ld e, h
-    rst $20
-    ld e, h
-    pop af
-    ld e, h
-    dec b
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    dec b
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    dec b
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    dec b
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    ld a, [bc]
-    nop
-    inc l
-    nop
-    dec b
-    nop
-    dec hl
-    nop
-    dec b
-    nop
-    inc l
-    nop
-    ld e, $00
-    dec hl
-    nop
-    ld bc, $2c00
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    dec l
-    nop
-    ld bc, $2c00
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    dec l
-    nop
-    rst $38
-    nop
-    db $fd
-    ld e, h
-    ld e, a
-    ld e, l
-    ld l, c
-    ld e, l
-    dec b
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    dec b
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    dec b
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    dec b
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    ld a, [bc]
-    nop
-    inc sp
-    nop
-    dec b
-    nop
-    inc [hl]
-    nop
-    dec b
-    nop
-    inc sp
-    nop
-    ld e, $00
-    inc [hl]
-    nop
-    ld bc, $3300
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    dec [hl]
-    nop
-    ld bc, $3300
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    dec [hl]
-    nop
-    rst $38
-    nop
-    ld [hl], l
-    ld e, l
-    add c
-    ld e, l
-    adc l
-    ld e, l
-    jr nz, jr_003_5d77
-
-jr_003_5d77:
-    scf
-    nop
-    jr nz, jr_003_5d7b
-
-jr_003_5d7b:
-    jr c, jr_003_5d7d
-
-jr_003_5d7d:
-    cp $00
-    nop
-    nop
-    ld [$3900], sp
-    nop
-    ld [$3a00], sp
-    nop
-    cp $00
-    nop
-    nop
-    jr nz, jr_003_5d8f
-
-jr_003_5d8f:
-    dec sp
-    nop
-    rst $38
-    nop
-    sbc e
-    ld e, l
-    db $fd
-    ld e, l
-    rra
-    ld e, [hl]
-    dec h
-    ld e, [hl]
-    dec b
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    dec b
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    dec b
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    dec b
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    ld a, [bc]
-    nop
-    inc a
-    nop
-    dec b
-    nop
-    ld a, $00
-    dec b
-    nop
-    inc a
-    nop
-    ld e, $00
-    ld a, $00
-    ld bc, $3c00
-    nop
-    rst $38
-    nop
-    ld [$3f00], sp
-    nop
-    ld [$4000], sp
-    nop
-    ld [$3f00], sp
-    nop
-    ld [$4000], sp
-    nop
-    ld [$3f00], sp
-    nop
-    ld [$4000], sp
-    nop
-    ld [$3f00], sp
-    nop
-    ld [$4000], sp
-    nop
-    rst $38
-    nop
-    jr nz, jr_003_5e21
-
-jr_003_5e21:
-    ld b, c
-    nop
-    rst $38
-    nop
-    ld [$3c00], sp
-    nop
-    ld [$3d00], sp
-    nop
-    cp $00
-    nop
-    nop
-    inc sp
-    ld e, [hl]
-    ld [$4300], sp
-    nop
-    ld [$4400], sp
-    nop
-    cp $00
-    nop
-    nop
-    ld b, l
-    ld e, [hl]
-    and a
-    ld e, [hl]
-    or c
-    ld e, [hl]
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    ld a, [bc]
-    nop
-    ld b, [hl]
-    nop
-    dec b
-    nop
-    ld b, l
-    nop
-    dec b
-    nop
-    ld b, [hl]
-    nop
-    ld e, $00
-    ld b, l
-    nop
-    ld bc, $4600
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    ld b, a
-    nop
-    ld bc, $4600
-    nop
-    rst $38
-    nop
-    inc a
-    nop
-    ld b, a
-    nop
-    rst $38
-    nop
-    cp l
-    ld e, [hl]
-    pop de
-    ld e, [hl]
-    push hl
-    ld e, [hl]
-    ld [$4b00], sp
-    nop
-    ld [$4c00], sp
-    nop
-    ld [$4d00], sp
-    nop
-    ld [$4c00], sp
-    nop
-    cp $00
-    nop
-    nop
-    ld [$4e00], sp
-    nop
-    ld [$4f00], sp
-    nop
-    ld [$5000], sp
-    nop
-    ld [$4f00], sp
-    nop
-    cp $00
-    nop
-    nop
-    ld [$5100], sp
-    nop
-    ld [$5200], sp
-    nop
-    ld [$5300], sp
-    nop
-    ld [$5200], sp
-    nop
-    cp $00
-    nop
-    nop
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    ldh a, [$0d]
-    rrca
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld hl, sp-$18
-    rrca
-    rla
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    ld sp, hl
-    add sp, $0d
-    rla
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld a, [$0bf2]
-    dec bc
-    ld hl, sp-$10
-    rrca
-    rrca
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    inc c
-    ldh [$0b], a
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ld hl, sp-$10
-    rrca
-    rrca
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    ldh a, [$e0]
-    rra
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    nop
-    rst $18
-    rla
-    jr nz, @-$16
-
-    ldh [$0b], a
-    rla
-    db $fc
-    db $f4
-    rlca
-    rlca
-    db $fc
-    db $f4
-    rlca
-    rlca
-    db $fc
-    db $f4
-    rlca
-    rlca
-    db $fc
-    db $f4
-    rlca
-    rlca
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    add sp, -$20
-    cpl
-    rra
-    nop
-    ldh [rNR22], a
-    rra
-    add sp, -$20
-    dec bc
-    rrca
-    nop
-    nop
-    nop
-    ld [hl-], a
-    jr z, jr_003_6165
-
-    inc d
-    ld a, [bc]
-    dec de
-    inc e
-    dec sp
-    inc a
-    dec e
-    ld e, $3d
-    ld a, $1b
-    inc e
-    dec sp
-    inc a
-    dec e
-    ld e, $3d
-    ld a, $1b
-    inc e
-    dec sp
-    inc a
-    dec e
-    ld e, $3d
-    ld a, $00
-    nop
-    nop
-    ld a, [bc]
-
-jr_003_6165:
-    ld a, [bc]
-    ld a, [bc]
-    ld a, [bc]
-    ld a, [bc]
-    add b
-    add c
-    and b
-    and c
-    add d
-    add e
-    and d
-    and e
-    add b
-    add c
-    and b
-    and c
-    add d
-    add e
-    and d
-    and e
-    add b
-    add c
-    and b
-    and c
-    add d
-    add e
-    and d
-    and e
-    nop
-    nop
-    nop
-    inc d
-    jr z, @+$52
-
-    jr z, jr_003_619d
-
-    ld b, b
-    ld b, c
-    ld h, b
-    ld h, c
-    ld b, d
-    ld b, e
-    ld h, d
-    ld h, e
-    ld b, b
-    ld b, c
-    ld h, b
-    ld h, c
-    ld b, d
-    ld b, e
-    ld h, d
-    ld h, e
-    ld b, b
-    ld b, c
-    ld h, b
-    ld h, c
-
-jr_003_619d:
-    ld b, d
-    ld b, e
-    ld h, d
-    ld h, e
-    ld a, [currentStage]
-    ld de, $61bb
-    push de
-    rst $00
-    cp h
-    ld h, c
-    ld bc, $5962
-    ld h, d
-    cp a
-    ld h, d
-    ld e, $63
-    ld l, d
-    ld h, e
-    jp nz, Jump_000_2a63
-
-    ld h, h
-    add d
-    ld h, h
-    ret
-
-
-    ld de, $c140
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $10
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $12
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $26
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $10
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld de, $c140
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $18
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $13
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $2c
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld hl, $0017
-    add hl, de
-    ld [hl], a
-    ld a, $2e
-    ld hl, $0018
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $001d
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld de, $c200
-    ld a, $05
-    call Call_000_26c7
-    ld a, [$c981]
-    inc a
-    ld [$c981], a
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $08
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $10
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $06
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $02
-    ld hl, $001e
-    add hl, de
-    ld [hl], a
-    ld a, $30
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $10
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, [$c981]
-    cp $02
-    jr nz, jr_003_62be
-
-    ld a, $2f
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-
-jr_003_62be:
-    ret
-
-
-    ld de, $c200
-    ld a, $05
-    call Call_000_26c7
-    ld a, [$c981]
-    inc a
-    ld [$c981], a
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $08
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $10
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $06
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $02
-    ld hl, $001e
-    add hl, de
-    ld [hl], a
-    ld a, $31
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $10
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, [$c981]
-    cp $01
-    jr nz, jr_003_631d
-
-    ld a, $30
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-
-jr_003_631d:
-    ret
-
-
-    ld de, $c140
-    ld a, $2c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $10
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $16
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $37
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $03
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $10
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld de, $c140
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $18
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $17
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $3c
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld hl, $0017
-    add hl, de
-    ld [hl], a
-    ld a, $42
-    ld hl, $0018
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $001d
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld de, $c200
-    ld a, $05
-    call Call_000_26c7
-    ld a, $08
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $08
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $10
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $43
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $10
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, [$c981]
-    add a
-    add a
-    add a
-    add $c8
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-    sub $0a
-    ld h, a
-    ld a, [$c981]
-    swap a
-    cpl
-    inc a
-    add h
-    ld hl, $001f
-    add hl, de
-    ld [hl], a
-    ld a, [$c981]
-    inc a
-    ld [$c981], a
-    cp $04
-    jr nz, jr_003_6429
-
-    xor a
-    ld [$c981], a
-
-jr_003_6429:
-    ret
-
-
-    ld de, $c140
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $18
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $1a
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $46
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld hl, $0017
-    add hl, de
-    ld [hl], a
-    ld a, $48
-    ld hl, $0018
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld a, $04
-    ld hl, $001d
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld de, $c140
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, b
-    add $18
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, c
-    add $20
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $1a
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $46
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld hl, $0017
-    add hl, de
-    ld [hl], a
-    ld a, $48
-    ld hl, $0018
-    add hl, de
-    ld [hl], a
-    ld a, $00
-    ld hl, $0006
-    add hl, de
-    ld [hl], a
-    ld a, $08
-    ld hl, $0007
-    add hl, de
-    ld [hl], a
-    ld a, $18
-    ld hl, $001a
-    add hl, de
-    ld [hl], a
-    ld a, $20
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld a, $0a
-    ld hl, $001d
-    add hl, de
-    ld [hl], a
-    ret
-
-
-    ld a, [$c80c]
-    ld de, $64e8
-    push de
-    rst $00
-    jp hl
-
-
-    ld h, h
-    db $fd
-    ld h, h
-    dec l
-    ld h, l
-    ret
-
-
-    call Call_000_23ec
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, $10
-    ld [currentStage], a
-    call Call_000_2d07
-    xor a
-    ld [currentStage], a
-    call Call_000_23ec
-    ld hl, $9800
-    ld bc, $0400
-
-jr_003_6512:
-    ld a, $ff
-    ld [hl+], a
-    dec bc
-    ld a, b
-    or c
-    jr nz, jr_003_6512
-
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    xor a
-    ld [$c83d], a
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ldh a, [$9b]
-    and $30
-    jr nz, jr_003_6537
-
-    xor a
-    ld [$c83d], a
-
-jr_003_6537:
-    ldh a, [$9c]
-    bit 4, a
-    jr nz, jr_003_6553
-
-    ldh a, [$9b]
-    bit 4, a
-    jr z, jr_003_6560
-
-    ld a, [$c83d]
-    inc a
-    ld [$c83d], a
-    cp $14
-    jr nz, jr_003_65b4
-
-    ld a, $0e
-    ld [$c83d], a
-
-jr_003_6553:
-    ld a, [currentStage]
-    cp $1e
-    jr z, jr_003_65b4
-
-    inc a
-    ld [currentStage], a
-    jr jr_003_65b4
-
-jr_003_6560:
-    ldh a, [$9c]
-    bit 5, a
-    jr nz, jr_003_657c
-
-    ldh a, [$9b]
-    bit 5, a
-    jr z, jr_003_6589
-
-    ld a, [$c83d]
-    inc a
-    ld [$c83d], a
-    cp $14
-    jr nz, jr_003_65b4
-
-    ld a, $0e
-    ld [$c83d], a
-
-jr_003_657c:
-    ld a, [currentStage]
-    cp $00
-    jr z, jr_003_65b4
-
-    dec a
-    ld [currentStage], a
-    jr jr_003_65b4
-
-jr_003_6589:
-    ldh a, [$9c]
-    bit 0, a
-    jr z, jr_003_6595
-
-    ld a, [currentStage]
-    call Call_000_0903
-
-jr_003_6595:
-    ldh a, [$9c]
-    bit 1, a
-    jr z, jr_003_65a0
-
-    ld a, $20
-    call Call_000_0a84
-
-jr_003_65a0:
-    ldh a, [$9c]
-    bit 3, a
-    jr z, jr_003_65b4
-
-    call Call_000_0a65
-    ld a, $02
-    ld [$c80b], a
-    xor a
-    ld [$c80c], a
-    jr jr_003_65e5
-
-jr_003_65b4:
-    ld a, [currentStage]
-    ld d, $00
-
-jr_003_65b9:
-    inc d
-    sub $0a
-    jr nc, jr_003_65b9
-
-    dec d
-    add $0a
-    push af
-    ld h, $00
-    ld l, d
-    add hl, hl
-    ld de, $65e6
-    add hl, de
-    ld e, [hl]
-    inc hl
-    ld d, [hl]
-    ld hl, $9800
-    call Call_000_244a
-    pop af
-    ld h, $00
-    ld l, a
-    add hl, hl
-    ld de, $65e6
-    add hl, de
-    ld e, [hl]
-    inc hl
-    ld d, [hl]
-    ld hl, $9803
-    call Call_000_244a
-
-jr_003_65e5:
-    ret
-
-
-    ld a, [$0265]
-    ld h, [hl]
-    ld a, [bc]
-    ld h, [hl]
-    ld [de], a
-    ld h, [hl]
-    ld a, [de]
-    ld h, [hl]
-    ld [hl+], a
-    ld h, [hl]
-    ld a, [hl+]
-    ld h, [hl]
-    ld [hl-], a
-    ld h, [hl]
-    ld a, [hl-]
-    ld h, [hl]
-    ld b, d
-    ld h, [hl]
-    inc bc
-    ld [bc], a
-    ld l, d
-    ld l, e
-    ld l, h
-    adc d
-    adc e
-    adc h
-    inc bc
-    ld [bc], a
-    jr nz, @+$23
-
-    ld [hl+], a
-    ld b, b
-    ld b, c
-    ld b, d
-    inc bc
-    ld [bc], a
-    inc hl
-    inc h
-    dec h
-    ld b, e
-    ld b, h
-    ld b, l
-    inc bc
-    ld [bc], a
-    ld h, $27
-    jr z, jr_003_665e
-
-    ld b, a
-    ld c, b
-    inc bc
-    ld [bc], a
-    add hl, hl
-    ld a, [hl+]
-    dec hl
-    ld c, c
-    ld c, d
-    ld c, e
-    inc bc
-    ld [bc], a
-    inc l
-    dec l
-    ld l, $4c
-    ld c, l
-    ld c, [hl]
-    inc bc
-    ld [bc], a
-    cpl
-    jr nc, jr_003_6660
-
-    ld c, a
-    ld d, b
-    ld d, c
-    inc bc
-    ld [bc], a
-    ld [hl-], a
-    inc sp
-    inc [hl]
-    ld d, d
-    ld d, e
-    ld d, h
-    inc bc
-    ld [bc], a
-    dec [hl]
-    ld [hl], $37
-    ld d, l
-    ld d, [hl]
-    ld d, a
-    inc bc
-    ld [bc], a
-    ld h, a
-    ld l, b
-    ld l, c
-    add a
-    adc b
-    adc c
-    ld a, [$c80c]
-    ld de, $6692
-    push de
-    rst $00
-    sub e
-    ld h, [hl]
-    ret nz
-
-    ld h, [hl]
-    ld l, c
-    ld h, a
-    add l
-    ld h, a
-    add [hl]
-    ld l, c
-    and c
-    ld l, c
-
-jr_003_665e:
-    db $fc
-    ld l, c
-
-jr_003_6660:
-    ld e, l
-    ld b, b
-    jr @+$6c
-
-    jr c, jr_003_66d0
-
-    dec c
-    ld l, e
-    dec d
-    ld l, e
-    ld e, e
-    ld l, e
-    and a
-    ld l, e
-    inc d
-    ld l, h
-    ld e, [hl]
-    ld l, h
-    ld e, l
-    ld b, b
-    ld e, l
-    ld b, b
-    ld e, l
-    ld b, b
-    jp nz, $f66c
-
-    ld l, h
-    and e
-    ld l, l
-    bit 5, l
-    db $ed
-    ld l, l
-    ld b, l
-    ld l, [hl]
-    ld h, c
-    ld l, [hl]
-    add e
-    ld l, [hl]
-    rst $10
-    ld l, [hl]
-    ld e, l
-    ld b, b
-    ld e, l
-    ld b, b
-    ld e, l
-    ld b, b
-    di
-    ld l, [hl]
-    ret
-
-
-    xor a
-    ld [playerState], a
-    ld [levelDiamondsBitFlag], a
-    ld [levelLivesBitFlag], a
-    ld [diamonds], a
-    ld [chalvoPosCheckpointX], a
-    ld b, $10
-    ld hl, $cb13
-
-jr_003_66a8:
-    ld [hl+], a
-    dec b
-    jr nz, jr_003_66a8
-
-    call Call_000_23ec
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, [currentStage]
-    ld hl, $c982
-    bit 1, [hl]
-    jr z, jr_003_66cc
-
-    add $09
-
-jr_003_66cc:
-    add a
-    ld hl, $673c
-
-jr_003_66d0:
-    ld b, $00
-    ld c, a
-    add hl, bc
-    ld b, h
-    ld c, l
-    ld de, $c120
-    ld a, $02
-    ld hl, $0001
-    add hl, de
-    ld [hl], a
-    ld a, $01
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld a, $0c
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, [bc]
-    inc bc
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, [bc]
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, $78
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld hl, $0000
-    add hl, de
-    set 1, [hl]
-    call Call_003_7038
-    call Call_000_2705
-    ld hl, $c982
-    bit 1, [hl]
-    jr z, jr_003_6723
-
-    ld a, [currentStage]
-    ld d, $00
-    ld e, a
-    ld hl, $6760
-    add hl, de
-    ld a, [hl]
-    ld [currentPassword], a
-
-jr_003_6723:
-    call Call_000_27f6
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    add b
-    ldh a, [$d0]
-    jr nc, @+$1a
-
-    ldh a, [$80]
-    jr nc, @-$7e
-
-    ldh a, [$80]
-    ret nz
-
-    add b
-    ldh a, [rNR23]
-    ldh a, [$80]
-    ldh [$e0], a
-    ldh a, [$80]
-    ldh a, [$e0]
-    jr nc, @-$1e
-
-    inc h
-    ldh [$f0], a
-    ldh [$f0], a
-    ldh [$f0], a
-    jr @-$0e
-
-    jr nz, @-$0e
-
-    add hl, bc
-    ld a, [bc]
-    add hl, bc
-    dec bc
-    dec bc
-    inc bc
-    add hl, bc
-    dec bc
-    dec e
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6784
-
-    call Call_000_27cc
-    ld hl, playerState
-    set 0, [hl]
-    ld hl, $cb2c
-    res 5, [hl]
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6784:
-    ret
-
-
-    ld a, [demoing]
-    and a
-    jr z, jr_003_67b3
-
-    ldh a, [$9c]
-    and $09
-    jp nz, Jump_003_694a
-
-jr_003_6792:
-    ld hl, $cb2c
-    res 5, [hl]
-    ld a, [$cb2c]
-    bit 7, a
-    jr z, jr_003_67a6
-
-    ldh a, [$9b]
-    cp $02
-    jr nz, jr_003_67a6
-
-    set 5, [hl]
-
-jr_003_67a6:
-    call Call_000_25e1
-    ld a, [$cb28]
-    cp $e0
-    jp z, Jump_003_694a
-
-    jr jr_003_67de
-
-jr_003_67b3:
-    ldh a, [$9c]
-    bit 2, a
-    jr z, jr_003_67c6
-
-    ld a, $04
-    ldh [$9b], a
-    call Call_000_263a
-    ld a, $08
-    ld [$c80c], a
-    ret
-
-
-jr_003_67c6:
-    ldh a, [$9c]
-    bit 3, a
-    jr z, jr_003_67d9
-
-    ld a, $08
-    ldh [$9b], a
-    call Call_000_263a
-    ld a, $0b
-    ld [$c80b], a
-    ret
-
-
-jr_003_67d9:
-    call Call_000_263a
-    jr jr_003_67e4
-
-jr_003_67de:
-    ldh a, [$9c]
-    and $0c
-    jr nz, jr_003_6792
-
-jr_003_67e4:
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld hl, playerState
-    bit 5, [hl]
-    jp nz, Jump_003_6985
-
-    call Call_003_70c6
-    ld a, [playerState]
-    bit 2, a
-    jp nz, Jump_003_68f0
-
-    bit 6, a
-    jp nz, Jump_003_6890
-
-    bit 3, a
-    jp nz, Jump_003_6935
-
-    call Call_003_6f22
-    jr nz, jr_003_685e
-
-    ld a, $01
-    ld hl, $68f8
-    call Call_000_08ae
-    ld a, [chalvoPosCheckpointX]
-    cp $ff
-    jp nz, Jump_003_6985
-
-    ld bc, $c120
-    ld hl, $0000
-    add hl, bc
-    ld a, [hl]
-    res 4, a
-    ld [$c97e], a
-    ld hl, $001c
-    add hl, bc
-    ld a, [hl]
-    ld [$c97f], a
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    ld [chalvoPosCheckpointX], a
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    ld [screenPosCheckpointY], a
-    ld a, [$c803]
-    ld [screenPosCheckpointX], a
-    ld a, [$c804]
-    ld [$c97c], a
-    ld a, [$c81b]
-    ld [chalvoPosCheckpointY], a
-    ld a, [$c81c]
-    ld [$c97d], a
-    jp Jump_003_6985
-
-
-jr_003_685e:
-    push af
-    call Call_000_0619
-    ld hl, $cb2c
-    res 5, [hl]
-    pop af
-    cp $03
-    jr z, jr_003_6890
-
-    cp $02
-    jr z, jr_003_68ac
-
-    cp $04
-    jr z, jr_003_68ce
-
-    ld hl, playerState
-    set 1, [hl]
-    res 0, [hl]
-    xor a
-    ld [chalvoPosCheckpointX], a
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    jp Jump_003_6985
-
-
-Jump_003_6890:
-jr_003_6890:
-    ld hl, $cb2c
-    res 5, [hl]
-    call Call_000_0619
-    ld hl, $cb2c
-    res 5, [hl]
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, $1f
-    ld [$c80c], a
-    jp Jump_003_6985
-
-
-jr_003_68ac:
-    ld hl, playerState
-    set 1, [hl]
-    res 0, [hl]
-    ld hl, $c983
-    set 0, [hl]
-    xor a
-    ld [chalvoPosCheckpointX], a
-    call Call_000_0a65
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, $19
-    ld [$c80c], a
-    jp Jump_003_6985
-
-
-jr_003_68ce:
-    ld hl, playerState
-    set 1, [hl]
-    res 0, [hl]
-    ld hl, $c983
-    set 2, [hl]
-    xor a
-    ld [chalvoPosCheckpointX], a
-    call Call_000_0a65
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, $16
-    ld [$c80c], a
-    jp Jump_003_6985
-
-
-Jump_003_68f0:
-    call Call_000_0a65
-    push hl
-    push af
-    ld hl, $1d17
-    ld a, $01
-    call Call_000_0aa6
-    pop af
-    pop hl
-    call Call_000_0619
-    ld hl, $cb2c
-    res 5, [hl]
-    ld hl, playerState
-    set 1, [hl]
-    res 0, [hl]
-    xor a
-    ld [chalvoPosCheckpointX], a
-    ld hl, $c80c
-    ld [hl], $0b
-    ld a, $20
-    ld [$c812], a
-    xor a
-    ld [$c83f], a
-    ld [$c840], a
-    ld hl, $c13c
-    bit 2, [hl]
-    jp z, Jump_003_692f
-
-    ld a, $01
-    jr jr_003_6930
-
-Jump_003_692f:
-    xor a
-
-jr_003_6930:
-    call Call_000_2f12
-    jr jr_003_6985
-
-Jump_003_6935:
-    call Call_000_0619
-    ld hl, $cb2c
-    res 5, [hl]
-    ld a, [demoing]
-    and a
-    jr z, Chalvo_RemoveLife
-
-    ld a, [$cb2c]
-    bit 7, a
-    jr nz, Chalvo_Respawn
-
-Jump_003_694a:
-    call Call_000_0619
-    ld hl, $cb2c
-    res 5, [hl]
-    ld a, $0e
-    ld [$c80b], a
-    xor a
-    ld [$c80c], a
-    ld a, $03
-    ld [$c80c], a
-    ld a, [currentStage]
-    cp $07
-    jr nc, jr_003_6985
-
-    ld a, $10
-    call Call_000_0a84
-    jr jr_003_6985
+
+unkTiles22::
+    db $02, $02
+    db $84, $85
+    db $a4, $a5
+
+unkTiles21::
+    db $04, $02
+    db $f5, $f6, $f6, $f7
+    db $f5, $f6, $f6, $f7
+
+unkTiles20::
+    db $04, $02
+    db $f2, $f3, $f3, $f4
+    db $f5, $f6, $f6, $f7
+
+unkTiles1F::
+    db $04, $02
+    db $ff, $ff, $ff, $ff
+    db $f5, $f6, $f6, $f7
+
+unkTiles1E::
+    db $04, $02
+    db $ff, $ff, $ff, $ff
+    db $f2, $f3, $f3, $f4
+
+unkTiles1D::
+    db $04, $02
+    db $6e, $6f, $ae, $af
+    db $8e, $8f, $ce, $cf
+
+unkTiles1C::
+    db $04, $02
+    db $ca, $cb, $cc, $cd
+    db $8e, $8f, $ce, $cf
+
+unkTiles1B::
+    db $04, $04
+    db $40, $41, $42, $43
+    db $60, $61, $62, $63
+    db $80, $81, $82, $83
+    db $a0, $a1, $a2, $a3
+
+unkTiles1A::
+    db $04, $04
+    db $40, $41, $42, $43
+    db $44, $45, $64, $65
+    db $80, $81, $82, $83
+    db $a0, $a1, $a2, $a3
+
+unkTiles19::
+    db $02, $02
+    db $c3, $c4
+    db $e3, $e4
+
+unkTiles18::
+    db $02, $02
+    db $c5, $c2
+    db $e5, $e6
+
+unkTiles17::
+    db $02, $02
+    db $09, $0a
+    db $0b, $0c
+
+unkTiles16::
+    db $02, $02
+    db $0d, $0e
+    db $aa, $ab
+
+unkTiles15::
+    db $03, $03
+    db $1b, $1c, $1d
+    db $b8, $b9, $ba
+    db $d8, $d9, $da
+
+unkTiles14::
+    db $03, $03
+    db $1b, $1c, $1d
+    db $3b, $3c, $3d,
+    db $5b, $5c, $5d
+
+unkTiles13::
+    db $03, $03
+    db $1b, $1c, $1d
+    db $bb, $bc, $bd
+    db $db, $dc, $dd
+
+unkTiles12::
+    db $03, $03
+    db $1b, $1c, $1d
+    db $f8, $f9, $fa
+    db $fb, $fc, $fd
+
+unkTiles11::
+    db $03, $03
+    db $1e, $1f, $7e
+    db $3e, $3f, $9e
+    db $de, $df, $be
+
+unkTiles10::
+    db $06, $04
+    db $1b, $1c, $1d, $73, $74, $75
+    db $f8, $f9, $fa, $93, $94, $95
+    db $b0, $b1, $b2, $b3, $b4, $b5
+    db $d0, $d1, $d2, $d3, $d4, $d5
+
+unkTilesF::
+    db $06, $04
+    db $1b, $1c, $1d, $73, $74, $75
+    db $3b, $3c, $3d, $93, $94, $95
+    db $b0, $b1, $b2, $b3, $b4, $b5
+    db $d0, $d1, $d2, $d3, $d4, $d5
+
+unkTilesE::
+    db $06, $04
+    db $1e, $1f, $7e, $73, $74, $75
+    db $3e, $3f, $9e, $93, $94, $95
+    db $b0, $b1, $b2, $b3, $b4, $b5
+    db $d0, $d1, $d2, $d3, $d4, $d5
+
+unkTilesPointers2::
+    dw unkTiles22
+    dw unkTiles21
+    dw unkTiles20
+    dw unkTiles1F
+    dw unkTiles1E
+    dw unkTiles1D
+    dw unkTiles1C
+    dw unkTiles1B
+    dw unkTiles1A
+    dw unkTiles19
+    dw unkTiles18
+    dw unkTiles17
+    dw unkTiles16
+    dw unkTiles15
+    dw unkTiles14
+    dw unkTiles13
+    dw unkTiles12
+    dw unkTiles11
+    dw unkTiles10
+    dw unkTilesF
+    dw unkTilesE
+
+unkTilesD::
+    db $14, $12
+    db $e6, $00, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e0, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $00, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e0, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $01, $02, $03, $04, $05, $06, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $20, $21, $22, $23, $24, $25, $26, $27, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $40, $41, $42, $43, $44, $45, $46, $47, $e6, $e6, $e0, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $60, $61, $62, $63, $64, $65, $66, $67, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $00, $e6, $e6, $e6, $e6, $80, $81, $82, $83, $84, $85, $86, $87, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $c0, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $e6, $e6, $e6, $e6, $e0, $e6
+    db $e6, $e6, $e6, $e6, $e6, $00, $e6, $e1, $e2, $e3, $e4, $e5, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $00, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $00, $e6, $e6, $e6, $e6, $e0
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+    db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e0, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
+
+unkTilesC::
+    db $06, $06
+    db $08, $09, $0a, $0b, $0c, $0d
+    db $28, $29, $2a, $2b, $2c, $2d
+    db $48, $49, $4a, $4b, $4c, $4d
+    db $68, $69, $6a, $6b, $6c, $6d
+    db $88, $89, $8a, $8b, $8c, $8d
+    db $a8, $a9, $aa, $ab, $ac, $ad
+
+unkTilesB::
+    db $14, $12
+    db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $e0, $c5, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5
+    db $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $8e, $8f, $90, $91, $c5, $00, $c5
+    db $c5, $c5, $c5, $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $ae, $af, $b0, $b1, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $ce, $cf, $d0, $d1, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $92, $93, $94, $c5, $c5, $00, $c5, $ee, $ef, $f0, $f1, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $b2, $b3, $b4, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5
+    db $c5, $c5, $c5, $c5, $c5, $c5, $d2, $d3, $d4, $c5, $c5, $c5, $c5, $c5, $e0, $c5, $c5, $c5, $c5, $00
+    db $c5, $c5, $c5, $c5, $0e, $0f, $10, $11, $12, $13, $11, $11, $12, $10, $10, $10, $10, $11, $12, $13
+    db $c5, $c5, $c5, $00, $2e, $2f, $30, $31, $32, $33, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14
+    db $c5, $c5, $c5, $c5, $4e, $4f, $50, $51, $52, $53, $14, $14, $15, $16, $17, $17, $11, $11, $12, $13
+    db $c5, $c5, $c5, $c5, $6e, $6f, $70, $71, $72, $73, $37, $34, $35, $36, $37, $37, $37, $37, $37, $38
+    db $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $11, $12, $13
+    db $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14, $14
+    db $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07
+    db $14, $14, $6f, $14, $14, $14, $14, $14, $14, $14, $14, $14, $6f, $14, $14, $14, $14, $14, $14, $14
+
+unkTilesA::
+    db $03, $03
+    db $92, $93, $94
+    db $95, $96, $97
+    db $b5, $b6, $b7
+
+unkTiles9::
+    db $03, $03
+    db $1c, $1d, $1e
+    db $54, $55, $56
+    db $74, $75, $76
+
+unkTiles8::
+    db $03, $03
+    db $1c, $1d, $1e
+    db $57, $58, $59
+    db $77, $78, $79
+
+unkTiles7::
+    db $03, $03
+    db $1c, $1d, $1e
+    db $5a, $5b, $5c
+    db $7a, $7b, $7c
+
+unkTiles6::
+    db $03, $03
+    db $39, $3a, $3b
+    db $54, $55, $56
+    db $74, $75, $76
+
+unkTiles5::
+    db $03, $03
+    db $39, $3a, $3b
+    db $57, $58, $59
+    db $77, $78, $79
+
+unkTiles4::
+    db $03, $03
+    db $39, $3a, $3b
+    db $5a, $5b, $5c
+    db $7a, $7b, $7c
+
+unkTiles3::
+    db $03, $03
+    db $3c, $3d, $3e
+    db $54, $55, $56
+    db $74, $75, $76
+
+unkTiles2::
+    db $03, $03
+    db $3c, $3d, $3e
+    db $57, $58, $59
+    db $77, $78, $79
+
+unkTiles::
+    db $03, $03
+    db $3c, $3d, $3e
+    db $5a, $5b, $5c
+    db $7a, $7b, $7c
+
+house_tiles::
+    db $14, $12
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $69, $6a, $6b, $ff, $65, $66, $67, $68, $69, $6a, $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff, $65
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff, $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff, $65, $66
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $65, $66, $67, $68, $69, $ff, $ff, $ff, $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff
+    db $67, $68, $69, $6a, $6b, $ff, $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff, $ff, $65, $66, $67, $68
+    db $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff, $ff, $ff, $65, $66, $67, $68, $69, $6a, $6b, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63
+    db $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83
+
+unkTiles23::
+    db $04, $07
+    db $ff, $ff, $ff, $ff
+    db $1c, $1d, $1e, $1f
+    db $3c, $3d, $3e, $3f
+    db $5c, $5d, $5e, $5f
+    db $7c, $7d, $7e, $7f
+    db $9c, $9d, $9e, $9f
+    db $bc, $bd, $be, $bf
+
+unkTiles24::
+    db $04, $07
+    db $ff, $ff, $ff, $ff
+    db $18, $19, $1a, $1b
+    db $38, $39, $3a, $3b
+    db $58, $59, $5a, $5b
+    db $78, $79, $7a, $7b
+    db $98, $99, $9a, $9b
+    db $b8, $b9, $ba, $bb
+
+unkTiles25::
+    db $04, $07
+    db $d8, $d9, $da, $db
+    db $f8, $f9, $fa, $fb
+    db $dc, $dd, $de, $df
+    db $5c, $5d, $5e, $5f
+    db $7c, $7d, $7e, $7f
+    db $9c, $9d, $9e, $9f
+    db $bc, $bd, $be, $bf
+
+unkTilesPointers::
+    dw unkTilesD
+    dw unkTilesC
+    dw unkTilesB
+    dw unkTilesA
+    dw unkTiles9
+    dw unkTiles8
+    dw unkTiles7
+    dw unkTiles6
+    dw unkTiles5
+    dw unkTiles4
+    dw unkTiles3
+    dw unkTiles2
+    dw unkTiles
+    dw house_tiles
+    dw unkTiles23
+    dw unkTiles24
+    dw unkTiles25
+
+;charlie?
+unkTiles26::
+    db $04, $07
+    db $ff, $ff, $ff, $ff
+    db $1c, $1d, $1e, $1f
+    db $3c, $3d, $3e, $3f
+    db $5c, $5d, $5e, $5f
+    db $7c, $7d, $7e, $7f
+    db $9c, $9d, $9e, $9f
+    db $bc, $bd, $be, $bf
+
+unkTiles27::
+    db $04, $07
+    db $ff, $ff, $ff, $ff
+    db $18, $19, $1a, $1b
+    db $38, $39, $3a, $3b
+    db $58, $59, $5a, $5b
+    db $78, $79, $7a, $7b
+    db $98, $99, $9a, $9b
+    db $b8, $b9, $ba, $bb
+
+unkTiles28::
+    db $04, $07
+    db $d8, $d9, $da, $db
+    db $f8, $f9, $fa, $fb
+    db $dc, $dd, $de, $df
+    db $5c, $5d, $5e, $5f
+    db $7c, $7d, $7e, $7f
+    db $9c, $9d, $9e, $9f
+    db $bc, $bd, $be, $bf
+
+unkTiles29::
+    db $02, $03
+    db $c4, $c5
+    db $e4, $e5
+    db $ac, $ad
+
+unkAnimPointers::
+    dw $5a8f
+    dw $5ad7
+    dw $5bb7
+    dw $5bcd
+    dw $5be3
+    dw $5bf9
+    dw $5c7f
+    dw $5cf7
+    dw $5d6f
+    dw $5d93
+    dw $5e31
+    dw $5e3f
+    dw $5eb7
+
+;effects????
+unkAnimSet1::
+    dw $5a97
+    dw $5aab
+    ;actual push sweat effect
+    dw $5ab9
+    ;mob barrier destroy effect 
+    dw $5ac5
+
+    dw 8, ANIM_FRAME_Chalvo_Walk1
+    dw 8, ANIM_FRAME_Chalvo_Stand
+    dw 8, ANIM_FRAME_Chalvo_Walk2
+    dw 8, ANIM_FRAME_Chalvo_Stand
+    dw ANIM_COMMAND_LOOP, 0
+
+    dw 7, ANIM_FRAME_Chalvo_Walk2
+    dw 7, ANIM_FRAME_Chalvo_BallUp
+    dw 7, ANIM_FRAME_Chalvo_BallDown
+    dw ANIM_COMMAND_STOP
+    
+    ;actual push sweat effect
+    dw 6, ANIM_FRAME_Chalvo_PushSweat1
+    dw 6, ANIM_FRAME_Chalvo_PushSweat2
+    dw ANIM_COMMAND_LOOP, 0
+    
+    ;mob barrier destroy effect 
+    dw 7, $27
+    dw 7, $28
+    dw 7, $29
+    dw 7, $2a
+    dw ANIM_COMMAND_STOP
+
+; this is the one for chalvo, so its easiest to test
+unkAnimSet2::
+    ;idle
+    dw $5aef
+    ;walk
+    dw $5af5
+    ;fall
+    dw $5b09
+    ;jump
+    dw $5b0f
+    ;push
+    dw $5b15
+    ;uncurl
+    dw $5b29
+    ;pushstand?
+    dw $5b33
+    ;?????
+    dw $5b39
+    ;?????2
+    dw $5b5f
+    ;?????3
+    dw $5b85
+    ;?????4
+    dw $5b9b
+    ;definitelyNotBallDie
+    dw $5bb1
+
+    ;idle anim
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Stand
+    dw ANIM_COMMAND_STOP
+
+    ;walk
+    dw 8, ANIM_FRAME_Chalvo_Walk1
+    dw 8, ANIM_FRAME_Chalvo_Stand
+    dw 8, ANIM_FRAME_Chalvo_Walk2
+    dw 8, ANIM_FRAME_Chalvo_Stand
+    dw ANIM_COMMAND_LOOP, 0
+    
+    ;fall
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Fall
+    dw ANIM_COMMAND_STOP
+    
+    ;jump
+    dw 12, ANIM_FRAME_Chalvo_Jump
+    dw ANIM_COMMAND_STOP
+    
+    ;push
+    dw 16, ANIM_FRAME_Chalvo_Push1_Copy
+    dw 16, ANIM_FRAME_Chalvo_PushStand
+    dw 16, ANIM_FRAME_Chalvo_Push2
+    dw 16, ANIM_FRAME_Chalvo_PushStand
+    dw ANIM_COMMAND_LOOP, 0
+    
+    ;uncurl
+    dw 8, ANIM_FRAME_Chalvo_Jump
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Fall
+    dw ANIM_COMMAND_STOP
+    
+    ;pushstand?
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_PushStand
+    dw ANIM_COMMAND_STOP
+
+    ;?????
+    dw 4, $60,
+    dw 4, $61,
+    dw 4, $62,
+    dw 4, $63,
+    dw 4, $64,
+    dw 4, $65,
+    dw 2, $66,
+    dw 2, $67,
+    dw 2, $68,
+    dw ANIM_COMMAND_STOP
+
+    ;?????2
+    dw 4, $6e,
+    dw 4, $6f,
+    dw 4, $70,
+    dw 4, $71,
+    dw 4, $72,
+    dw 4, $73,
+    dw 2, $74,
+    dw 2, $75,
+    dw 2, $76,
+    dw ANIM_COMMAND_STOP
+
+    ;?????3
+    dw 6, $69,
+    dw 6, $6a,
+    dw 6, $6b,
+    dw 6, $6c,
+    dw 6, $6d,
+    dw ANIM_COMMAND_STOP
+
+    ;?????4
+    dw 6, $77,
+    dw 6, $78,
+    dw 6, $79,
+    dw 6, $7a,
+    dw 6, $7b,
+    dw ANIM_COMMAND_STOP
+    
+    ;definitelyNotBallDie
+    dw 64, ANIM_FRAME_Chalvo_BallDie
+    dw ANIM_COMMAND_STOP
+
+;onehitenemy
+unkAnimSet3::
+    ;move
+    dw $5bbb
+    ;die
+    dw $5bc7
+
+    ;move
+    dw 8, ANIM_FRAME_Stage_OneHitEnemy1
+    dw 8, ANIM_FRAME_Stage_OneHitEnemy2
+    dw ANIM_COMMAND_LOOP, 0
+
+    ;die
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_OneHitEnemyDie
+    dw ANIM_COMMAND_STOP
+
+;twohitenemy
+unkAnimSet4::
+    ;move
+    dw $5bd1
+    ;die
+    dw $5bdd
+
+    ;move
+    dw 8, ANIM_FRAME_Stage_TwoHitEnemy1
+    dw 8, ANIM_FRAME_Stage_TwoHitEnemy2
+    dw ANIM_COMMAND_LOOP, 0
+
+    ;die
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_TwoHitEnemyDie
+    dw ANIM_COMMAND_STOP
+
+;nohitenemy
+unkAnimSet5::
+    ;move
+    dw $5be7
+    ;die
+    dw $5bf3
+
+    ;move
+    dw 8, ANIM_FRAME_Stage_NoHitEnemy1
+    dw 8, ANIM_FRAME_Stage_NoHitEnemy2
+    dw ANIM_COMMAND_LOOP, 0
+
+    ;die
+    dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_NoHitEnemyDie
+    dw ANIM_COMMAND_STOP
+
+unkAnimSet6::
+    dw $5c01
+    dw $5c07
+    dw $5c65
+    dw $5c6b
+
+    dw ANIM_COMMAND_INDEFINITE, $21, 
+    dw ANIM_COMMAND_STOP
+
+    dw 5, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 5, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 5, $21
+    dw 5, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 5, $21
+    dw 5, $23
+    dw 10, $21
+    dw 5, $23
+    dw 5, $21
+    dw 30, $23
+    dw ANIM_COMMAND_STOP
+
+    dw 80, $24
+    dw ANIM_COMMAND_STOP
+
+    dw 8, $20
+    dw 8, $21
+    dw 8, $22
+    dw 8, $21
+    dw ANIM_COMMAND_LOOP, 0
+
+unkAnimSet7::
+    dw $5c85
+    dw $5ce7
+    dw $5cf1
+
+    dw $05, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $05, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $05, $2c
+    dw $05, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $05, $2c
+    dw $05, $2b
+    dw $0a, $2c
+    dw $05, $2b
+    dw $05, $2c
+    dw $1e, $2b
+    dw $01, $2c
+    dw ANIM_COMMAND_STOP
+
+    dw $3c, $2d
+    dw $01, $2c
+    dw ANIM_COMMAND_STOP
+
+    dw $3c, $2d
+    dw ANIM_COMMAND_STOP
+
+unkAnimSet8::
+    dw $5cfd
+    dw $5d5f
+    dw $5d69
+
+    dw $05, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $05, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $05, $33
+    dw $05, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $05, $33
+    dw $05, $34
+    dw $0a, $33
+    dw $05, $34
+    dw $05, $33
+    dw $1e, $34
+    dw $01, $33
+    dw ANIM_COMMAND_STOP
+
+    dw $3c, $35
+    dw $01, $33
+    dw ANIM_COMMAND_STOP
+
+    dw $3c, $35
+    dw ANIM_COMMAND_STOP
+
+unkAnimSet9::
+    dw $5d75 
+    dw $5d81
+    dw $5d8d
+
+    dw $20, $37
+    dw $20, $38
+    dw ANIM_COMMAND_LOOP, 0
+
+    dw $08, $39
+    dw $08, $3a
+    dw ANIM_COMMAND_LOOP, 0
+
+    dw $20, $3b
+    dw ANIM_COMMAND_STOP
+
+unkAnimSetA::
+    dw $5d9b
+    dw $5dfd
+    dw $5e1f
+    dw $5e25
+
+    dw $05, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $05, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $05, $3c
+    dw $05, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $05, $3c
+    dw $05, $3e
+    dw $0a, $3c
+    dw $05, $3e
+    dw $05, $3c
+    dw $1e, $3e
+    dw $01, $3c
+    dw ANIM_COMMAND_STOP
+
+    dw $08, $3f
+    dw $08, $40
+    dw $08, $3f
+    dw $08, $40
+    dw $08, $3f
+    dw $08, $40
+    dw $08, $3f
+    dw $08, $40
+    dw ANIM_COMMAND_STOP
+
+    dw $20, $41
+    dw ANIM_COMMAND_STOP
+
+    dw $08, $3c
+    dw $08, $3d
+    dw ANIM_COMMAND_LOOP, 0
+
+unkAnimSetB::
+    dw $5e33
+
+    dw $08, $43
+    dw $08, $44
+    dw ANIM_COMMAND_LOOP, 0
+
+unkAnimSetC::
+    dw $5e45
+    dw $5ea7
+    dw $5eb1
+
+    dw $05, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $05, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $05, $46
+    dw $05, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $05, $46
+    dw $05, $45
+    dw $0a, $46
+    dw $05, $45
+    dw $05, $46
+    dw $1e, $45
+    dw $01, $46
+    dw ANIM_COMMAND_STOP
+    
+    dw $3c, $47
+    dw $01, $46
+    dw ANIM_COMMAND_STOP
+    
+    dw $3c, $47
+    dw ANIM_COMMAND_STOP
+
+unkAnimSetD::
+    dw $5ebd
+    dw $5ed1
+    dw $5ee5
+
+    dw $08, $4b
+    dw $08, $4c
+    dw $08, $4d
+    dw $08, $4c
+    dw ANIM_COMMAND_LOOP, 0
+    
+    dw $08, $4e
+    dw $08, $4f
+    dw $08, $50
+    dw $08, $4f
+    dw ANIM_COMMAND_LOOP, 0
+
+    dw $08, $51
+    dw $08, $52
+    dw $08, $53
+    dw $08, $52
+    dw ANIM_COMMAND_LOOP, 0
+
+unkData::
+    db $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17
+    db $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $f0, $0d, $0f, $f9, $f0, $0d, $0f
+    db $f9, $f0, $0d, $0f, $f9, $f0, $0d, $0f, $f9, $f0, $0d, $0f, $f9, $f0, $0d, $0f
+    db $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17
+    db $f9, $f0, $0d, $0f, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f8, $e8, $0f, $17
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17
+    db $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17, $f9, $e8, $0d, $17
+    db $00, $00, $00, $00, $00, $00, $00, $00, $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f
+    db $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f, $00, $00, $00, $00, $00, $00, $00, $00
+    db $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f, $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f
+    db $00, $00, $00, $00, $00, $00, $00, $00, $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f
+    db $fa, $f2, $0b, $0b, $f8, $f0, $0f, $0f, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f
+    db $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $e8, $e0, $2f, $1f, $0c, $e0, $0b, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f
+    db $f8, $f0, $0f, $0f, $f8, $f0, $0f, $0f, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f
+    db $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f
+    db $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f, $f0, $e0, $1f, $1f
+    db $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $00, $df, $17, $20, $e8, $e0, $0b, $17, $fc, $f4, $07, $07, $fc, $f4, $07, $07
+    db $fc, $f4, $07, $07, $fc, $f4, $07, $07, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f, $e8, $e0, $2f, $1f
+    db $00, $e0, $17, $1f, $e8, $e0, $0b, $0f, $00, $00, $00, $32, $28, $1e, $14, $0a
+    db $1b, $1c, $3b, $3c, $1d, $1e, $3d, $3e, $1b, $1c, $3b, $3c, $1d, $1e, $3d, $3e
+    db $1b, $1c, $3b, $3c, $1d, $1e, $3d, $3e, $00, $00, $00, $0a, $0a, $0a, $0a, $0a
+    db $80, $81, $a0, $a1, $82, $83, $a2, $a3, $80, $81, $a0, $a1, $82, $83, $a2, $a3
+    db $80, $81, $a0, $a1, $82, $83, $a2, $a3, $00, $00, $00, $14, $28, $50, $28, $14
+    db $40, $41, $60, $61, $42, $43, $62, $63, $40, $41, $60, $61, $42, $43, $62, $63
+    db $40, $41, $60, $61, $42, $43, $62, $63, $fa, $18, $c8, $11, $bb, $61, $d5, $c7
+    db $bc, $61, $01, $62, $59, $62, $bf, $62, $1e, $63, $6a, $63, $c2, $63, $2a, $64
+    db $82, $64, $c9, $11, $40, $c1, $3e, $0c, $21, $00, $00, $19, $77, $78, $c6, $10
+    db $21, $04, $00, $19, $77, $79, $c6, $20, $21, $05, $00, $19, $77, $3e, $12, $21
+    db $01, $00, $19, $77, $3e, $26, $21, $02, $00, $19, $77, $3e, $00, $21, $06, $00
+    db $19, $77, $3e, $08, $21, $07, $00, $19, $77, $3e, $10, $21, $1a, $00, $19, $77
+    db $3e, $20, $21, $1b, $00, $19, $77, $c9, $11, $40, $c1, $3e, $0c, $21, $00, $00
+    db $19, $77, $78, $c6, $18, $21, $04, $00, $19, $77, $79, $c6, $20, $21, $05, $00
+    db $19, $77, $3e, $13, $21, $01, $00, $19, $77, $3e, $2c, $21, $02, $00, $19, $77
+    db $21, $17, $00, $19, $77, $3e, $2e, $21, $18, $00, $19, $77, $3e, $00, $21, $06
+    db $00, $19, $77, $3e, $08, $21, $07, $00, $19, $77, $3e, $18, $21, $1a, $00, $19
+    db $77, $3e, $20, $21, $1b, $00, $19, $77, $3e, $04, $21, $1d, $00, $19, $77, $c9
+    db $11, $00, $c2, $3e, $05, $cd, $c7, $26, $fa, $81, $c9, $3c, $ea, $81, $c9, $3e
+    db $0c, $21, $00, $00, $19, $77, $78, $c6, $08, $21, $04, $00, $19, $77, $79, $c6
+    db $10, $21, $05, $00, $19, $77, $3e, $06, $21, $01, $00, $19, $77, $3e, $02, $21
+    db $1e, $00, $19, $77, $3e, $30, $21, $02, $00, $19, $77, $3e, $10, $21, $0e, $00
+    db $19, $77, $3e, $04, $21, $06, $00, $19, $77, $3e, $18, $21, $07, $00, $19, $77
+    db $fa, $81, $c9, $fe, $02, $20, $0e, $3e, $2f, $21, $02, $00, $19, $77, $3e, $08
+    db $21, $07, $00, $19, $77, $c9, $11, $00, $c2, $3e, $05, $cd, $c7, $26, $fa, $81
+    db $c9, $3c, $ea, $81, $c9, $3e, $0c, $21, $00, $00, $19, $77, $78, $c6, $08, $21
+    db $04, $00, $19, $77, $79, $c6, $10, $21, $05, $00, $19, $77, $3e, $06, $21, $01
+    db $00, $19, $77, $3e, $02, $21, $1e, $00, $19, $77, $3e, $31, $21, $02, $00, $19
+    db $77, $3e, $10, $21, $0e, $00, $19, $77, $3e, $04, $21, $06, $00, $19, $77, $3e
+    db $08, $21, $07, $00, $19, $77, $fa, $81, $c9, $fe, $01, $20, $07, $3e, $30, $21
+    db $0e, $00, $19, $77, $c9, $11, $40, $c1, $3e, $2c, $21, $00, $00, $19, $77, $78
+    db $c6, $10, $21, $04, $00, $19, $77, $79, $c6, $20, $21, $05, $00, $19, $77, $3e
+    db $16, $21, $01, $00, $19, $77, $3e, $37, $21, $02, $00, $19, $77, $3e, $00, $21
+    db $06, $00, $19, $77, $3e, $03, $21, $0e, $00, $19, $77, $3e, $08, $21, $07, $00
+    db $19, $77, $3e, $10, $21, $1a, $00, $19, $77, $3e, $20, $21, $1b, $00, $19, $77
+    db $c9, $11, $40, $c1, $3e, $0c, $21, $00, $00, $19, $77, $78, $c6, $18, $21, $04
+    db $00, $19, $77, $79, $c6, $20, $21, $05, $00, $19, $77, $3e, $17, $21, $01, $00
+    db $19, $77, $3e, $3c, $21, $02, $00, $19, $77, $21, $17, $00, $19, $77, $3e, $42
+    db $21, $18, $00, $19, $77, $3e, $00, $21, $06, $00, $19, $77, $3e, $08, $21, $07
+    db $00, $19, $77, $3e, $18, $21, $1a, $00, $19, $77, $3e, $20, $21, $1b, $00, $19
+    db $77, $3e, $04, $21, $1d, $00, $19, $77, $c9, $11, $00, $c2, $3e, $05, $cd, $c7
+    db $26, $3e, $08, $21, $00, $00, $19, $77, $78, $c6, $08, $21, $04, $00, $19, $77
+    db $79, $c6, $10, $21, $05, $00, $19, $77, $3e, $18, $21, $01, $00, $19, $77, $3e
+    db $43, $21, $02, $00, $19, $77, $3e, $10, $21, $0e, $00, $19, $77, $3e, $04, $21
+    db $06, $00, $19, $77, $fa, $81, $c9, $87, $87, $87, $c6, $c8, $21, $0e, $00, $19
+    db $77, $d6, $0a, $67, $fa, $81, $c9, $cb, $37, $2f, $3c, $84, $21, $1f, $00, $19
+    db $77, $fa, $81, $c9, $3c, $ea, $81, $c9, $fe, $04, $20, $04, $af, $ea, $81, $c9
+    db $c9, $11, $40, $c1, $3e, $0c, $21, $00, $00, $19, $77, $78, $c6, $18, $21, $04
+    db $00, $19, $77, $79, $c6, $20, $21, $05, $00, $19, $77, $3e, $1a, $21, $01, $00
+    db $19, $77, $3e, $46, $21, $02, $00, $19, $77, $21, $17, $00, $19, $77, $3e, $48
+    db $21, $18, $00, $19, $77, $3e, $00, $21, $06, $00, $19, $77, $3e, $08, $21, $07
+    db $00, $19, $77, $3e, $18, $21, $1a, $00, $19, $77, $3e, $20, $21, $1b, $00, $19
+    db $77, $3e, $04, $21, $1d, $00, $19, $77, $c9, $11, $40, $c1, $3e, $0c, $21, $00
+    db $00, $19, $77, $78, $c6, $18, $21, $04, $00, $19, $77, $79, $c6, $20, $21, $05
+    db $00, $19, $77, $3e, $1a, $21, $01, $00, $19, $77, $3e, $46, $21, $02, $00, $19
+    db $77, $21, $17, $00, $19, $77, $3e, $48, $21, $18, $00, $19, $77, $3e, $00, $21
+    db $06, $00, $19, $77, $3e, $08, $21, $07, $00, $19, $77, $3e, $18, $21, $1a, $00
+    db $19, $77, $3e, $20, $21, $1b, $00, $19, $77, $3e, $0a, $21, $1d, $00, $19, $77
+    db $c9, $fa, $0c, $c8, $11, $e8, $64, $d5, $c7, $e9, $64, $fd, $64, $2d, $65, $c9
+    db $cd, $ec, $23, $11, $40, $ff, $1a, $e6, $7f, $cd, $0e, $24, $fa, $0c, $c8, $3c
+    db $ea, $0c, $c8, $c9, $3e, $10, $ea, $18, $c8, $cd, $07, $2d, $af, $ea, $18, $c8
+    db $cd, $ec, $23, $21, $00, $98, $01, $00, $04, $3e, $ff, $22, $0b, $78, $b1, $20
+    db $f8, $11, $40, $ff, $1a, $f6, $80, $12, $af, $ea, $3d, $c8, $fa, $0c, $c8, $3c
+    db $ea, $0c, $c8, $c9, $f0, $9b, $e6, $30, $20, $04, $af, $ea, $3d, $c8, $f0, $9c
+    db $cb, $67, $20, $16, $f0, $9b, $cb, $67, $28, $1d, $fa, $3d, $c8, $3c, $ea, $3d
+    db $c8, $fe, $14, $20, $66, $3e, $0e, $ea, $3d, $c8, $fa, $18, $c8, $fe, $1e, $28
+    db $5a, $3c, $ea, $18, $c8, $18, $54, $f0, $9c, $cb, $6f, $20, $16, $f0, $9b, $cb
+    db $6f, $28, $1d, $fa, $3d, $c8, $3c, $ea, $3d, $c8, $fe, $14, $20, $3d, $3e, $0e
+    db $ea, $3d, $c8, $fa, $18, $c8, $fe, $00, $28, $31, $3d, $ea, $18, $c8, $18, $2b
+    db $f0, $9c, $cb, $47, $28, $06, $fa, $18, $c8, $cd, $03, $09, $f0, $9c, $cb, $4f
+    db $28, $05, $3e, $20, $cd, $84, $0a, $f0, $9c, $cb, $5f, $28, $0e, $cd, $65, $0a
+    db $3e, $02, $ea, $0b, $c8, $af, $ea, $0c, $c8, $18, $31, $fa, $18, $c8, $16, $00
+    db $14, $d6, $0a, $30, $fb, $15, $c6, $0a, $f5, $26, $00, $6a, $29, $11, $e6, $65
+    db $19, $5e, $23, $56, $21, $00, $98, $cd, $4a, $24, $f1, $26, $00, $6f, $29, $11
+    db $e6, $65, $19, $5e, $23, $56, $21, $03, $98, $cd, $4a, $24, $c9, $fa, $65, $02
+    db $66, $0a, $66, $12, $66, $1a, $66, $22, $66, $2a, $66, $32, $66, $3a, $66, $42
+    db $66, $03, $02, $6a, $6b, $6c, $8a, $8b, $8c, $03, $02, $20, $21, $22, $40, $41
+    db $42, $03, $02, $23, $24, $25, $43, $44, $45, $03, $02, $26, $27, $28, $46, $47
+    db $48, $03, $02, $29, $2a, $2b, $49, $4a, $4b, $03, $02, $2c, $2d, $2e, $4c, $4d
+    db $4e, $03, $02, $2f, $30, $31, $4f, $50, $51, $03, $02, $32, $33, $34, $52, $53
+    db $54, $03, $02, $35, $36, $37, $55, $56, $57, $03, $02, $67, $68, $69, $87, $88
+    db $89, $fa, $0c, $c8, $11, $92, $66, $d5, $c7, $93, $66, $c0, $66, $69, $67, $85
+    db $67, $86, $69, $a1, $69, $fc, $69, $5d, $40, $18, $6a, $38, $6a, $0d, $6b, $15
+    db $6b, $5b, $6b, $a7, $6b, $14, $6c, $5e, $6c, $5d, $40, $5d, $40, $5d, $40, $c2
+    db $6c, $f6, $6c, $a3, $6d, $cb, $6d, $ed, $6d, $45, $6e, $61, $6e, $83, $6e, $d7
+    db $6e, $5d, $40, $5d, $40, $5d, $40, $f3, $6e, $c9, $af, $ea, $17, $c8, $ea, $75
+    db $c9, $ea, $77, $c9, $ea, $74, $c9, $ea, $78, $c9, $06, $10, $21, $13, $cb, $22
+    db $05, $20, $fc, $cd, $ec, $23, $11, $40, $ff, $1a, $e6, $7f, $cd, $0e, $24, $fa
+    db $0c, $c8, $3c, $ea, $0c, $c8, $c9, $fa, $18, $c8, $21, $82, $c9, $cb, $4e, $28
+    db $02, $c6, $09, $87, $21, $3c, $67, $06, $00, $4f, $09, $44, $4d, $11, $20, $c1
+    db $3e, $02, $21, $01, $00, $19, $77, $3e, $01, $21, $02, $00, $19, $77, $3e, $0c
+    db $21, $00, $00, $19, $77, $0a, $03, $21, $04, $00, $19, $77, $0a, $21, $05, $00
+    db $19, $77, $3e, $78, $21, $1b, $00, $19, $77, $21, $00, $00, $19, $cb, $ce, $cd
+    db $38, $70, $cd, $05, $27, $21, $82, $c9, $cb, $4e, $28, $0e, $fa, $18, $c8, $16
+    db $00, $5f, $21, $60, $67, $19, $7e, $ea, $f4, $c9, $cd, $f6, $27, $3e, $01, $16
+    db $07, $cd, $f8, $2d, $11, $40, $ff, $1a, $f6, $80, $12, $fa, $0c, $c8, $3c, $ea
+    db $0c, $c8, $c9, $80, $f0, $d0, $30, $18, $f0, $80, $30, $80, $f0, $80, $c0, $80
+    db $f0, $18, $f0, $80, $e0, $e0, $f0, $80, $f0, $e0, $30, $e0, $24, $e0, $f0, $e0
+    db $f0, $e0, $f0, $18, $f0, $20, $f0, $09, $0a, $09, $0b, $0b, $03, $09, $0b, $1d
+    db $3e, $04, $cd, $61, $2e, $28, $14, $cd, $cc, $27, $21, $17, $c8, $cb, $c6, $21
+    db $2c, $cb, $cb, $ae, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $fa, $23, $cb, $a7
+    db $28, $28, $f0, $9c, $e6, $09, $c2, $4a, $69, $21, $2c, $cb, $cb, $ae, $fa, $2c
+    db $cb, $cb, $7f, $28, $08, $f0, $9b, $fe, $02, $20, $02, $cb, $ee, $cd, $e1, $25
+    db $fa, $28, $cb, $fe, $e0, $ca, $4a, $69, $18, $2b, $f0, $9c, $cb, $57, $28, $0d
+    db $3e, $04, $e0, $9b, $cd, $3a, $26, $3e, $08, $ea, $0c, $c8, $c9, $f0, $9c, $cb
+    db $5f, $28, $0d, $3e, $08, $e0, $9b, $cd, $3a, $26, $3e, $0b, $ea, $0b, $c8, $c9
+    db $cd, $3a, $26, $18, $06, $f0, $9c, $e6, $0c, $20, $ae, $3e, $02, $21, $01, $40
+    db $cd, $ae, $08, $21, $17, $c8, $cb, $6e, $c2, $85, $69, $cd, $c6, $70, $fa, $17
+    db $c8, $cb, $57, $c2, $f0, $68, $cb, $77, $c2, $90, $68, $cb, $5f, $c2, $35, $69
+    db $cd, $22, $6f, $20, $50, $3e, $01, $21, $f8, $68, $cd, $ae, $08, $fa, $78, $c9
+    db $fe, $ff, $c2, $85, $69, $01, $20, $c1, $21, $00, $00, $09, $7e, $cb, $a7, $ea
+    db $7e, $c9, $21, $1c, $00, $09, $7e, $ea, $7f, $c9, $21, $04, $00, $09, $7e, $ea
+    db $78, $c9, $21, $05, $00, $09, $7e, $ea, $7b, $c9, $fa, $03, $c8, $ea, $79, $c9
+    db $fa, $04, $c8, $ea, $7c, $c9, $fa, $1b, $c8, $ea, $7a, $c9, $fa, $1c, $c8, $ea
+    db $7d, $c9, $c3, $85, $69, $f5, $cd, $19, $06, $21, $2c, $cb, $cb, $ae, $f1, $fe
+    db $03, $28, $24, $fe, $02, $28, $3c, $fe, $04, $28, $5a, $21, $17, $c8, $cb, $ce
+    db $cb, $86, $af, $ea, $78, $c9, $3e, $00, $16, $07, $cd, $f8, $2d, $fa, $0c, $c8
+    db $3c, $ea, $0c, $c8, $c3, $85, $69, $21, $2c, $cb, $cb, $ae, $cd, $19, $06, $21
+    db $2c, $cb, $cb, $ae, $3e, $00, $16, $07, $cd, $f8, $2d, $3e, $1f, $ea, $0c, $c8
+    db $c3, $85, $69, $21, $17, $c8, $cb, $ce, $cb, $86, $21, $83, $c9, $cb, $c6, $af
+    db $ea, $78, $c9, $cd, $65, $0a, $3e, $00, $16, $07, $cd, $f8, $2d, $3e, $19, $ea
+    db $0c, $c8, $c3, $85, $69, $21, $17, $c8, $cb, $ce, $cb, $86, $21, $83, $c9, $cb
+    db $d6, $af, $ea, $78, $c9, $cd, $65, $0a, $3e, $00, $16, $07, $cd, $f8, $2d, $3e
+    db $16, $ea, $0c, $c8, $c3, $85, $69, $cd, $65, $0a, $e5, $f5, $21, $17, $1d, $3e
+    db $01, $cd, $a6, $0a, $f1, $e1, $cd, $19, $06, $21, $2c, $cb, $cb, $ae, $21, $17
+    db $c8, $cb, $ce, $cb, $86, $af, $ea, $78, $c9, $21, $0c, $c8, $36, $0b, $3e, $20
+    db $ea, $12, $c8, $af, $ea, $3f, $c8, $ea, $40, $c8, $21, $3c, $c1, $cb, $56, $ca
+    db $2f, $69, $3e, $01, $18, $01, $af, $cd, $12, $2f, $18, $50, $cd, $19, $06, $21
+    db $2c, $cb, $cb, $ae, $fa, $23, $cb, $a7, $28, $2b, $fa, $2c, $cb, $cb, $7f, $20
+    db $28, $cd, $19, $06, $21, $2c, $cb, $cb, $ae, $3e, $0e, $ea, $0b, $c8, $af, $ea
+    db $0c, $c8, $3e, $03, $ea, $0c, $c8, $fa, $18, $c8, $fe, $07, $30, $1e, $3e, $10
+    db $cd, $84, $0a, $18, $17
 
 Chalvo_RemoveLife::
-    ld hl, playerLives
-    dec [hl]
+    db $21, $fc, $c9, $35
 
 Chalvo_Respawn::
-    ld hl, playerState
-    set 1, [hl]
-    res 0, [hl]
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, $13
-    ld [$c80c], a
-
-Jump_003_6985:
-jr_003_6985:
-    ret
-
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_69a0
-
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    call Call_000_23fa
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_69a0:
-    ret
-
-
-    ld hl, $c983
-    bit 2, [hl]
-    jr z, jr_003_69b0
-
-    res 2, [hl]
-    call Call_000_2d07
-    call Call_000_27cc
-
-jr_003_69b0:
-    ld bc, $c120
-    ld a, [$c987]
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    ld a, [$c989]
-    ld [$c804], a
-    ld a, [$c98b]
-    ld [$c81c], a
-    ld a, [$c986]
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    ld a, [$c988]
-    ld [$c803], a
-    ld a, [$c98a]
-    ld [$c81b], a
-    call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6a17
-
-    ld a, $03
-    ld [$c80c], a
-    ld hl, playerState
-    res 1, [hl]
-    set 0, [hl]
-
-jr_003_6a17:
-    ret
-
-
-    ld hl, $c100
-    ld de, $c480
-    ld bc, $0380
-    call Call_000_03b2
-    ld a, [$c803]
-    ld [$c809], a
-    ld a, [$c804]
-    ld [$c80a], a
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ldh a, [$9b]
-    bit 2, a
-    jp z, Jump_003_6aeb
-
-    ld de, $0000
-    ldh a, [$9b]
-    bit 4, a
-    jr z, jr_003_6a5d
-
-    ld a, [$c803]
-    add $04
-    cp $61
-    jp c, Jump_003_6a5b
-
-    sub $60
-    cpl
-    inc a
-    add $04
-    ld d, a
-    jr jr_003_6a5d
-
-Jump_003_6a5b:
-    ld d, $04
-
-jr_003_6a5d:
-    ldh a, [$9b]
-    bit 5, a
-    jr z, jr_003_6a75
-
-    ld a, [$c803]
-    sub $04
-    bit 7, a
-    jr z, jr_003_6a73
-
-    add $04
-    cpl
-    inc a
-    ld d, a
-    jr jr_003_6a75
-
-jr_003_6a73:
-    ld d, $fc
-
-jr_003_6a75:
-    ldh a, [$9b]
-    bit 6, a
-    jr z, jr_003_6a8d
-
-    ld a, [$c804]
-    sub $04
-    bit 7, a
-    jr z, jr_003_6a8b
-
-    add $04
-    cpl
-    inc a
-    ld e, a
-    jr jr_003_6a8d
-
-jr_003_6a8b:
-    ld e, $fc
-
-jr_003_6a8d:
-    ldh a, [$9b]
-    bit 7, a
-    jr z, jr_003_6aa8
-
-    ld a, [$c804]
-    add $04
-    cp $71
-    jp c, Jump_003_6aa6
-
-    sub $70
-    cpl
-    inc a
-    add $04
-    ld e, a
-    jr jr_003_6aa8
-
-Jump_003_6aa6:
-    ld e, $04
-
-jr_003_6aa8:
-    ld a, $1c
-    ld [$c82d], a
-    ld bc, $c100
-
-jr_003_6ab0:
-    ld hl, $0001
-    add hl, bc
-    ld a, [hl]
-    and a
-    jr z, jr_003_6acf
-
-    ld hl, $0000
-    add hl, bc
-    ld a, [hl]
-    bit 3, a
-    jr z, jr_003_6acf
-
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    sub d
-    ld [hl], a
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    sub e
-    ld [hl], a
-
-jr_003_6acf:
-    ld hl, $0020
-    add hl, bc
-    ld b, h
-    ld c, l
-    ld hl, $c82d
-    dec [hl]
-    jr nz, jr_003_6ab0
-
-    ld a, [$c803]
-    add d
-    ld [$c803], a
-    ld a, [$c804]
-    add e
-    ld [$c804], a
-    jr jr_003_6b0c
-
-Jump_003_6aeb:
-    ld hl, $c480
-    ld de, $c100
-    ld bc, $0380
-    call Call_000_03b2
-    ld a, [$c809]
-    ld [$c803], a
-    ld a, [$c80a]
-    ld [$c804], a
-    ld a, $03
-    ld [$c80c], a
-    ld a, $04
-    ldh [$9b], a
-
-jr_003_6b0c:
-    ret
-
-
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, [$c83f]
-    ld [$c81f], a
-    ld a, [$c840]
-    ld [$c820], a
-    ld a, [$c81f]
-    add $02
-    ld [$c81f], a
-    ld a, [$c820]
-    adc $00
-    ld [$c820], a
-    ld de, $c83f
-    ld a, [$c81f]
-    call Call_000_240e
-    ld de, $c840
-    ld a, [$c820]
-    call Call_000_240e
-    ld a, [$c812]
-    dec a
-    ld [$c812], a
-    jr z, jr_003_6b5a
-
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6b5a:
-    ret
-
-
-    ld a, [$c83f]
-    ld [$c81f], a
-    ld a, [$c840]
-    ld [$c820], a
-    ld a, [$c81f]
-    add $02
-    ld [$c81f], a
-    ld a, [$c820]
-    adc $00
-    ld [$c820], a
-    ld de, $c83f
-    ld a, [$c81f]
-    call Call_000_240e
-    ld de, $c840
-    ld a, [$c820]
-    call Call_000_240e
-    ld a, $20
-    call Call_000_2e61
-    jr z, jr_003_6ba6
-
-    call Call_000_2f39
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    call Call_000_23fa
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6ba6:
-    ret
-
-
-    ld a, $00
-    call Call_000_0406
-    cp $01
-    jr nz, jr_003_6bb7
-
-    ld hl, $c983
-    set 2, [hl]
-    jr jr_003_6bc2
-
-jr_003_6bb7:
-    cp $00
-    jr nz, jr_003_6bc5
-
-    ld hl, $c983
-    set 0, [hl]
-    res 2, [hl]
-
-jr_003_6bc2:
-    call Call_000_2d07
-
-jr_003_6bc5:
-    ld bc, $c120
-    ld a, $01
-    ld hl, $001e
-    add hl, bc
-    ld [hl], a
-    ld a, $01
-    ld hl, $0002
-    add hl, bc
-    ld [hl], a
-    ld a, [cursorIndex]
-    add $08
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    ld a, [passwordLetter]
-    add $10
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    call Call_003_7038
-    call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, [$c842]
-    call Call_000_2f12
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, [$c83f]
-    ld [$c81f], a
-    ld a, [$c840]
-    ld [$c820], a
-    ld a, [$c81f]
-    sub $02
-    ld [$c81f], a
-    ld a, [$c820]
-    sbc $00
-    ld [$c820], a
-    ld de, $c83f
-    ld a, [$c81f]
-    call Call_000_240e
-    ld de, $c840
-    ld a, [$c820]
-    call Call_000_240e
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $20
-    call Call_000_2e61
-    jr z, jr_003_6c5d
-
-    ld a, $20
-    ld [$c812], a
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6c5d:
-    ret
-
-
-    ld a, [$c83f]
-    ld [$c81f], a
-    ld a, [$c840]
-    ld [$c820], a
-    ld a, [$c81f]
-    sub $02
-    ld [$c81f], a
-    ld a, [$c820]
-    sbc $00
-    ld [$c820], a
-    ld de, $c83f
-    ld a, [$c81f]
-    call Call_000_240e
-    ld de, $c840
-    ld a, [$c820]
-    call Call_000_240e
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c812]
-    dec a
-    ld [$c812], a
-    jr z, jr_003_6cc1
-
-    call Call_000_2f39
-    ld a, $03
-    ld [$c80c], a
-    ld hl, playerState
-    res 1, [hl]
-    res 2, [hl]
-    set 0, [hl]
-    ld a, $ff
-    ld [chalvoPosCheckpointX], a
-    ld hl, $c983
-    bit 2, [hl]
-    jr nz, jr_003_6cc1
-
-    bit 0, [hl]
-    jr nz, jr_003_6cc1
-
-    call Call_000_0a79
-
-jr_003_6cc1:
-    ret
-
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6cf5
-
-    ld a, [playerLives]
-    and a
-    jr nz, jr_003_6ce2
-
-    ld hl, $cb2c
-    res 5, [hl]
-    call Call_000_23ec
-    ld a, $01
-    ld [$c80b], a
-    xor a
-    ld [$c80c], a
-    jr jr_003_6cf5
-
-jr_003_6ce2:
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    call Call_000_23fa
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6cf5:
-    ret
-
-
-    ld de, $c120
-    ld a, [$c97e]
-    ld hl, $0000
-    add hl, de
-    ld [hl], a
-    ld a, [$c97f]
-    ld hl, $001c
-    add hl, de
-    ld [hl], a
-    ld a, [chalvoPosCheckpointX]
-    ld hl, $0004
-    add hl, de
-    ld [hl], a
-    ld a, [screenPosCheckpointY]
-    ld hl, $0005
-    add hl, de
-    ld [hl], a
-    ld a, [screenPosCheckpointX]
-    ld [$c803], a
-    ld a, [$c97c]
-    ld [$c804], a
-    ld a, [chalvoPosCheckpointY]
-    ld [$c81b], a
-    ld a, [$c97d]
-    ld [$c81c], a
-    ld a, $78
-    ld hl, $001b
-    add hl, de
-    ld [hl], a
-    ld hl, $0000
-    add hl, de
-    set 1, [hl]
-    xor a
-    ld hl, $001e
-    add hl, de
-    ld [hl], a
-    ld a, $01
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    ld hl, $001c
-    add hl, de
-    bit 2, [hl]
-    jr z, jr_003_6d6d
-
-    ld a, $06
-    ld hl, $001e
-    add hl, de
-    ld [hl], a
-    ld a, $03
-    ld hl, $0002
-    add hl, de
-    ld [hl], a
-    xor a
-    ld hl, $000f
-    add hl, de
-    ld [hl+], a
-    ld [hl], a
-    ld hl, $000e
-    add hl, de
-    ld [hl], a
-
-jr_003_6d6d:
-    xor a
-    ld hl, $001c
-    add hl, de
-    ld [hl], a
-    ld hl, $0017
-    add hl, de
-    ld [hl], a
-    ld hl, $0016
-    add hl, de
-    ld [hl], a
-    ld hl, $0019
-    add hl, de
-    ld [hl], a
-    call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6dca
-
-    ld a, $03
-    ld [$c80c], a
-    ld hl, playerState
-    res 1, [hl]
-    set 0, [hl]
-    res 3, [hl]
-    ld hl, $c983
-    bit 0, [hl]
-    jr nz, jr_003_6dca
-
-    call Call_000_27cc
-
-jr_003_6dca:
-    ret
-
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6dec
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6dec
-
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    call Call_000_23fa
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6dec:
-    ret
-
-
-    ld hl, $c983
-    bit 0, [hl]
-    jr z, jr_003_6df6
-
-    res 0, [hl]
-
-jr_003_6df6:
-    call Call_000_2d07
-    ld bc, $c120
-    ld a, [$c987]
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    ld a, [$c989]
-    ld [$c804], a
-    ld a, [$c98b]
-    ld [$c81c], a
-    ld a, [$c986]
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    ld a, [$c988]
-    ld [$c803], a
-    ld a, [$c98a]
-    ld [$c81b], a
-    call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6e60
-
-    ld a, $03
-    ld [$c80c], a
-    ld hl, playerState
-    res 1, [hl]
-    set 0, [hl]
-
-jr_003_6e60:
-    ret
-
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6e82
-
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6e82
-
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
-    call Call_000_23fa
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-
-jr_003_6e82:
-    ret
-
-
-    ld hl, $c983
-    res 2, [hl]
-    call Call_000_2d07
-    ld bc, $c120
-    ld a, [$c987]
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    ld a, [$c989]
-    ld [$c804], a
-    ld a, [$c98b]
-    ld [$c81c], a
-    ld a, [$c986]
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    ld a, [$c988]
-    ld [$c803], a
-    ld a, [$c98a]
-    ld [$c81b], a
-    call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, [$c80c]
-    inc a
-    ld [$c80c], a
-    ret
-
-
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $04
-    call Call_000_2e61
-    jr z, jr_003_6ef2
-
-    ld a, $03
-    ld [$c80c], a
-    ld hl, playerState
-    res 1, [hl]
-    set 0, [hl]
-
-jr_003_6ef2:
-    ret
-
-
-    ld a, [playerState]
-    bit 6, a
-    jp z, Jump_003_6f07
-
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
-    ld a, $20
-    jr jr_003_6f09
-
-Jump_003_6f07:
-    ld a, $04
-
-jr_003_6f09:
-    call Call_000_2e61
-    jr z, jr_003_6f21
-
-    call Call_000_23ec
-    ld a, [currentStage]
-    inc a
-    ld [currentStage], a
-    ld a, $0c
-    ld [$c80b], a
-    xor a
-    ld [$c80c], a
-
-jr_003_6f21:
-    ret
-
-
-Call_003_6f22:
-    ld bc, $c120
-    ld hl, $0000
-    add hl, bc
-    ld a, [hl]
-    bit 0, a
-    jp nz, Jump_003_7036
-
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    sub $1f
-    cp $c8
-    jp c, Jump_003_6f6e
-
-    ld hl, $c983
-    bit 0, [hl]
-    jp nz, Jump_003_701a
-
-    add $90
-    add $10
-    ld [$c987], a
-    ld a, $70
-    ld [$c989], a
-    ld [$c98b], a
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    ld [$c986], a
-    ld a, [$c803]
-    ld [$c988], a
-    ld a, [$c81b]
-    ld [$c98a], a
-    ld a, $01
-    call Call_000_0406
-    jp Jump_003_701f
-
-
-Jump_003_6f6e:
-    cp $81
-    jp c, Jump_003_6fa5
-
-    ld hl, $c983
-    bit 1, [hl]
-    jp nz, Jump_003_701a
-
-    sub $90
-    add $2f
-    ld [$c987], a
-    ld a, $00
-    ld [$c989], a
-    ld [$c98b], a
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    ld [$c986], a
-    ld a, [$c803]
-    ld [$c988], a
-    ld a, [$c81b]
-    ld [$c98a], a
-    ld a, $02
-    call Call_000_0406
-    jr jr_003_701f
-
-Jump_003_6fa5:
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    sub $0f
-    cp $c8
-    jp c, Jump_003_6fe3
-
-    ld hl, $c983
-    bit 1, [hl]
-    jp nz, Jump_003_701a
-
-    add $a0
-    add $00
-    ld [$c986], a
-    ld a, $60
-    ld [$c988], a
-    ld [$c98a], a
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    ld [$c987], a
-    ld a, [$c804]
-    ld [$c989], a
-    ld a, [$c81c]
-    ld [$c98b], a
-    ld a, $03
-    call Call_000_0406
-    jr jr_003_701f
-
-Jump_003_6fe3:
-    cp $91
-    jp c, Jump_003_7036
-
-    ld hl, $c983
-    bit 1, [hl]
-    jp nz, Jump_003_701a
-
-    sub $a0
-    add $1f
-    ld [$c986], a
-    ld a, $00
-    ld [$c988], a
-    ld [$c98a], a
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    ld [$c987], a
-    ld a, [$c804]
-    ld [$c989], a
-    ld a, [$c81c]
-    ld [$c98b], a
-    ld a, $04
-    call Call_000_0406
-    jr jr_003_701f
-
-Jump_003_701a:
-    ld a, $03
-    and a
-    jr jr_003_7037
-
-Jump_003_701f:
-jr_003_701f:
-    cp $00
-    jr z, jr_003_702c
-
-    cp $01
-    jr z, jr_003_7031
-
-    ld a, $01
-    and a
-    jr jr_003_7037
-
-jr_003_702c:
-    ld a, $02
-    and a
-    jr jr_003_7037
-
-jr_003_7031:
-    ld a, $04
-    and a
-    jr jr_003_7037
-
-Jump_003_7036:
-    xor a
-
-jr_003_7037:
-    ret
-
-
-Call_003_7038:
-    ld bc, $c120
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    cp $50
-    jp c, Jump_003_706d
-
-    sub $50
-    cp $60
-    jp c, Jump_003_7061
-
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    sub $60
-    add $08
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    ld a, $60
-    ld [$c803], a
-    jr jr_003_7078
-
-Jump_003_7061:
-    ld [$c803], a
-    ld a, $58
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    jr jr_003_7078
-
-Jump_003_706d:
-    add $08
-    ld hl, $0004
-    add hl, bc
-    ld [hl], a
-    xor a
-    ld [$c803], a
-
-jr_003_7078:
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    cp $54
-    jp c, Jump_003_70aa
-
-    sub $54
-    cp $70
-    jp c, Jump_003_709e
-
-    ld hl, $0005
-    add hl, bc
-    ld a, [hl]
-    sub $70
-    add $10
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    ld a, $70
-    ld [$c804], a
-    jr jr_003_70b5
-
-Jump_003_709e:
-    ld [$c804], a
-    ld a, $64
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    jr jr_003_70b5
-
-Jump_003_70aa:
-    add $10
-    ld hl, $0005
-    add hl, bc
-    ld [hl], a
-    xor a
-    ld [$c804], a
-
-jr_003_70b5:
-    ld hl, $0004
-    add hl, bc
-    ld a, [hl]
-    ld [$c81b], a
-    ld hl, $0005
-    add hl, de
-    ld a, [hl]
-    ld [$c81c], a
-    ret
-
-
-Call_003_70c6:
-    ld a, [$c873]
-    and a
-    jr z, jr_003_70dd
-
-    ld d, a
-    ld hl, $c843
-
-jr_003_70d0:
-    ld a, [hl+]
-    ld c, a
-    ld a, [hl+]
-    ld b, a
-    ld a, [hl+]
-    ld [bc], a
-    dec d
-    jr nz, jr_003_70d0
-
-    xor a
-    ld [$c873], a
-
-jr_003_70dd:
-    ret
-
-
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $21, $17, $c8, $cb, $ce, $cb, $86, $3e, $00, $16, $07, $cd, $f8, $2d, $3e, $13
+    db $ea, $0c, $c8, $c9, $3e, $04, $cd, $61, $2e, $28, $13, $11, $40, $ff, $1a, $e6
+    db $7f, $cd, $0e, $24, $cd, $fa, $23, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $21
+    db $83, $c9, $cb, $56, $28, $08, $cb, $96, $cd, $07, $2d, $cd, $cc, $27, $01, $20
+    db $c1, $fa, $87, $c9, $21, $05, $00, $09, $77, $fa, $89, $c9, $ea, $04, $c8, $fa
+    db $8b, $c9, $ea, $1c, $c8, $fa, $86, $c9, $21, $04, $00, $09, $77, $fa, $88, $c9
+    db $ea, $03, $c8, $fa, $8a, $c9, $ea, $1b, $c8, $cd, $f6, $27, $11, $40, $ff, $1a
+    db $f6, $80, $12, $3e, $01, $16, $07, $cd, $f8, $2d, $3e, $02, $21, $01, $40, $cd
+    db $ae, $08, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $3e, $02, $21, $01, $40, $cd
+    db $ae, $08, $3e, $04, $cd, $61, $2e, $28, $0c, $3e, $03, $ea, $0c, $c8, $21, $17
+    db $c8, $cb, $8e, $cb, $c6, $c9, $21, $00, $c1, $11, $80, $c4, $01, $80, $03, $cd
+    db $b2, $03, $fa, $03, $c8, $ea, $09, $c8, $fa, $04, $c8, $ea, $0a, $c8, $fa, $0c
+    db $c8, $3c, $ea, $0c, $c8, $c9, $f0, $9b, $cb, $57, $ca, $eb, $6a, $11, $00, $00
+    db $f0, $9b, $cb, $67, $28, $15, $fa, $03, $c8, $c6, $04, $fe, $61, $da, $5b, $6a
+    db $d6, $60, $2f, $3c, $c6, $04, $57, $18, $02, $16, $04, $f0, $9b, $cb, $6f, $28
+    db $12, $fa, $03, $c8, $d6, $04, $cb, $7f, $28, $07, $c6, $04, $2f, $3c, $57, $18
+    db $02, $16, $fc, $f0, $9b, $cb, $77, $28, $12, $fa, $04, $c8, $d6, $04, $cb, $7f
+    db $28, $07, $c6, $04, $2f, $3c, $5f, $18, $02, $1e, $fc, $f0, $9b, $cb, $7f, $28
+    db $15, $fa, $04, $c8, $c6, $04, $fe, $71, $da, $a6, $6a, $d6, $70, $2f, $3c, $c6
+    db $04, $5f, $18, $02, $1e, $04, $3e, $1c, $ea, $2d, $c8, $01, $00, $c1, $21, $01
+    db $00, $09, $7e, $a7, $28, $17, $21, $00, $00, $09, $7e, $cb, $5f, $28, $0e, $21
+    db $04, $00, $09, $7e, $92, $77, $21, $05, $00, $09, $7e, $93, $77, $21, $20, $00
+    db $09, $44, $4d, $21, $2d, $c8, $35, $20, $d5, $fa, $03, $c8, $82, $ea, $03, $c8
+    db $fa, $04, $c8, $83, $ea, $04, $c8, $18, $21, $21, $80, $c4, $11, $00, $c1, $01
+    db $80, $03, $cd, $b2, $03, $fa, $09, $c8, $ea, $03, $c8, $fa, $0a, $c8, $ea, $04
+    db $c8, $3e, $03, $ea, $0c, $c8, $3e, $04, $e0, $9b, $c9, $fa, $0c, $c8, $3c, $ea
+    db $0c, $c8, $c9, $fa, $3f, $c8, $ea, $1f, $c8, $fa, $40, $c8, $ea, $20, $c8, $fa
+    db $1f, $c8, $c6, $02, $ea, $1f, $c8, $fa, $20, $c8, $ce, $00, $ea, $20, $c8, $11
+    db $3f, $c8, $fa, $1f, $c8, $cd, $0e, $24, $11, $40, $c8, $fa, $20, $c8, $cd, $0e
+    db $24, $fa, $12, $c8, $3d, $ea, $12, $c8, $28, $0e, $3e, $00, $16, $07, $cd, $f8
+    db $2d, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $fa, $3f, $c8, $ea, $1f, $c8, $fa
+    db $40, $c8, $ea, $20, $c8, $fa, $1f, $c8, $c6, $02, $ea, $1f, $c8, $fa, $20, $c8
+    db $ce, $00, $ea, $20, $c8, $11, $3f, $c8, $fa, $1f, $c8, $cd, $0e, $24, $11, $40
+    db $c8, $fa, $20, $c8, $cd, $0e, $24, $3e, $20, $cd, $61, $2e, $28, $16, $cd, $39
+    db $2f, $11, $40, $ff, $1a, $e6, $7f, $cd, $0e, $24, $cd, $fa, $23, $fa, $0c, $c8
+    db $3c, $ea, $0c, $c8, $c9, $3e, $00, $cd, $06, $04, $fe, $01, $20, $07, $21, $83
+    db $c9, $cb, $d6, $18, $0b, $fe, $00, $20, $0a, $21, $83, $c9, $cb, $c6, $cb, $96
+    db $cd, $07, $2d, $01, $20, $c1, $3e, $01, $21, $1e, $00, $09, $77, $3e, $01, $21
+    db $02, $00, $09, $77, $fa, $f2, $c9, $c6, $08, $21, $04, $00, $09, $77, $fa, $f3
+    db $c9, $c6, $10, $21, $05, $00, $09, $77, $cd, $38, $70, $cd, $f6, $27, $11, $40
+    db $ff, $1a, $f6, $80, $12, $3e, $01, $16, $07, $cd, $f8, $2d, $fa, $42, $c8, $cd
+    db $12, $2f, $3e, $02, $21, $01, $40, $cd, $ae, $08, $fa, $0c, $c8, $3c, $ea, $0c
+    db $c8, $c9, $fa, $3f, $c8, $ea, $1f, $c8, $fa, $40, $c8, $ea, $20, $c8, $fa, $1f
+    db $c8, $d6, $02, $ea, $1f, $c8, $fa, $20, $c8, $de, $00, $ea, $20, $c8, $11, $3f
+    db $c8, $fa, $1f, $c8, $cd, $0e, $24, $11, $40, $c8, $fa, $20, $c8, $cd, $0e, $24
+    db $3e, $02, $21, $01, $40, $cd, $ae, $08, $3e, $20, $cd, $61, $2e, $28, $0c, $3e
+    db $20, $ea, $12, $c8, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $fa, $3f, $c8, $ea
+    db $1f, $c8, $fa, $40, $c8, $ea, $20, $c8, $fa, $1f, $c8, $d6, $02, $ea, $1f, $c8
+    db $fa, $20, $c8, $de, $00, $ea, $20, $c8, $11, $3f, $c8, $fa, $1f, $c8, $cd, $0e
+    db $24, $11, $40, $c8, $fa, $20, $c8, $cd, $0e, $24, $3e, $02, $21, $01, $40, $cd
+    db $ae, $08, $fa, $12, $c8, $3d, $ea, $12, $c8, $28, $24, $cd, $39, $2f, $3e, $03
+    db $ea, $0c, $c8, $21, $17, $c8, $cb, $8e, $cb, $96, $cb, $c6, $3e, $ff, $ea, $78
+    db $c9, $21, $83, $c9, $cb, $56, $20, $07, $cb, $46, $20, $03, $cd, $79, $0a, $c9
+    db $3e, $04, $cd, $61, $2e, $28, $2c, $fa, $fc, $c9, $a7, $20, $13, $21, $2c, $cb
+    db $cb, $ae, $cd, $ec, $23, $3e, $01, $ea, $0b, $c8, $af, $ea, $0c, $c8, $18, $13
+    db $11, $40, $ff, $1a, $e6, $7f, $cd, $0e, $24, $cd, $fa, $23, $fa, $0c, $c8, $3c
+    db $ea, $0c, $c8, $c9, $11, $20, $c1, $fa, $7e, $c9, $21, $00, $00, $19, $77, $fa
+    db $7f, $c9, $21, $1c, $00, $19, $77, $fa, $78, $c9, $21, $04, $00, $19, $77, $fa
+    db $7b, $c9, $21, $05, $00, $19, $77, $fa, $79, $c9, $ea, $03, $c8, $fa, $7c, $c9
+    db $ea, $04, $c8, $fa, $7a, $c9, $ea, $1b, $c8, $fa, $7d, $c9, $ea, $1c, $c8, $3e
+    db $78, $21, $1b, $00, $19, $77, $21, $00, $00, $19, $cb, $ce, $af, $21, $1e, $00
+    db $19, $77, $3e, $01, $21, $02, $00, $19, $77, $21, $1c, $00, $19, $cb, $56, $28
+    db $1a, $3e, $06, $21, $1e, $00, $19, $77, $3e, $03, $21, $02, $00, $19, $77, $af
+    db $21, $0f, $00, $19, $22, $77, $21, $0e, $00, $19, $77, $af, $21, $1c, $00, $19
+    db $77, $21, $17, $00, $19, $77, $21, $16, $00, $19, $77, $21, $19, $00, $19, $77
+    db $cd, $f6, $27, $11, $40, $ff, $1a, $f6, $80, $12, $3e, $01, $16, $07, $cd, $f8
+    db $2d, $3e, $02, $21, $01, $40, $cd, $ae, $08, $fa, $0c, $c8, $3c, $ea, $0c, $c8
+    db $c9, $3e, $02, $21, $01, $40, $cd, $ae, $08, $3e, $04, $cd, $61, $2e, $28, $18
+    db $3e, $03, $ea, $0c, $c8, $21, $17, $c8, $cb, $8e, $cb, $c6, $cb, $9e, $21, $83
+    db $c9, $cb, $46, $20, $03, $cd, $cc, $27, $c9, $3e, $04, $cd, $61, $2e, $28, $1a
+    db $3e, $04, $cd, $61, $2e, $28, $13, $11, $40, $ff, $1a, $e6, $7f, $cd, $0e, $24
+    db $cd, $fa, $23, $fa, $0c, $c8, $3c, $ea, $0c, $c8, $c9, $21, $83, $c9, $cb, $46
+    db $28, $02, $cb, $86, $cd, $07, $2d, $01, $20, $c1, $fa, $87, $c9, $21, $05, $00
+    db $09, $77, $fa, $89, $c9, $ea, $04, $c8, $fa, $8b, $c9, $ea, $1c, $c8, $fa, $86
+    db $c9, $21, $04, $00, $09, $77, $fa, $88, $c9, $ea, $03, $c8, $fa, $8a, $c9, $ea
+    db $1b, $c8, $cd, $f6, $27, $11, $40, $ff, $1a, $f6, $80, $12, $3e, $01, $16, $07
+    db $cd, $f8, $2d, $3e, $02, $21, $01, $40, $cd, $ae, $08, $fa, $0c, $c8, $3c, $ea
+    db $0c, $c8, $c9, $3e, $02, $21, $01, $40, $cd, $ae, $08, $3e, $04, $cd, $61, $2e
+    db $28, $0c, $3e, $03, $ea, $0c, $c8, $21, $17, $c8, $cb, $8e, $cb, $c6, $c9, $3e
+    db $04, $cd, $61, $2e, $28, $1a, $3e, $04, $cd, $61, $2e, $28, $13, $11, $40, $ff
+    db $1a, $e6, $7f, $cd, $0e, $24, $cd, $fa, $23, $fa, $0c, $c8, $3c, $ea, $0c, $c8
+    db $c9, $21, $83, $c9, $cb, $96, $cd, $07, $2d, $01, $20, $c1, $fa, $87, $c9, $21
+    db $05, $00, $09, $77, $fa, $89, $c9, $ea, $04, $c8, $fa, $8b, $c9, $ea, $1c, $c8
+    db $fa, $86, $c9, $21, $04, $00, $09, $77, $fa, $88, $c9, $ea, $03, $c8, $fa, $8a
+    db $c9, $ea, $1b, $c8, $cd, $f6, $27, $11, $40, $ff, $1a, $f6, $80, $12, $3e, $01
+    db $16, $07, $cd, $f8, $2d, $3e, $02, $21, $01, $40, $cd, $ae, $08, $fa, $0c, $c8
+    db $3c, $ea, $0c, $c8, $c9, $3e, $02, $21, $01, $40, $cd, $ae, $08, $3e, $04, $cd
+    db $61, $2e, $28, $0c, $3e, $03, $ea, $0c, $c8, $21, $17, $c8, $cb, $8e, $cb, $c6
+    db $c9, $fa, $17, $c8, $cb, $77, $ca, $07, $6f, $3e, $02, $21, $01, $40, $cd, $ae
+    db $08, $3e, $20, $18, $02, $3e, $04, $cd, $61, $2e, $28, $13, $cd, $ec, $23, $fa
+    db $18, $c8, $3c, $ea, $18, $c8, $3e, $0c, $ea, $0b, $c8, $af, $ea, $0c, $c8, $c9
+    db $01, $20, $c1, $21, $00, $00, $09, $7e, $cb, $47, $c2, $36, $70, $21, $05, $00
+    db $09, $7e, $d6, $1f, $fe, $c8, $da, $6e, $6f, $21, $83, $c9, $cb, $46, $c2, $1a
+    db $70, $c6, $90, $c6, $10, $ea, $87, $c9, $3e, $70, $ea, $89, $c9, $ea, $8b, $c9
+    db $21, $04, $00, $09, $7e, $ea, $86, $c9, $fa, $03, $c8, $ea, $88, $c9, $fa, $1b
+    db $c8, $ea, $8a, $c9, $3e, $01, $cd, $06, $04, $c3, $1f, $70, $fe, $81, $da, $a5
+    db $6f, $21, $83, $c9, $cb, $4e, $c2, $1a, $70, $d6, $90, $c6, $2f, $ea, $87, $c9
+    db $3e, $00, $ea, $89, $c9, $ea, $8b, $c9, $21, $04, $00, $09, $7e, $ea, $86, $c9
+    db $fa, $03, $c8, $ea, $88, $c9, $fa, $1b, $c8, $ea, $8a, $c9, $3e, $02, $cd, $06
+    db $04, $18, $7a, $21, $04, $00, $09, $7e, $d6, $0f, $fe, $c8, $da, $e3, $6f, $21
+    db $83, $c9, $cb, $4e, $c2, $1a, $70, $c6, $a0, $c6, $00, $ea, $86, $c9, $3e, $60
+    db $ea, $88, $c9, $ea, $8a, $c9, $21, $05, $00, $09, $7e, $ea, $87, $c9, $fa, $04
+    db $c8, $ea, $89, $c9, $fa, $1c, $c8, $ea, $8b, $c9, $3e, $03, $cd, $06, $04, $18
+    db $3c, $fe, $91, $da, $36, $70, $21, $83, $c9, $cb, $4e, $c2, $1a, $70, $d6, $a0
+    db $c6, $1f, $ea, $86, $c9, $3e, $00, $ea, $88, $c9, $ea, $8a, $c9, $21, $05, $00
+    db $09, $7e, $ea, $87, $c9, $fa, $04, $c8, $ea, $89, $c9, $fa, $1c, $c8, $ea, $8b
+    db $c9, $3e, $04, $cd, $06, $04, $18, $05, $3e, $03, $a7, $18, $18, $fe, $00, $28
+    db $09, $fe, $01, $28, $0a, $3e, $01, $a7, $18, $0b, $3e, $02, $a7, $18, $06, $3e
+    db $04, $a7, $18, $01, $af, $c9, $01, $20, $c1, $21, $04, $00, $09, $7e, $fe, $50
+    db $da, $6d, $70, $d6, $50, $fe, $60, $da, $61, $70, $21, $04, $00, $09, $7e, $d6
+    db $60, $c6, $08, $21, $04, $00, $09, $77, $3e, $60, $ea, $03, $c8, $18, $17, $ea
+    db $03, $c8, $3e, $58, $21, $04, $00, $09, $77, $18, $0b, $c6, $08, $21, $04, $00
+    db $09, $77, $af, $ea, $03, $c8, $21, $05, $00, $09, $7e, $fe, $54, $da, $aa, $70
+    db $d6, $54, $fe, $70, $da, $9e, $70, $21, $05, $00, $09, $7e, $d6, $70, $c6, $10
+    db $21, $05, $00, $09, $77, $3e, $70, $ea, $04, $c8, $18, $17, $ea, $04, $c8, $3e
+    db $64, $21, $05, $00, $09, $77, $18, $0b, $c6, $10, $21, $05, $00, $09, $77, $af
+    db $ea, $04, $c8, $21, $04, $00, $09, $7e, $ea, $1b, $c8, $21, $05, $00, $19, $7e
+    db $ea, $1c, $c8, $c9, $fa, $73, $c8, $a7, $28, $11, $57, $21, $43, $c8, $2a, $4f
+    db $2a, $47, $2a, $02, $15, $20, $f7, $af, $ea, $73, $c8, $c9
+    
+bank3_pad:: ds 3874 ;f22

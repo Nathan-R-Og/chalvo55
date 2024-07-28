@@ -1,4 +1,3 @@
-; properly split these later
 00:0000 .code:4000
 01:4000 .code:2D0F
 
@@ -30,7 +29,139 @@
 
 02:4000 .code:4000
 
-03:4000 .code:4000
+
+
+
+03:4000 .code:1398
+
+03:5398 unkTiles22
+03:5398 .data:6
+03:539E unkTiles21
+03:539E .data:A
+03:53A8 unkTiles20
+03:53A8 .data:A
+03:53B2 unkTiles1F
+03:53B2 .data:A
+03:53BC unkTiles1E
+03:53BC .data:A
+03:53c6 unkTiles1D
+03:53c6 .data:A
+03:53D0 unkTiles1C
+03:53D0 .data:A
+03:53DA unkTiles1B
+03:53DA .data:12
+03:53EC unkTiles1A
+03:53EC .data:12
+03:53FE unkTiles19
+03:53FE .data:6
+03:5404 unkTiles18
+03:5404 .data:6
+03:540A unkTiles17
+03:540A .data:6
+03:5410 unkTiles16
+03:5410 .data:6
+03:5416 unkTiles15
+03:5416 .data:B
+03:5421 unkTiles14
+03:5421 .data:B
+03:542C unkTiles13
+03:542C .data:B
+03:5437 unkTiles12
+03:5437 .data:B
+03:5442 unkTiles11
+03:5442 .data:B
+03:544d unkTiles10
+03:544d .data:1A
+03:5467 unkTilesF
+03:5467 .data:1A
+03:5481 unkTilesE
+03:5481 .data:1A
+03:549b unkTilesPointers2
+03:549b .data:2A
+
+03:54c5 unkTilesD
+03:54c5 .data:16A
+03:562F unkTilesC
+03:562F .data:26
+03:5655 unkTilesB
+03:5655 .data:16A
+03:57BF unkTilesA
+03:57BF .data:B
+03:57CA unkTiles9
+03:57CA .data:B
+03:57D5 unkTiles8
+03:57D5 .data:B
+03:57E0 unkTiles7
+03:57E0 .data:B
+03:57EB unkTiles6
+03:57EB .data:B
+03:57F6 unkTiles5
+03:57F6 .data:B
+03:5801 unkTiles4
+03:5801 .data:B
+03:580C unkTiles3
+03:580C .data:B
+03:5817 unkTiles2
+03:5817 .data:B
+03:5822 unkTiles
+03:5822 .data:B
+03:582D house_tiles
+03:582D .data:16A
+03:5997 unkTiles23
+03:5997 .data:1E
+03:59b5 unkTiles24
+03:59b5 .data:1E
+03:59d3 unkTiles25
+03:59d3 .data:1E
+03:59f1 unkTilesPointers
+03:59f1 .data:22
+
+03:5a13 unkTiles26
+03:5a13 .data:1E
+03:5a31 unkTiles27
+03:5a31 .data:1E
+03:5A4F unkTiles28
+03:5A4F .data:1E
+03:5A6D unkTiles29
+03:5A6D .data:8
+
+03:5A75 unkAnimPointers
+03:5A75 .data:22
+
+03:5a8f unkAnimSet1
+03:5a8f .data:48
+03:5ad7 unkAnimSet2
+03:5ad7 .data:E0
+03:5bb7 unkAnimSet3
+03:5bb7 .data:16
+03:5bcd unkAnimSet4
+03:5bcd .data:16
+03:5be3 unkAnimSet5
+03:5be3 .data:16
+03:5bf9 unkAnimSet6
+03:5bf9 .data:86
+03:5c7f unkAnimSet7
+03:5c7f .data:78
+03:5cf7 unkAnimSet8
+03:5cf7 .data:78
+03:5d6f unkAnimSet9
+03:5d6f .data:24
+03:5d93 unkAnimSetA
+03:5d93 .data:9E
+03:5e31 unkAnimSetB
+03:5e31 .data:E
+03:5e3f unkAnimSetC
+03:5e3f .data:78
+03:5eb7 unkAnimSetD
+03:5eb7 .data:42
+
+03:5ef9 unkData
+03:5ef9 .data:11E5
+
+03:70DE bank3_pad
+03:70DE .data:F22
+
+
 04:4000 .code:4000
 05:4000 .code:4000
 
@@ -229,23 +360,86 @@
 17:4000 bank_img_levelMap
 17:4000 .image:1000:w256,p1e
 
-17:5000 bank_img_unkMap
+17:5000 bank_img_unusedLevelMap
 17:5000 .image:1000:w256,p1e
 
 
 
 
 
-17:6000 levelMapConstTiles 
+17:6000 levelmap_bgTiles
 17:6000 .data:016A
-
-17:62C5 levelMapConstTilesPointers
+17:616A levelmap_1Tiles
+17:616A .data:0008
+17:6172 levelmap_2Tiles
+17:6172 .data:0008
+17:617A levelmap_3Tiles
+17:617A .data:0008
+17:6182 levelmap_4Tiles
+17:6182 .data:0008
+17:618A levelmap_5Tiles
+17:618A .data:0008
+17:6192 levelmap_6Tiles
+17:6192 .data:0008
+17:619A levelmap_7Tiles
+17:619A .data:0008
+17:61A2 levelmap_8Tiles
+17:61A2 .data:0008
+17:61AA levelmap_unusedChalvoTiles
+17:61AA .data:0003
+17:61AD levelmap_diamondTiles
+17:61AD .data:0006
+17:61B3 levelmap_ditherSquareTiles
+17:61B3 .data:0006
+17:61B9 levelmap_whiteSquareTiles
+17:61B9 .data:0006
+17:61BF levelmap_9Tiles
+17:61BF .data:0008
+17:61C7 levelmap_0Tiles
+17:61C7 .data:0008
+17:61CF levelmap_bossWarningTiles
+17:61CF .data:007B
+17:624A levelmap_questionMarkTiles
+17:624A .data:007B
+17:62C5 levelMapTilesPointers
 17:62C5 .data:22
 
-17:62C5 unusedTiles
-17:62C5 .data:16A
+17:62E7 unusedLevelMap_bgTiles
+17:62E7 .data:16A
+17:6451 unusedLevelMap_1Tiles
+17:6451 .data:A
+17:645B unusedLevelMap_2Tiles
+17:645B .data:A
+17:6465 unusedLevelMap_3Tiles
+17:6465 .data:A
+17:646F unusedLevelMap_4Tiles
+17:646F .data:A
+17:6479 unusedLevelMap_5Tiles
+17:6479 .data:A
+17:6483 unusedLevelMap_6Tiles
+17:6483 .data:A
+17:648D unusedLevelMap_7Tiles
+17:648D .data:A
+17:6497 unusedLevelMap_8Tiles
+17:6497 .data:A
+17:64A1 unusedLevelMap_1darkTiles
+17:64A1 .data:A
+17:64AB unusedLevelMap_2darkTiles
+17:64AB .data:A
+17:64B5 unusedLevelMap_3darkTiles
+17:64B5 .data:A
+17:64BF unusedLevelMap_4darkTiles
+17:64BF .data:A
+17:64C9 unusedLevelMap_5darkTiles
+17:64C9 .data:A
+17:64D3 unusedLevelMap_6darkTiles
+17:64D3 .data:A
+17:64DD unusedLevelMap_7darkTiles
+17:64DD .data:A
+17:64E7 unusedLevelMap_8darkTiles
+17:64E7 .data:A
 
-17:64F1 unusedTilesPointers
+17:64F1 unusedLevelMapPointers
 17:64F1 .data:22
 
 17:6513 bank17pad
