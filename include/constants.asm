@@ -194,11 +194,20 @@ def PADF_NONE equ 0 ; 0x0
 ; actor stuff
 def MAX_ACTORS equ 55 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once
 
-; actor struct
-; spritemode:: db
-; actorType:: db
-; 2 == player
+
+; actor struct, sizeof 0x20
+
+; typedef struct Actor {
+; 0x0 db effect;  probably a bit thing
+; 0x1 db actorType; 2 == player
+; 0x2 db framedef; is the frame for this actor. check bank 3 FRAME_DEFs. (*2) + FrameDefs2
+; 0x3 db unk;
+; 0x4 db screenX; position relative to top left of the screen (camera)
+; 0x5 db screenY;
+; 0x6 db userVariable; ?
 ;
+
+;}Actor;
 
 ; player stuff
 def STARTING_LIVES equ 5 ; self explanatory

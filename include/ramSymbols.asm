@@ -1,12 +1,15 @@
 ; symbols wip
 SECTION "WRAM", WRAM0
-paddingToEndAllPadding:: ds 2071
+paddingToEndAllPadding:: ds $120
 ; ok, i tore my fucking hair out over this
 ; to PROPERLY place the variables in vram
 ; you have to have every other variable up
 ; until that point. (space wise)
 ; thats what this padding is for.
 
+actors:: db 
+
+paddingToEndAllPadding2:: ds $6F6
 
 ; actual variables
 ; 55 entries
