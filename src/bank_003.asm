@@ -7,7 +7,7 @@ SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
 
     ld a, $1c
     ld [$c82d], a
-    ld bc, $c100
+    ld bc, actors
     xor a
     ld [$c82f], a
 
@@ -23,7 +23,7 @@ Jump_003_400c:
     jr z, jr_003_402e
 
     push af
-    ld hl, $c120
+    ld hl, actors+(1*ACTOR_sizeof)
     ld a, h
     cp b
     jr nz, jr_003_402d

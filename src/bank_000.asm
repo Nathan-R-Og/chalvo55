@@ -423,7 +423,7 @@ jr_000_0188:
 
 jr_000_01d4:
     call Call_000_0c2e
-    ld a, [$c80b]
+    ld a, [sceneState]
     cp $0a
     jr nz, jr_000_01eb
 
@@ -440,7 +440,6 @@ jr_000_01eb:
     call Call_000_02c4
 
 jr_000_01ee:
-    ;mainloop??
     call Call_000_3594
     call Call_000_0c2e
     ld a, $03
@@ -452,7 +451,7 @@ jr_000_01ee:
     bit 5, [hl]
     jr nz, jr_000_0232
 
-    ld a, [$c80b]
+    ld a, [sceneState]
     cp $0a
     jr nz, jr_000_0220
 
@@ -497,11 +496,10 @@ Jump_000_0238:
     bit 5, [hl]
     jr nz, jr_000_0252
 
-    ld a, [$c80b]
+    ld a, [sceneState]
     cp $0a
     jr nz, jr_000_0257
 
-Call_000_024b:
     ld a, [$c80c]
     cp $03
     jr nz, jr_000_0257
@@ -606,8 +604,6 @@ Call_000_02c4:
     ldh a, [rP1]
     ldh a, [rP1]
     ldh a, [rP1]
-
-Call_000_02de:
     ldh a, [rP1]
     ldh a, [rP1]
     cpl
@@ -621,8 +617,6 @@ Call_000_02de:
     ld a, c
     ldh [$9b], a
     ld a, $30
-
-Call_000_02f2:
     ldh [rP1], a
     ret
 
@@ -1906,7 +1900,6 @@ Call_000_08ae:
     push af
     push de
     push hl
-    
     ld d, a
     ld a, [$c9ff]
     push af
@@ -6668,24 +6661,24 @@ jr_000_23e3:
     call Call_000_08ae
     ret
 
+;starts actor clean up
+;moves $380 bytes
+StartActorCleanup:
+    ld bc, MAX_ACTORS * ACTOR_sizeof
+    ld hl, actors
 
-Call_000_23ec:
-    ld bc, $0380
-    ld hl, $c100
-
-jr_000_23f2:
+ActorCleanup_Loop:
     xor a
     ld [hl+], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_23f2
+    jr nz, ActorCleanup_Loop
 
     ret
 
 
-Call_000_23fa:
-    ld hl, $c100
+    ld hl, actors
     call Call_000_26e3
     ld bc, $0340
     ld hl, $c140
@@ -7100,8 +7093,6 @@ jr_000_2553:
     cp l
     add d
     rst $10
-
-Call_000_25e1:
     ld a, [$cb2a]
     and a
     jr nz, jr_000_2624
@@ -7312,7 +7303,6 @@ Call_000_26e3:
     ret
 
 
-Call_000_2705:
     push af
     push de
     push hl
@@ -7537,7 +7527,6 @@ jr_000_27f5:
     ret
 
 
-Call_000_27f6:
     push af
     push bc
     push de
@@ -8007,8 +7996,6 @@ jr_000_2a5b:
 
 jr_000_2a61:
     bit 3, [hl]
-
-Jump_000_2a63:
     jr nz, jr_000_2aa6
 
     jr jr_000_2aaa
@@ -8399,7 +8386,7 @@ Jump_000_2c75:
     cp $03
     jr z, jr_000_2ca0
 
-    ld de, $c100
+    ld de, actors
     ld a, $2c
     ld hl, $0000
     add hl, de
@@ -8885,7 +8872,6 @@ jr_000_2f11:
     ret
 
 
-Call_000_2f12:
     ld [$c842], a
     cp $00
     jr nz, jr_000_2f1e
@@ -8911,7 +8897,6 @@ jr_000_2f21:
     ret
 
 
-Call_000_2f39:
     ld de, $ffff
     ld a, [de]
     res 1, a
@@ -10102,7 +10087,7 @@ Jump_000_3593:
 
 
 Call_000_3594:
-    ld a, [$c80b]
+    ld a, [sceneState]
     ld de, $35ba
     push de
     rst $00
@@ -10197,7 +10182,7 @@ Call_000_3594:
     set 2, [hl]
     pop hl
     ld a, $07
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10247,7 +10232,7 @@ jr_000_3647:
     set 2, [hl]
     pop hl
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10261,7 +10246,7 @@ jr_000_3647:
     ld [$ca06], a
     ld [$ca07], a
     ld [$ca08], a
-    ld [$cb24], a
+    ld [titleDemoTimer], a
     ld [$cb25], a
     ld a, $01
     push hl
@@ -10292,12 +10277,7 @@ jr_000_3647:
     ld [$c9ff], a
     set 2, [hl]
     pop hl
-
-    ;jumps to title
-    ;loops until ret on progress
     call $6b3d
-    ;
-
     pop af
     push hl
     ld hl, $ffff
@@ -10306,39 +10286,28 @@ jr_000_3647:
     ld [$c9ff], a
     set 2, [hl]
     pop hl
-    ;checks if demoing
     ld a, [demoing]
     and a
-    ;if not, inits player
     jr z, Player_Init
 
     ld a, $0e
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
 
 
 Player_Init::
-    ;loads the title choice
     ld a, c
-
-    ;if cursorIndex was 1, jump out
     or a
     jr nz, jr_000_3745
 
-    ;else, run game
-    ;stage 1
-    ld a, 0
+    ld a, $00
     ld [currentStage], a
-
-    ;5 lives
-    ld a, STARTING_LIVES
+    ld a, $05
     ld [playerLives], a
-
     ld a, $0d
-    ld [$c80b], a
-
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10346,7 +10315,7 @@ Player_Init::
 
 jr_000_3745:
     ld a, $03
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10389,7 +10358,7 @@ jr_000_3745:
     jr z, jr_000_37a8
 
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10397,7 +10366,7 @@ jr_000_3745:
 
 jr_000_37a8:
     ld a, $07
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10455,7 +10424,7 @@ jr_000_37a8:
     set 2, [hl]
     pop hl
     ld a, $07
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10541,7 +10510,7 @@ Call_000_382c:
     pop hl
     call $4000
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10605,7 +10574,7 @@ Call_000_382c:
     set 2, [hl]
     pop hl
     ld a, $08
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10634,7 +10603,7 @@ Call_000_382c:
     jr nz, jr_000_39a0
 
     xor a
-    ld [$cb24], a
+    ld [titleDemoTimer], a
     ld [$cb25], a
     ld [$cb29], a
     ld a, $00
@@ -10662,7 +10631,7 @@ jr_000_39a0:
     or $80
     ld [de], a
     ld a, $0a
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -10717,7 +10686,7 @@ jr_000_39f9:
 jr_000_3a07:
     call Call_000_3a3c
     ld a, $0a
-    ld [$c80b], a
+    ld [sceneState], a
     ld a, $08
     ldh [$9b], a
     pop af
@@ -10770,7 +10739,7 @@ Call_000_3a3c:
 
 Call_000_3a63:
     ld a, $01
-    ld [$c80b], a
+    ld [sceneState], a
     call Call_000_3afd
     ld a, $17
     push hl
@@ -10817,7 +10786,7 @@ jr_000_3ab6:
 
 Call_000_3ab7:
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     call Call_000_3afd
     ld a, $1d
     push hl
@@ -11090,7 +11059,7 @@ jr_000_3c2e:
 
 
 Call_000_3c43:
-    ld a, [$c80b]
+    ld a, [sceneState]
     cp $02
     jr z, jr_000_3c75
 
@@ -11130,7 +11099,7 @@ jr_000_3c5a:
     jr jr_000_3c4d
 
 jr_000_3c75:
-    ld a, [$c80b]
+    ld a, [sceneState]
     cp $01
     jp nz, Jump_000_3cc4
 

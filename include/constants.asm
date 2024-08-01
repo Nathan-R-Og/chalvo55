@@ -192,10 +192,9 @@ ENDM
 def PADF_NONE equ 0 ; 0x0
 
 ; actor stuff
-def MAX_ACTORS equ 55 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once
+def MAX_ACTORS equ 28 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once
+def ACTOR_sizeof equ $20
 
-
-; actor struct, sizeof 0x20
 
 ; typedef struct Actor {
 ; 0x0 db effect;  probably a bit thing

@@ -57,7 +57,7 @@ jr_005_4040:
     dec b
     jr nz, jr_005_4040
 
-    call Call_000_23ec
+    call StartActorCleanup
     ld de, $ff40
     ld a, [de]
     and $7f
@@ -79,7 +79,7 @@ jr_005_4040:
     ld [$c803], a
     ld a, $00
     ld [$c804], a
-    ld de, actors
+    ld de, $c120
     ld a, $01
     ld hl, $0001
     add hl, de
@@ -512,7 +512,7 @@ jr_005_42e7:
     ret
 
 
-    ld de, actors
+    ld de, $c120
     ld a, $fc
     ld hl, $000e
     add hl, de
@@ -540,7 +540,7 @@ jr_005_42e7:
     ld [levelDiamondsBitFlag], a
     ld [diamonds], a
     ld [chalvoPosCheckpointX], a
-    call Call_000_23ec
+    call StartActorCleanup
     ld de, $ff40
     ld a, [de]
     and $7f
@@ -559,7 +559,7 @@ jr_005_42e7:
     ld a, [$c80c]
     inc a
     ld [$c80c], a
-    ld de, actors
+    ld de, $c120
     ld a, $03
     ld hl, $0001
     add hl, de
@@ -781,7 +781,7 @@ Jump_005_4478:
     ld [levelDiamondsBitFlag], a
     ld [diamonds], a
     ld [chalvoPosCheckpointX], a
-    call Call_000_23ec
+    call StartActorCleanup
     ld de, $ff40
     ld a, [de]
     and $7f
@@ -800,7 +800,7 @@ Jump_005_4478:
     ld a, [$c80c]
     inc a
     ld [$c80c], a
-    ld de, actors
+    ld de, $c120
     ld a, $04
     ld hl, $0001
     add hl, de
@@ -869,9 +869,9 @@ Jump_005_4478:
     ret
 
 
-    call Call_000_23ec
+    call StartActorCleanup
     ld a, $06
-    ld [$c80b], a
+    ld [sceneState], a
     ld a, $00
     ld [$c80c], a
     ret
@@ -1108,7 +1108,7 @@ jr_005_4627:
     ld hl, $0002
     add hl, bc
     ld [hl], a
-    ld de, actors
+    ld de, $c120
     ld hl, $001e
     add hl, de
     ld a, [hl]
@@ -1156,7 +1156,7 @@ Jump_005_468b:
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
-    ld de, actors
+    ld de, $c120
     ld hl, $0004
     add hl, de
     ld a, [hl]
@@ -1182,7 +1182,7 @@ Jump_005_46b5:
 
 
     ld d, $1c
-    ld bc, $c100
+    ld bc, actors
 
 jr_005_46bc:
     ld hl, $0001
@@ -2664,7 +2664,7 @@ jr_005_4c5d:
     xor a
     ld [$c803], a
     ld [$c804], a
-    call Call_000_23ec
+    call StartActorCleanup
     call Call_000_0619
     xor a
     ld [$c983], a
@@ -2705,7 +2705,7 @@ jr_005_4cc9:
 jr_005_4cd5:
     ld de, $9800
     call Call_000_0756
-    ld bc, actors
+    ld bc, $c120
     ld a, $04
     ld hl, $0000
     add hl, bc
@@ -3171,7 +3171,7 @@ jr_005_4ef7:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     ld a, $02
     ld hl, $001e
     add hl, bc
@@ -3220,7 +3220,7 @@ jr_005_4f4e:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     ld a, $01
     ld hl, $0002
     add hl, bc
@@ -3234,7 +3234,7 @@ jr_005_4f4e:
     jp c, Jump_005_4f95
 
     ld [hl], $70
-    ld bc, actors
+    ld bc, $c120
     ld a, $10
     ld hl, $001f
     add hl, bc
@@ -3259,14 +3259,14 @@ Jump_005_4f95:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
     ld a, $01
     call Call_000_34c1
     call Call_005_5147
-    ld bc, actors
+    ld bc, $c120
     ld hl, $001f
     add hl, bc
     dec [hl]
@@ -3293,7 +3293,7 @@ jr_005_4fd3:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     call Call_000_22e6
     ld hl, $0005
     add hl, bc
@@ -3302,7 +3302,7 @@ jr_005_4fd3:
     jp c, Jump_005_5018
 
     call Call_005_51b8
-    ld bc, actors
+    ld bc, $c120
     ld a, $01
     ld hl, $000a
     add hl, bc
@@ -3331,7 +3331,7 @@ Jump_005_5018:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     ld hl, $0000
     add hl, bc
     ld a, [hl]
@@ -3369,7 +3369,7 @@ jr_005_505b:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     call Call_000_22e6
     ld hl, $0005
     add hl, bc
@@ -3390,7 +3390,7 @@ Jump_005_5081:
 
 
     call Call_005_524f
-    ld bc, actors
+    ld bc, $c120
     ld hl, $0000
     add hl, bc
     ld a, [hl]
@@ -3417,7 +3417,7 @@ Jump_005_5081:
     and $09
     jp nz, Jump_005_50c7
 
-    ld bc, actors
+    ld bc, $c120
     ld hl, $001f
     add hl, bc
     dec [hl]
@@ -3442,7 +3442,7 @@ jr_005_50d5:
     call Call_000_2e61
     jr z, jr_005_513e
 
-    call Call_000_23ec
+    call StartActorCleanup
     ld hl, $cb2c
     bit 6, [hl]
     jr z, jr_005_50f7
@@ -3472,7 +3472,7 @@ jr_005_5107:
     ld a, $01
     ld [demoing], a
     ld a, $0e
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ld a, $02
@@ -3481,7 +3481,7 @@ jr_005_5107:
 
 jr_005_5125:
     ld a, $04
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ld a, [currentStage]
@@ -3489,7 +3489,7 @@ jr_005_5125:
     jr c, jr_005_513e
 
     ld a, $05
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
 
@@ -9865,7 +9865,7 @@ jr_005_5d0b:
     ldh [$6c], a
 
 StartCutscene_End_Ref::
-    dw StartCutscene_End
+    db $fb, $6c
 
     ld h, a
     ld l, l
@@ -9893,7 +9893,7 @@ StartCutscene_End_Ref::
 jr_005_6ac9:
     ld [$c804], a
     ld [$c984], a
-    call Call_000_23ec
+    call StartActorCleanup
     call Call_000_0619
     xor a
     ld [$c983], a
@@ -9932,7 +9932,7 @@ jr_005_6af2:
     call Call_000_2e61
     jr z, jr_005_6b53
 
-    ld bc, actors
+    ld bc, $c120
     ld a, $04
     ld hl, $0000
     add hl, bc
@@ -9969,7 +9969,7 @@ jr_005_6b53:
     ret
 
 
-    ld bc, actors
+    ld bc, $c120
     ld hl, $001f
     add hl, bc
     dec [hl]
@@ -9989,7 +9989,7 @@ jr_005_6b6a:
     bit 0, [hl]
     jr z, jr_005_6b6a
 
-    ld bc, actors
+    ld bc, $c120
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
@@ -9999,7 +9999,7 @@ jr_005_6b6a:
     cp $79
     jp nc, Jump_005_6b9a
 
-    call Call_000_23ec
+    call StartActorCleanup
     ld de, $ff40
     ld a, [de]
     and $7f
@@ -10008,7 +10008,7 @@ jr_005_6b6a:
     inc a
     ld [$c80c], a
 
-Jump_005_6b9a:
+    Jump_005_6b9a:
     ret
 
 
@@ -10031,81 +10031,99 @@ Jump_005_6b9a:
     dec [hl]
     jp nz, Jump_005_6c4d
 
-    ld bc, actors
+    ld bc, actors+(1*ACTOR_sizeof)
     ld a, $24
     ld hl, $0000
     add hl, bc
     ld [hl], a
+
     ld a, $c0
     ld hl, $0004
     add hl, bc
     ld [hl], a
+
     ld a, $60
     ld hl, $0005
     add hl, bc
     ld [hl], a
+
     ld a, $18
     ld hl, $0007
     add hl, bc
     ld [hl], a
+
     ld a, $04
     ld hl, $0006
     add hl, bc
     ld [hl], a
+
     ld a, $00
     ld hl, $000a
     add hl, bc
     ld [hl], a
-    ld bc, $c140
+
+    ld bc, actors+(2*ACTOR_sizeof)
     ld a, $24
     ld hl, $0000
     add hl, bc
     ld [hl], a
+
     ld a, $d4
     ld hl, $0004
     add hl, bc
     ld [hl], a
+
     ld a, $60
     ld hl, $0005
     add hl, bc
     ld [hl], a
+
     ld a, $18
     ld hl, $0007
     add hl, bc
     ld [hl], a
+
     ld a, $04
     ld hl, $0006
     add hl, bc
     ld [hl], a
+
     ld a, $01
     ld hl, $000a
     add hl, bc
     ld [hl], a
-    ld bc, $c160
+
+    ld bc, actors+(3*ACTOR_sizeof)
     ld a, $24
     ld hl, $0000
     add hl, bc
     ld [hl], a
+
     ld a, $e8
     ld hl, $0004
     add hl, bc
     ld [hl], a
+
     ld a, $60
     ld hl, $0005
     add hl, bc
     ld [hl], a
+
     ld a, $18
     ld hl, $0007
     add hl, bc
     ld [hl], a
+
     ld a, $04
     ld hl, $0006
     add hl, bc
     ld [hl], a
+
     ld a, $02
     ld hl, $000a
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10114,25 +10132,28 @@ Jump_005_6c4d:
     ret
 
 
-    ld bc, actors
+    ld bc, actors+(1*ACTOR_sizeof)
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
     ld a, $0c
     call Call_000_34c1
-    ld bc, $c140
+
+    ld bc, actors+(2*ACTOR_sizeof)
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
     ld a, $0c
     call Call_000_34c1
-    ld bc, $c160
+
+    ld bc, actors+(3*ACTOR_sizeof)
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
     ld a, $0c
     call Call_000_34c1
-    ld bc, actors
+
+    ld bc, actors+(1*ACTOR_sizeof)
     ld hl, $0004
     add hl, bc
     ld a, [hl]
@@ -10144,11 +10165,14 @@ Jump_005_6c4d:
     add hl, bc
     ld [hl], a
     ld a, $4c
-    ld [$c122], a
+    ld [actors+(1*ACTOR_sizeof)+2], a
+
     ld a, $4f
-    ld [$c142], a
+    ld [actors+(2*ACTOR_sizeof)+2], a
+
     ld a, $52
-    ld [$c162], a
+    ld [actors+(3*ACTOR_sizeof)+2], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10157,7 +10181,7 @@ Jump_005_6ca8:
     ret
 
 
-    ld bc, actors
+    ld bc, actors+(1*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
@@ -10176,7 +10200,7 @@ jr_005_6cc6:
     ret
 
 
-    ld bc, actors
+    ld bc, actors+(1*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
@@ -10197,7 +10221,8 @@ jr_005_6cdf:
     call Call_000_2e61
     jr z, jr_005_6cfa
 
-    call Call_000_23ec
+    ;cleanup previous actors
+    call StartActorCleanup
     ld de, $ff40
     ld a, [de]
     and $7f
@@ -10222,8 +10247,9 @@ StartCutscene_End::
     ld hl, $7209
     call Call_000_0756
 
+    ;;;;;LOAD CHARLIE
     ;load the actor array at index 0
-    ld bc, actors
+    ld bc, actors+(1*ACTOR_sizeof)
 
     ;insert $04 at 0x0
     ld a, $04
@@ -10250,13 +10276,16 @@ StartCutscene_End::
     ld [hl], a
 
     ;insert $78 at 0x1f
+    ;sets the timer until he does a thumbs up
     ld a, $78
     ld hl, $001f
     add hl, bc
     ld [hl], a
 
+
+    ;;;;;LOAD CHALVO
     ;load the actor array at index 1
-    ld bc, actors+(1*$20)
+    ld bc, actors+(2*ACTOR_sizeof)
     
     ;insert $24 at 0x0
     ld a, $24
@@ -10313,21 +10342,31 @@ jr_005_6d7a:
     call Call_005_73ef
     ret nz
 
-    ld bc, actors
+    ;;;;;LOAD CHARLIE
+    ;load the actor array at index 0
+    ;loop until thumbs up timer is 0
+    ld bc, actors+(1*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
     jr nz, jr_005_6da1
+    ;loop
 
+    ;thumbs up
     ld a, $55
     ld hl, $0002
     add hl, bc
     ld [hl], a
-    ld bc, $c140
+
+    ;;;;;LOAD CHALVO
+    ;load the actor array at index 1
+    ;set the timer until chalvo turns around
+    ld bc, actors+(2*ACTOR_sizeof)
     ld a, $5a
     ld hl, $001f
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10339,32 +10378,50 @@ jr_005_6da1:
     call Call_005_73ef
     ret nz
 
-    ld bc, $c140
+    ;pseudo
+    ;while timer > 0:
+    ;   if timer == $1e:
+    ;        charlie.anim = "thumbs down"
+    ;   timer--
+
+    ;;;;;LOAD CHALVO
+    ;load the actor array at index 1
+    ;break out when chalvo timer at 0
+    ld bc, actors+(2*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     ld a, [hl]
     dec a
     ld [hl], a
     jr z, jr_005_6dc2
-
+    ;specifically at when the timer is $1e, put charlies thumb down
     cp $1e
     jr nz, jr_005_6dd6
+    ;loop
 
-    ld bc, actors
+    ;;;;;LOAD CHARLIE
+    ;load the actor array at index 0
+    ;put his thumb down
+    ld bc, actors+(1*ACTOR_sizeof)
     ld a, $54
     ld hl, $0002
     add hl, bc
     ld [hl], a
+    ;go back to the loop
     jr jr_005_6dd6
 
 jr_005_6dc2:
+    ;flip chalvo around
     ld hl, $0000
     add hl, bc
     res 5, [hl]
+
+    ;set jump timer
     ld a, $3c
     ld hl, $001f
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10376,20 +10433,28 @@ jr_005_6dd6:
     call Call_005_73ef
     ret nz
 
-    ld bc, $c140
+    ;;;;;LOAD CHALVO
+    ;load the actor array at index 1
+    ;loop until jumptimer == 0
+    ld bc, actors+(2*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
     jr nz, jr_005_6dfa
+    ;loop
 
-    ld a, $08
+    ;set chavlo frame to jump
+    ld a, ANIM_FRAME_Chalvo_Jump
     ld hl, $0002
     add hl, bc
     ld [hl], a
+    
+    ;set time before actual launch
     ld a, $0c
     ld hl, $001f
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10401,24 +10466,32 @@ jr_005_6dfa:
     call Call_005_73ef
     ret nz
 
-    ld bc, $c140
+    ;;;;;LOAD CHALVO
+    ;load the actor array at index 1
+    ;loop until launch timer == 0
+    ld bc, actors+(2*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
     jr nz, jr_005_6e25
+    ;loop
 
-    ld a, $03
+    ;set chavlo frame to ballup
+    ld a, ANIM_FRAME_Chalvo_BallUp
     ld hl, $0002
     add hl, bc
     ld [hl], a
+
     ld a, $02
     ld hl, $0007
     add hl, bc
     ld [hl], a
+
     ld a, $10
     ld hl, $0006
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10430,25 +10503,37 @@ jr_005_6e25:
     call Call_005_73ef
     ret nz
 
-    ld bc, $c140
+    ;;;;;LOAD CHALVO
+    ;load the actor array at index 1
+    ld bc, actors+(2*ACTOR_sizeof)
     ld a, $01
     ld hl, $4000
     call Call_000_08ae
+
+    ;loop until chalvo 0x5 > $d8 (when he reaches top (wrapping to the bottom))
     ld hl, $0005
     add hl, bc
     ld a, [hl]
     cp $d8
     jp c, Jump_005_6e57
+    ;loop
 
-    ld bc, actors
+    ;;;;;LOAD CHARLIE
+    ;load the actor array at index 0
+    ;make him look up
+    ld bc, actors+(1*ACTOR_sizeof)
     ld a, $56
     ld hl, $0002
     add hl, bc
     ld [hl], a
+    
+    ;set a timer of (what is basically) $0100
+    ;(it will decrement right before it gets checked, so)
     ld a, $00
     ld hl, $001f
     add hl, bc
     ld [hl], a
+
     ld a, [$c80c]
     inc a
     ld [$c80c], a
@@ -10460,11 +10545,15 @@ Jump_005_6e57:
     call Call_005_73ef
     ret nz
 
-    ld bc, actors
+    ;;;;;LOAD CHARLIE
+    ;load the actor array at index 0
+    ;loop until timer runs out
+    ld bc, actors+(1*ACTOR_sizeof)
     ld hl, $001f
     add hl, bc
     dec [hl]
     jr nz, jr_005_6e6d
+    ;loop
 
     ld a, [$c80c]
     inc a
@@ -10489,14 +10578,24 @@ jr_005_6e6d:
     call Call_000_2e61
     jr z, jr_005_6ea0
 
-    call Call_000_23ec
+    ;clean up and get ready for the game to begin
+    call StartActorCleanup
+    ;set stage to 0
     xor a
     ld [currentStage], a
+
+    ;set the sceneState to 7 (mob ship)
     ld a, $07
-    ld [$c80b], a
+    ld [sceneState], a
+
+    ;process state???
+    ;0 seems to be stage init
     xor a
     ld [$c80c], a
+    ;??
     ld a, [$c80c]
+
+    ;1 seems to be to simply init stuff using existing data
     inc a
     ld [$c80c], a
 
@@ -11701,7 +11800,7 @@ Jump_005_740c:
     jp nz, Jump_005_7427
 
     ld a, $09
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     call Call_000_0a65
@@ -11820,7 +11919,7 @@ jr_005_74b8:
     ld a, l
     ld [$cb27], a
     ld a, $08
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ret
@@ -11847,7 +11946,7 @@ jr_005_74b8:
     ld [titleDemoTimer], a
     ld [$cb25], a
     ld [$cb2c], a
-    call Call_000_23ec
+    call StartActorCleanup
     call Call_000_0619
     pop af
     bit 7, a
@@ -11856,7 +11955,7 @@ jr_005_74b8:
     ld hl, currentStage
     inc [hl]
     ld a, $04
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     ld a, [currentStage]
@@ -11865,14 +11964,14 @@ jr_005_74b8:
 
     call Call_000_0a65
     ld a, $05
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
     jr jr_005_752a
 
 jr_005_7521:
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
 
@@ -11978,7 +12077,7 @@ jr_005_75b7:
     jr z, jr_005_75c8
 
     ld a, $02
-    ld [$c80b], a
+    ld [sceneState], a
     xor a
     ld [$c80c], a
 

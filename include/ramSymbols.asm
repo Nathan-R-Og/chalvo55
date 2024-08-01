@@ -1,25 +1,25 @@
 ; symbols wip
 SECTION "WRAM", WRAM0
-paddingToEndAllPadding:: ds $120
+paddingToEndAllPadding:: ds $100
 ; ok, i tore my fucking hair out over this
 ; to PROPERLY place the variables in vram
 ; you have to have every other variable up
 ; until that point. (space wise)
 ; thats what this padding is for.
 
-actors:: db 
+actors:: ds ACTOR_sizeof * MAX_ACTORS
 
-paddingToEndAllPadding2:: ds $6F6
+paddingToEndAllPadding2:: ds $c80b - $c480
 
 ; actual variables
-; 55 entries
-; 00:c120 chalvospriteRotationIndex ; ???? apart of a 0x20 struct
-; 00:c122 chalvosprite_frame
-; 00:c124 playerScreenX_origindistance ; is actually used to calculate the player's position
-; 00:c125 playerScreenY_origindistance
 
 ; 00:c803 playerScreenX
 ; 00:c804 playerScreenY
+
+sceneState:: db
+
+padding23:: ds $c816 - $c80b
+
 ; 00:c81b playerScreenX_origindistance_copy
 ; 0:c81c playerScreenY_origindistance_copy
 

@@ -495,7 +495,9 @@
 03:5eb7 unkAnimSetD
 
 03:5ef9 unkData
-03:5ef9 .data:11E5
+03:5ef9 .data:FFA
+
+03:6ef3 .code:1EB
 
 03:70DE bank3_pad
 03:70DE .data:F22
@@ -850,7 +852,8 @@
 
 
 ; actual variables
-00:c120 actors
+00:c100 actors
+00:c80b sceneState
 00:c817 playerState
 00:c818 currentStage
 00:c974 diamonds
@@ -874,6 +877,8 @@
 
 
 ; function/jr names
+00:23ec StartActorCleanup
+00:23f2 ActorCleanup_Loop
 00:372d Player_Init
 
 01:6b64 Title_Loop_Jump
