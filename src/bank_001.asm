@@ -9210,7 +9210,7 @@ Title_Main:
 
 Title_Input:
     ;load current (held) button input
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
 
     bit PADB_A, a
     jr nz, Title_Progress
@@ -9500,11 +9500,11 @@ jr_001_6cf5:
 jr_001_6d02:
     xor a
     ld [$ca08], a
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     ldh [$9c], a
 
 jr_001_6d0a:
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
     ret
 
 titleScreenTiles::
@@ -9600,7 +9600,7 @@ jr_001_6ecd:
 Jump_001_6eda:
 jr_001_6eda:
     call Call_001_6cac
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
     bit 0, a
     jr nz, jr_001_6f5f
 
@@ -10123,7 +10123,7 @@ jr_001_71da:
 
 jr_001_71e1:
     call Call_001_6cac
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
     and $09
     jr nz, jr_001_71ec
 

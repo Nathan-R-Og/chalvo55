@@ -125,6 +125,35 @@
 03:44fb FRAME_DEF_unkTiles27
 03:44ff FRAME_DEF_unkTiles28
 
+03:4503 MAYBE_FRAME_DEF_unk1
+03:4507 MAYBE_FRAME_DEF_unk2
+03:452c MAYBE_FRAME_DEF_unk3
+03:4551 MAYBE_FRAME_DEF_unk4
+03:4576 MAYBE_FRAME_DEF_unk5
+03:459b MAYBE_FRAME_DEF_unk6
+03:45c0 MAYBE_FRAME_DEF_unk7
+03:45e5 MAYBE_FRAME_DEF_unk8
+03:460a MAYBE_FRAME_DEF_unk9
+03:462f MAYBE_FRAME_DEF_unkA
+03:4654 MAYBE_FRAME_DEF_unkB
+03:4665 MAYBE_FRAME_DEF_unkC
+03:4676 MAYBE_FRAME_DEF_unkD
+03:4687 MAYBE_FRAME_DEF_unkE
+03:4698 MAYBE_FRAME_DEF_unkF
+03:46a9 MAYBE_FRAME_DEF_unk10
+03:46ce MAYBE_FRAME_DEF_unk11
+03:46f3 MAYBE_FRAME_DEF_unk12
+03:4718 MAYBE_FRAME_DEF_unk13
+03:473d MAYBE_FRAME_DEF_unk14
+03:4762 MAYBE_FRAME_DEF_unk15
+03:4787 MAYBE_FRAME_DEF_unk16
+03:47ac MAYBE_FRAME_DEF_unk17
+03:47d1 MAYBE_FRAME_DEF_unk18
+03:47f6 MAYBE_FRAME_DEF_unk19
+03:4807 MAYBE_FRAME_DEF_unk1A
+03:4818 MAYBE_FRAME_DEF_unk1B
+03:4829 MAYBE_FRAME_DEF_unk1C
+03:483a MAYBE_FRAME_DEF_unk1D
 
 03:484b .data:A4
 03:484b Chalvo_BallUpTiles
@@ -495,9 +524,38 @@
 03:5eb7 unkAnimSetD
 
 03:5ef9 unkData
-03:5ef9 .data:FFA
+03:5ef9 .data:2A8
 
-03:6ef3 .code:1EB
+03:61a1 whatCode
+03:61a1 .code:445
+
+03:65e6 .data:64
+03:65e6 randomTilePointers
+03:65FA randomTilePointer1
+03:6602 randomTilePointer2
+03:660A randomTilePointer3
+03:6612 randomTilePointer4
+03:661A randomTilePointer5
+03:6622 randomTilePointer6
+03:662A randomTilePointer7
+03:6632 randomTilePointer8
+03:663A randomTilePointer9
+03:6642 randomTilePointerA
+
+03:664a whatCode2
+03:664a .code:A94
+
+03:6654 procJumpList
+03:6654 .data:3E
+
+03:6692 procJumpStart
+03:6692 .code:AA
+
+03:673c Stage_Inits
+03:673c .data:24
+
+03:6760 whatwhatwhat2
+03:6760 .code:97E
 
 03:70DE bank3_pad
 03:70DE .data:F22
@@ -854,6 +912,7 @@
 ; actual variables
 00:c100 actors
 00:c80b sceneState
+00:c80c procState
 00:c817 playerState
 00:c818 currentStage
 00:c974 diamonds
@@ -868,17 +927,25 @@
 00:c9f2 cursorIndex
 00:c9f3 passwordLetter
 00:c9f4 currentPassword
+00:c9f5 roomPointer
+
 
 00:c9fc playerLives
 
 00:cb23 demoing
 00:cb24 titleDemoTimer
+00:cb2a holdTimer
+00:cb2b localInputHeld
+
 
 
 
 ; function/jr names
+00:0406 ChangeRoom
 00:23ec StartActorCleanup
 00:23f2 ActorCleanup_Loop
+00:23fa StartActorCleanup2
+00:2406 ActorCleanup_Loop2
 00:372d Player_Init
 
 01:6b64 Title_Loop_Jump
@@ -941,6 +1008,11 @@
 02:5fa4 SetCheckpointOnTouch
 02:5faf ReturnIfInvalidCheckpoint
 
+03:6693 PrePre_Init_Stage
+03:66C0 Pre_Init_Stage
+03:6769 Init_Stage
+03:6785 Normal_Process
+03:6986 Use_Exit
 03:696e Chalvo_RemoveLife
 03:6972 Chalvo_Respawn
 

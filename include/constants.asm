@@ -179,9 +179,6 @@ def TILE_LIFEPICKUP_SETFLAG6 equ 76 ; 0x4C
 def TILE_LIFEPICKUP_SETFLAG7 equ 77 ; 0x4D
 
 ; demo stuff
-
-
-
 ; arguments: inputs, time_frames
 ; inputs the inputs or'd together
 ; time_frames the amount of time for this input in frames
@@ -190,6 +187,10 @@ MACRO demo_input
 ENDM
 
 def PADF_NONE equ 0 ; 0x0
+
+; input
+def INPUT_HOLD equ $9B ; held input poller at $FF9B
+def INPUT_PRESS equ $9C ; press input poller at $FF9C
 
 ; actor stuff
 def MAX_ACTORS equ 28 ; incredibly arbitrary, especially since the game will probably never try to process this many guys at once

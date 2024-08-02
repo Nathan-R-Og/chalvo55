@@ -5,7 +5,7 @@
 
 SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
 
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $402a
     push de
     rst $00
@@ -62,9 +62,9 @@ jr_005_4040:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -144,9 +144,9 @@ jr_005_4040:
     ld a, [de]
     or $80
     ld [de], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -154,9 +154,9 @@ jr_005_4040:
     call Call_000_2e61
     jr z, jr_005_4102
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_4102:
     ret
@@ -310,9 +310,9 @@ jr_005_41d1:
     cp $b4
     jp c, Jump_005_41e9
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_41e9:
     ret
@@ -545,9 +545,9 @@ jr_005_42e7:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -556,9 +556,9 @@ jr_005_42e7:
     call Call_000_0756
     ld a, $00
     ld [$c803], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ld de, $c120
     ld a, $03
     ld hl, $0001
@@ -579,9 +579,9 @@ jr_005_42e7:
     ret
 
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -768,9 +768,9 @@ jr_005_4466:
     ld [hl], a
     jp nz, Jump_005_4478
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_4478:
     ret
@@ -786,9 +786,9 @@ Jump_005_4478:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -797,9 +797,9 @@ Jump_005_4478:
     call Call_000_0756
     ld a, $00
     ld [$c803], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ld de, $c120
     ld a, $04
     ld hl, $0001
@@ -857,9 +857,9 @@ Jump_005_4478:
     ret
 
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -873,7 +873,7 @@ Jump_005_4478:
     ld a, $06
     ld [sceneState], a
     ld a, $00
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -1002,9 +1002,9 @@ Jump_005_45be:
     call Call_000_2e61
     jr z, jr_005_45ce
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_45ce:
     pop bc
@@ -2632,7 +2632,7 @@ jr_005_4c5d:
     ld hl, $cb2c
     res 5, [hl]
     call Call_005_5233
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $4c88
     push de
     rst $00
@@ -2672,9 +2672,9 @@ jr_005_4c5d:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -2790,9 +2790,9 @@ jr_005_4cd5:
     ld a, [de]
     or $80
     ld [de], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -3162,9 +3162,9 @@ jr_005_4cd5:
 
     ld a, $12
     call Call_000_0903
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_4ef7:
     ret
@@ -3208,9 +3208,9 @@ jr_005_4ef7:
 
     ld hl, $c2e0
     call Call_000_26e3
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_4f4e:
     ld a, $02
@@ -3247,9 +3247,9 @@ jr_005_4f4e:
     ld hl, $000a
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_4f95:
     ld a, $02
@@ -3281,9 +3281,9 @@ Jump_005_4f95:
     ld hl, $0002
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_4fd3:
     ld a, $02
@@ -3319,9 +3319,9 @@ jr_005_4fd3:
     ld hl, $0007
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_5018:
     ld a, $02
@@ -3357,9 +3357,9 @@ Jump_005_5018:
     ld hl, $0002
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_505b:
     ld a, $02
@@ -3378,9 +3378,9 @@ jr_005_505b:
     jp c, Jump_005_5081
 
     call Call_005_51b8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_5081:
     ld a, $02
@@ -3404,16 +3404,16 @@ Jump_005_5081:
     ld hl, $001f
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ld a, $02
     ld hl, $4001
     call Call_000_08ae
     ret
 
 
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     and $09
     jp nz, Jump_005_50c7
 
@@ -3427,9 +3427,9 @@ Jump_005_50c7:
     ld a, $00
     ld d, $07
     call Call_000_2df8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_50d5:
     ld a, $02
@@ -3474,16 +3474,16 @@ jr_005_5107:
     ld a, $0e
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ld a, $02
-    ld [$c80c], a
+    ld [procState], a
     jr jr_005_513e
 
 jr_005_5125:
     ld a, $04
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ld a, [currentStage]
     cp $08
     jr c, jr_005_513e
@@ -3491,7 +3491,7 @@ jr_005_5125:
     ld a, $05
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_513e:
     ld a, $02
@@ -3659,7 +3659,7 @@ Call_005_5233:
     bit 6, [hl]
     jr nz, jr_005_524e
 
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     cp $82
     jr nz, jr_005_524e
 
@@ -3677,7 +3677,7 @@ jr_005_524e:
 
 
 Call_005_524f:
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     and $09
     jp z, Jump_005_525b
 
@@ -9840,7 +9840,7 @@ jr_005_5d0b:
     ld l, b
     ld h, [hl]
     ld l, d
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $6ac4
     push de
     rst $00
@@ -9901,9 +9901,9 @@ jr_005_6ac9:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -9922,9 +9922,9 @@ jr_005_6af2:
     ld a, [de]
     or $80
     ld [de], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -9961,9 +9961,9 @@ jr_005_6af2:
     ld hl, $001f
     add hl, bc
     ld [hl], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6b53:
     ret
@@ -9977,9 +9977,9 @@ jr_005_6b53:
 
     ld a, $1a
     call Call_000_0903
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6b6a:
     ret
@@ -10004,9 +10004,9 @@ jr_005_6b6a:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
     Jump_005_6b9a:
     ret
@@ -10021,9 +10021,9 @@ jr_005_6b6a:
     ld [de], a
     ld a, $78
     ld [$c13f], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10124,9 +10124,9 @@ jr_005_6b6a:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_6c4d:
     ret
@@ -10173,9 +10173,9 @@ Jump_005_6c4d:
     ld a, $52
     ld [actors+(3*ACTOR_sizeof)+2], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_6ca8:
     ret
@@ -10192,9 +10192,9 @@ Jump_005_6ca8:
     ld hl, $98e6
     ld de, $719b
     call Call_000_244a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6cc6:
     ret
@@ -10209,9 +10209,9 @@ jr_005_6cc6:
     ld a, $00
     ld d, $07
     call Call_000_2df8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6cdf:
     ret
@@ -10227,9 +10227,9 @@ jr_005_6cdf:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6cfa:
     ret
@@ -10318,9 +10318,9 @@ StartCutscene_End::
     ld a, [de]
     or $80
     ld [de], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
     ;wait for fade in to finsih
@@ -10331,9 +10331,9 @@ StartCutscene_End::
     ;loop
     ld a, $1c
     call Call_000_0903
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6d7a:
     ret
@@ -10367,9 +10367,9 @@ jr_005_6d7a:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6da1:
     ret
@@ -10422,9 +10422,9 @@ jr_005_6dc2:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6dd6:
     ret
@@ -10455,9 +10455,9 @@ jr_005_6dd6:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6dfa:
     ret
@@ -10492,9 +10492,9 @@ jr_005_6dfa:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6e25:
     ret
@@ -10534,9 +10534,9 @@ jr_005_6e25:
     add hl, bc
     ld [hl], a
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_005_6e57:
     ret
@@ -10555,9 +10555,9 @@ Jump_005_6e57:
     jr nz, jr_005_6e6d
     ;loop
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6e6d:
     ret
@@ -10568,9 +10568,9 @@ jr_005_6e6d:
     call Call_000_2df8
     ld a, $10
     call Call_000_0a84
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10591,13 +10591,13 @@ jr_005_6e6d:
     ;process state???
     ;0 seems to be stage init
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ;??
-    ld a, [$c80c]
+    ld a, [procState]
 
     ;1 seems to be to simply init stuff using existing data
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_6ea0:
     ret
@@ -11781,7 +11781,7 @@ Call_005_73ef:
     adc $00
     ld h, a
     ld d, [hl]
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
     cp d
     jp z, Jump_005_740c
 
@@ -11802,7 +11802,7 @@ Jump_005_740c:
     ld a, $09
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     call Call_000_0a65
     or $01
     ret
@@ -11822,7 +11822,7 @@ jr_005_7427:
     add b
     jr nz, @+$22
 
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $7443
     push de
     rst $00
@@ -11841,9 +11841,9 @@ jr_005_7427:
     ld a, $00
     ld d, $07
     call Call_000_2df8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -11851,9 +11851,9 @@ jr_005_7427:
     call Call_000_2e61
     jr z, jr_005_7461
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_7461:
     ret
@@ -11893,7 +11893,7 @@ jr_005_7489:
     ld [$cb25], a
     ld [$cb29], a
     ld a, $00
-    ld [$cb2a], a
+    ld [holdTimer], a
     ld a, [$cb2c]
     bit 7, a
     jr z, jr_005_74a4
@@ -11921,16 +11921,16 @@ jr_005_74b8:
     ld a, $08
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
     ld a, $00
     ld d, $07
     call Call_000_2df8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -11957,7 +11957,7 @@ jr_005_74b8:
     ld a, $04
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ld a, [currentStage]
     cp $08
     jr c, jr_005_752a
@@ -11966,20 +11966,20 @@ jr_005_74b8:
     ld a, $05
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     jr jr_005_752a
 
 jr_005_7521:
     ld a, $02
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_752a:
     ret
 
 
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $7541
     push de
     rst $00
@@ -12002,12 +12002,12 @@ jr_005_752a:
 
     ld a, $02
     ld [$cb26], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
-    ld a, [$c80c]
+    ld [procState], a
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -12018,9 +12018,9 @@ jr_005_752a:
     ld a, [de]
     and $7f
     call Call_000_240e
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -12039,9 +12039,9 @@ jr_005_752a:
     ld [de], a
     ld a, $78
     ld [currentStage], a
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -12049,9 +12049,9 @@ jr_005_752a:
     call Call_000_2e61
     jr z, jr_005_75a2
 
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_75a2:
     ret
@@ -12064,9 +12064,9 @@ jr_005_75a2:
     ld a, $00
     ld d, $07
     call Call_000_2df8
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_75b7:
     ret
@@ -12079,7 +12079,7 @@ jr_005_75b7:
     ld a, $02
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
 
 jr_005_75c8:
     ret

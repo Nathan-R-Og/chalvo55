@@ -17,8 +17,9 @@ paddingToEndAllPadding2:: ds $c80b - $c480
 ; 00:c804 playerScreenY
 
 sceneState:: db
+procState:: db
 
-padding23:: ds $c816 - $c80b
+padding23:: ds $c815 - $c80b
 
 ; 00:c81b playerScreenX_origindistance_copy
 ; 0:c81c playerScreenY_origindistance_copy
@@ -58,8 +59,9 @@ paddingWOrd:: ds 99
 cursorIndex:: db
 passwordLetter:: db
 currentPassword:: db
+roomPointer:: dw
 
-padding6:: ds 7
+padding6:: ds 5
 
 ; the amount of lives the player has at a given time
 playerLives:: db
@@ -72,3 +74,9 @@ demoing:: db
 ; the time with no input in the title, so the demo can play
 ; little endian
 titleDemoTimer:: dw
+
+padFunny:: dl
+
+holdTimer:: db
+localInputHeld:: db
+    

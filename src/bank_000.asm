@@ -427,7 +427,7 @@ jr_000_01d4:
     cp $0a
     jr nz, jr_000_01eb
 
-    ld a, [$c80c]
+    ld a, [procState]
     cp $03
     jr z, jr_000_01eb
 
@@ -455,7 +455,7 @@ jr_000_01ee:
     cp $0a
     jr nz, jr_000_0220
 
-    ld a, [$c80c]
+    ld a, [procState]
     cp $03
     jr nz, jr_000_0220
 
@@ -500,7 +500,7 @@ Jump_000_0238:
     cp $0a
     jr nz, jr_000_0257
 
-    ld a, [$c80c]
+    ld a, [procState]
     cp $03
     jr nz, jr_000_0257
 
@@ -610,7 +610,7 @@ Call_000_02c4:
     and $0f
     or b
     ld c, a
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     xor c
     and c
     ldh [$9c], a
@@ -883,7 +883,7 @@ jr_000_03f9:
     ret
 
 
-Call_000_0406:
+ChangeRoom:
     push bc
     push de
     push hl
@@ -921,6 +921,7 @@ jr_000_0439:
     jr jr_000_0439
 
 jr_000_043f:
+    ;set current room to the one found in the exits
     ld a, [hl]
     ld [currentPassword], a
     jr jr_000_045d
@@ -947,9 +948,9 @@ jr_000_045d:
     ld de, $4000
     add hl, de
     ld a, l
-    ld [$c9f5], a
+    ld [roomPointer], a
     ld a, h
-    ld [$c9f6], a
+    ld [roomPointer+1], a
     pop af
     ld hl, $0008
     call Call_000_04a5
@@ -6677,29 +6678,33 @@ ActorCleanup_Loop:
 
     ret
 
-
+StartActorCleanup2:
+    ;the same as StartActorCleanup but clears index 0 and index 2-X
+    ;basically, skips chalvo :)
     ld hl, actors
     call Call_000_26e3
-    ld bc, $0340
-    ld hl, $c140
 
-jr_000_2406:
+    ld bc, (MAX_ACTORS-2) * ACTOR_sizeof
+    ld hl, actors+(2*ACTOR_sizeof)
+
+ActorCleanup_Loop2:
     xor a
     ld [hl+], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_2406
+    jr nz, ActorCleanup_Loop2
 
     ret
-
 
 Call_000_240e:
     push hl
     push af
+
     ld a, [$cbbf]
     cp $80
     jr z, jr_000_2438
+
 
     ld a, [$cbc2]
     ld l, a
@@ -7093,7 +7098,9 @@ jr_000_2553:
     cp l
     add d
     rst $10
-    ld a, [$cb2a]
+
+Call_000_25e1:
+    ld a, [holdTimer]
     and a
     jr nz, jr_000_2624
 
@@ -7112,9 +7119,9 @@ jr_000_2553:
     ld a, [$cb27]
     ld l, a
     ld a, [hl+]
-    ld [$cb2b], a
+    ld [localInputHeld], a
     ld a, [hl+]
-    ld [$cb2a], a
+    ld [holdTimer], a
 
 jr_000_260c:
     ld a, h
@@ -7131,7 +7138,7 @@ jr_000_260c:
     pop hl
 
 jr_000_2624:
-    ld a, [$cb2b]
+    ld a, [localInputHeld]
     ldh [$9b], a
     ld d, a
     ld a, [$cb29]
@@ -7140,7 +7147,7 @@ jr_000_2624:
     ldh [$9c], a
     ld a, d
     ld [$cb29], a
-    ld hl, $cb2a
+    ld hl, holdTimer
     dec [hl]
     ret
 
@@ -7150,28 +7157,28 @@ Call_000_263a:
     bit 1, [hl]
     jr nz, jr_000_2691
 
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     ld hl, $cb2c
     bit 0, [hl]
     jr nz, jr_000_264f
 
-    ld [$cb2b], a
+    ld [localInputHeld], a
     set 0, [hl]
 
 jr_000_264f:
     ld d, a
-    ld a, [$cb2b]
+    ld a, [localInputHeld]
     ld e, a
     cp d
     jr nz, jr_000_2666
 
-    ld a, [$cb2a]
+    ld a, [holdTimer]
     inc a
-    ld [$cb2a], a
+    ld [holdTimer], a
     jr nz, jr_000_2691
 
     dec a
-    ld [$cb2a], a
+    ld [holdTimer], a
     res 0, [hl]
 
 jr_000_2666:
@@ -7181,7 +7188,7 @@ jr_000_2666:
     ld l, a
     ld a, e
     ld [hl+], a
-    ld a, [$cb2a]
+    ld a, [holdTimer]
     ld [hl+], a
     ld a, h
     cp $e0
@@ -7197,9 +7204,9 @@ jr_000_2680:
     ld a, l
     ld [$cb27], a
     ld a, d
-    ld [$cb2b], a
+    ld [localInputHeld], a
     ld a, $01
-    ld [$cb2a], a
+    ld [holdTimer], a
 
 jr_000_2691:
     ret
@@ -7303,6 +7310,7 @@ Call_000_26e3:
     ret
 
 
+Call_000_2705:
     push af
     push de
     push hl
@@ -7326,9 +7334,9 @@ jr_000_2714:
     ld a, [hl+]
     ld [$c81a], a
     ld a, [hl+]
-    ld [$c9f5], a
+    ld [roomPointer], a
     ld a, [hl+]
-    ld [$c9f6], a
+    ld [roomPointer+1], a
     ld a, [hl+]
     ld d, a
     inc hl
@@ -7527,20 +7535,28 @@ jr_000_27f5:
     ret
 
 
+Call_000_27f6:
+    ;store all vars
     push af
     push bc
     push de
     push hl
+
     call Call_000_0619
     xor a
 
 jr_000_27fe:
+    ;clear
     ld [$c980], a
     ld [$c981], a
+
+    ;if currentStage == 0, skip
     ld a, [currentStage]
     cp $08
     jr z, jr_000_2817
-
+    ;else
+    
+    ;init stuff
     ld a, [currentPassword]
 
 jr_000_280e:
@@ -7553,27 +7569,46 @@ jr_000_2815:
     ld [hl], $01
 
 jr_000_2817:
+
+    ;push c9ff to stack
     ld a, [$c9ff]
     push af
+
+    ;load
     ld a, [$ca02]
+
+    ;store hl
     push hl
+    ;set bit 2 of $ffff to 0
     ld hl, $ffff
     res 2, [hl]
+
+    ;?
     ld [$2000], a
+    ;set c9ff to ca02
     ld [$c9ff], a
+
+    ;set back bit 2 of $ffff
     set 2, [hl]
+    ;restore hl
     pop hl
+
+    ;set these to $10
     ld a, $10
     ld [$c82d], a
     ld a, $10
     ld [$c82b], a
-    ld a, [$c9f6]
+
+    ;load pointer
+    ld a, [roomPointer+1]
     ld b, a
-    ld a, [$c9f5]
+    ld a, [roomPointer]
     ld c, a
+
     ld de, $9800
 
 jr_000_2842:
+    ;loop the room data
     ld a, [bc]
     inc bc
     call Call_000_294b
@@ -7664,9 +7699,9 @@ jr_000_28a9:
     ld [$c82d], a
     ld a, $10
     ld [$c82b], a
-    ld a, [$c9f6]
+    ld a, [roomPointer+1]
     ld b, a
-    ld a, [$c9f5]
+    ld a, [roomPointer]
     ld c, a
     ld de, $c874
 
@@ -7996,6 +8031,8 @@ jr_000_2a5b:
 
 jr_000_2a61:
     bit 3, [hl]
+
+Jump_000_2a63:
     jr nz, jr_000_2aa6
 
     jr jr_000_2aaa
@@ -8868,10 +8905,11 @@ jr_000_2f0c:
 Jump_000_2f0f:
     or $01
 
+
 jr_000_2f11:
     ret
 
-
+Call_000_2f12:
     ld [$c842], a
     cp $00
     jr nz, jr_000_2f1e
@@ -8896,7 +8934,7 @@ jr_000_2f21:
     call Call_000_240e
     ret
 
-
+Call_000_2f39:
     ld de, $ffff
     ld a, [de]
     res 1, a
@@ -10184,7 +10222,7 @@ Call_000_3594:
     ld a, $07
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10234,7 +10272,7 @@ jr_000_3647:
     ld a, $02
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10293,7 +10331,7 @@ jr_000_3647:
     ld a, $0e
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10309,7 +10347,7 @@ Player_Init::
     ld a, $0d
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10317,7 +10355,7 @@ jr_000_3745:
     ld a, $03
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10360,7 +10398,7 @@ jr_000_3745:
     ld a, $02
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10368,7 +10406,7 @@ jr_000_37a8:
     ld a, $07
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10426,7 +10464,7 @@ jr_000_37a8:
     ld a, $07
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10512,7 +10550,7 @@ Call_000_382c:
     ld a, $02
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10576,14 +10614,14 @@ Call_000_382c:
     ld a, $08
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
     ret
 
 
-    ld a, [$c80c]
+    ld a, [procState]
     ld de, $3971
     push de
     rst $00
@@ -10607,7 +10645,7 @@ Call_000_382c:
     ld [$cb25], a
     ld [$cb29], a
     ld a, $00
-    ld [$cb2a], a
+    ld [holdTimer], a
     ld hl, $d000
     ld a, h
     ld [$cb28], a
@@ -10617,9 +10655,9 @@ Call_000_382c:
     res 1, [hl]
 
 jr_000_39a0:
-    ld a, [$c80c]
+    ld a, [procState]
     inc a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10633,7 +10671,7 @@ jr_000_39a0:
     ld a, $0a
     ld [sceneState], a
     xor a
-    ld [$c80c], a
+    ld [procState], a
     ret
 
 
@@ -10868,7 +10906,7 @@ jr_000_3b3f:
     jr z, jr_000_3b3f
 
     res 1, [hl]
-    ldh a, [$9c]
+    ldh a, [INPUT_PRESS]
     ret
 
 
@@ -11399,7 +11437,7 @@ jr_000_3ce7:
     ret
 
 
-    ld a, [$c80c]
+    ld a, [procState]
     cp $03
     jp c, Jump_000_3e22
 
@@ -11413,12 +11451,12 @@ jr_000_3ce7:
     jp nc, Jump_000_3e22
 
 Jump_000_3e17:
-    ldh a, [$9b]
+    ldh a, [INPUT_HOLD]
     and $09
     jr z, jr_000_3e22
 
     ld a, $13
-    ld [$c80c], a
+    ld [procState], a
 
 Jump_000_3e22:
 jr_000_3e22:
