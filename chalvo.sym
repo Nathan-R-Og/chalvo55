@@ -118,12 +118,12 @@
 03:44df FRAME_DEF_unkTiles3
 03:44e3 FRAME_DEF_unkTiles2
 03:44e7 FRAME_DEF_unkTiles
-03:44eb FRAME_DEF_unkTiles23
-03:44ef FRAME_DEF_unkTiles24
-03:44f3 FRAME_DEF_unkTiles25
-03:44f7 FRAME_DEF_unkTiles26
-03:44fb FRAME_DEF_unkTiles27
-03:44ff FRAME_DEF_unkTiles28
+03:44eb FRAME_DEF_Intro_Charlie
+03:44ef FRAME_DEF_Intro_CharlieThumbsUp
+03:44f3 FRAME_DEF_Intro_CharlieLookUp
+03:44f7 FRAME_DEF_Ending_Charlie
+03:44fb FRAME_DEF_Ending_CharlieHug
+03:44ff FRAME_DEF_Ending_CharlieLookUp
 
 03:4503 MAYBE_FRAME_DEF_unk1
 03:4507 MAYBE_FRAME_DEF_unk2
@@ -496,24 +496,24 @@
 03:5817 unkTiles2
 03:5822 unkTiles
 03:582D house_tiles
-03:5997 unkTiles23
-03:59b5 unkTiles24
-03:59d3 unkTiles25
+03:5997 Intro_CharlieTiles
+03:59b5 Intro_CharlieThumbsUpTiles
+03:59d3 Intro_CharlieLookUpTiles
 03:59f1 unkTilesPointers
 
 03:5a13 .data:62
-03:5a13 unkTiles26
-03:5a31 unkTiles27
-03:5A4F unkTiles28
+03:5a13 Ending_CharlieTiles
+03:5a31 Ending_CharlieHugTiles
+03:5A4F Ending_CharlieLookUpTiles
 03:5A6D unkTiles29
 
 03:5A75 .data:484
 03:5A75 unkAnimPointers
 03:5a8f unkAnimSet1
-03:5ad7 unkAnimSet2
-03:5bb7 unkAnimSet3
-03:5bcd unkAnimSet4
-03:5be3 unkAnimSet5
+03:5ad7 ANIM_SET_Chalvo
+03:5bb7 ANIM_SET_OneHitEnemy
+03:5bcd ANIM_SET_TwoHitEnemy
+03:5be3 ANIM_SET_NoHitEnemy
 03:5bf9 unkAnimSet6
 03:5c7f unkAnimSet7
 03:5cf7 unkAnimSet8
@@ -562,6 +562,84 @@
 
 
 04:4000 .code:4000
+
+04:406E .data:B60
+04:406E CreditsTiles1
+04:41D8 CreditsTiles2
+04:4342 CreditsTiles3
+04:44AC CreditsTiles4
+04:4616 CreditsTiles5
+04:4780 CreditsTiles6
+04:48EA CreditsTiles7
+04:4A54 CreditsTiles8
+04:4BBE CreditsTilePointers
+
+04:4BCE .code:5D
+
+04:4C2B .data:1836
+04:4C2B unkbank4Tiles1
+04:4D95 unkbank4Tiles2
+04:4EFF unkbank4Tiles3
+04:5069 unkbank4Tiles4
+04:51D3 unkbank4Tiles5
+04:533D unkbank4Tiles6
+04:54A7 unkbank4Tiles7
+04:5611 unkbank4Tiles8
+04:577B unkbank4Tiles9
+04:58E5 unkbank4TilesA
+04:5A4F unkbank4TilesB
+04:5BB9 unkbank4TilesC
+04:5D23 unkbank4TilesD
+04:5E8D unkbank4TilesE
+04:5FF7 unkbank4TilesF
+04:6161 unkbank4Tiles10
+04:62CB unkbank4Tiles11
+04:6435 unkbank4Tiles12
+04:643D unkbank4TilePointers
+
+04:6461 .code:CD
+
+04:652E .data:204
+04:652E unkbank4Tiles13
+04:6698 unkbank4Tiles14
+04:66A0 unkbank4Tiles15
+04:66A8 unkbank4Tiles16
+04:66B0 unkbank4Tiles17
+04:66B8 unkbank4Tiles18
+04:66C0 unkbank4Tiles19
+04:66C8 unkbank4Tiles1A
+04:66D0 unkbank4Tiles1B
+04:66D8 unkbank4Tiles1C
+04:66E0 unkbank4Tiles1D
+04:66E8 unkbank4Tiles1E
+04:671A unkbank4TilePointers2
+
+04:6732 .code:524
+
+04:68A0 .data:1760
+
+04:68B8 unkbank4Tiles1F
+04:6AFA unkbank4Tiles20
+04:6B10 unkbank4Tiles21
+04:6B26 unkbank4Tiles22
+04:6B3C unkbank4Tiles23
+04:6B52 unkbank4Tiles24
+04:6B62 unkbank4Tiles25
+04:6B72 unkbank4Tiles26
+04:6B88 unkbank4Tiles27
+04:6B9E unkbank4Tiles28
+04:6BAF unkbank4Tiles29
+04:6BC0 unkbank4Tiles2A
+04:6BCE unkbank4Tiles2B
+04:6BDC unkbank4Tiles2C
+04:6C01 unkbank4Tiles2D
+04:6C26 unkbank4Tiles2E
+04:6C31 unkbank4Tiles2F
+04:6c34 unkbank4TilePointers3
+
+04:6C56 bank4_pad
+
+
 05:4000 .code:4000
 
 05:6ab0 StartCutscene_End_Ref
@@ -866,12 +944,39 @@
 19:7000 .image:1000:w256,p1e
 
 ; musack
-1a:4000 MUSIC_music1
 1a:4000 .data:4000
-1b:4000 MUSIC_music2
+1a:4000 MUSIC_stage1
+1a:4555 MUSIC_boss
+1a:4fef MUSIC_die
+1a:5089 MUSIC_invincibility
+1a:5147 MUSIC_stageClear
+1a:527b MUSIC_password
+1a:5420 MUSIC_stage2
+1a:5dbe MUSIC_ending
+1a:64fb MUSIC_pad1
+
 1b:4000 .data:4000
-1c:4000 MUSIC_music3
+1b:4000 MUSIC_gameOver
+1b:4188 MUSIC_stage8
+1b:48e7 MUSIC_stage4
+1b:50c8 MUSIC_stage5
+1b:5872 MUSIC_stage3
+1b:6420 MUSIC_stage7
+1b:6a59 MUSIC_unk1
+1b:6bbd MUSIC_finalBoss
+1b:72ef MUSIC_pad2
+
 1c:4000 .data:4000
+1c:4000 MUSIC_specialStage
+1c:47bf MUSIC_intro2
+1c:4c79 MUSIC_stageStart
+1c:4cfc MUSIC_continue
+1c:4d7f MUSIC_intro1
+1c:4f97 MUSIC_unk2
+1c:576c MUSIC_stage6
+1c:60e6 MUSIC_title
+1c:6a4a MUSIC_worldMap
+1c:6ad3 MUSIC_pad3
 
 1d:4000 bank_img_stageTransition2
 1d:4000 .image:1000:w256,p1e
@@ -883,13 +988,13 @@
 1d:6000 .data:2000
 
 
-1e:4000 stageUnk_rooms
+1e:4000 specialStage_rooms
 1e:4000 .data:3B00
 
-1e:7B00 stageUnk_tiledefs
+1e:7B00 specialStage_tiledefs
 1e:7B00 .data:318
 
-1e:7E18 stageUnk_map
+1e:7E18 specialStage_map
 1e:7E18 .data:1D8
 
 1e:7FF0 bank1epad

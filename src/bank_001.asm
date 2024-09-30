@@ -10662,5 +10662,3 @@ passwordSpritePointers::
     dw $756e
     dw $7574
     dw $7577
-
-bank1pad:: ds 2261

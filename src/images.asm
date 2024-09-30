@@ -34,7 +34,7 @@ bank_img_levelMap::INCBIN "gfx/bank_img_levelMap.2bpp"
 bank_img_unusedLevelMap::INCBIN "gfx/bank_img_unusedLevelMap.2bpp"
 
 levelmap_bgTiles::
-    db $14, $12
+    db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $60, $61, $62, $63, $64, $65, $66
     db $ff, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $ff, $80, $81, $82, $83, $84, $85, $86
     db $ff, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $ff, $a0, $a1, $a2, $a3, $a4, $a5, $a6
@@ -55,76 +55,76 @@ levelmap_bgTiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 levelmap_1Tiles::
-    db $03, $02
+    db 3, 2
     db $20, $21, $22
     db $40, $41, $42
 
 levelmap_2Tiles::
-    db $03, $02
+    db 3, 2
     db $23, $24, $25
     db $43, $44, $45
 
 levelmap_3Tiles::
-    db $03, $02
+    db 3, 2
     db $26, $27, $28
     db $46, $47, $48
 
 levelmap_4Tiles::
-    db $03, $02
+    db 3, 2
     db $29, $2a, $2b
     db $49, $4a, $4b
 
 levelmap_5Tiles::
-    db $03, $02
+    db 3, 2
     db $2c, $2d, $2e
     db $4c, $4d, $4e
 
 levelmap_6Tiles::
-    db $03, $02
+    db 3, 2
     db $2f, $30, $31
     db $4f, $50, $51
 
 levelmap_7Tiles::
-    db $03, $02
+    db 3, 2
     db $32, $33, $34
     db $52, $53, $54
 
 levelmap_8Tiles::
-    db $03, $02
+    db 3, 2
     db $35, $36, $37
     db $55, $56, $57
 
 levelmap_unusedChalvoTiles::
-    db $01, $01
+    db 1, 1
     db $14
 
 levelmap_diamondTiles::
-    db $02, $02
+    db 2, 2
     db $1a, $1b
     db $3a, $3b
 
 levelmap_ditherSquareTiles::
-    db $02, $02
+    db 2, 2
     db $16, $16
     db $16, $16
 
 levelmap_whiteSquareTiles::
-    db $02, $02
+    db 2, 2
     db $15, $15
     db $15, $15
 
 levelmap_9Tiles::
-    db $03, $02
+    db 3, 2
     db $67, $68, $69
     db $87, $88, $89
 
 levelmap_0Tiles::
-    db $03, $02
+    db 3, 2
     db $6a, $6b, $6c
     db $8a, $8b, $8c
 
 levelmap_bossWarningTiles::
-    db $0b, $0b
+    db 11, 11
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
     db $17, $17, $e0, $e1, $e2, $e3, $e4, $e5, $e6, $17, $17
@@ -138,7 +138,7 @@ levelmap_bossWarningTiles::
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
 
 levelmap_questionMarkTiles::
-    db $0b, $0b
+    db 11, 11
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
     db $17, $17, $17, $17, $17, $17, $17, $17, $17, $17, $17
@@ -171,7 +171,7 @@ levelMapTilesPointers::
     dw levelmap_questionMarkTiles
 
 unusedLevelMap_bgTiles::
-    db $14, $12
+    db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $19, $1a, $1b, $1c, $1d, $1e, $1f
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $39, $3a, $3b, $3c, $3d, $3e, $3f
     db $ff, $ff, $ff, $ff, $ff, $ff, $b3, $b4, $ac, $ad, $ae, $af, $ff, $59, $5a, $5b, $5c, $5d, $5e, $5f
@@ -190,68 +190,84 @@ unusedLevelMap_bgTiles::
     db $ff, $ff, $ff, $09, $0d, $0b, $05, $12, $00, $11, $ff, $0b, $0c, $00, $04, $02, $10, $00, $09, $7f
     db $ff, $ff, $ff, $09, $0d, $0b, $05, $12, $0b, $0c, $00, $0a, $0c, $11, $ff, $02, $0f, $06, $0c, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+
 unusedLevelMap_1Tiles::
-    db $04, $02
+    db 4, 2
     db $20, $21, $22, $23
     db $40, $41, $42, $43
+
 unusedLevelMap_2Tiles::
-    db $04, $02
+    db 4, 2
     db $24, $25, $26, $27
     db $44, $45, $46, $47
+
 unusedLevelMap_3Tiles::
-    db $04, $02
+    db 4, 2
     db $28, $29, $2a, $2b
     db $48, $49, $4a, $4b
+
 unusedLevelMap_4Tiles::
-    db $04, $02
+    db 4, 2
     db $2c, $2d, $2e, $2f
     db $4c, $4d, $4e, $4f
+
 unusedLevelMap_5Tiles::
-    db $04, $02
+    db 4, 2
     db $30, $31, $32, $33
     db $50, $51, $52, $53
+
 unusedLevelMap_6Tiles::
-    db $04, $02
+    db 4, 2
     db $34, $35, $36, $37
     db $54, $55, $56, $57
+
 unusedLevelMap_7Tiles::
-    db $04, $02
+    db 4, 2
     db $60, $61, $62, $63
     db $80, $81, $82, $83
+
 unusedLevelMap_8Tiles::
-    db $04, $02
+    db 4, 2
     db $64, $65, $66, $67
     db $84, $85, $86, $87
+
 unusedLevelMap_1darkTiles::
-    db $04, $02
+    db 4, 2
     db $68, $69, $6a, $6b
     db $88, $89, $8a, $8b
+
 unusedLevelMap_2darkTiles::
-    db $04, $02
+    db 4, 2
     db $6c, $6d, $6e, $6f
     db $8c, $8d, $8e, $8f
+
 unusedLevelMap_3darkTiles::
-    db $04, $02
+    db 4, 2
     db $70, $71, $72, $73
     db $90, $91, $92, $93
+
 unusedLevelMap_4darkTiles::
-    db $04, $02
+    db 4, 2
     db $74, $75, $76, $77
     db $94, $95, $96, $97
+
 unusedLevelMap_5darkTiles::
-    db $04, $02
+    db 4, 2
     db $a0, $a1, $a2, $a3
     db $c0, $c1, $c2, $c3
+
 unusedLevelMap_6darkTiles::
-    db $04, $02
+    db 4, 2
     db $a4, $a5, $a6, $a7
     db $c4, $c5, $c6, $c7
+
 unusedLevelMap_7darkTiles::
-    db $04, $02
+    db 4, 2
     db $a8, $a9, $aa, $ab
     db $c8, $c9, $ca, $cb
+
 unusedLevelMap_8darkTiles::
-    db $04, $02
+    db 4, 2
     db $ac, $ad, $ae, $af
     db $cc, $cd, $ce, $cf
 
@@ -274,10 +290,8 @@ unusedLevelMapPointers::
     dw unusedLevelMap_7darkTiles
     dw unusedLevelMap_8darkTiles
 
-bank17pad:: ds 6893 ; 0x1AED
 
 SECTION "ROM Bank $018", ROMX[$4000], BANK[$18]
-empty5:: ds 16384 ; 0x4000
 
 SECTION "ROM Bank $019", ROMX[$4000], BANK[$19]
 bank_img_intro1:: INCBIN "gfx/bank_img_intro1.2bpp"

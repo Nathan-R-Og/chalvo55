@@ -1,3 +1,3 @@
-stage7_rooms:: INCBIN "../src/stage7/rooms.bin"
-stage7_tiledefs:: INCBIN "../src/stage7/tiledefs.bin"
-stage7_map:: INCBIN "../src/stage7/map.bin"
+stage7_rooms:: INCLUDE "../src/stage7/rooms.asm"
+stage7_tiledefs:: INCLUDE "../src/stage7/tiledefs.asm"
+stage7_map:: INCLUDE "../src/stage7/map.asm"
