@@ -1,37 +1,31 @@
-SECTION "ROM Bank $012", ROMX[$4000], BANK[$12]
+SECTION "Images 1", ROMX[$4000], BANK[$12]
 bank_img_stage1:: INCBIN "gfx/bank_img_stage1.2bpp"
 bank_img_stage2:: INCBIN "gfx/bank_img_stage2.2bpp"
 bank_img_stage3:: INCBIN "gfx/bank_img_stage3.2bpp"
 bank_img_stage4:: INCBIN "gfx/bank_img_stage4.2bpp"
-
-SECTION "ROM Bank $013", ROMX[$4000], BANK[$13]
+SECTION "Images 2", ROMX[$4000], BANK[$13]
 bank_img_stage5:: INCBIN "gfx/bank_img_stage5.2bpp"
 bank_img_stage6:: INCBIN "gfx/bank_img_stage6.2bpp"
 bank_img_stage7:: INCBIN "gfx/bank_img_stage7.2bpp"
 bank_img_stage8:: INCBIN "gfx/bank_img_stage8.2bpp"
-
-SECTION "ROM Bank $014", ROMX[$4000], BANK[$14]
-bank_img_stage1_boss::INCBIN "gfx/bank_img_stage1_boss.2bpp"
-bank_img_stage2_boss::INCBIN "gfx/bank_img_stage2_boss.2bpp"
-bank_img_stage3_boss::INCBIN "gfx/bank_img_stage3_boss.2bpp"
-bank_img_stage4_boss::INCBIN "gfx/bank_img_stage4_boss.2bpp"
-
-SECTION "ROM Bank $015", ROMX[$4000], BANK[$15]
-bank_img_stage5_boss::INCBIN "gfx/bank_img_stage5_boss.2bpp"
-bank_img_stage6_boss::INCBIN "gfx/bank_img_stage6_boss.2bpp"
-bank_img_stage7_boss::INCBIN "gfx/bank_img_stage7_boss.2bpp"
-bank_img_stage8_boss::INCBIN "gfx/bank_img_stage8_boss.2bpp"
-
-SECTION "ROM Bank $016", ROMX[$4000], BANK[$16]
-bank_img_title::INCBIN "gfx/bank_img_title.2bpp"
-bank_img_password::INCBIN "gfx/bank_img_password.2bpp"
-bank_img_stageTransition::INCBIN "gfx/bank_img_stageTransition.2bpp"
-bank_img_font::INCBIN "gfx/bank_img_font.2bpp"
-
-
-SECTION "ROM Bank $017", ROMX[$4000], BANK[$17]
-bank_img_levelMap::INCBIN "gfx/bank_img_levelMap.2bpp"
-bank_img_unusedLevelMap::INCBIN "gfx/bank_img_unusedLevelMap.2bpp"
+SECTION "Images 3", ROMX[$4000], BANK[$14]
+bank_img_stage1_boss:: INCBIN "gfx/bank_img_stage1_boss.2bpp"
+bank_img_stage2_boss:: INCBIN "gfx/bank_img_stage2_boss.2bpp"
+bank_img_stage3_boss:: INCBIN "gfx/bank_img_stage3_boss.2bpp"
+bank_img_stage4_boss:: INCBIN "gfx/bank_img_stage4_boss.2bpp"
+SECTION "Images 4", ROMX[$4000], BANK[$15]
+bank_img_stage5_boss:: INCBIN "gfx/bank_img_stage5_boss.2bpp"
+bank_img_stage6_boss:: INCBIN "gfx/bank_img_stage6_boss.2bpp"
+bank_img_stage7_boss:: INCBIN "gfx/bank_img_stage7_boss.2bpp"
+bank_img_stage8_boss:: INCBIN "gfx/bank_img_stage8_boss.2bpp"
+SECTION "Images 5", ROMX[$4000], BANK[$16]
+bank_img_title:: INCBIN "gfx/bank_img_title.2bpp"
+bank_img_password:: INCBIN "gfx/bank_img_password.2bpp"
+bank_img_stageTransition:: INCBIN "gfx/bank_img_stageTransition.2bpp"
+bank_img_font:: INCBIN "gfx/bank_img_font.2bpp"
+SECTION "Images 6", ROMX[$4000], BANK[$17]
+bank_img_levelMap:: INCBIN "gfx/bank_img_levelMap.2bpp"
+bank_img_unusedLevelMap:: INCBIN "gfx/bank_img_unusedLevelMap.2bpp"
 
 levelmap_bgTiles::
     db 20, 18
@@ -291,9 +285,8 @@ unusedLevelMapPointers::
     dw unusedLevelMap_8darkTiles
 
 
-SECTION "ROM Bank $018", ROMX[$4000], BANK[$18]
-
-SECTION "ROM Bank $019", ROMX[$4000], BANK[$19]
+SECTION "Empty 5", ROMX[$4000], BANK[$18]
+SECTION "Images 7", ROMX[$4000], BANK[$19]
 bank_img_intro1:: INCBIN "gfx/bank_img_intro1.2bpp"
 bank_img_intro2:: INCBIN "gfx/bank_img_intro2.2bpp"
 bank_img_ending:: INCBIN "gfx/bank_img_ending.2bpp"

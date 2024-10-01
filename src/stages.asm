@@ -9,23 +9,17 @@ INCLUDE "../src/demos/2.asm"
 pad3:: ds $718
 INCLUDE "../src/demos/3.asm"
 
-SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
+SECTION "Stage 2", ROMX[$4000], BANK[$7]
 INCLUDE "../src/stage2/stage2.asm"
-
-SECTION "ROM Bank $008", ROMX[$4000], BANK[$8]
+SECTION "Stage 3", ROMX[$4000], BANK[$8]
 INCLUDE "../src/stage3/stage3.asm"
-
-SECTION "ROM Bank $009", ROMX[$4000], BANK[$9]
+SECTION "Stage 4", ROMX[$4000], BANK[$9]
 INCLUDE "../src/stage4/stage4.asm"
-
-SECTION "ROM Bank $00a", ROMX[$4000], BANK[$a]
+SECTION "Stage 5", ROMX[$4000], BANK[$a]
 INCLUDE "../src/stage5/stage5.asm"
-
-SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
+SECTION "Stage 6", ROMX[$4000], BANK[$b]
 INCLUDE "../src/stage6/stage6.asm"
-
-SECTION "ROM Bank $00c", ROMX[$4000], BANK[$c]
+SECTION "Stage 7", ROMX[$4000], BANK[$c]
 INCLUDE "../src/stage7/stage7.asm"
-
-SECTION "ROM Bank $00d", ROMX[$4000], BANK[$d]
+SECTION "Stage 8", ROMX[$4000], BANK[$d]
 INCLUDE "../src/stage8/stage8.asm"

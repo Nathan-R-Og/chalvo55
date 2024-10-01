@@ -1,6 +1,6 @@
 ; nothing but padding baybeee
 
-SECTION "ROM Bank $00e", ROMX[$4000], BANK[$e]
-SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
-SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
-SECTION "ROM Bank $011", ROMX[$4000], BANK[$11]
+SECTION "Empty 1", ROMX[$4000], BANK[$e]
+SECTION "Empty 2", ROMX[$4000], BANK[$f]
+SECTION "Empty 3", ROMX[$4000], BANK[$10]
+SECTION "Empty 4", ROMX[$4000], BANK[$11]

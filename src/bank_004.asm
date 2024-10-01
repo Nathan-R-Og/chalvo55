@@ -1,77 +1,111 @@
-; Disassembly of "chalvo.gb"
-; This file was created with:
-; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
-; https://github.com/mattcurrie/mgbdis
+SECTION "Screens", ROMX[$4000], BANK[$4]
 
-SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
-
+StartCredits:
+    ;?
     ld a, $14
     call Call_000_0903
+
+    ;load the tiles
     ld hl, CreditsTilePointers
-    ld c, $08
+    ;c is the amount of tiles to show (8)
+    ld c, (ShowStageScreen-CreditsTilePointers)/2
 
 Jump_004_400a:
     push bc
+    ;load first tiles into de
     ld a, [hl+]
     ld e, a
     ld a, [hl+]
     ld d, a
+    ;stash both, return tiles
     push hl
     push de
     pop hl
+
+    ;?
     ld de, $9800
     call Call_000_0756
+
+    ;?
     ld a, $01
     ld d, $01
     call Call_000_2df8
+
+    ;?
     ld a, $93
     ldh [rLCDC], a
 
 jr_004_4023:
+    ;?
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if c == 0 (z == true), loop
     ld a, c
     or a
     jr z, jr_004_4023
+    ;else
 
+;init timer
     ld c, $02
-
-jr_004_4031:
+resetB:
     ld b, $83
-
 jr_004_4033:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+    
+    ;dec b
+    ;if b > 0, loop
     pop bc
     dec b
     jr nz, jr_004_4033
+    ;else
 
+    ;dec c
+    ;if c > 0, loop (greater)
     dec c
-    jr nz, jr_004_4031
+    jr nz, resetB
+    ;else
 
+    ;?
     ld a, $00
     ld d, $01
     call Call_000_2df8
 
+;end show tile
 jr_004_404a:
+    ;wait for fade out
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if c == 0 (z == true), loop
     ld a, c
     or a
     jr z, jr_004_404a
+    ;else
 
+    ;?
     ld a, $01
     ld hl, $6c89
     call Call_000_08ae
+
+    ;return init values
     pop hl
     pop bc
+    
+    ;c--
     dec c
+    ;if c > 0, loop back to main (now showing one more because of dec)
     jp nz, Jump_004_400a
+    ;else
 
+    ;(ran when finished and faded out)
     ld a, $10
     call Call_000_0a84
     ld a, $93
@@ -256,9 +290,12 @@ CreditsTilePointers::
     dw CreditsTiles7
     dw CreditsTiles8
 
+ShowStageScreen:
+    ;check if currentStage != 8
     ld a, [currentStage]
-    cp $08
+    cp 8
     jr nz, jr_004_4bda
+    ;else
 
     ld a, $93
     ldh [rLCDC], a
@@ -266,44 +303,68 @@ CreditsTilePointers::
 
 
 jr_004_4bda:
+    ;get offset?
     ld b, $00
     rlca
     ld c, a
-    ld hl, unkbank4TilePointers
+
+    ;get pointer
+    ld hl, StageScreenTilePointers
     add hl, bc
+    
+    ;load pointer into hl
     ld a, [hl+]
     ld h, [hl]
     ld l, a
+
+    ;?
     ld de, $9800
     call Call_000_0756
+
+    ;?
     ld a, $01
     ld d, $01
     call Call_000_2df8
+
+    ;?
     ld a, $93
     ldh [rLCDC], a
 
 jr_004_4bf6:
+    ;?
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;fade in
+    ;if c == 0 (z == true), loop
     ld a, c
     or a
     jr z, jr_004_4bf6
+    ;else
 
     ld c, $3c
 
 jr_004_4c04:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
     pop bc
+    ;if $ff9c == 9, loop
     ldh a, [$9c]
     and $09
     jr nz, jr_004_4c17
+    ;else
 
+    ;c--
     dec c
+    ;if c > 0, loop
     jr nz, jr_004_4c04
+    ;else
 
 jr_004_4c17:
     ld a, $00
@@ -311,17 +372,21 @@ jr_004_4c17:
     call Call_000_2df8
 
 jr_004_4c1e:
+    ;fade out
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+    
+    ;if c == 0, loop
     ld a, c
     or a
     jr z, jr_004_4c1e
+    ;else
+    
 
     ret
 
-;stage 1 screen
-unkbank4Tiles1::
+StageIntro1Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -342,8 +407,7 @@ unkbank4Tiles1::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 2 screen
-unkbank4Tiles2::
+StageIntro2Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -364,8 +428,7 @@ unkbank4Tiles2::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 3 screen
-unkbank4Tiles3::
+StageIntro3Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -386,8 +449,7 @@ unkbank4Tiles3::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 4 screen
-unkbank4Tiles4::
+StageIntro4Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -408,8 +470,7 @@ unkbank4Tiles4::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 5 screen
-unkbank4Tiles5::
+StageIntro5Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -430,8 +491,7 @@ unkbank4Tiles5::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 6 screen
-unkbank4Tiles6::
+StageIntro6Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -452,8 +512,7 @@ unkbank4Tiles6::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 7 screen
-unkbank4Tiles7::
+StageIntro7Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -474,8 +533,7 @@ unkbank4Tiles7::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 8 screen
-unkbank4Tiles8::
+StageIntro8Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -496,8 +554,7 @@ unkbank4Tiles8::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;game over screen
-unkbank4Tiles9::
+GameOverTiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -518,8 +575,7 @@ unkbank4Tiles9::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 1 clear
-unkbank4TilesA::
+StageOutro1Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -540,8 +596,7 @@ unkbank4TilesA::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 2 clear
-unkbank4TilesB::
+StageOutro2Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -562,8 +617,7 @@ unkbank4TilesB::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 3 clear
-unkbank4TilesC::
+StageOutro3Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -584,8 +638,7 @@ unkbank4TilesC::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 4 clear
-unkbank4TilesD::
+StageOutro4Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -606,8 +659,7 @@ unkbank4TilesD::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 5 clear
-unkbank4TilesE::
+StageOutro5Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -628,8 +680,7 @@ unkbank4TilesE::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 6 clear
-unkbank4TilesF::
+StageOutro6Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -650,8 +701,7 @@ unkbank4TilesF::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 7 clear
-unkbank4Tiles10::
+StageOutro7Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -672,8 +722,7 @@ unkbank4Tiles10::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-;stage 8 clear
-unkbank4Tiles11::
+StageOutro8Tiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -695,81 +744,117 @@ unkbank4Tiles11::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 ;the c
-unkbank4Tiles12::
+StageOutroCTiles::
     db 2, 3
     db $c4, $c5
     db $e4, $e5
     db $ac, $ad
 
-unkbank4TilePointers::
-    dw unkbank4Tiles1
-    dw unkbank4Tiles2
-    dw unkbank4Tiles3
-    dw unkbank4Tiles4
-    dw unkbank4Tiles5
-    dw unkbank4Tiles6
-    dw unkbank4Tiles7
-    dw unkbank4Tiles8
-    dw unkbank4Tiles9
-    dw unkbank4TilesA
-    dw unkbank4TilesB
-    dw unkbank4TilesC
-    dw unkbank4TilesD
-    dw unkbank4TilesE
-    dw unkbank4TilesF
-    dw unkbank4Tiles10
-    dw unkbank4Tiles11
-    dw unkbank4Tiles12
+StageScreenTilePointers::
+    dw StageIntro1Tiles
+    dw StageIntro2Tiles
+    dw StageIntro3Tiles
+    dw StageIntro4Tiles
+    dw StageIntro5Tiles
+    dw StageIntro6Tiles
+    dw StageIntro7Tiles
+    dw StageIntro8Tiles
+    dw GameOverTiles
+    dw StageOutro1Tiles
+    dw StageOutro2Tiles
+    dw StageOutro3Tiles
+    dw StageOutro4Tiles
+    dw StageOutro5Tiles
+    dw StageOutro6Tiles
+    dw StageOutro7Tiles
+    dw StageOutro8Tiles
+    dw StageOutroCTiles
 
-    ld hl, unkbank4Tiles13
+def continueTick EQU 60
+def continueTickCount EQU 10
+ShowContinue:
+    ;load screen bg
+    ld hl, ContinueBGTiles
     ld de, $9800
     call Call_000_0756
+
+    ;?
     ld a, $01
     ld d, $01
     call Call_000_2df8
+
+    ;?
     ld a, $93
     ldh [rLCDC], a
 
 jr_004_6475:
+    ;fade in
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if c == 0, loop
     ld a, c
     or a
     jr z, jr_004_6475
+    ;else
 
+    ;?
     ld a, $19
     call Call_000_0903
+
+    ;?
     ld c, $00
     call Call_004_650f
-    ld b, $3c
+
+    ;number tick timer
+    ld b, continueTick
 
 jr_004_648d:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
     pop bc
+
+    ;if not bit 0 of 9c, loop
     ldh a, [$9c]
     bit 0, a
     jr nz, jr_004_64b6
+    ;else
 
+    ;set bit 1
     bit 1, a
+    ;if not set to 0 after, jump
     jr nz, jr_004_64a4
+    ;else
 
+    ;dec timer
     dec b
+    ;if b > 0, loop
     jr nz, jr_004_648d
+    ;else
 
 jr_004_64a4:
+    ;c++
     inc c
-    ld a, $0a
+    
+    ;if c == 10 (timer runs out), jump
+    ld a, continueTickCount
     cp c
     jr z, jr_004_64bb
+    ;else
 
+    ;?
     ld a, $19
     call Call_000_0903
     call Call_004_650f
-    ld b, $3c
+
+    ;back to loop with new timer
+    ld b, continueTick
     jr jr_004_648d
 
 jr_004_64b6:
@@ -777,81 +862,122 @@ jr_004_64b6:
     xor a
     ret
 
-
+;timer runs out
 jr_004_64bb:
+    ;fade out
     call Call_004_64f6
+
     or $01
     ret
 
-
-    ld hl, unkbank4Tiles9
+ShowGameOver:
+    ;queue gameover tiles
+    ld hl, GameOverTiles
     ld de, $9800
     call Call_000_0756
+
+    ;?
     ld a, $16
     call Call_000_0903
+
+    ;?
     ld a, $01
     ld d, $01
     call Call_000_2df8
+
+    ;?
     ld a, $93
     ldh [rLCDC], a
 
 jr_004_64da:
+    ;fade in
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if a == 0, loop
     ld a, c
     or a
     jr z, jr_004_64da
+    ;else
 
 jr_004_64e6:
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
+    ;if !(a & $ff9c), jump
     ldh a, [$9c]
     and $09
     jr nz, jr_004_64f6
+    ;else
 
+    ;loop
     jr jr_004_64e6
 
+;finish/press a
 Call_004_64f6:
 jr_004_64f6:
+    ;?
     ld a, $10
     call Call_000_0a84
+
+    ;?
     ld a, $00
     ld d, $01
     call Call_000_2df8
 
 jr_004_6502:
+    ;fade out
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if !a, loop
     ld a, c
     or a
     jr z, jr_004_6502
+    ;else
 
     ret
 
-
+;GetContinueTilePointer
+;c will be how many ticks have progressed
 Call_004_650f:
+    ;clean
     push af
     push bc
     push de
     push hl
+
+    ;get pointer list
     ld hl, unkbank4TilePointers2
+
+    ;c ++ and rotate left (left shift)
+    ;basically a * 2??? since they are stored as shorts
     ld a, c
     inc a
     rlca
     ld c, a
+
+    ;add bc to pointer list
     ld b, $00
     add hl, bc
+
+    ;load tile pointer into hl
     ld a, [hl+]
     ld e, a
     ld a, [hl]
     ld d, a
     push de
     pop hl
+
+    ;?
     ld de, $0909
     call Call_000_078e
+
+    ;unclean
     pop hl
     pop de
     pop bc
@@ -859,7 +985,7 @@ Call_004_650f:
     ret
 
 
-unkbank4Tiles13::
+ContinueBGTiles::
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -880,244 +1006,353 @@ unkbank4Tiles13::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-unkbank4Tiles14::
+Continue9Tiles::
     db 2, 3
     db $bc, $bd
     db $dc, $dd
     db $fc, $fd
 
-unkbank4Tiles15::
+Continue8Tiles::
     db 2, 3
     db $ba, $bb
     db $da, $db
     db $fa, $fb
 
-unkbank4Tiles16::
+Continue7Tiles::
     db 2, 3
     db $b8, $b9
     db $d8, $d9
     db $f8, $f9
 
-unkbank4Tiles17::
+Continue6Tiles::
     db 2, 3, 
     db $b6, $b7
     db $d6, $d7
     db $f6, $f7
 
-unkbank4Tiles18::
+Continue5Tiles::
     db 2, 3
     db $f2, $f3
     db $d4, $d5
     db $f4, $f5
 
-unkbank4Tiles19::
+Continue4Tiles::
     db 2, 3
     db $d0, $d1
     db $f0, $f1
     db $d2, $d3
 
-unkbank4Tiles1A::
+Continue3Tiles::
     db 2, 3
     db $0d, $0e
     db $ce, $cf
     db $1e, $ef
 
-unkbank4Tiles1B::
+Continue2Tiles::
     db 2, 3
     db $0b, $0c
     db $cc, $cd
     db $ae, $af
 
-unkbank4Tiles1C::
+Continue1Tiles::
     db 2, 3
     db $ff, $0a
     db $ff, $cb
     db $ff, $1b
 
-unkbank4Tiles1D::
+Continue0Tiles::
     db 2, 3
     db $66, $67
     db $86, $87
     db $a6, $a7
 
-unkbank4Tiles1E::
+ContinueUnkTiles::
     db 16, 3
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 unkbank4TilePointers2::
-    dw unkbank4Tiles13
-    dw unkbank4Tiles14
-    dw unkbank4Tiles15
-    dw unkbank4Tiles16
-    dw unkbank4Tiles17
-    dw unkbank4Tiles18
-    dw unkbank4Tiles19
-    dw unkbank4Tiles1A
-    dw unkbank4Tiles1B
-    dw unkbank4Tiles1C
-    dw unkbank4Tiles1D
-    dw unkbank4Tiles1E
+    dw ContinueBGTiles
+    dw Continue9Tiles
+    dw Continue8Tiles
+    dw Continue7Tiles
+    dw Continue6Tiles
+    dw Continue5Tiles
+    dw Continue4Tiles
+    dw Continue3Tiles
+    dw Continue2Tiles
+    dw Continue1Tiles
+    dw Continue0Tiles
+    dw ContinueUnkTiles
 
-    ld hl, $68b8
+ShowWorldMap:
+    ;load bg
+    ld hl, WorldMapBGTiles
     ld de, $9c00
     call Call_000_0776
+
+    ;if currentStage == 0. jump
     ld a, [currentStage]
-    cp $00
+    cp 0
     jr z, jr_004_676b
+    ;else
 
     ld c, a
 
+;render areas?
 jr_004_6743:
+    ;store
     push bc
+
+    ;load c into a and left shift twice
+    ;*4?
     ld a, c
     rlca
     rlca
+
+    ;calc pointer
     ld h, $00
     ld l, a
-    ld de, $6c32
+    ld de, WorldMapTilePointers-2
     add hl, de
+
+    ;load tiles pointer into hl
     ld a, [hl+]
     ld e, a
     ld a, [hl]
     ld d, a
     push de
     pop hl
+
     push hl
+
+    ;a as c, a--, left shift a
     ld a, c
     dec a
     rlca
     ld c, a
+
+    ;get thing pointer
     ld b, $00
-    ld hl, $68a0
+    ld hl, WorldMap_placePoints
     add hl, bc
+
+    ;load short at pointer into de
     ld a, [hl+]
     ld d, a
     ld a, [hl]
     ld e, a
+
+    ;get back tiles pointer
     pop hl
     call Call_000_0822
+
+    ;get back bc
     pop bc
+    ;c--
     dec c
+    ;if c > 0, loop
     jr nz, jr_004_6743
+    ;
 
 jr_004_676b:
+    ;left shift a as currentStage twice
     ld a, [currentStage]
     rlca
     rlca
+
+    ;get pointer to hl based off stage
     ld h, $00
     ld l, a
-    ld de, $6c38
+    ld de, WorldMapTilePointers+4
     add hl, de
+
+    ;set $c9ae & e to pointer
     ld a, [hl+]
     ld e, a
     ld [$c9ae], a
+
+    ;set $c9af & d to pointer+1
     ld a, [hl]
     ld d, a
     ld [$c9af], a
+
+    ;set c to width
     ld a, [de]
     ld c, a
+
+    ;de++ and set $c9b2 to a
     inc de
     ld [$c9b2], a
+
+    ;set a to height and set $c9b2 to a
     ld a, [de]
     ld [$c9b3], a
+
+    ;load width into hl
     ld l, c
     ld h, $00
+    ;does math for size
     call Call_000_04a5
+
+    ;load result into c
     ld c, l
+    ;set hl to $c9b4
     ld hl, $c9b4
 
 jr_004_6795:
-    ld a, $fe
-    ld [hl+], a
-    dec c
-    jr nz, jr_004_6795
+    ;loads tile for size???
 
+    ;load $fe into $c9b4
+    ld a, $fe
+    ;inc hl
+    ld [hl+], a
+
+    ;c--
+    dec c
+    ;if c > 0, loop
+    jr nz, jr_004_6795
+    ;else
+    
+    ; left shift c as currentStage
     ld a, [currentStage]
     rlca
     ld c, a
+
+    ;make pointer from bc to hl
     ld b, $00
-    ld hl, $68a0
+    ld hl, WorldMap_placePoints
     add hl, bc
+
+    ;set $c9b0 to pointer
     ld a, [hl+]
     ld [$c9b0], a
+
+    ;set $c9b1 to pointer+1
     ld a, [hl]
     ld [$c9b1], a
+
+    ;?
     ld a, $01
     ld d, $01
     call Call_000_2df8
+
+    ;?
     ld a, $99
     ldh [rLCDC], a
 
 jr_004_67b9:
+    ;fade in
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if !c, loop
     ld a, c
     or a
     jr z, jr_004_67b9
+    ;else
 
+    ;if sceneState == 2, jump
     ld a, [sceneState]
     cp $02
     jr z, jr_004_67d1
+    ;else
 
+    ;?
     ld a, $1e
     call Call_000_0903
 
 jr_004_67d1:
-    ld hl, $68b0
+    ld hl, WorldMap_scrollStop
+
+    ;get pointer from currentStage to hl
     ld a, [currentStage]
     ld c, a
     ld b, $00
     add hl, bc
+
+    ;set pointer value b, c to $60
     ld a, [hl]
     ld b, a
+    ;set timer
     ld a, $60
     ld c, a
 
+;scroll right
 jr_004_67e0:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
     pop bc
+
+    ;if bit 0 of $ff9c, jump
     ldh a, [$9c]
     bit 0, a
     jr nz, jr_004_6824
+    ;else
 
+    ;if bit 3 of $ff9c, jump
     bit 3, a
     jr nz, jr_004_6824
+    ;else
 
+    ;$c803++
     ld a, [$c803]
     inc a
     ld [$c803], a
-    dec c
-    jr nz, jr_004_67e0
 
+    ;c--
+    dec c
+    ;if c > 0, loop
+    jr nz, jr_004_67e0
+    ;else
+
+    ;set both bc to 0
     ld c, b
+    
+    ;if c == $60, jump
     ld a, $60
     cp c
     jr z, jr_004_6824
+    ;else
 
+;scroll left
 jr_004_6804:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
     pop bc
+
+    ;if bit 0 of $ff9c, jump
     ldh a, [$9c]
     bit 0, a
     jr nz, jr_004_6824
+    ;else
 
+    ;if bit 3 of $ff9c, jump
     bit 3, a
     jr nz, jr_004_6824
+    ;else
 
+    ;$c803--
     ld a, [$c803]
     dec a
     ld [$c803], a
+
+    ;if a > b (0), loop 
     cp b
     jr nz, jr_004_6804
+    ;else
 
     jr jr_004_6828
 
@@ -1127,65 +1362,95 @@ jr_004_6824:
 
 jr_004_6828:
     ld c, $00
+    ;get vars?
     call Call_004_6873
     ld b, $0f
 
 jr_004_682f:
     push bc
+
+    ;?
     ld a, $01
     ld hl, $6cac
     call Call_000_08ae
+
     pop bc
+
+    ;if bit 0 of $ff9c, jump
     ldh a, [$9c]
     bit 0, a
     jr nz, jr_004_6853
+    ;else
 
+    ;if bit 3 of $ff9c, jump
     bit 3, a
     jr nz, jr_004_6853
+    ;else
 
+    ;if b > 0, loop
     dec b
     jr nz, jr_004_682f
+    ;else
 
+    ;SHOW CURRENT STAGE
+    ;c++
     inc c
+
+    ;if c == $14, jump
     ld a, $14
     cp c
     jr z, jr_004_6853
+    ;else
 
+    ;loop
     call Call_004_6873
     ld b, $0f
     jr jr_004_682f
 
 jr_004_6853:
+    ;finish blinking
+
+    ;if sceneState == 2, jump
     ld a, [sceneState]
-    cp $02
+    cp 2
     jr z, jr_004_685f
+    ;else
 
     ld a, $10
     call Call_000_0a84
 
 jr_004_685f:
+    ;?
     ld a, $00
     ld d, $01
     call Call_000_2df8
 
 jr_004_6866:
+    ;fade out
     ld a, $01
     ld hl, $6ca6
     call Call_000_08ae
+
+    ;if c, loop
     ld a, c
     or a
     jr z, jr_004_6866
+    ;else
 
     ret
 
 
 Call_004_6873:
+    ;clean
     push af
     push bc
     push de
     push hl
+
+    ;if !c0, jump
     bit 0, c
     jr z, jr_004_6888
+    ;else
 
     ld hl, $c9b2
     ld a, [$c9b0]
@@ -1195,10 +1460,13 @@ Call_004_6873:
     jr jr_004_6898
 
 jr_004_6888:
+    ;set hl to $c9ae:$c9af
     ld a, [$c9ae]
     ld l, a
     ld a, [$c9af]
     ld h, a
+
+    ;set de to $c9b0:$c9b1
     ld a, [$c9b0]
     ld d, a
     ld a, [$c9b1]
@@ -1206,17 +1474,39 @@ jr_004_6888:
 
 jr_004_6898:
     call Call_000_07f0
+
+    ;unclean
     pop hl
     pop de
     pop bc
     pop af
+
     ret
 
-;????
-    db $03, $07, $08, $07, $08, $0b, $0f, $0a, $0e, $07, $13, $07, $17, $06, $19, $03
-    db $00, $00, $00, $38, $30, $58, $60, $60
+;where to place the level map silhouettes 
+;x, y
+WorldMap_placePoints:
+    db 3, 7
+    db 8, 7
+    db 8, 11
+    db 15, 10
+    db 14, 7
+    db 19, 7
+    db 23, 6
+    db 25, 3
 
-unkbank4Tiles1F::
+;where to stop scrolling back on x
+WorldMap_scrollStop:
+    db 0
+    db 0
+    db 0
+    db 56
+    db 48
+    db 88
+    db 96
+    db 96
+
+WorldMapBGTiles::
     db 32, 18
     db $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $00, $01, $02, $02, $03, $66, $67, $fe
     db $fe, $fe, $fe, $57, $58, $59, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $04, $05, $06, $07, $08, $09, $86, $87, $fa
@@ -1237,83 +1527,87 @@ unkbank4Tiles1F::
     db $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $55, $56, $4e, $4f, $50, $51, $51, $51, $51, $51, $51, $51, $82, $83, $7f, $fe, $fe, $fe, $fe, $fe, $fe, $fe
     db $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $55, $56, $fe, $55, $56, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe
 
-unkbank4Tiles20::
+;"boss" tiles are the versions specifically after you beat the level
+;therefore, stage 8's is never used.
+;i actually didnt even realize this but they are actually accurate to physical space
+;so thats cool i guess
+WorldMapStage1BossTiles::
     db 5, 4
     db $fd, $fd, $fd, $fe, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-unkbank4Tiles21::
+WorldMapStage1Tiles::
     db 5, 4
     db $fd, $fd, $fd, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-unkbank4Tiles22::
+WorldMapStage2BossTiles::
     db 5, 4
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fe, $fe, $fd, $fe, $fe
 
-unkbank4Tiles23::
+WorldMapStage2Tiles::
     db 5, 4
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fe, $fe, $fe, $fe, $fe
 
-unkbank4Tiles24::
+WorldMapStage3BossTiles::
     db 7, 2
     db $fd, $fd, $fd, $fd, $fd, $fd, $fe
     db $fe, $fd, $fd, $fd, $fd, $fd, $fd
 
-unkbank4Tiles25::
+WorldMapStage3Tiles::
     db 7, 2
     db $fd, $fd, $fd, $fd, $fd, $fd, $fe
     db $fe, $fd, $fd, $fd, $fd, $fd, $fe
 
-unkbank4Tiles26::
+WorldMapStage4BossTiles::
     db 5, 4
     db $fe, $fd, $fe, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
 
-unkbank4Tiles27::
+WorldMapStage4Tiles::
     db 5, 4
     db $fe, $fe, $fe, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
 
-unkbank4Tiles28::
+WorldMapStage5BossTiles::
     db 5, 3
     db $fe, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
 
-unkbank4Tiles29::
+WorldMapStage5Tiles::
     db 5, 3
     db $fe, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-unkbank4Tiles2A::
+WorldMapStage6BossTiles::
     db 4, 3
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd
 
-unkbank4Tiles2B::
+WorldMapStage6Tiles::
     db 4, 3
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
 
-unkbank4Tiles2C::
+WorldMapStage7BossTiles::
     db 5, 7
     db $fe, $fe, $fe, $fd, $fe
     db $fe, $fe, $fe, $fd, $fe
@@ -1323,7 +1617,7 @@ unkbank4Tiles2C::
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fe, $fe
 
-unkbank4Tiles2D::
+WorldMapStage7Tiles::
     db 5, 7
     db $fe, $fe, $fe, $fe, $fe
     db $fe, $fe, $fe, $fe, $fe
@@ -1333,31 +1627,31 @@ unkbank4Tiles2D::
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fe, $fe
 
-unkbank4Tiles2E::
+WorldMapStage8BossTiles::
     db 3, 3
     db $fe, $fd, $fd
     db $fd, $fd, $fd
     db $fd, $fd, $fd
     
-unkbank4Tiles2F::
+WorldMapStage8Tiles::
     db 1, 1
     db $fe
 
-unkbank4TilePointers3::
-    dw unkbank4Tiles1F
-    dw unkbank4Tiles20
-    dw unkbank4Tiles21
-    dw unkbank4Tiles22
-    dw unkbank4Tiles23
-    dw unkbank4Tiles24
-    dw unkbank4Tiles25
-    dw unkbank4Tiles26
-    dw unkbank4Tiles27
-    dw unkbank4Tiles28
-    dw unkbank4Tiles29
-    dw unkbank4Tiles2A
-    dw unkbank4Tiles2B
-    dw unkbank4Tiles2C
-    dw unkbank4Tiles2D
-    dw unkbank4Tiles2E
-    dw unkbank4Tiles2E
+WorldMapTilePointers::
+    dw WorldMapBGTiles
+    dw WorldMapStage1BossTiles
+    dw WorldMapStage1Tiles
+    dw WorldMapStage2BossTiles
+    dw WorldMapStage2Tiles
+    dw WorldMapStage3BossTiles
+    dw WorldMapStage3Tiles
+    dw WorldMapStage4BossTiles
+    dw WorldMapStage4Tiles
+    dw WorldMapStage5BossTiles
+    dw WorldMapStage5Tiles
+    dw WorldMapStage6BossTiles
+    dw WorldMapStage6Tiles
+    dw WorldMapStage7BossTiles
+    dw WorldMapStage7Tiles
+    dw WorldMapStage8BossTiles
+    dw WorldMapStage8BossTiles
