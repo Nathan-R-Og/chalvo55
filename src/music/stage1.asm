@@ -1,3 +1,4 @@
+.segment1
 db $fe, $dc
 db $fd, $00
 db $fc, $40
@@ -13,6 +14,7 @@ db $80, $20, $20
 db $16, $10, $0a
 db $18, $20, $14
 db $1a, $10, $0a
+.segment1_loop:
 db $1b, $40, $ff
 db $1b, $10, $06
 db $1b, $10, $0a
@@ -106,9 +108,9 @@ db $15, $10, $0a
 db $16, $60, $ff
 db $16, $30, $12
 db $16, $30, $2a
-db $ff, $20, $40
+   music_jumpto .segment1_loop
 db $81
-
+.segment2:
 db $fc, $80
 db $f3, $f4
 db $f6, $0d
@@ -122,6 +124,7 @@ db $f8, $00
 db $f2, $22
 
 db $80, $60, $60
+.segment2_loop:
 
 db $f6, $0c
 
@@ -229,11 +232,12 @@ db $32, $30, $30
 db $30, $30, $30
 db $2f, $30, $30
 db $2e, $30, $30
-db $ff, $51, $41
+   music_jumpto .segment2_loop
 db $81
-
+.segment3:
 
 db $80, $60, $60
+.segment3_loop:
 db $f5, $86, $22
 
 db $f7, $60
@@ -355,9 +359,9 @@ db $24, $30, $30
 db $29, $60, $60
 db $2c, $30, $30
 db $2c, $30, $30
-db $ff, $8b, $42
+   music_jumpto .segment3_loop
 db $81
-
+.segment4:
 db $f6, $0b
 db $f4, $df
 db $f3, $02
@@ -368,6 +372,7 @@ db $f8, $00
 db $f2, $88
 
 db $80, $60, $60
+.segment4_loop:
 db $30, $20, $04
 db $30, $10, $02
 db $30, $20, $20
@@ -488,6 +493,6 @@ db $80, $10, $02
 db $30, $10, $0e
 db $30, $10, $0e
 db $30, $10, $0e
-db $ff, $e9, $43
+   music_jumpto .segment4_loop
 db $81
 

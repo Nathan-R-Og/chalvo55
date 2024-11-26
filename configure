@@ -1,2 +1,3 @@
+#!/bin/bash
 #$1 == filename
-rm -rf disassembly && ./mgbdis/mgbdis.py ${1:-chalvo}.gb && python3 tools/formatGame.py
+rm -rf disassembly && ./mgbdis/mgbdis.py ${1:-chalvo}.gb --disable-halt-nops && python3 tools/formatGame.py

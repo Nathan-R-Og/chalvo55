@@ -11,11 +11,17 @@ def MUSIC_CMD_WIDTH EQU $fc ; width of pulse
 def MUSIC_CMD_LIMIT EQU $fd ; note limit???? needs more research
 def MUSIC_CMD_TEMPO EQU $fe ; tempo is defined as higher numbers == more cycles per frame
 
+def MUSIC_CMD_JUMPTO EQU $ff ; real bank address to jump to. used for looping. dw.
+MACRO music_jumpto
+    db MUSIC_CMD_JUMPTO
+    dw \1
+ENDM
+
 ;notes are 3 bytes long. defined as note/command, arg, arg2
 ;PLAY == note == pitch, arg == length/time, arg2 == hold,
 ;pitch is indexed from c0 == 0xc
-;from here, each note is += 1
-; so d0 == 0xd, c1 == 0x18, etc
+;from here, each note (step?) is += 1
+; so c#0 == 0xd, c1 == 0x18, etc
 ; if arg2 is <= 0, it will perform a full hold. in other words, arg2 will == arg
 
 def MUSIC_NOTE_LOOP EQU $FF ; arg == offset from ?, arg2 == ?

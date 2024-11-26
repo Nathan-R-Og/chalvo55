@@ -1,5 +1,26 @@
-00:0000 .code:4000
-01:4000 .code:2D0F
+00:0000 .code:6d6
+00:06d6 .data:80
+00:0756 .code:1F8
+00:094e .data:117
+00:0a65 .code:1190
+00:1bf5 .data:6F1
+00:22e6 .code:A8E
+00:2d74 .data:45
+00:2DB9 .code:F4E
+00:3d07 .data:f0
+00:3df7 .code:3D
+00:3e34 .data:61
+00:3e95 bank0_end
+00:3e95 .data:16b
+
+
+
+
+01:4000 .code:77
+01:4077 .data:1f7b
+01:5ff2 .code:106
+01:60f8 .data:800
+01:68f8 .code:415
 
 01:6d0d titleScreenTiles
 01:6d0d .data:16A
@@ -8,19 +29,15 @@
 
 01:7332 PASSWORD_SPCLST
 01:7332 .data:6
-
 01:7338 PASSWORD_JSSJSS
 01:7338 .data:6
 
 01:733E passwordEntryScreenTiles
 01:733E .data:16A
-
 01:74A8 passwordEntryTiles
 01:74a8 .data:D1
-
 01:7577 passwordGetTiles
 01:7577 .data:16A
-
 01:76e1 passwordSpritePointers
 01:76e1 .data:4A
 
@@ -641,11 +658,16 @@
 04:6C56 bank4_pad
 
 
-05:4000 .code:4000
-
+05:4000 .code:c6f
+05:4c6f .data:1a
+05:4c89 .code:1E26
 05:6ab0 StartCutscene_End_Ref
 05:6ab0 .data:2
-
+05:6ab2 .code:B17
+05:75c9 jss_logo_tiles
+05:75c9 .data:A37
+05:7733 jss_logo_tiles_pointer
+05:7735 bank5_end
 
 
 06:4000 stage1_rooms
@@ -1047,6 +1069,9 @@
 
 
 ; function/jr names
+00:0150 code_boot
+00:01d4 main_loop
+00:02c4 CheckPad
 00:0406 ChangeRoom
 00:23ec StartActorCleanup
 00:23f2 ActorCleanup_Loop
@@ -1054,6 +1079,7 @@
 00:2406 ActorCleanup_Loop2
 00:372d Player_Init
 
+01:6b3d Title_Init
 01:6b64 Title_Loop_Jump
 01:6b64 Title_Loop
 01:6b73 Title_Main
@@ -1130,3 +1156,4 @@
 04:6732 ShowWorldMap
 
 05:6CFB StartCutscene_End
+05:752b sceneState0_proc

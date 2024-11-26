@@ -1,8 +1,3 @@
-; Disassembly of "chalvo.gb"
-; This file was created with:
-; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
-; https://github.com/mattcurrie/mgbdis
-
 SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
 
     ld a, $1c
@@ -2904,7 +2899,7 @@ Ending_CharlieHugTiles::
     db $78, $79, $7a, $7b
     db $98, $99, $9a, $9b
     db $b8, $b9, $ba, $bb
-    
+
 Ending_CharlieLookUpTiles::
     db 4, 7
     db $d8, $d9, $da, $db
@@ -2942,7 +2937,7 @@ unkAnimSet1::
     dw $5aab
     ;actual push sweat effect
     dw $5ab9
-    ;mob barrier destroy effect 
+    ;mob barrier destroy effect
     dw $5ac5
 
     dw 8, ANIM_FRAME_Chalvo_Walk1
@@ -2955,13 +2950,13 @@ unkAnimSet1::
     dw 7, ANIM_FRAME_Chalvo_BallUp
     dw 7, ANIM_FRAME_Chalvo_BallDown
     dw ANIM_COMMAND_STOP
-    
+
     ;actual push sweat effect
     dw 6, ANIM_FRAME_Chalvo_PushSweat1
     dw 6, ANIM_FRAME_Chalvo_PushSweat2
     dw ANIM_COMMAND_LOOP, 0
-    
-    ;mob barrier destroy effect 
+
+    ;mob barrier destroy effect
     dw 7, $27
     dw 7, $28
     dw 7, $29
@@ -3018,7 +3013,7 @@ ANIM_SET_Chalvo_Uncurl::
     dw 8, ANIM_FRAME_Chalvo_Jump
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Fall
     dw ANIM_COMMAND_STOP
-    
+
 ANIM_SET_Chalvo_PushStand::
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_PushStand
     dw ANIM_COMMAND_STOP
@@ -3062,7 +3057,7 @@ ANIM_SET_Chalvo_PushStand::
     dw 6, $7a,
     dw 6, $7b,
     dw ANIM_COMMAND_STOP
-    
+
     ;definitelyNotBallDie
     dw 64, ANIM_FRAME_Chalvo_BallDie
     dw ANIM_COMMAND_STOP
@@ -3113,7 +3108,7 @@ unkAnimSet6::
     dw unkAnimSet6_anim4
 
 unkAnimSet6_anim1::
-    dw ANIM_COMMAND_INDEFINITE, $21, 
+    dw ANIM_COMMAND_INDEFINITE, $21,
     dw ANIM_COMMAND_STOP
 
 unkAnimSet6_anim2::
@@ -3346,12 +3341,12 @@ unkAnimSetC_anim1::
     dw $1e, $45
     dw $01, $46
     dw ANIM_COMMAND_STOP
-    
+
 unkAnimSetC_anim2::
     dw $3c, $47
     dw $01, $46
     dw ANIM_COMMAND_STOP
-    
+
 unkAnimSetC_anim3::
     dw $3c, $47
     dw ANIM_COMMAND_STOP
@@ -3367,7 +3362,7 @@ unkAnimSetD_anim1::
     dw $08, $4d
     dw $08, $4c
     dw ANIM_COMMAND_LOOP, 0
-    
+
 unkAnimSetD_anim2::
     dw $08, $4e
     dw $08, $4f
@@ -3620,7 +3615,7 @@ unkData::
     db $e8, $e0, $2f, $1f
     ;unkTilesA6, fight start
     db $e8, $e0, $2f, $1f
-    
+
     ;unkTilesA6_copy
     db $e8, $e0, $2f, $1f
     ;unkTilesA6_copy, fight start
@@ -3635,7 +3630,7 @@ unkData::
     db $f8, $f0, $0f, $0f
     ;unkTiles93, fight start
     db $f8, $f0, $0f, $0f
-    
+
     ;unkTiles72
     db $f8, $f0, $0f, $0f
     ;unkTiles72, fight start
@@ -3680,7 +3675,7 @@ unkData::
     db $f0, $e0, $1f, $1f
     ;unkTiles5A, fight start
     db $f0, $e0, $1f, $1f
-    
+
     ;unkTiles59
     db $f0, $e0, $1f, $1f
     ;unkTiles59, fight start
@@ -3700,7 +3695,7 @@ unkData::
     db $e8, $e0, $2f, $1f
     ;unkTiles2E, fight start
     db $e8, $e0, $2f, $1f
-    
+
     ;unkTiles2D
     db $e8, $e0, $2f, $1f
     ;unkTiles2D, fight start
@@ -4889,7 +4884,7 @@ jr_003_67e4:
     bit 2, a
     jp nz, Jump_003_68f0
     ;else
-    
+
     ;if bit 6 of playerState, jump
     ;stage clear?
     bit 6, a

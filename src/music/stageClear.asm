@@ -1,3 +1,4 @@
+.segment1
 db $fe, $dc
 db $fd, $00
 db $fc, $c0
@@ -22,7 +23,7 @@ db $80, $0c, $06
 db $2e, $0c, $0a
 db $2e, $30, $2a
 db $81
-
+.segment2:
 db $fc, $00
 db $f3, $07
 db $f6, $0a
@@ -55,7 +56,7 @@ db $80, $0c, $06
 db $16, $0c, $0a
 db $16, $30, $2a
 db $81
-
+.segment3:
 
 db $f5, $86, $22
 
@@ -97,7 +98,7 @@ db $80, $0c, $06
 db $2e, $0c, $0a
 db $2e, $30, $2a
 db $81
-
+.segment4:
 db $f6, $0b
 db $f4, $df
 db $f3, $01

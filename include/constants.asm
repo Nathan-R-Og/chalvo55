@@ -214,7 +214,7 @@ def STARTING_LIVES equ 5 ; self explanatory
 
 
 ; anim stuff
-; as far as i know, 
+; as far as i know,
 def ANIM_FRAME_Chalvo_Walk1 EQU 0
 def ANIM_FRAME_Chalvo_Stand EQU 1
 def ANIM_FRAME_Chalvo_Walk2 EQU 2
@@ -253,3 +253,36 @@ def ANIM_COMMAND_STOP EQU $00ff
 ; loop(0) == infinite
 def ANIM_COMMAND_LOOP EQU $00fe
 def ANIM_COMMAND_INDEFINITE EQU $00fd
+
+
+def MUSICID_stage1 equ 0
+def MUSICID_stage2 equ 1
+def MUSICID_stage3 equ 2
+def MUSICID_stage4 equ 3
+def MUSICID_stage5 equ 4
+def MUSICID_stage6 equ 5
+def MUSICID_stage7 equ 6
+def MUSICID_stage8 equ 7
+def MUSICID_boss_0 equ 8
+def MUSICID_boss_1 equ 9
+def MUSICID_boss_2 equ 10
+def MUSICID_boss_3 equ 11
+def MUSICID_boss_4 equ 12
+def MUSICID_boss_5 equ 13
+def MUSICID_boss_6 equ 14
+def MUSICID_finalBoss equ 15
+def MUSICID_die equ 16
+def MUSICID_invincibility equ 17
+def MUSICID_stageClear equ 18
+def MUSICID_password equ 19
+def MUSICID_ending equ 20
+def MUSICID_unk1 equ 21
+def MUSICID_gameOver equ 22
+def MUSICID_title equ 23
+def MUSICID_stageStart equ 24
+def MUSICID_continue equ 25
+def MUSICID_intro1 equ 26
+def MUSICID_specialStage equ 27
+def MUSICID_intro2 equ 28
+def MUSICID_unk2 equ 29
+def MUSICID_worldMap equ 30
