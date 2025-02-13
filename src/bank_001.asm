@@ -1,5 +1,6 @@
 SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
 
+b1_root:
     ld hl, $0004
     add hl, bc
     ld a, [hl]
@@ -584,12 +585,10 @@ db $23,$0B,$23,$0B,$C0,$08,$18,$0D,$06,$06,$8D,$0E,$12,$03,$72,$0F
 db $00,$00,$C0,$0F,$EE,$FC,$72,$0F,$FA,$F9,$8D,$0E,$40,$F7,$18,$0D
 db $DD,$F4,$23,$0B,$E8,$F2,$C0,$08,$73,$F1,$06,$06,$8E,$F0,$12,$03
 db $40,$F0,$00,$00,$8E,$F0,$EE,$FC,$73,$F1,$FA,$F9,$E8,$F2,$40,$F7
-db $DD,$F4,$DD,$F4,$40,$F7,$E8,$F2,$FA,$F9,$73
+db $DD,$F4,$DD,$F4,$40,$F7,$E8,$F2,$FA,$F9,$73,$F1,$EE,$FC,$8E,$F0
 
-    pop af
-    xor $fc
-    adc [hl]
-    ldh a, [$d5]
+jr_001_5ff7:
+    push de
     xor a
     ld [$c822], a
     ld [$c824], a
@@ -898,6 +897,7 @@ db $1F,$1F,$1F,$1F,$1F,$1F,$1F,$1F,$20,$20,$20,$20,$21,$21,$22,$22
 db $22,$23,$23,$24,$24,$25,$26,$26,$27,$27,$28,$29,$29,$2A,$2B,$2B
 
 
+jr_001_68f8:
     ld bc, $c120
     ld hl, $0004
 
@@ -1150,11 +1150,11 @@ jr_001_6a7f:
     jp nc, Jump_001_6a86
 
     ld e, [hl]
-    jr jr_001_6af1
+    jr Jump_001_6af1
 
 Jump_001_6a86:
     ld e, a
-    jr jr_001_6af1
+    jr Jump_001_6af1
 
 jr_001_6a89:
     ld a, [$c821]
@@ -1206,24 +1206,23 @@ jr_001_6ad8:
     jp c, Jump_001_6ae6
 
     ld e, [hl]
-    jr jr_001_6af1
+    jr Jump_001_6af1
 
 Jump_001_6ae6:
     ld e, a
-    jr jr_001_6af1
+    jr Jump_001_6af1
 
 jr_001_6ae9:
     cp [hl]
     jp nc, Jump_001_6af0
 
     ld e, [hl]
-    jr jr_001_6af1
+    jr Jump_001_6af1
 
 Jump_001_6af0:
     ld e, a
 
 Jump_001_6af1:
-jr_001_6af1:
     ld a, $1c
     ld [$c82d], a
     ld bc, $c100
@@ -1276,17 +1275,19 @@ Title_Init:
     ;draw the tiles
     ld de, _SCRN0
     ld hl, titleScreenTiles
-    call Call_000_0756
+    call Draw_EntireScreenTiles
 
     ;music
     ld a, MUSICID_title
     call Call_000_0903
 
-    ld a, 1
-    ld d, 7
-    call Call_000_2df8
+    ;fade in
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
 
-    ld a, $d3
+    ;init lcdc
+    ld a, LCDCF_ON | LCDCF_WIN9C00 | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_001_6b56:
@@ -1322,7 +1323,7 @@ Title_Main:
     add 1
     ld [titleDemoTimer], a
 
-    ;inc demoTimer (hi) when demoTimer (lo) > $ff
+    ;add carry to hi
     ld a, [titleDemoTimer+1]
     adc 0
     ld [titleDemoTimer+1], a
@@ -1355,7 +1356,7 @@ Title_Main:
     ;add current timer and de
     add hl, de
 
-    ;if bit 7 of the timer != 0, let player control
+    ;if bit 7 of the hi of the timer != 0, let player control
     bit 7, h
     jr nz, Title_Input
     ;else go to demo
@@ -1404,9 +1405,8 @@ Title_MoveUp:
     jr z, Title_Loop
 
     ;else, move up
-    ;flip a
-    xor a
     ;set cursorIndex to 0
+    xor a
     ld [cursorIndex], a
 
     ;save data
@@ -1414,9 +1414,9 @@ Title_MoveUp:
     push af
 
     ;sfx
-    ld hl, $2195
-    ld a, $01
-    call Call_000_0aa6
+    ld hl, SFX_Title_Cursor
+    ld a, 1
+    call Play_SFX
 
     ;load data
     pop af
@@ -1445,9 +1445,9 @@ Title_MoveDown:
     push af
 
     ;sfx
-    ld hl, $2195
-    ld a, $01
-    call Call_000_0aa6
+    ld hl, SFX_Title_Cursor
+    ld a, 1
+    call Play_SFX
 
     ;load data
     pop af
@@ -1469,16 +1469,16 @@ Title_MoveToggle:
     jr Title_MoveUp
 
 Title_Progress:
-    ;save data
+    ;store
     push hl
     push af
 
     ;sfx
-    ld hl, $21b0
-    ld a, $01
-    call Call_000_0aa6
+    ld hl, SFX_Title_Select
+    ld a, 1
+    call Play_SFX
 
-    ;load data
+    ;restore
     pop af
     pop hl
 
@@ -1487,21 +1487,17 @@ Title_Progress:
     call Call_000_0a84
 
     ;fade
-    ld a, $00
-    ld d, $07
-    ;nulling this out transitions IMMEDIATELY
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
 
-jr_001_6c1d:
-    ;LOOP
     ;change the actual scene
     ;calls this func and loops until the fade is completed
+    .wait:
     call Call_001_6ca6
     ld a, c
     or a
-    ;if a == 0, break
-    jr z, jr_001_6c1d
-    ;LOOP
+    jr z, .wait ;if a == 0, break
 
 
 jr_001_6c24:
@@ -1582,34 +1578,35 @@ jr_001_6c80:
     ret
 
 
-jr_001_6c89:
+Fill_SCRN0:
     ldh a, [rLY]
-    cp $91
-    jr nc, jr_001_6c92
+    cp 145
+    jr nc, .exit
 
     nop
-    jr jr_001_6c89
+    jr Fill_SCRN0
 
-jr_001_6c92:
+    .exit:
+
     xor a
     ldh [rLCDC], a
-    ld a, $ff
-    ld hl, $9800
-    ld bc, $0400
 
-jr_001_6c9d:
+    ld a, $ff
+    ld hl, _SCRN0
+    ld bc, _SCRN1-_SCRN0
+    .fill:
     ld a, $ff
     ld [hl+], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_001_6c9d
+    jr nz, .fill
 
     ret
 
 
 Call_001_6ca6:
-    ld a, $08
+    ld a, 8
     call Call_000_2e61
     ld c, a
 
@@ -1625,7 +1622,7 @@ Call_001_6cac:
     ld [$c808], a
     ld hl, $ffa1
     set 0, [hl]
-    db $76
+    halt
 
 jr_001_6cc9:
     call Call_000_0c2e
@@ -1667,13 +1664,13 @@ jr_001_6d02:
     xor a
     ld [$ca08], a
     ldh a, [INPUT_HOLD]
-    ldh [$9c], a
+    ldh [INPUT_PRESS], a
 
 jr_001_6d0a:
     ldh a, [INPUT_PRESS]
     ret
 
-titleScreenTiles::
+titleScreenTiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -1743,15 +1740,20 @@ titleScreenTiles::
     ld l, [hl]
     and l
     ld l, [hl]
-    ld de, $9800
+
+jr_001_6eb4:
+    ld de, _SCRN0
     ld hl, passwordEntryScreenTiles
-    call Call_000_0756
+    call Draw_EntireScreenTiles
+
     ld a, $13
     call Call_000_0903
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $d3
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    ld a, LCDCF_ON | LCDCF_WIN9C00 | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_001_6ecd:
@@ -1764,35 +1766,35 @@ jr_001_6ecd:
     call Call_001_7184
 
 Jump_001_6eda:
-jr_001_6eda:
     call Call_001_6cac
     ldh a, [INPUT_PRESS]
-    bit 0, a
+    bit PADB_A, a
     jr nz, jr_001_6f5f
 
-    bit 1, a
+    bit PADB_B, a
     jp nz, Jump_001_6f8d
 
-    bit 3, a
+    bit PADB_START, a
     jr nz, jr_001_6f4f
 
-    bit 4, a
+    bit PADB_RIGHT, a
     jr nz, jr_001_6f0e
 
-    bit 5, a
+    bit PADB_LEFT, a
     jr nz, jr_001_6f2e
 
-    jr jr_001_6eda
+    jr Jump_001_6eda
 
 Jump_001_6ef6:
 jr_001_6ef6:
     ld c, a
     ld a, $10
     call Call_000_0a84
-    ld a, $00
-    ld d, $07
+
+    ld a, PALFADE_NTL
+    ld d, %111
     push bc
-    call Call_000_2df8
+    call Pal_Fade
 
 jr_001_6f04:
     call Call_001_6ca6
@@ -1820,11 +1822,11 @@ jr_001_6f1a:
     push af
     ld hl, $2195
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     call Call_001_7184
-    jr jr_001_6eda
+    jr Jump_001_6eda
 
 jr_001_6f2e:
     call Call_001_7189
@@ -1841,11 +1843,11 @@ jr_001_6f3b:
     push af
     ld hl, $2195
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     call Call_001_7184
-    jr jr_001_6eda
+    jr Jump_001_6eda
 
 jr_001_6f4f:
     or $01
@@ -1853,7 +1855,7 @@ jr_001_6f4f:
     push af
     ld hl, $21b0
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     jr jr_001_6ef6
@@ -1879,7 +1881,7 @@ jr_001_6f5f:
     push af
     ld hl, $21b0
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     call Call_001_6fb8
@@ -1894,9 +1896,11 @@ jr_001_6f8d:
 
     push hl
     push af
-    ld hl, $221b
-    ld a, $01
-    call Call_000_0aa6
+
+    ld hl, SFX_Password_EnterLetter
+    ld a, 1
+    call Play_SFX
+
     pop af
     pop hl
     jp Jump_001_6eda
@@ -1909,7 +1913,7 @@ jr_001_6fa2:
     push af
     ld hl, $221b
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     call Call_001_7072
@@ -2243,9 +2247,11 @@ jr_001_718b:
     ret
 
 
-    ld de, $9800
+jr_001_719d:
+    ld de, _SCRN0
     ld hl, passwordGetTiles
-    call Call_000_0756
+    call Draw_EntireScreenTiles
+
     ld hl, currentPassword
     call Call_001_728b
     ld c, $06
@@ -2275,10 +2281,12 @@ jr_001_71b4:
     dec c
     jr nz, jr_001_71b4
 
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
-    ld a, $93
+
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
+
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_001_71da:
@@ -2290,15 +2298,15 @@ jr_001_71da:
 jr_001_71e1:
     call Call_001_6cac
     ldh a, [INPUT_PRESS]
-    and $09
+    and PADF_START | PADF_A
     jr nz, jr_001_71ec
 
     jr jr_001_71e1
 
 jr_001_71ec:
-    ld a, $00
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %001
+    call Pal_Fade
 
 jr_001_71f3:
     call Call_001_6ca6
@@ -2309,7 +2317,7 @@ jr_001_71f3:
     ret
 
 
-StartPasswordRead::
+StartPasswordRead:
     push bc
     push de
     push hl
@@ -2320,7 +2328,7 @@ Call_001_7200:
     ;save passwordStore pointer to de
     ld de, passwordStore
 
-LoadCheckPassword_SPCLST::
+    .LoadCheckPassword_SPCLST:
     ;LOOP: store the user's entry to passwordStore
     ld a, [hl+]
     ld [de], a
@@ -2328,7 +2336,7 @@ LoadCheckPassword_SPCLST::
     dec b
     ;if b == 0 (z), break
     ;else, continue
-    jr nz, LoadCheckPassword_SPCLST
+    jr nz, .LoadCheckPassword_SPCLST
     ;LOOP
 
     ;reset hl, load SPCLST and get ready for another loop
@@ -2336,19 +2344,19 @@ LoadCheckPassword_SPCLST::
     ld de, PASSWORD_SPCLST
     ld b, 6
 
-CheckPassword_SPCLST::
+    .CheckPassword_SPCLST:
     ;LOOP
     ;load SPCLST into a, and if not equal to hl, skip to JSSJSS
     ld a, [de]
     cp [hl]
-    jr nz, LoadCheckPassword_JSSJSS
+    jr nz, .LoadCheckPassword_JSSJSS
 
     inc de
     inc hl
     dec b
     ;if b == 0 (z), break
     ;else, continue
-    jr nz, CheckPassword_SPCLST
+    jr nz, .CheckPassword_SPCLST
     ;LOOP
 
     ;by this point, you must have input SPCLST
@@ -2360,25 +2368,25 @@ CheckPassword_SPCLST::
     xor a
     jr jr_001_7283
 
-LoadCheckPassword_JSSJSS::
+    .LoadCheckPassword_JSSJSS:
     ;reset hl, load JSSJSS and get ready for another loop
     ld hl, passwordStore
     ld de, PASSWORD_JSSJSS
     ld b, 6
 
-CheckPassword_JSSJSS::
+    .CheckPassword_JSSJSS:
     ;LOOP
     ;load SPCLST into a, and if not equal to hl, skip to ValidStage checking
     ld a, [de]
     cp [hl]
-    jr nz, CheckPassword_ValidStage
+    jr nz, .CheckPassword_ValidStage
 
     inc de
     inc hl
     dec b
     ;if b == 0 (z), break
     ;else, continue
-    jr nz, CheckPassword_JSSJSS
+    jr nz, .CheckPassword_JSSJSS
     ;LOOP
 
     ;by this point, you must have input JSSJSS
@@ -2390,7 +2398,7 @@ CheckPassword_JSSJSS::
     xor a
     jr jr_001_7283
 
-CheckPassword_ValidStage::
+    .CheckPassword_ValidStage:
     ;reset hl
     ld hl, passwordStore
     ld a, [hl+]
@@ -2601,13 +2609,13 @@ Jump_001_7311:
     ret
 
 ;BCDFGHJKLMNPQRST
-PASSWORD_SPCLST::
+PASSWORD_SPCLST:
     db $0e, $0b, $01, $08, $0e, $0f
 
-PASSWORD_JSSJSS::
+PASSWORD_JSSJSS:
     db $06, $0e, $0e, $06, $0e, $0e
 
-passwordEntryScreenTiles::
+passwordEntryScreenTiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ad, $ae, $af, $b0, $b1, $b2
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $cc, $cd, $ce, $cf, $d0, $d1, $d2
@@ -2628,181 +2636,181 @@ passwordEntryScreenTiles::
     db $ff, $ff, $ff, $ff, $eb, $ec, $ed, $ee, $ef, $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-passwordEntryTiles_tile1::
+passwordEntryTiles_tile1:
     db 2, 2
     db $02, $03
     db $22, $23
 
-passwordEntryTiles_tile2::
+passwordEntryTiles_tile2:
     db 2, 2
     db $06, $07
     db $26, $27
 
-passwordEntryTiles_tile3::
+passwordEntryTiles_tile3:
     db 2, 2
     db $0a, $0b
     db $2a, $2b
 
-passwordEntryTiles_tile4::
+passwordEntryTiles_tile4:
     db 2, 2
     db $0e, $0f
     db $2e, $2f
 
-passwordEntryTiles_tile5::
+passwordEntryTiles_tile5:
     db 2, 2
     db $12, $13
     db $32, $33
 
-passwordEntryTiles_tile6::
+passwordEntryTiles_tile6:
     db 2, 2
     db $16, $17
     db $36, $37
 
-passwordEntryTiles_tile7::
+passwordEntryTiles_tile7:
     db 2, 2
     db $1a, $1b
     db $3a, $3b
 
-passwordEntryTiles_tile8::
+passwordEntryTiles_tile8:
     db 2, 2
     db $1e, $1f
     db $3e, $3f
 
-passwordEntryTiles_tile9::
+passwordEntryTiles_tile9:
     db 2, 2
     db $42, $43
     db $62, $63
 
-passwordEntryTiles_tile10::
+passwordEntryTiles_tile10:
     db 2, 2
     db $46, $47
     db $66, $67
 
-passwordEntryTiles_tile11::
+passwordEntryTiles_tile11:
     db 2, 2
     db $4a, $4b
     db $6a, $6b
 
-passwordEntryTiles_tile12::
+passwordEntryTiles_tile12:
     db 2, 2
     db $4e, $4f
     db $6e, $6f
 
-passwordEntryTiles_tile13::
+passwordEntryTiles_tile13:
     db 2, 2
     db $52, $53
     db $72, $73
 
-passwordEntryTiles_tile14::
+passwordEntryTiles_tile14:
     db 2, 2
     db $56, $57
     db $76, $77
 
-passwordEntryTiles_tile15::
+passwordEntryTiles_tile15:
     db 2, 2
     db $5a, $5b
     db $7a, $7b
 
-passwordEntryTiles_tile16::
+passwordEntryTiles_tile16:
     db 2, 2
     db $5e, $5f
     db $7e, $7f
 
-passwordEntryTiles_tile17::
+passwordEntryTiles_tile17:
     db 2, 2
     db $aa, $ab
     db $ca, $cb
 
-passwordB::
+passwordB:
     db 2, 2
     db $00, $01
     db $20, $21
 
-passwordC::
+passwordC:
     db 2, 2
     db $04, $05
     db $24, $25
 
-passwordD::
+passwordD:
     db 2, 2
     db $08, $09
     db $28, $29
 
-passwordF::
+passwordF:
     db 2, 2
     db $0c, $0d
     db $2c, $2d
 
-passwordG::
+passwordG:
     db 2, 2
     db $10, $11
     db $30, $31
 
-passwordH::
+passwordH:
     db 2, 2
     db $14, $15
     db $34, $35
 
-passwordJ::
+passwordJ:
     db 2, 2
     db $18, $19
     db $38, $39
 
-passwordK::
+passwordK:
     db 2, 2
     db $1c, $1d
     db $3c, $3d
 
-passwordL::
+passwordL:
     db 2, 2
     db $40, $41
     db $60, $61
 
-passwordM::
+passwordM:
     db 2, 2
     db $44, $45
     db $64, $65
 
-passwordN::
+passwordN:
     db 2, 2
     db $48, $49
     db $68, $69
 
-passwordP::
+passwordP:
     db 2, 2
     db $4c, $4d
     db $6c, $6d
 
-passwordQ::
+passwordQ:
     db 2, 2
     db $50, $51
     db $70, $71
 
-passwordR::
+passwordR:
     db 2, 2
     db $54, $55
     db $74, $75
 
-passwordS::
+passwordS:
     db 2, 2
     db $58, $59
     db $78, $79
 
-passwordT::
+passwordT:
     db 2, 2
     db $5c, $5d
     db $7c, $7d
 
-passwordEmpty::
+passwordEmpty:
     db 2, 2
     db $a8, $a9
     db $c8, $c9
 
-passwordCursor::
+passwordCursor:
     db 1, 1
     db $ac
 
-passwordGetTiles::
+passwordGetTiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -2823,7 +2831,7 @@ passwordGetTiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-passwordSpritePointers::
+passwordSpritePointers:
     dw passwordEntryScreenTiles
     dw passwordEntryTiles_tile1
     dw passwordEntryTiles_tile2

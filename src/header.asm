@@ -1,13 +1,13 @@
 ; $0000 - $003F: RST handlers.
 ;each 0x8 in size
-RST_00::
+RST_00:
     jp Jump_000_0377
     nop
     nop
     nop
     nop
     nop
-RST_08::
+RST_08:
     jp $f080
 Call_000_000b:
     nop
@@ -15,7 +15,7 @@ Call_000_000b:
     nop
     nop
     nop
-RST_10::
+RST_10:
     nop
     nop
     nop
@@ -24,7 +24,7 @@ RST_10::
     nop
     nop
     nop
-RST_18::
+RST_18:
     nop
     nop
     nop
@@ -33,7 +33,7 @@ RST_18::
     nop
     nop
     nop
-RST_20::
+RST_20:
     nop
     nop
     nop
@@ -42,7 +42,7 @@ RST_20::
     nop
     nop
     nop
-RST_28::
+RST_28:
     nop
     nop
     nop
@@ -51,7 +51,7 @@ RST_28::
     nop
     nop
     nop
-RST_30::
+RST_30:
     nop
     nop
     nop
@@ -60,7 +60,7 @@ RST_30::
     nop
     nop
     nop
-RST_38::
+RST_38:
     nop
     nop
     nop
@@ -70,28 +70,28 @@ RST_38::
     nop
     nop
 
-VBlankInterrupt::
+VBlankInterrupt:
     jp Jump_000_0238
     nop
     nop
     nop
     nop
     nop
-LCDCInterrupt::
+LCDCInterrupt:
     jp Jump_000_2f43
     nop
     nop
     nop
     nop
     nop
-TimerOverflowInterrupt::
+TimerOverflowInterrupt:
     jp Jump_000_0c10
     nop
     nop
     nop
     nop
     nop
-SerialTransferCompleteInterrupt::
+SerialTransferCompleteInterrupt:
     reti
     nop
     nop
@@ -100,7 +100,7 @@ SerialTransferCompleteInterrupt::
     nop
     nop
     nop
-JoypadTransitionInterrupt::
+JoypadTransitionInterrupt:
     reti
     nop
     nop
@@ -112,49 +112,49 @@ JoypadTransitionInterrupt::
 
 ds $98
 
-Boot::
+Boot:
     nop
     jp code_boot
 
-HeaderLogo::
+HeaderLogo:
     NINTENDO_LOGO
 
-HeaderTitle::
+HeaderTitle:
     db "CHALVO55"
     ds 3
 
-HeaderManufacturerCode::
+HeaderManufacturerCode:
     ds 4
 
-HeaderGBCFlag::
+HeaderGBCFlag:
     db CART_COMPATIBLE_DMG
 
-HeaderNewLicenseeCode::
+HeaderNewLicenseeCode:
     db "8K"
 
-HeaderSGBFlag::
+HeaderSGBFlag:
     db CART_INDICATOR_GB
 
-HeaderCartridgeType::
+HeaderCartridgeType:
     db CART_ROM_MBC1
 
-HeaderROMSize::
+HeaderROMSize:
     db CART_ROM_512KB
 
-HeaderRAMSize::
+HeaderRAMSize:
     db CART_SRAM_NONE
 
-HeaderDestinationCode::
+HeaderDestinationCode:
     db CART_DEST_JAPANESE
 
-HeaderOldLicenseeCode::
+HeaderOldLicenseeCode:
     db $33
 
-HeaderMaskROMVersion::
+HeaderMaskROMVersion:
     db $00
 
-HeaderComplementCheck::
+HeaderComplementCheck:
     db $05
 
-HeaderGlobalChecksum::
+HeaderGlobalChecksum:
     db $a7, $aa

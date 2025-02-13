@@ -1,23 +1,10 @@
-import subprocess
+from hashlib import md5
 
-rom = "chalvo.gb"
+rebuilt_rom = "game.gb"
+hash = "ba50565630891680c9cf8b1827fca429"
 
-result = subprocess.run(
-    ['md5sum', rom],
-    capture_output = True, # Python >= 3.7 only
-    text = True # Python >= 3.7 only
-)
-sum1 = result.stdout.replace(rom, "").strip()
-
-rom2 = "disassembly/game.gb"
-
-result2 = subprocess.run(
-    ['md5sum', rom2],
-    capture_output = True, # Python >= 3.7 only
-    text = True # Python >= 3.7 only
-)
-sum2 = result2.stdout.replace(rom2, "").strip()
-if sum1 != sum2:
-    raise Exception("Hashes do not match")
-else:
-    print("OK")
+if __name__ == "__main__":
+    if hash != md5(open(rebuilt_rom, "rb").read()).hexdigest():
+        raise Exception("Hashes do not match")
+    else:
+        print("OK")

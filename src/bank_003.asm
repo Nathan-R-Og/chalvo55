@@ -1,5 +1,6 @@
 SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
 
+b3_root:
     ld a, $1c
     ld [$c82d], a
     ld bc, actors
@@ -445,7 +446,7 @@ jr_003_4281:
     jp Jump_003_41ec
 
 
-FrameDefs2::
+FrameDefs2:
     dw FRAME_DEF_Chalvo_Walk1
     dw FRAME_DEF_Chalvo_Stand
     dw FRAME_DEF_Chalvo_Walk2
@@ -577,98 +578,98 @@ MACRO frame_def
     dw \3
 ENDM
 ;y offset, x offset, pointerToTiles
-FRAME_DEF_Chalvo_Walk1:: frame_def -24, -12, Chalvo_Walk1Tiles
-FRAME_DEF_Chalvo_Stand:: frame_def -24, -12, Chalvo_StandTiles
-FRAME_DEF_Chalvo_Walk2:: frame_def -24, -12, Chalvo_Walk2Tiles
-FRAME_DEF_Chalvo_BallUp:: frame_def -16,  -8, Chalvo_BallUpTiles
-FRAME_DEF_Chalvo_BallDown:: frame_def -16,  -8, Chalvo_BallDownTiles
-FRAME_DEF_Chalvo_BallDie:: frame_def -16,  -8, Chalvo_BallDieTiles
-FRAME_DEF_Chalvo_Fall:: frame_def -24, -12, Chalvo_FallTiles
-FRAME_DEF_Chalvo_Die:: frame_def -24, -12, Chalvo_DieTiles
-FRAME_DEF_Chalvo_Jump:: frame_def -24, -12, Chalvo_JumpTiles
-FRAME_DEF_Chalvo_Push1:: frame_def -24, -12, Chalvo_Push1Tiles
-FRAME_DEF_Stage_PushCart:: frame_def -16,  -8, Stage_PushCartTiles
-FRAME_DEF_Stage_SpringCart:: frame_def -16,  -8, Stage_SpringCartTiles
-FRAME_DEF_Stage_MovingBlock:: frame_def -16,  -8, Stage_MovingBlockTiles
-FRAME_DEF_Chalvo_Push1_Copy:: frame_def -24, -12, Chalvo_Push1Tiles
-FRAME_DEF_Chalvo_PushStand:: frame_def -24, -12, Chalvo_PushStandTiles
-FRAME_DEF_Chalvo_Push2:: frame_def -24, -12, Chalvo_Push2Tiles
-FRAME_DEF_Chalvo_DashDust:: frame_def  -8,  -4, Chalvo_DashDustTiles
-FRAME_DEF_Stage_OneHitEnemy1:: frame_def -16,  -8, Stage_OneHitEnemy1Tiles
-FRAME_DEF_Stage_OneHitEnemy2:: frame_def -16,  -8, Stage_OneHitEnemy2Tiles
-FRAME_DEF_Stage_OneHitEnemyDie:: frame_def -16,  -8, Stage_OneHitEnemyDieTiles
-FRAME_DEF_Stage_TwoHitEnemy1:: frame_def -16,  -8, Stage_TwoHitEnemy1Tiles
-FRAME_DEF_Stage_TwoHitEnemy2:: frame_def -16,  -8, Stage_TwoHitEnemy2Tiles
-FRAME_DEF_Stage_TwoHitEnemyDie:: frame_def -16,  -8, Stage_TwoHitEnemyDieTiles
-FRAME_DEF_Stage_NoHitEnemy1:: frame_def -16,  -8, Stage_NoHitEnemy1Tiles
-FRAME_DEF_Stage_NoHitEnemy2:: frame_def -16,  -8, Stage_NoHitEnemy2Tiles
-FRAME_DEF_Stage_NoHitEnemyDie:: frame_def -16,  -8, Stage_NoHitEnemyDieTiles
-FRAME_DEF_Chalvo_Ouch:: frame_def -16,  -8, Chalvo_OuchTiles
-FRAME_DEF_Stage_SpringCart2:: frame_def -16,  -8, unkTiles11B
-FRAME_DEF_nothing:: frame_def -16,  -8, unkTiles10D
-FRAME_DEF_Chalvo_PushSweat1:: frame_def  -8,  -4, Chalvo_PushSweat1Tiles
-FRAME_DEF_Chalvo_PushSweat2:: frame_def  -8,  -4, Chalvo_PushSweat2Tiles
-FRAME_DEF_unkTilesBF:: frame_def -24, -12, unkTilesBF
-FRAME_DEF_unkTilesBE:: frame_def -24, -12, unkTilesBE
-FRAME_DEF_unkTilesBD:: frame_def -24, -12, unkTilesBD
-FRAME_DEF_unkTilesBC:: frame_def -24, -12, unkTilesBC
-FRAME_DEF_unkTilesBB:: frame_def -24, -12, unkTilesBB
-FRAME_DEF_unkTilesC5:: frame_def -32, -16, unkTilesC5
-FRAME_DEF_unkTilesC4:: frame_def -32, -16, unkTilesC4
-FRAME_DEF_unkTilesC3:: frame_def  -8,  -8, unkTilesC3
-FRAME_DEF_unkTilesC2:: frame_def  -8,  -8, unkTilesC2
-FRAME_DEF_unkTilesC1:: frame_def  -8,  -8, unkTilesC1
-FRAME_DEF_unkTilesC0:: frame_def  -8,  -8, unkTilesC0
-FRAME_DEF_unkTilesA8:: frame_def -32, -24, unkTilesA8
-FRAME_DEF_unkTilesA7:: frame_def -32, -24, unkTilesA7
-FRAME_DEF_unkTilesA6:: frame_def -32, -24, unkTilesA6
-FRAME_DEF_unkTilesA6_copy:: frame_def -32, -24, unkTilesA6
-FRAME_DEF_unkTiles92:: frame_def -16,  -8, unkTiles92
-FRAME_DEF_unkTiles93:: frame_def -16,  -8, unkTiles93
-FRAME_DEF_unkTiles72:: frame_def -16,  -8, unkTiles72
-FRAME_DEF_unkTiles73:: frame_def -16,  -8, unkTiles73
-FRAME_DEF_unkTiles64:: frame_def -16, -12, unkTiles64
-FRAME_DEF_unkTiles63:: frame_def -16, -12, unkTiles63
-FRAME_DEF_unkTiles62:: frame_def -16, -12, unkTiles62
-FRAME_DEF_unkTiles62_copy:: frame_def -16, -12, unkTiles62
-FRAME_DEF_unkTiles4F:: frame_def -32, -16, unkTiles4F
-FRAME_DEF_unkTiles4E:: frame_def -32, -16, unkTiles4E
-FRAME_DEF_unkTiles5A:: frame_def -32, -16, unkTiles5A
-FRAME_DEF_unkTiles59:: frame_def -32, -16, unkTiles59
-FRAME_DEF_unkTiles4D:: frame_def -32, -16, unkTiles4D
-FRAME_DEF_unkTiles2F:: frame_def -32, -24, unkTiles2F
-FRAME_DEF_unkTiles2E:: frame_def -32, -24, unkTiles2E
-FRAME_DEF_unkTiles2D:: frame_def -32, -24, unkTiles2D
-FRAME_DEF_unkTiles2C:: frame_def -32, -24, unkTiles2C
-FRAME_DEF_unkTiles2B:: frame_def -32, -24, unkTiles2B
-FRAME_DEF_unkTiles2A:: frame_def -32, -24, unkTiles2A
-FRAME_DEF_unkTiles2A_copy:: frame_def -32, -24, unkTiles2A
-FRAME_DEF_unkTiles123:: frame_def -16,  -8, unkTiles123
-FRAME_DEF_unkTiles122:: frame_def -16,  -8, unkTiles122
-FRAME_DEF_unkTiles10:: frame_def -32, -24, unkTiles10
-FRAME_DEF_unkTilesF:: frame_def -32, -24, unkTilesF
-FRAME_DEF_unkTilesE:: frame_def -32, -24, unkTilesE
-FRAME_DEF_unkTilesF_copy:: frame_def -32, -24, unkTilesF
-FRAME_DEF_unkTiles29:: frame_def -24,  -8, unkTiles29
-FRAME_DEF_unkTilesC:: frame_def   0,   0, unkTilesC
-FRAME_DEF_unkTiles9:: frame_def -24, -12, unkTiles9
-FRAME_DEF_unkTiles8:: frame_def -24, -12, unkTiles8
-FRAME_DEF_unkTiles7:: frame_def -24, -12, unkTiles7
-FRAME_DEF_unkTiles6:: frame_def -24, -12, unkTiles6
-FRAME_DEF_unkTiles5:: frame_def -24, -12, unkTiles5
-FRAME_DEF_unkTiles4:: frame_def -24, -12, unkTiles4
-FRAME_DEF_unkTiles3:: frame_def -24, -12, unkTiles3
-FRAME_DEF_unkTiles2:: frame_def -24, -12, unkTiles2
-FRAME_DEF_unkTiles:: frame_def -24, -12, unkTiles
-FRAME_DEF_Intro_Charlie:: frame_def -56, -16, Intro_CharlieTiles
-FRAME_DEF_Intro_CharlieThumbsUp:: frame_def -56, -16, Intro_CharlieThumbsUpTiles
-FRAME_DEF_Intro_CharlieLookUp:: frame_def -56, -16, Intro_CharlieLookUpTiles
-FRAME_DEF_Ending_Charlie:: frame_def -56, -16, Ending_CharlieTiles
-FRAME_DEF_Ending_CharlieHug:: frame_def -56, -16, Ending_CharlieHugTiles
-FRAME_DEF_Ending_CharlieLookUp:: frame_def -56, -16, Ending_CharlieLookUpTiles
-MAYBE_FRAME_DEF_unk1:: frame_def 0, 0, unkTilesD7
+FRAME_DEF_Chalvo_Walk1: frame_def -24, -12, Chalvo_Walk1Tiles
+FRAME_DEF_Chalvo_Stand: frame_def -24, -12, Chalvo_StandTiles
+FRAME_DEF_Chalvo_Walk2: frame_def -24, -12, Chalvo_Walk2Tiles
+FRAME_DEF_Chalvo_BallUp: frame_def -16,  -8, Chalvo_BallUpTiles
+FRAME_DEF_Chalvo_BallDown: frame_def -16,  -8, Chalvo_BallDownTiles
+FRAME_DEF_Chalvo_BallDie: frame_def -16,  -8, Chalvo_BallDieTiles
+FRAME_DEF_Chalvo_Fall: frame_def -24, -12, Chalvo_FallTiles
+FRAME_DEF_Chalvo_Die: frame_def -24, -12, Chalvo_DieTiles
+FRAME_DEF_Chalvo_Jump: frame_def -24, -12, Chalvo_JumpTiles
+FRAME_DEF_Chalvo_Push1: frame_def -24, -12, Chalvo_Push1Tiles
+FRAME_DEF_Stage_PushCart: frame_def -16,  -8, Stage_PushCartTiles
+FRAME_DEF_Stage_SpringCart: frame_def -16,  -8, Stage_SpringCartTiles
+FRAME_DEF_Stage_MovingBlock: frame_def -16,  -8, Stage_MovingBlockTiles
+FRAME_DEF_Chalvo_Push1_Copy: frame_def -24, -12, Chalvo_Push1Tiles
+FRAME_DEF_Chalvo_PushStand: frame_def -24, -12, Chalvo_PushStandTiles
+FRAME_DEF_Chalvo_Push2: frame_def -24, -12, Chalvo_Push2Tiles
+FRAME_DEF_Chalvo_DashDust: frame_def  -8,  -4, Chalvo_DashDustTiles
+FRAME_DEF_Stage_OneHitEnemy1: frame_def -16,  -8, Stage_OneHitEnemy1Tiles
+FRAME_DEF_Stage_OneHitEnemy2: frame_def -16,  -8, Stage_OneHitEnemy2Tiles
+FRAME_DEF_Stage_OneHitEnemyDie: frame_def -16,  -8, Stage_OneHitEnemyDieTiles
+FRAME_DEF_Stage_TwoHitEnemy1: frame_def -16,  -8, Stage_TwoHitEnemy1Tiles
+FRAME_DEF_Stage_TwoHitEnemy2: frame_def -16,  -8, Stage_TwoHitEnemy2Tiles
+FRAME_DEF_Stage_TwoHitEnemyDie: frame_def -16,  -8, Stage_TwoHitEnemyDieTiles
+FRAME_DEF_Stage_NoHitEnemy1: frame_def -16,  -8, Stage_NoHitEnemy1Tiles
+FRAME_DEF_Stage_NoHitEnemy2: frame_def -16,  -8, Stage_NoHitEnemy2Tiles
+FRAME_DEF_Stage_NoHitEnemyDie: frame_def -16,  -8, Stage_NoHitEnemyDieTiles
+FRAME_DEF_Chalvo_Ouch: frame_def -16,  -8, Chalvo_OuchTiles
+FRAME_DEF_Stage_SpringCart2: frame_def -16,  -8, unkTiles11B
+FRAME_DEF_nothing: frame_def -16,  -8, unkTiles10D
+FRAME_DEF_Chalvo_PushSweat1: frame_def  -8,  -4, Chalvo_PushSweat1Tiles
+FRAME_DEF_Chalvo_PushSweat2: frame_def  -8,  -4, Chalvo_PushSweat2Tiles
+FRAME_DEF_unkTilesBF: frame_def -24, -12, unkTilesBF
+FRAME_DEF_unkTilesBE: frame_def -24, -12, unkTilesBE
+FRAME_DEF_unkTilesBD: frame_def -24, -12, unkTilesBD
+FRAME_DEF_unkTilesBC: frame_def -24, -12, unkTilesBC
+FRAME_DEF_unkTilesBB: frame_def -24, -12, unkTilesBB
+FRAME_DEF_unkTilesC5: frame_def -32, -16, unkTilesC5
+FRAME_DEF_unkTilesC4: frame_def -32, -16, unkTilesC4
+FRAME_DEF_unkTilesC3: frame_def  -8,  -8, unkTilesC3
+FRAME_DEF_unkTilesC2: frame_def  -8,  -8, unkTilesC2
+FRAME_DEF_unkTilesC1: frame_def  -8,  -8, unkTilesC1
+FRAME_DEF_unkTilesC0: frame_def  -8,  -8, unkTilesC0
+FRAME_DEF_unkTilesA8: frame_def -32, -24, unkTilesA8
+FRAME_DEF_unkTilesA7: frame_def -32, -24, unkTilesA7
+FRAME_DEF_unkTilesA6: frame_def -32, -24, unkTilesA6
+FRAME_DEF_unkTilesA6_copy: frame_def -32, -24, unkTilesA6
+FRAME_DEF_unkTiles92: frame_def -16,  -8, unkTiles92
+FRAME_DEF_unkTiles93: frame_def -16,  -8, unkTiles93
+FRAME_DEF_unkTiles72: frame_def -16,  -8, unkTiles72
+FRAME_DEF_unkTiles73: frame_def -16,  -8, unkTiles73
+FRAME_DEF_unkTiles64: frame_def -16, -12, unkTiles64
+FRAME_DEF_unkTiles63: frame_def -16, -12, unkTiles63
+FRAME_DEF_unkTiles62: frame_def -16, -12, unkTiles62
+FRAME_DEF_unkTiles62_copy: frame_def -16, -12, unkTiles62
+FRAME_DEF_unkTiles4F: frame_def -32, -16, unkTiles4F
+FRAME_DEF_unkTiles4E: frame_def -32, -16, unkTiles4E
+FRAME_DEF_unkTiles5A: frame_def -32, -16, unkTiles5A
+FRAME_DEF_unkTiles59: frame_def -32, -16, unkTiles59
+FRAME_DEF_unkTiles4D: frame_def -32, -16, unkTiles4D
+FRAME_DEF_unkTiles2F: frame_def -32, -24, unkTiles2F
+FRAME_DEF_unkTiles2E: frame_def -32, -24, unkTiles2E
+FRAME_DEF_unkTiles2D: frame_def -32, -24, unkTiles2D
+FRAME_DEF_unkTiles2C: frame_def -32, -24, unkTiles2C
+FRAME_DEF_unkTiles2B: frame_def -32, -24, unkTiles2B
+FRAME_DEF_unkTiles2A: frame_def -32, -24, unkTiles2A
+FRAME_DEF_unkTiles2A_copy: frame_def -32, -24, unkTiles2A
+FRAME_DEF_unkTiles123: frame_def -16,  -8, unkTiles123
+FRAME_DEF_unkTiles122: frame_def -16,  -8, unkTiles122
+FRAME_DEF_unkTiles10: frame_def -32, -24, unkTiles10
+FRAME_DEF_unkTilesF: frame_def -32, -24, unkTilesF
+FRAME_DEF_unkTilesE: frame_def -32, -24, unkTilesE
+FRAME_DEF_unkTilesF_copy: frame_def -32, -24, unkTilesF
+FRAME_DEF_unkTiles29: frame_def -24,  -8, unkTiles29
+FRAME_DEF_unkTilesC: frame_def   0,   0, unkTilesC
+FRAME_DEF_unkTiles9: frame_def -24, -12, unkTiles9
+FRAME_DEF_unkTiles8: frame_def -24, -12, unkTiles8
+FRAME_DEF_unkTiles7: frame_def -24, -12, unkTiles7
+FRAME_DEF_unkTiles6: frame_def -24, -12, unkTiles6
+FRAME_DEF_unkTiles5: frame_def -24, -12, unkTiles5
+FRAME_DEF_unkTiles4: frame_def -24, -12, unkTiles4
+FRAME_DEF_unkTiles3: frame_def -24, -12, unkTiles3
+FRAME_DEF_unkTiles2: frame_def -24, -12, unkTiles2
+FRAME_DEF_unkTiles: frame_def -24, -12, unkTiles
+FRAME_DEF_Intro_Charlie: frame_def -56, -16, Intro_CharlieTiles
+FRAME_DEF_Intro_CharlieThumbsUp: frame_def -56, -16, Intro_CharlieThumbsUpTiles
+FRAME_DEF_Intro_CharlieLookUp: frame_def -56, -16, Intro_CharlieLookUpTiles
+FRAME_DEF_Ending_Charlie: frame_def -56, -16, Ending_CharlieTiles
+FRAME_DEF_Ending_CharlieHug: frame_def -56, -16, Ending_CharlieHugTiles
+FRAME_DEF_Ending_CharlieLookUp: frame_def -56, -16, Ending_CharlieLookUpTiles
+MAYBE_FRAME_DEF_unk1: frame_def 0, 0, unkTilesD7
 
-MAYBE_FRAME_DEF_unk2::
+MAYBE_FRAME_DEF_unk2:
     db $09, $e8, $f4, $12
     db $00, $e8, $fc, $13
     db $00, $e8, $04, $14
@@ -680,218 +681,218 @@ MAYBE_FRAME_DEF_unk2::
     db $00, $f8, $04, $54
     db $00
 
-MAYBE_FRAME_DEF_unk3::
+MAYBE_FRAME_DEF_unk3:
     db $09, $e9, $f5, $12, $00, $e9, $fc, $13, $00, $e9, $03, $14, $00, $f0, $f5, $32
     db $00, $f0, $fc, $33, $00, $f0, $03, $34, $00, $f7, $f5, $52, $00, $f7, $fc, $53
     db $00, $f7, $03, $54, $00
 
-MAYBE_FRAME_DEF_unk4::
+MAYBE_FRAME_DEF_unk4:
     db $09, $ea, $f6, $12, $00, $ea, $fc, $13, $00, $ea, $02, $14, $00, $f0, $f6, $32
     db $00, $f0, $fc, $33, $00, $f0, $02, $34, $00, $f6, $f6, $52, $00, $f6, $fc, $53
     db $00, $f6, $02, $54, $00
 
-MAYBE_FRAME_DEF_unk5::
+MAYBE_FRAME_DEF_unk5:
     db $09, $eb, $f7, $12, $00, $eb, $fc, $13, $00, $eb, $01, $14, $00, $f0, $f7, $32
     db $00, $f0, $fc, $33, $00, $f0, $01, $34, $00, $f5, $f7, $52, $00, $f5, $fc, $53
     db $00, $f5, $01, $54, $00
 
-MAYBE_FRAME_DEF_unk6::
+MAYBE_FRAME_DEF_unk6:
     db $09, $ec, $f8, $12, $00, $ec, $fc, $13, $00, $ec, $00, $14, $00, $f0, $f8, $32
     db $00, $f0, $fc, $33, $00, $f0, $00, $34, $00, $f4, $f8, $52, $00, $f4, $fc, $53
     db $00, $f4, $00, $54, $00
 
-MAYBE_FRAME_DEF_unk7::
+MAYBE_FRAME_DEF_unk7:
     db $09, $ed, $f9, $12, $00, $ed, $fc, $13, $00, $ed, $ff, $14, $00, $f0, $f9, $32
     db $00, $f0, $fc, $33, $00, $f0, $ff, $34, $00, $f3, $f9, $52, $00, $f3, $fc, $53
     db $00, $f3, $ff, $54, $00
 
-MAYBE_FRAME_DEF_unk8::
+MAYBE_FRAME_DEF_unk8:
     db $09, $ee, $fa, $12, $00, $ee, $fc, $13, $00, $ee, $fe, $14, $00, $f0, $fa, $32
     db $00, $f0, $fc, $33, $00, $f0, $fe, $34, $00, $f2, $fa, $52, $00, $f2, $fc, $53
     db $00, $f2, $fe, $54, $00
 
-MAYBE_FRAME_DEF_unk9::
+MAYBE_FRAME_DEF_unk9:
     db $09, $ef, $fb, $12, $00, $ef, $fc, $13, $00, $ef, $fd, $14, $00, $f0, $fb, $32
     db $00, $f0, $fc, $33, $00, $f0, $fd, $34, $00, $f1, $fb, $52, $00, $f1, $fc, $53
     db $00, $f1, $fd, $54, $00
 
-MAYBE_FRAME_DEF_unkA::
+MAYBE_FRAME_DEF_unkA:
     db $09, $f0, $fc, $12, $00, $f0, $fc, $13, $00, $f0, $fc, $14, $00, $f0, $fc, $32
     db $00, $f0, $fc, $33, $00, $f0, $fc, $34, $00, $f0, $fc, $52, $00, $f0, $fc, $53
     db $00, $f0, $fc, $54, $00
 
-MAYBE_FRAME_DEF_unkB::
+MAYBE_FRAME_DEF_unkB:
     db $04, $f0, $f8, $04, $00, $f0, $00, $05, $00, $f8, $f8, $24, $00, $f8, $00, $25
     db $00
 
-MAYBE_FRAME_DEF_unkC::
+MAYBE_FRAME_DEF_unkC:
     db $04, $f1, $f9, $04, $00, $f1, $ff, $05, $00, $f7, $f9, $24, $00, $f7, $ff, $25
     db $00
 
-MAYBE_FRAME_DEF_unkD::
+MAYBE_FRAME_DEF_unkD:
     db $04, $f2, $fa, $04, $00, $f2, $fe, $05, $00, $f6, $fa, $24, $00, $f6, $fe, $25
     db $00
 
-MAYBE_FRAME_DEF_unkE::
+MAYBE_FRAME_DEF_unkE:
     db $04, $f3, $fb, $04, $00, $f3, $fd, $05, $00, $f5, $fb, $24, $00, $f5, $fd, $25
     db $00
 
-MAYBE_FRAME_DEF_unkF::
+MAYBE_FRAME_DEF_unkF:
     db $04, $f4, $fc, $04, $00, $f4, $fc, $05, $00, $f4, $fc, $24, $00, $f4, $fc, $25
     db $00
 
-MAYBE_FRAME_DEF_unk10::
+MAYBE_FRAME_DEF_unk10:
     db $09, $e8, $f4, $14, $20, $e8, $fc, $13, $20, $e8, $04, $12, $20, $f0, $f4, $34
     db $20, $f0, $fc, $33, $20, $f0, $04, $32, $20, $f8, $f4, $54, $20, $f8, $fc, $53
     db $20, $f8, $04, $52, $20
 
-MAYBE_FRAME_DEF_unk11::
+MAYBE_FRAME_DEF_unk11:
     db $09, $e9, $f5, $14, $20, $e9, $fc, $13, $20, $e9, $03, $12, $20, $f0, $f5, $34
     db $20, $f0, $fc, $33, $20, $f0, $03, $32, $20, $f7, $f5, $54, $20, $f7, $fc, $53
     db $20, $f7, $03, $52, $20
 
-MAYBE_FRAME_DEF_unk12::
+MAYBE_FRAME_DEF_unk12:
     db $09, $ea, $f6, $14, $20, $ea, $fc, $13, $20, $ea, $02, $12, $20, $f0, $f6, $34
     db $20, $f0, $fc, $33, $20, $f0, $02, $32, $20, $f6, $f6, $54, $20, $f6, $fc, $53
     db $20, $f6, $02, $52, $20
 
-MAYBE_FRAME_DEF_unk13::
+MAYBE_FRAME_DEF_unk13:
     db $09, $eb, $f7, $14, $20, $eb, $fc, $13, $20, $eb, $01, $12, $20, $f0, $f7, $34
     db $20, $f0, $fc, $33, $20, $f0, $01, $32, $20, $f5, $f7, $54, $20, $f5, $fc, $53
     db $20, $f5, $01, $52, $20
 
-MAYBE_FRAME_DEF_unk14::
+MAYBE_FRAME_DEF_unk14:
     db $09, $ec, $f8, $14, $20, $ec, $fc, $13, $20, $ec, $00, $12, $20, $f0, $f8, $34
     db $20, $f0, $fc, $33, $20, $f0, $00, $32, $20, $f4, $f8, $54, $20, $f4, $fc, $53
     db $20, $f4, $00, $52, $20
 
-MAYBE_FRAME_DEF_unk15::
+MAYBE_FRAME_DEF_unk15:
     db $09, $ed, $f9, $14, $20, $ed, $fc, $13, $20, $ed, $ff, $12, $20, $f0, $f9, $34
     db $20, $f0, $fc, $33, $20, $f0, $ff, $32, $20, $f3, $f9, $54, $20, $f3, $fc, $53
     db $20, $f3, $ff, $52, $20
 
-MAYBE_FRAME_DEF_unk16::
+MAYBE_FRAME_DEF_unk16:
     db $09, $ee, $fa, $14, $20, $ee, $fc, $13, $20, $ee, $fe, $12, $20, $f0, $fa, $34
     db $20, $f0, $fc, $33, $20, $f0, $fe, $32, $20, $f2, $fa, $54, $20, $f2, $fc, $53
     db $20, $f2, $fe, $52, $20
 
-MAYBE_FRAME_DEF_unk17::
+MAYBE_FRAME_DEF_unk17:
     db $09, $ef, $fb, $14, $20, $ef, $fc, $13, $20, $ef, $fd, $12, $20, $f0, $fb, $34
     db $20, $f0, $fc, $33, $20, $f0, $fd, $32, $20, $f1, $fb, $54, $20, $f1, $fc, $53
     db $20, $f1, $fd, $52, $20
 
-MAYBE_FRAME_DEF_unk18::
+MAYBE_FRAME_DEF_unk18:
     db $09, $f0, $fc, $14, $20, $f0, $fc, $13, $20, $f0, $fc, $12, $20, $f0, $fc, $34
     db $20, $f0, $fc, $33, $20, $f0, $fc, $32, $20, $f0, $fc, $54, $20, $f0, $fc, $53
     db $20, $f0, $fc, $52, $20
 
-MAYBE_FRAME_DEF_unk19::
+MAYBE_FRAME_DEF_unk19:
     db $04, $f0, $f8, $05, $20, $f0, $00, $04, $20, $f8, $f8, $25, $20, $f8, $00, $24
     db $20
 
-MAYBE_FRAME_DEF_unk1A::
+MAYBE_FRAME_DEF_unk1A:
     db $04, $f1, $f9, $05, $20, $f1, $ff, $04, $20, $f7, $f9, $25, $20, $f7, $ff, $24
     db $20
 
-MAYBE_FRAME_DEF_unk1B::
+MAYBE_FRAME_DEF_unk1B:
     db $04, $f2, $fa, $05, $20, $f2, $fe, $04, $20, $f6, $fa, $25, $20, $f6, $fe, $24
     db $20
 
-MAYBE_FRAME_DEF_unk1C::
+MAYBE_FRAME_DEF_unk1C:
     db $04, $f3, $fb, $05, $20, $f3, $fd, $04, $20, $f5, $fb, $25, $20, $f5, $fd, $24
     db $20
 
-MAYBE_FRAME_DEF_unk1D::
+MAYBE_FRAME_DEF_unk1D:
     db $04, $f4, $fc, $05, $20, $f4, $fc, $04, $20, $f4, $fc, $25, $20, $f4, $fc, $24
     db $20
 
-Chalvo_BallUpTiles::
+Chalvo_BallUpTiles:
     db 2, 2
     db $00, $01
     db $20, $21
 
-Chalvo_BallDownTiles::
+Chalvo_BallDownTiles:
     db 2, 2
     db $02, $03
     db $22, $23
 
-Chalvo_BallDieTiles::
+Chalvo_BallDieTiles:
     db 2, 2
     db $04, $05
     db $24, $25
 
-Chalvo_Walk1Tiles::
+Chalvo_Walk1Tiles:
     db 3, 3
     db $06, $07, $08
     db $26, $27, $28
     db $46, $47, $48
 
-Chalvo_StandTiles::
+Chalvo_StandTiles:
     db 3, 3
     db $06, $07, $08
     db $29, $2a, $2b
     db $49, $4a, $4b
 
-Chalvo_Walk2Tiles::
+Chalvo_Walk2Tiles:
     db 3, 3
     db $06, $07, $08
     db $2c, $2d, $2e
     db $4c, $4d, $4e
 
-Chalvo_FallTiles::
+Chalvo_FallTiles:
     db 3, 3
     db $0f, $10, $11
     db $2f, $30, $31
     db $4f, $50, $51
 
-Chalvo_DieTiles::
+Chalvo_DieTiles:
     db 3, 3
     db $12, $13, $14
     db $32, $33, $34
     db $52, $53, $54
 
-Chalvo_JumpTiles::
+Chalvo_JumpTiles:
     db 3, 3
     db $15, $16, $17
     db $35, $36, $37
     db $55, $56, $57
 
-Chalvo_Push1Tiles::
+Chalvo_Push1Tiles:
     db 3, 3
     db $18, $19, $1a
     db $38, $39, $3a
     db $58, $59, $5a
 
-Chalvo_PushStandTiles::
+Chalvo_PushStandTiles:
     db 3, 3
     db $18, $19, $1a
     db $68, $69, $6a
     db $88, $89, $8a
 
-Chalvo_Push2Tiles::
+Chalvo_Push2Tiles:
     db 3, 3
     db $18, $19, $1a
     db $6b, $6c, $6d
     db $8b, $8c, $8d
 
-Chalvo_OuchTiles::
+Chalvo_OuchTiles:
     db 2, 2
     db $e7, $e8
     db $e9, $ea
 
-Chalvo_DashDustTiles::
+Chalvo_DashDustTiles:
     db 1, 1
     db $eb
 
-Chalvo_PushSweat1Tiles::
+Chalvo_PushSweat1Tiles:
     db 1, 1
     db $ed
 
-Chalvo_PushSweat2Tiles::
+Chalvo_PushSweat2Tiles:
     db 1, 1
     db $ee
 
-Chalvo_TilePointers::
+Chalvo_TilePointers:
     dw Chalvo_BallUpTiles
     dw Chalvo_BallDownTiles
     dw Chalvo_BallDieTiles
@@ -909,441 +910,441 @@ Chalvo_TilePointers::
     dw Chalvo_PushSweat1Tiles
     dw Chalvo_PushSweat2Tiles
 
-unkTiles12D::
+unkTiles12D:
     db 2, 2
     db $66, $67
     db $86, $87
 
-unkTiles12C::
+unkTiles12C:
     db 2, 2
     db $a6, $a7
     db $c6, $c7
 
-Stage_PushCartTiles::
+Stage_PushCartTiles:
     db 2, 2
     db $a8, $a9
     db $96, $97
 
-unkTiles12A::
+unkTiles12A:
     db 2, 2
     db $a8, $a9
     db $c8, $c9
 
-unkTiles129::
+unkTiles129:
     db 2, 2
     db $7e, $7f
     db $9e, $9f
 
-unkTiles128::
+unkTiles128:
     db 2, 2
     db $c0, $c1
     db $c8, $c9
 
-Stage_MovingBlockTiles::
+Stage_MovingBlockTiles:
     db 2, 2
     db $74, $75
     db $94, $95
 
-unkTiles126::
+unkTiles126:
     db 2, 2
     db $70, $71
     db $90, $91
 
-unkTiles125::
+unkTiles125:
     db 2, 2
     db $72, $73
     db $92, $93
 
-unkTiles124::
+unkTiles124:
     db 2, 2
     db $7a, $7b
     db $1f, $3f
 
-unkTiles123::
+unkTiles123:
     db 2, 2
     db $7c, $7d
     db $9c, $9d
 
-unkTiles122::
+unkTiles122:
     db 2, 2
     db $76, $77
     db $78, $79
 
-unkTiles121::
+unkTiles121:
     db 2, 2
     db $f1, $f2
     db $11, $12
 
-unkTiles120::
+unkTiles120:
     db 2, 2
     db $f3, $f4
     db $13, $14
 
-unkTiles11F::
+unkTiles11F:
     db 2, 2
     db $f5, $f6
     db $15, $16
 
-unkTiles11E::
+unkTiles11E:
     db 2, 2
     db $f7, $f8
     db $17, $18
 
-unkTiles11D::
+unkTiles11D:
     db 2, 2
     db $0d, $0e
     db $ce, $cf
 
-Stage_SpringCartTiles::
+Stage_SpringCartTiles:
     db 2, 2
     db $70, $71
     db $98, $99
 
-unkTiles11B::
+unkTiles11B:
     db 2, 2
     db $72, $73
     db $9a, $9b
 
-unkTiles11A::
+unkTiles11A:
     db 2, 2
     db $b0, $b1
     db $d0, $d1
 
-unkTiles119::
+unkTiles119:
     db 2, 2
     db $b2, $b3
     db $d2, $d3
 
-unkTiles118::
+unkTiles118:
     db 2, 2
     db $a8, $a9
     db $ac, $ad
 
-unkTiles117::
+unkTiles117:
     db 2, 2
     db $b4, $b5
     db $d4, $d5
 
-unkTiles116::
+unkTiles116:
     db 2, 2
     db $aa, $ab
     db $ca, $cb
 
-unkTiles115::
+unkTiles115:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles114::
+unkTiles114:
     db 2, 2
     db $6e, $6f
     db $8e, $8f
 
-unkTiles113::
+unkTiles113:
     db 2, 2
     db $cc, $cd
     db $ae, $af
 
-unkTiles112::
+unkTiles112:
     db 2, 2
     db $5b, $5c
     db $5d, $5e
 
-unkTiles111::
+unkTiles111:
     db 2, 2
     db $e0, $e1
     db $e2, $ff
 
-unkTiles110::
+unkTiles110:
     db 2, 2
     db $b6, $b7
     db $d6, $d7
 
-unkTiles10F::
+unkTiles10F:
     db 2, 2
     db $ff, $ff
     db $ff, $5f
 
-unkTiles10E::
+unkTiles10E:
     db 2, 2
     db $e3, $e4
     db $e5, $e6
 
-unkTiles10D::
+unkTiles10D:
     db 2, 2
     db $b8, $b9
     db $d8, $d9
 
-unkTiles10C::
+unkTiles10C:
     db 2, 2
     db $ba, $bb
     db $da, $db
 
-unkTiles10B::
+unkTiles10B:
     db 2, 2
     db $bc, $bd
     db $dc, $dd
 
-unkTiles10A::
+unkTiles10A:
     db 2, 2
     db $bd, $bd
     db $dd, $dd
 
-unkTiles109::
+unkTiles109:
     db 2, 2
     db $bd, $be
     db $dd, $de
 
-unkTiles108::
+unkTiles108:
     db 2, 2
     db $dc, $dd
     db $dc, $dd
 
-unkTiles107::
+unkTiles107:
     db 2, 2
     db $dd, $dd
     db $dd, $dd
 
-unkTiles106::
+unkTiles106:
     db 2, 2
     db $dd, $de
     db $dd, $de
 
-unkTiles105::
+unkTiles105:
     db 2, 2
     db $dc, $dd
     db $fc, $fd
 
-unkTiles104::
+unkTiles104:
     db 2, 2
     db $dd, $dd
     db $fd, $fd
 
-unkTiles103::
+unkTiles103:
     db 2, 2
     db $dd, $de
     db $fd, $fe
 
-unkTiles102::
+unkTiles102:
     db 2, 2
     db $bc, $bd
     db $fc, $fd
 
-unkTiles101::
+unkTiles101:
     db 2, 2
     db $bd, $bd
     db $fd, $fd
 
-unkTiles100::
+unkTiles100:
     db 2, 2
     db $bd, $be
     db $fd, $fe
 
-unkTilesFF::
+unkTilesFF:
     db 2, 2
     db $bc, $be
     db $dc, $de
 
-unkTilesFE::
+unkTilesFE:
     db 2, 2
     db $dc, $de
     db $dc, $de
 
-unkTilesFD::
+unkTilesFD:
     db 2, 2
     db $dc, $de
     db $fc, $fe
 
-unkTilesFC::
+unkTilesFC:
     db 2, 2
     db $ef, $f0
     db $f1, $f2
 
-unkTilesFB::
+unkTilesFB:
     db 2, 2
     db $dc, $f0
     db $fc, $fd
 
-unkTilesFA::
+unkTilesFA:
     db 2, 2
     db $bc, $bd
     db $dc, $f2
 
-unkTilesF9::
+unkTilesF9:
     db 2, 2
     db $ef, $f0
     db $fd, $fd
 
-unkTilesF8::
+unkTilesF8:
     db 2, 2
     db $bd, $bd
     db $f1, $f2
 
-unkTilesF7::
+unkTilesF7:
     db 2, 2
     db $ef, $de
     db $fd, $fe
 
-unkTilesF6::
+unkTilesF6:
     db 2, 2
     db $bd, $be
     db $f1, $de
 
-unkTilesF5::
+unkTilesF5:
     db 2, 2
     db $bd, $be
     db $f1, $de
 
-unkTilesF4::
+unkTilesF4:
     db 2, 2
     db $bc, $bd
     db $dc, $f2
 
-unkTilesF3::
+unkTilesF3:
     db 2, 2
     db $ef, $de
     db $f1, $de
 
-unkTilesF2::
+unkTilesF2:
     db 2, 2
     db $dc, $f0
     db $dc, $f2
 
-unkTilesF1::
+unkTilesF1:
     db 2, 2
     db $ef, $de
     db $fd, $fe
 
-unkTilesF0::
+unkTilesF0:
     db 2, 2
     db $dc, $f0
     db $fc, $fd
 
-unkTilesEF::
+unkTilesEF:
     db 2, 2
     db $ef, $dd
     db $dd, $dd
 
-unkTilesEE::
+unkTilesEE:
     db 2, 2
     db $ef, $f0
     db $dd, $dd
 
-unkTilesED::
+unkTilesED:
     db 2, 2
     db $dd, $f0
     db $dd, $dd
 
-unkTilesEC::
+unkTilesEC:
     db 2, 2
     db $ef, $dd
     db $f1, $dd
 
-unkTilesEB::
+unkTilesEB:
     db 2, 2
     db $dd, $f0
     db $dd, $f2
 
-unkTilesEA::
+unkTilesEA:
     db 2, 2
     db $dd, $dd
     db $f1, $dd
 
-unkTilesE9::
+unkTilesE9:
     db 2, 2
     db $dd, $dd
     db $f1, $f2
 
-unkTilesE8::
+unkTilesE8:
     db 2, 2
     db $dd, $dd
     db $dd, $f2
 
-unkTilesE7::
+unkTilesE7:
     db 2, 2
     db $ef, $de
     db $dd, $de
 
-unkTilesE6::
+unkTilesE6:
     db 2, 2
     db $dc, $f0
     db $dc, $dd
 
-unkTilesE5::
+unkTilesE5:
     db 2, 2
     db $dd, $de
     db $f1, $de
 
-unkTilesE4::
+unkTilesE4:
     db 2, 2
     db $dc, $dd
     db $dc, $f2
 
-unkTilesE3::
+unkTilesE3:
     db 2, 2
     db $dd, $f0
     db $fd, $fd
 
-unkTilesE2::
+unkTilesE2:
     db 2, 2
     db $bd, $bd
     db $dd, $f2
 
-unkTilesE1::
+unkTilesE1:
     db 2, 2
     db $ef, $dd
     db $fd, $fd
 
-unkTilesE0::
+unkTilesE0:
     db 2, 2
     db $bd, $bd
     db $f1, $dd
 
-unkTilesDF::
+unkTilesDF:
     db 2, 2
     db $f3, $f4
     db $dd, $dd
 
-unkTilesDE::
+unkTilesDE:
     db 2, 2
     db $dd, $dd
     db $f5, $f6
 
-unkTilesDD::
+unkTilesDD:
     db 2, 2
     db $f9, $dd
     db $fa, $dd
 
-unkTilesDC::
+unkTilesDC:
     db 2, 2
     db $dd, $f7
     db $dd, $f8
 
-unkTilesDB::
+unkTilesDB:
     db 2, 2
     db $f3, $f4
     db $fd, $fd
 
-unkTilesDA::
+unkTilesDA:
     db 2, 2
     db $bd, $bd
     db $f5, $f6
 
-unkTilesD9::
+unkTilesD9:
     db 2, 2
     db $f9, $de
     db $fa, $de
 
-unkTilesD8::
+unkTilesD8:
     db 2, 2
     db $dc, $f7
     db $dc, $f8
 
-unkTilesD7::
+unkTilesD7:
     db 1, 1
     db $fb
 
-unkTilesPointersA::
+unkTilesPointersA:
     dw unkTiles12D
     dw unkTiles12C
     dw Stage_PushCartTiles
@@ -1432,52 +1433,52 @@ unkTilesPointersA::
     dw unkTilesD8
     dw unkTilesD7
 
-Stage_OneHitEnemy1Tiles::
+Stage_OneHitEnemy1Tiles:
     db 2, 2
     db $1b, $1c
     db $3b, $3c
 
-Stage_OneHitEnemy2Tiles::
+Stage_OneHitEnemy2Tiles:
     db 2, 2
     db $1d, $1e
     db $3d, $3e
 
-Stage_OneHitEnemyDieTiles::
+Stage_OneHitEnemyDieTiles:
     db 2, 2
     db $c2, $c3
     db $c4, $c5
 
-Stage_NoHitEnemy1Tiles::
+Stage_NoHitEnemy1Tiles:
     db 2, 2
     db $80, $81
     db $a0, $a1
 
-Stage_NoHitEnemy2Tiles::
+Stage_NoHitEnemy2Tiles:
     db 2, 2
     db $82, $83
     db $a2, $a3
 
-Stage_NoHitEnemyDieTiles::
+Stage_NoHitEnemyDieTiles:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-Stage_TwoHitEnemy1Tiles::
+Stage_TwoHitEnemy1Tiles:
     db 2, 2
     db $40, $41
     db $60, $61
 
-Stage_TwoHitEnemy2Tiles::
+Stage_TwoHitEnemy2Tiles:
     db 2, 2
     db $42, $43
     db $62, $63
 
-Stage_TwoHitEnemyDieTiles::
+Stage_TwoHitEnemyDieTiles:
     db 2, 2
     db $44, $45
     db $64, $65
 
-unkTilesPointers9::
+unkTilesPointers9:
     dw Stage_OneHitEnemy1Tiles
     dw Stage_OneHitEnemy2Tiles
     dw Stage_OneHitEnemyDieTiles
@@ -1488,106 +1489,106 @@ unkTilesPointers9::
     dw Stage_TwoHitEnemy2Tiles
     dw Stage_TwoHitEnemyDieTiles
 
-unkTilesCD::
+unkTilesCD:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTilesCB::
+unkTilesCB:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTilesCA::
+unkTilesCA:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTilesC9::
+unkTilesC9:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTilesC8::
+unkTilesC8:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTilesC7::
+unkTilesC7:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTilesC6::
+unkTilesC6:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTilesC5::
+unkTilesC5:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTilesC4::
+unkTilesC4:
     db 4, 4
     db $40, $41, $42, $43
     db $44, $45, $64, $65
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTilesC3::
+unkTilesC3:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTilesC2::
+unkTilesC2:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTilesC1::
+unkTilesC1:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTilesC0::
+unkTilesC0:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTilesBF::
+unkTilesBF:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTilesBE::
+unkTilesBE:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTilesBD::
+unkTilesBD:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTilesBC::
+unkTilesBC:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTilesBB::
+unkTilesBB:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTilesPointers8::
+unkTilesPointers8:
     dw unkTilesCD
     dw unkTilesCB
     dw unkTilesCA
@@ -1607,127 +1608,127 @@ unkTilesPointers8::
     dw unkTilesBC
     dw unkTilesBB
 
-unkTilesBA::
+unkTilesBA:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTilesB9::
+unkTilesB9:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTilesB8::
+unkTilesB8:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTilesB7::
+unkTilesB7:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTilesB6::
+unkTilesB6:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTilesB5::
+unkTilesB5:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTilesB4::
+unkTilesB4:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTilesB3::
+unkTilesB3:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTilesB2::
+unkTilesB2:
     db 4, 4
     db $40, $41, $42, $43
     db $44, $45, $64, $65
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTilesB1::
+unkTilesB1:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTilesB0::
+unkTilesB0:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTilesAF::
+unkTilesAF:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTilesAE::
+unkTilesAE:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTilesAD::
+unkTilesAD:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTilesAC::
+unkTilesAC:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTilesAB::
+unkTilesAB:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTilesAA::
+unkTilesAA:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTilesA9::
+unkTilesA9:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTilesA8::
+unkTilesA8:
     db 6, 4
     db $40, $41, $42, $b1, $b2, $b3
     db $60, $61, $62, $d1, $d2, $d3
     db $80, $81, $82, $83, $84, $85
     db $a0, $a1, $a2, $a3, $a4, $a5
 
-unkTilesA7::
+unkTilesA7:
     db 6, 4
     db $40, $41, $42, $43, $44, $45
     db $60, $61, $62, $63, $64, $65
     db $80, $81, $82, $83, $84, $85
     db $a0, $a1, $a2, $a3, $a4, $a5
 
-unkTilesA6::
+unkTilesA6:
     db 6, 4
     db $40, $41, $42, $ae, $af, $b0
     db $60, $61, $62, $ce, $cf, $d0
     db $80, $81, $82, $83, $84, $85
     db $a0, $a1, $a2, $a3, $a4, $a5
 
-unkTilesPointers7::
+unkTilesPointers7:
     dw unkTilesBA
     dw unkTilesB9
     dw unkTilesB8
@@ -1750,176 +1751,176 @@ unkTilesPointers7::
     dw unkTilesA7
     dw unkTilesA6
 
-unkTilesA5::
+unkTilesA5:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTilesA4::
+unkTilesA4:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTilesA3::
+unkTilesA3:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTilesA2::
+unkTilesA2:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTilesA1::
+unkTilesA1:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTilesA0::
+unkTilesA0:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTiles9F::
+unkTiles9F:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTiles9E::
+unkTiles9E:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles9D::
+unkTiles9D:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $44, $45, $63
     db $80, $64, $65, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles9C::
+unkTiles9C:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTiles9B::
+unkTiles9B:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTiles9A::
+unkTiles9A:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles99::
+unkTiles99:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTiles98::
+unkTiles98:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTiles97::
+unkTiles97:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTiles96::
+unkTiles96:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTiles95::
+unkTiles95:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTiles94::
+unkTiles94:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTiles93::
+unkTiles93:
     db 2, 2
     db $b0, $b1
     db $d0, $d1
 
-unkTiles92::
+unkTiles92:
     db 2, 2
     db $74, $75
     db $94, $95
 
-unkTiles91::
+unkTiles91:
     db 2, 2
     db $b2, $b3
     db $d2, $d3
 
-unkTiles90::
+unkTiles90:
     db 2, 2
     db $b4, $b5
     db $d4, $d5
 
-unkTiles8F::
+unkTiles8F:
     db 2, 2
     db $a6, $a7
     db $c6, $c7
 
-unkTiles8E::
+unkTiles8E:
     db 2, 2
     db $66, $67
     db $86, $87
 
-unkTiles8D::
+unkTiles8D:
     db 2, 2
     db $40, $41
     db $60, $61
 
-unkTiles8C::
+unkTiles8C:
     db 2, 2
     db $42, $43
     db $62, $63
 
-unkTiles8B::
+unkTiles8B:
     db 2, 2
     db $80, $81
     db $a0, $a1
 
-unkTiles8A::
+unkTiles8A:
     db 2, 2
     db $82, $83
     db $a2, $a3
 
-unkTiles89::
+unkTiles89:
     db 2, 2
     db $40, $41
     db $60, $44
 
-unkTiles88::
+unkTiles88:
     db 2, 2
     db $42, $43
     db $45, $63
 
-unkTiles87::
+unkTiles87:
     db 2, 2
     db $80, $64
     db $a0, $a1
 
-unkTiles86::
+unkTiles86:
     db 2, 2
     db $65, $83
     db $a2, $a3
 
-unkTilesPointers6::
+unkTilesPointers6:
     dw unkTilesA5
     dw unkTilesA4
     dw unkTilesA3
@@ -1953,196 +1954,196 @@ unkTilesPointers6::
     dw unkTiles87
     dw unkTiles86
 
-unkTiles85::
+unkTiles85:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTiles84::
+unkTiles84:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTiles83::
+unkTiles83:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTiles82::
+unkTiles82:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTiles81::
+unkTiles81:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTiles80::
+unkTiles80:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTiles7F::
+unkTiles7F:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTiles7E::
+unkTiles7E:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles7D::
+unkTiles7D:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $44, $45, $63
     db $80, $64, $65, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles7C::
+unkTiles7C:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTiles7B::
+unkTiles7B:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTiles7A::
+unkTiles7A:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles79::
+unkTiles79:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTiles78::
+unkTiles78:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTiles77::
+unkTiles77:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTiles76::
+unkTiles76:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTiles75::
+unkTiles75:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTiles74::
+unkTiles74:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTiles73::
+unkTiles73:
     db 2, 2
     db $b0, $b1
     db $d0, $d1
 
-unkTiles72::
+unkTiles72:
     db 2, 2
     db $74, $75
     db $94, $95
 
-unkTiles71::
+unkTiles71:
     db 2, 2
     db $b2, $b3
     db $d2, $d3
 
-unkTiles70::
+unkTiles70:
     db 2, 2
     db $b4, $b5
     db $d4, $d5
 
-unkTiles6F::
+unkTiles6F:
     db 2, 2
     db $a6, $a7
     db $c6, $c7
 
-unkTiles6E::
+unkTiles6E:
     db 2, 2
     db $66, $67
     db $86, $87
 
-unkTiles6D::
+unkTiles6D:
     db 2, 2
     db $72, $73
     db $92, $93
 
-unkTiles6C::
+unkTiles6C:
     db 2, 2
     db $6e, $6f
     db $8e, $8f
 
-unkTiles6B::
+unkTiles6B:
     db 2, 2
     db $70, $71
     db $90, $91
 
-unkTiles6A::
+unkTiles6A:
     db 2, 2
     db $40, $41
     db $60, $61
 
-unkTiles69::
+unkTiles69:
     db 2, 2
     db $42, $43
     db $62, $63
 
-unkTiles68::
+unkTiles68:
     db 2, 2
     db $80, $81
     db $a0, $a1
 
-unkTiles67::
+unkTiles67:
     db 2, 2
     db $82, $83
     db $a2, $a3
 
-unkTiles66::
+unkTiles66:
     db 2, 2
     db $44, $45
     db $64, $65
 
-unkTiles65::
+unkTiles65:
     db 2, 2
     db $7a, $7b
     db $9a, $9b
 
-unkTiles64::
+unkTiles64:
     db 3, 2
     db $1b, $1c, $1d
     db $3b, $3c, $3d
 
-unkTiles63::
+unkTiles63:
     db 3, 2
     db $1b, $1c, $1d
     db $f8, $f9, $fa
 
-unkTiles62::
+unkTiles62:
     db 3, 2
     db $1e, $1f, $7e
     db $3e, $3f, $9e
 
-unkTilesPointers5::
+unkTilesPointers5:
     dw unkTiles85
     dw unkTiles84
     dw unkTiles83
@@ -2180,182 +2181,182 @@ unkTilesPointers5::
     dw unkTiles63
     dw unkTiles62
 
-unkTiles61::
+unkTiles61:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTiles60::
+unkTiles60:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTiles5F::
+unkTiles5F:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTiles5E::
+unkTiles5E:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTiles5D::
+unkTiles5D:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTiles5C::
+unkTiles5C:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTiles5B::
+unkTiles5B:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTiles5A::
+unkTiles5A:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles59::
+unkTiles59:
     db 4, 4
     db $66, $67, $b0, $b1
     db $86, $87, $d0, $d1
     db $a6, $a7, $b2, $b3
     db $c6, $c7, $d2, $d3
 
-unkTiles58::
+unkTiles58:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTiles57::
+unkTiles57:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTiles56::
+unkTiles56:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles55::
+unkTiles55:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTiles54::
+unkTiles54:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTiles53::
+unkTiles53:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTiles52::
+unkTiles52:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTiles51::
+unkTiles51:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTiles50::
+unkTiles50:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTiles4F::
+unkTiles4F:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $72, $73
     db $80, $81, $92, $93
     db $a0, $a1, $a2, $a3
 
-unkTiles4E::
+unkTiles4E:
     db 4, 4
     db $66, $67, $b0, $b1
     db $86, $87, $b4, $b5
     db $80, $81, $d4, $d5
     db $a0, $a1, $a2, $a3
 
-unkTiles4D::
+unkTiles4D:
     db 4, 4
     db $66, $67, $b0, $b1
     db $86, $44, $45, $7f
     db $a6, $64, $65, $9f
     db $c6, $c7, $d2, $d3
 
-unkTiles4C::
+unkTiles4C:
     db 2, 2
     db $b4, $b5
     db $d4, $d5
 
-unkTiles4B::
+unkTiles4B:
     db 2, 2
     db $a6, $a7
     db $c6, $c7
 
-unkTiles4A::
+unkTiles4A:
     db 2, 2
     db $66, $67
     db $86, $87
 
-unkTiles49::
+unkTiles49:
     db 2, 2
     db $40, $41
     db $60, $61
 
-unkTiles48::
+unkTiles48:
     db 2, 2
     db $42, $43
     db $62, $63
 
-unkTiles47::
+unkTiles47:
     db 2, 2
     db $80, $81
     db $a0, $a1
 
-unkTiles46::
+unkTiles46:
     db 2, 2
     db $82, $83
     db $a2, $a3
 
-unkTiles45::
+unkTiles45:
     db 2, 2
     db $40, $41
     db $60, $44
 
-unkTiles44::
+unkTiles44:
     db 2, 2
     db $42, $43
     db $45, $63
 
-unkTiles43::
+unkTiles43:
     db 2, 2
     db $80, $64
     db $a0, $a1
 
-unkTiles42::
+unkTiles42:
     db 2, 2
     db $65, $83
     db $a2, $a3
 
-unkTilesPointers4::
+unkTilesPointers4:
     dw unkTiles61
     dw unkTiles60
     dw unkTiles5F
@@ -2389,148 +2390,148 @@ unkTilesPointers4::
     dw unkTiles43
     dw unkTiles42
 
-unkTiles41::
+unkTiles41:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTiles40::
+unkTiles40:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTiles3F::
+unkTiles3F:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTiles3E::
+unkTiles3E:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTiles3D::
+unkTiles3D:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTiles3C::
+unkTiles3C:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTiles3B::
+unkTiles3B:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTiles3A::
+unkTiles3A:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles39::
+unkTiles39:
     db 4, 4
     db $40, $41, $42, $43
     db $44, $45, $64, $65
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles38::
+unkTiles38:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTiles37::
+unkTiles37:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTiles36::
+unkTiles36:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles35::
+unkTiles35:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTiles34::
+unkTiles34:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTiles33::
+unkTiles33:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d
     db $5b, $5c, $5d
 
-unkTiles32::
+unkTiles32:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTiles31::
+unkTiles31:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTiles30::
+unkTiles30:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTiles2F::
+unkTiles2F:
     db 6, 4
     db $1b, $1c, $1d, $40, $41, $42
     db $3b, $3c, $3d, $60, $61, $62
     db $5b, $5c, $5d, $80, $81, $82
     db $e0, $e1, $e2, $a0, $a1, $a2
 
-unkTiles2E::
+unkTiles2E:
     db 6, 4
     db $1b, $1c, $1d, $43, $44, $45
     db $3b, $3c, $3d, $63, $64, $65
     db $5b, $5c, $5d, $83, $84, $85
     db $e0, $e1, $e2, $a3, $a4, $a5
 
-unkTiles2D::
+unkTiles2D:
     db 6, 4
     db $1b, $1c, $1d, $40, $41, $42
     db $f8, $f9, $fa, $60, $61, $62
     db $fb, $fc, $fd, $80, $81, $82
     db $e0, $e1, $e2, $a0, $a1, $a2
 
-unkTiles2C::
+unkTiles2C:
     db 6, 4
     db $1e, $1f, $7e, $40, $41, $42
     db $3e, $3f, $9e, $60, $61, $62
     db $de, $df, $be, $80, $81, $82
     db $e0, $e1, $e2, $a0, $a1, $a2
 
-unkTiles2B::
+unkTiles2B:
     db 6, 4
     db $1e, $1f, $7e, $43, $44, $45
     db $3e, $3f, $9e, $63, $64, $65
     db $de, $df, $be, $83, $84, $85
     db $e0, $e1, $e2, $a3, $a4, $a5
 
-unkTiles2A::
+unkTiles2A:
     db 6, 4
     db $1e, $1f, $7e, $40, $41, $42
     db $3e, $3f, $9e, $60, $61, $62
     db $de, $df, $be, $80, $66, $67
     db $e0, $e1, $e2, $a0, $86, $87
 
-unkTilesPointers3::
+unkTilesPointers3:
     dw unkTiles41
     dw unkTiles40
     dw unkTiles3F
@@ -2556,127 +2557,127 @@ unkTilesPointers3::
     dw unkTiles2B
     dw unkTiles2A
 
-unkTiles22::
+unkTiles22:
     db 2, 2
     db $84, $85
     db $a4, $a5
 
-unkTiles21::
+unkTiles21:
     db 4, 2
     db $f5, $f6, $f6, $f7
     db $f5, $f6, $f6, $f7
 
-unkTiles20::
+unkTiles20:
     db 4, 2
     db $f2, $f3, $f3, $f4
     db $f5, $f6, $f6, $f7
 
-unkTiles1F::
+unkTiles1F:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f5, $f6, $f6, $f7
 
-unkTiles1E::
+unkTiles1E:
     db 4, 2
     db $ff, $ff, $ff, $ff
     db $f2, $f3, $f3, $f4
 
-unkTiles1D::
+unkTiles1D:
     db 4, 2
     db $6e, $6f, $ae, $af
     db $8e, $8f, $ce, $cf
 
-unkTiles1C::
+unkTiles1C:
     db 4, 2
     db $ca, $cb, $cc, $cd
     db $8e, $8f, $ce, $cf
 
-unkTiles1B::
+unkTiles1B:
     db 4, 4
     db $40, $41, $42, $43
     db $60, $61, $62, $63
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles1A::
+unkTiles1A:
     db 4, 4
     db $40, $41, $42, $43
     db $44, $45, $64, $65
     db $80, $81, $82, $83
     db $a0, $a1, $a2, $a3
 
-unkTiles19::
+unkTiles19:
     db 2, 2
     db $c3, $c4
     db $e3, $e4
 
-unkTiles18::
+unkTiles18:
     db 2, 2
     db $c5, $c2
     db $e5, $e6
 
-unkTiles17::
+unkTiles17:
     db 2, 2
     db $09, $0a
     db $0b, $0c
 
-unkTiles16::
+unkTiles16:
     db 2, 2
     db $0d, $0e
     db $aa, $ab
 
-unkTiles15::
+unkTiles15:
     db 3, 3
     db $1b, $1c, $1d
     db $b8, $b9, $ba
     db $d8, $d9, $da
 
-unkTiles14::
+unkTiles14:
     db 3, 3
     db $1b, $1c, $1d
     db $3b, $3c, $3d,
     db $5b, $5c, $5d
 
-unkTiles13::
+unkTiles13:
     db 3, 3
     db $1b, $1c, $1d
     db $bb, $bc, $bd
     db $db, $dc, $dd
 
-unkTiles12::
+unkTiles12:
     db 3, 3
     db $1b, $1c, $1d
     db $f8, $f9, $fa
     db $fb, $fc, $fd
 
-unkTiles11::
+unkTiles11:
     db 3, 3
     db $1e, $1f, $7e
     db $3e, $3f, $9e
     db $de, $df, $be
 
-unkTiles10::
+unkTiles10:
     db 6, 4
     db $1b, $1c, $1d, $73, $74, $75
     db $f8, $f9, $fa, $93, $94, $95
     db $b0, $b1, $b2, $b3, $b4, $b5
     db $d0, $d1, $d2, $d3, $d4, $d5
 
-unkTilesF::
+unkTilesF:
     db 6, 4
     db $1b, $1c, $1d, $73, $74, $75
     db $3b, $3c, $3d, $93, $94, $95
     db $b0, $b1, $b2, $b3, $b4, $b5
     db $d0, $d1, $d2, $d3, $d4, $d5
 
-unkTilesE::
+unkTilesE:
     db 6, 4
     db $1e, $1f, $7e, $73, $74, $75
     db $3e, $3f, $9e, $93, $94, $95
     db $b0, $b1, $b2, $b3, $b4, $b5
     db $d0, $d1, $d2, $d3, $d4, $d5
 
-unkTilesPointers2::
+unkTilesPointers2:
     dw unkTiles22
     dw unkTiles21
     dw unkTiles20
@@ -2699,7 +2700,7 @@ unkTilesPointers2::
     dw unkTilesF
     dw unkTilesE
 
-unkTilesD::
+unkTilesD:
     db 20, 18
     db $e6, $00, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
     db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e0, $e6, $e6, $e6, $e6, $e6
@@ -2720,7 +2721,7 @@ unkTilesD::
     db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
     db $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e0, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6, $e6
 
-unkTilesC::
+unkTilesC:
     db 6, 6
     db $08, $09, $0a, $0b, $0c, $0d
     db $28, $29, $2a, $2b, $2c, $2d
@@ -2729,7 +2730,7 @@ unkTilesC::
     db $88, $89, $8a, $8b, $8c, $8d
     db $a8, $a9, $aa, $ab, $ac, $ad
 
-unkTilesB::
+unkTilesB:
     db 20, 18
     db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $e0, $c5, $c5, $c5, $c5
     db $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $c5, $00, $c5, $c5, $c5, $c5, $c5, $c5, $c5
@@ -2750,67 +2751,67 @@ unkTilesB::
     db $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07, $07
     db $14, $14, $6f, $14, $14, $14, $14, $14, $14, $14, $14, $14, $6f, $14, $14, $14, $14, $14, $14, $14
 
-unkTilesA::
+unkTilesA:
     db 3, 3
     db $92, $93, $94
     db $95, $96, $97
     db $b5, $b6, $b7
 
-unkTiles9::
+unkTiles9:
     db 3, 3
     db $1c, $1d, $1e
     db $54, $55, $56
     db $74, $75, $76
 
-unkTiles8::
+unkTiles8:
     db 3, 3
     db $1c, $1d, $1e
     db $57, $58, $59
     db $77, $78, $79
 
-unkTiles7::
+unkTiles7:
     db 3, 3
     db $1c, $1d, $1e
     db $5a, $5b, $5c
     db $7a, $7b, $7c
 
-unkTiles6::
+unkTiles6:
     db 3, 3
     db $39, $3a, $3b
     db $54, $55, $56
     db $74, $75, $76
 
-unkTiles5::
+unkTiles5:
     db 3, 3
     db $39, $3a, $3b
     db $57, $58, $59
     db $77, $78, $79
 
-unkTiles4::
+unkTiles4:
     db 3, 3
     db $39, $3a, $3b
     db $5a, $5b, $5c
     db $7a, $7b, $7c
 
-unkTiles3::
+unkTiles3:
     db 3, 3
     db $3c, $3d, $3e
     db $54, $55, $56
     db $74, $75, $76
 
-unkTiles2::
+unkTiles2:
     db 3, 3
     db $3c, $3d, $3e
     db $57, $58, $59
     db $77, $78, $79
 
-unkTiles::
+unkTiles:
     db 3, 3
     db $3c, $3d, $3e
     db $5a, $5b, $5c
     db $7a, $7b, $7c
 
-house_tiles::
+house_tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -2831,7 +2832,7 @@ house_tiles::
     db $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63
     db $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83, $83
 
-Intro_CharlieTiles::
+Intro_CharlieTiles:
     db 4, 7
     db $ff, $ff, $ff, $ff
     db $1c, $1d, $1e, $1f
@@ -2841,7 +2842,7 @@ Intro_CharlieTiles::
     db $9c, $9d, $9e, $9f
     db $bc, $bd, $be, $bf
 
-Intro_CharlieThumbsUpTiles::
+Intro_CharlieThumbsUpTiles:
     db 4, 7
     db $ff, $ff, $ff, $ff
     db $18, $19, $1a, $1b
@@ -2851,7 +2852,7 @@ Intro_CharlieThumbsUpTiles::
     db $98, $99, $9a, $9b
     db $b8, $b9, $ba, $bb
 
-Intro_CharlieLookUpTiles::
+Intro_CharlieLookUpTiles:
     db 4, 7
     db $d8, $d9, $da, $db
     db $f8, $f9, $fa, $fb
@@ -2861,7 +2862,7 @@ Intro_CharlieLookUpTiles::
     db $9c, $9d, $9e, $9f
     db $bc, $bd, $be, $bf
 
-unkTilesPointers::
+unkTilesPointers:
     dw unkTilesD
     dw unkTilesC
     dw unkTilesB
@@ -2880,7 +2881,7 @@ unkTilesPointers::
     dw Intro_CharlieThumbsUpTiles
     dw Intro_CharlieLookUpTiles
 
-Ending_CharlieTiles::
+Ending_CharlieTiles:
     db 4, 7
     db $ff, $ff, $ff, $ff
     db $1c, $1d, $1e, $1f
@@ -2890,7 +2891,7 @@ Ending_CharlieTiles::
     db $9c, $9d, $9e, $9f
     db $bc, $bd, $be, $bf
 
-Ending_CharlieHugTiles::
+Ending_CharlieHugTiles:
     db 4, 7
     db $ff, $ff, $ff, $ff
     db $18, $19, $1a, $1b
@@ -2900,7 +2901,7 @@ Ending_CharlieHugTiles::
     db $98, $99, $9a, $9b
     db $b8, $b9, $ba, $bb
 
-Ending_CharlieLookUpTiles::
+Ending_CharlieLookUpTiles:
     db 4, 7
     db $d8, $d9, $da, $db
     db $f8, $f9, $fa, $fb
@@ -2910,13 +2911,13 @@ Ending_CharlieLookUpTiles::
     db $9c, $9d, $9e, $9f
     db $bc, $bd, $be, $bf
 
-unkTiles29::
+unkTiles29:
     db 2, 3
     db $c4, $c5
     db $e4, $e5
     db $ac, $ad
 
-unkAnimPointers::
+unkAnimPointers:
     dw unkAnimSet1
     dw ANIM_SET_Chalvo
     dw ANIM_SET_OneHitEnemy
@@ -2932,7 +2933,7 @@ unkAnimPointers::
     dw unkAnimSetD
 
 ;effects????
-unkAnimSet1::
+unkAnimSet1:
     dw $5a97
     dw $5aab
     ;actual push sweat effect
@@ -2964,7 +2965,7 @@ unkAnimSet1::
     dw ANIM_COMMAND_STOP
 
 ; this is the one for chalvo, so its easiest to test
-ANIM_SET_Chalvo::
+ANIM_SET_Chalvo:
     dw ANIM_SET_Chalvo_Idle
     dw ANIM_SET_Chalvo_Walk
     dw ANIM_SET_Chalvo_Fall
@@ -2983,38 +2984,38 @@ ANIM_SET_Chalvo::
     ;definitelyNotBallDie
     dw $5bb1
 
-ANIM_SET_Chalvo_Idle::
+ANIM_SET_Chalvo_Idle:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Stand
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_Chalvo_Walk::
+ANIM_SET_Chalvo_Walk:
     dw 8, ANIM_FRAME_Chalvo_Walk1
     dw 8, ANIM_FRAME_Chalvo_Stand
     dw 8, ANIM_FRAME_Chalvo_Walk2
     dw 8, ANIM_FRAME_Chalvo_Stand
     dw ANIM_COMMAND_LOOP, 0
 
-ANIM_SET_Chalvo_Fall::
+ANIM_SET_Chalvo_Fall:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Fall
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_Chalvo_Jump::
+ANIM_SET_Chalvo_Jump:
     dw 12, ANIM_FRAME_Chalvo_Jump
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_Chalvo_Push::
+ANIM_SET_Chalvo_Push:
     dw 16, ANIM_FRAME_Chalvo_Push1_Copy
     dw 16, ANIM_FRAME_Chalvo_PushStand
     dw 16, ANIM_FRAME_Chalvo_Push2
     dw 16, ANIM_FRAME_Chalvo_PushStand
     dw ANIM_COMMAND_LOOP, 0
 
-ANIM_SET_Chalvo_Uncurl::
+ANIM_SET_Chalvo_Uncurl:
     dw 8, ANIM_FRAME_Chalvo_Jump
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_Fall
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_Chalvo_PushStand::
+ANIM_SET_Chalvo_PushStand:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Chalvo_PushStand
     dw ANIM_COMMAND_STOP
 
@@ -3062,56 +3063,56 @@ ANIM_SET_Chalvo_PushStand::
     dw 64, ANIM_FRAME_Chalvo_BallDie
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_OneHitEnemy::
+ANIM_SET_OneHitEnemy:
     dw ANIM_SET_OneHitEnemy_Move
     dw ANIM_SET_OneHitEnemy_Die
 
-ANIM_SET_OneHitEnemy_Move::
+ANIM_SET_OneHitEnemy_Move:
     dw 8, ANIM_FRAME_Stage_OneHitEnemy1
     dw 8, ANIM_FRAME_Stage_OneHitEnemy2
     dw ANIM_COMMAND_LOOP, 0
 
-ANIM_SET_OneHitEnemy_Die::
+ANIM_SET_OneHitEnemy_Die:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_OneHitEnemyDie
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_TwoHitEnemy::
+ANIM_SET_TwoHitEnemy:
     dw ANIM_SET_TwoHitEnemy_Move
     dw ANIM_SET_TwoHitEnemy_Die
 
-ANIM_SET_TwoHitEnemy_Move::
+ANIM_SET_TwoHitEnemy_Move:
     dw 8, ANIM_FRAME_Stage_TwoHitEnemy1
     dw 8, ANIM_FRAME_Stage_TwoHitEnemy2
     dw ANIM_COMMAND_LOOP, 0
 
-ANIM_SET_TwoHitEnemy_Die::
+ANIM_SET_TwoHitEnemy_Die:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_TwoHitEnemyDie
     dw ANIM_COMMAND_STOP
 
-ANIM_SET_NoHitEnemy::
+ANIM_SET_NoHitEnemy:
     dw ANIM_SET_NoHitEnemy_Move
     dw ANIM_SET_NoHitEnemy_Die
 
-ANIM_SET_NoHitEnemy_Move::
+ANIM_SET_NoHitEnemy_Move:
     dw 8, ANIM_FRAME_Stage_NoHitEnemy1
     dw 8, ANIM_FRAME_Stage_NoHitEnemy2
     dw ANIM_COMMAND_LOOP, 0
 
-ANIM_SET_NoHitEnemy_Die::
+ANIM_SET_NoHitEnemy_Die:
     dw ANIM_COMMAND_INDEFINITE, ANIM_FRAME_Stage_NoHitEnemyDie
     dw ANIM_COMMAND_STOP
 
-unkAnimSet6::
+unkAnimSet6:
     dw unkAnimSet6_anim1
     dw unkAnimSet6_anim2
     dw unkAnimSet6_anim3
     dw unkAnimSet6_anim4
 
-unkAnimSet6_anim1::
+unkAnimSet6_anim1:
     dw ANIM_COMMAND_INDEFINITE, $21,
     dw ANIM_COMMAND_STOP
 
-unkAnimSet6_anim2::
+unkAnimSet6_anim2:
     dw 5, $21
     dw 5, $23
     dw 10, $21
@@ -3137,23 +3138,23 @@ unkAnimSet6_anim2::
     dw 30, $23
     dw ANIM_COMMAND_STOP
 
-unkAnimSet6_anim3::
+unkAnimSet6_anim3:
     dw 80, $24
     dw ANIM_COMMAND_STOP
 
-unkAnimSet6_anim4::
+unkAnimSet6_anim4:
     dw 8, $20
     dw 8, $21
     dw 8, $22
     dw 8, $21
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSet7::
+unkAnimSet7:
     dw unkAnimSet7_anim1
     dw unkAnimSet7_anim2
     dw unkAnimSet7_anim3
 
-unkAnimSet7_anim1::
+unkAnimSet7_anim1:
     dw $05, $2c
     dw $05, $2b
     dw $0a, $2c
@@ -3180,21 +3181,21 @@ unkAnimSet7_anim1::
     dw $01, $2c
     dw ANIM_COMMAND_STOP
 
-unkAnimSet7_anim2::
+unkAnimSet7_anim2:
     dw $3c, $2d
     dw $01, $2c
     dw ANIM_COMMAND_STOP
 
-unkAnimSet7_anim3::
+unkAnimSet7_anim3:
     dw $3c, $2d
     dw ANIM_COMMAND_STOP
 
-unkAnimSet8::
+unkAnimSet8:
     dw unkAnimSet8_anim1
     dw unkAnimSet8_anim2
     dw unkAnimSet8_anim3
 
-unkAnimSet8_anim1::
+unkAnimSet8_anim1:
     dw $05, $33
     dw $05, $34
     dw $0a, $33
@@ -3221,41 +3222,41 @@ unkAnimSet8_anim1::
     dw $01, $33
     dw ANIM_COMMAND_STOP
 
-unkAnimSet8_anim2::
+unkAnimSet8_anim2:
     dw $3c, $35
     dw $01, $33
     dw ANIM_COMMAND_STOP
 
-unkAnimSet8_anim3::
+unkAnimSet8_anim3:
     dw $3c, $35
     dw ANIM_COMMAND_STOP
 
-unkAnimSet9::
+unkAnimSet9:
     dw unkAnimSet9_anim1
     dw unkAnimSet9_anim2
     dw unkAnimSet9_anim3
 
-unkAnimSet9_anim1::
+unkAnimSet9_anim1:
     dw $20, $37
     dw $20, $38
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSet9_anim2::
+unkAnimSet9_anim2:
     dw $08, $39
     dw $08, $3a
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSet9_anim3::
+unkAnimSet9_anim3:
     dw $20, $3b
     dw ANIM_COMMAND_STOP
 
-unkAnimSetA::
+unkAnimSetA:
     dw unkAnimSetA_anim1
     dw unkAnimSetA_anim2
     dw unkAnimSetA_anim3
     dw unkAnimSetA_anim4
 
-unkAnimSetA_anim1::
+unkAnimSetA_anim1:
     dw $05, $3c
     dw $05, $3e
     dw $0a, $3c
@@ -3282,7 +3283,7 @@ unkAnimSetA_anim1::
     dw $01, $3c
     dw ANIM_COMMAND_STOP
 
-unkAnimSetA_anim2::
+unkAnimSetA_anim2:
     dw $08, $3f
     dw $08, $40
     dw $08, $3f
@@ -3293,29 +3294,29 @@ unkAnimSetA_anim2::
     dw $08, $40
     dw ANIM_COMMAND_STOP
 
-unkAnimSetA_anim3::
+unkAnimSetA_anim3:
     dw $20, $41
     dw ANIM_COMMAND_STOP
 
-unkAnimSetA_anim4::
+unkAnimSetA_anim4:
     dw $08, $3c
     dw $08, $3d
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSetB::
+unkAnimSetB:
     dw unkAnimSetB_anim1
 
-unkAnimSetB_anim1::
+unkAnimSetB_anim1:
     dw $08, $43
     dw $08, $44
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSetC::
+unkAnimSetC:
     dw unkAnimSetC_anim1
     dw unkAnimSetC_anim2
     dw unkAnimSetC_anim3
 
-unkAnimSetC_anim1::
+unkAnimSetC_anim1:
     dw $05, $46
     dw $05, $45
     dw $0a, $46
@@ -3342,42 +3343,42 @@ unkAnimSetC_anim1::
     dw $01, $46
     dw ANIM_COMMAND_STOP
 
-unkAnimSetC_anim2::
+unkAnimSetC_anim2:
     dw $3c, $47
     dw $01, $46
     dw ANIM_COMMAND_STOP
 
-unkAnimSetC_anim3::
+unkAnimSetC_anim3:
     dw $3c, $47
     dw ANIM_COMMAND_STOP
 
-unkAnimSetD::
+unkAnimSetD:
     dw unkAnimSetD_anim1
     dw unkAnimSetD_anim2
     dw unkAnimSetD_anim3
 
-unkAnimSetD_anim1::
+unkAnimSetD_anim1:
     dw $08, $4b
     dw $08, $4c
     dw $08, $4d
     dw $08, $4c
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSetD_anim2::
+unkAnimSetD_anim2:
     dw $08, $4e
     dw $08, $4f
     dw $08, $50
     dw $08, $4f
     dw ANIM_COMMAND_LOOP, 0
 
-unkAnimSetD_anim3::
+unkAnimSetD_anim3:
     dw $08, $51
     dw $08, $52
     dw $08, $53
     dw $08, $52
     dw ANIM_COMMAND_LOOP, 0
 
-unkData::
+unkData:
     ;x offset, y offset, width, height
     ;width & height extend leftward and negative offsets move right
     ;therefore, the origin is somewhere in the bottom right
@@ -3776,7 +3777,7 @@ unkData::
     db $40, $41, $60, $61
     db $42, $43, $62, $63
 
-whatCode::
+whatCode:
     ld a, [currentStage]
     ld de, $61bb
     push de
@@ -4327,6 +4328,7 @@ jr_003_6429:
     ret
 
 
+jr_003_64da:
     ld a, [procState]
     ld de, $64e8
     push de
@@ -4343,10 +4345,9 @@ jr_003_6429:
 
 
     call StartActorCleanup
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+
+    LCDC_OFF
+
     ld a, [procState]
     inc a
     ld [procState], a
@@ -4370,10 +4371,8 @@ jr_003_6512:
     or c
     jr nz, jr_003_6512
 
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
+    LCDC_ON
+
     xor a
     ld [$c83d], a
     ld a, [procState]
@@ -4383,7 +4382,7 @@ jr_003_6512:
 
 
     ldh a, [INPUT_HOLD]
-    and $30
+    and PADF_RIGHT | PADF_LEFT
     jr nz, jr_003_6537
 
     xor a
@@ -4395,7 +4394,7 @@ jr_003_6537:
     jr nz, jr_003_6553
 
     ldh a, [INPUT_HOLD]
-    bit 4, a
+    bit PADB_RIGHT, a
     jr z, jr_003_6560
 
     ld a, [$c83d]
@@ -4418,11 +4417,11 @@ jr_003_6553:
 
 jr_003_6560:
     ldh a, [INPUT_PRESS]
-    bit 5, a
+    bit PADB_LEFT, a
     jr nz, jr_003_657c
 
     ldh a, [INPUT_HOLD]
-    bit 5, a
+    bit PADB_LEFT, a
     jr z, jr_003_6589
 
     ld a, [$c83d]
@@ -4509,7 +4508,7 @@ jr_003_65e5:
     ret
 
 
-randomTilePointers::
+randomTilePointers:
     dw randomTilePointer1
     dw randomTilePointer2
     dw randomTilePointer3
@@ -4521,57 +4520,57 @@ randomTilePointers::
     dw randomTilePointer9
     dw randomTilePointerA
 
-randomTilePointer1::
+randomTilePointer1:
     db $03, $02
     db $6a, $6b, $6c
     db $8a, $8b, $8c
 
-randomTilePointer2::
+randomTilePointer2:
     db $03, $02
     db $20, $21, $22
     db $40, $41, $42
 
-randomTilePointer3::
+randomTilePointer3:
     db $03, $02
     db $23, $24, $25
     db $43, $44, $45
 
-randomTilePointer4::
+randomTilePointer4:
     db $03, $02
     db $26, $27, $28
     db $46, $47, $48
 
-randomTilePointer5::
+randomTilePointer5:
     db $03, $02
     db $29, $2a, $2b
     db $49, $4a, $4b
 
-randomTilePointer6::
+randomTilePointer6:
     db $03, $02
     db $2c, $2d, $2e
     db $4c, $4d, $4e
 
-randomTilePointer7::
+randomTilePointer7:
     db $03, $02
     db $2f, $30, $31
     db $4f, $50, $51
 
-randomTilePointer8::
+randomTilePointer8:
     db $03, $02
     db $32, $33, $34
     db $52, $53, $54
 
-randomTilePointer9::
+randomTilePointer9:
     db $03, $02
     db $35, $36, $37
     db $55, $56, $57
 
-randomTilePointerA::
+randomTilePointerA:
     db $03, $02
     db $67, $68, $69
     db $87, $88, $89
 
-whatCode2::
+whatCode2:
     ld a, [procState]
     ld de, procJumpStart
     push de
@@ -4579,7 +4578,7 @@ whatCode2::
     sub e
     ld h, [hl]
 
-procJumpList::
+procJumpList:
     dw Pre_Init_Stage
     dw Init_Stage
     dw Normal_Process
@@ -4612,10 +4611,10 @@ procJumpList::
     dw $405D
     dw $6EF3
 
-procJumpStart::
+procJumpStart:
     ret
 
-PrePre_Init_Stage::
+PrePre_Init_Stage:
     ;sets all these to 0
     xor a
     ld [playerState], a
@@ -4633,17 +4632,16 @@ PrePre_Init_Stage::
         jr nz, jr_003_66a8
 
     call StartActorCleanup
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+
+    LCDC_OFF
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
 
-Pre_Init_Stage::
+Pre_Init_Stage:
     ld a, [currentStage]
     ld hl, $c982
     bit 1, [hl]
@@ -4730,20 +4728,20 @@ Pre_Init_Stage::
 
 jr_003_6723:
     call Call_000_27f6
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    LCDC_ON
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
 
-Stage_Inits::
+Stage_Inits:
     db $80, $f0
     db $d0, $30
     db $18, $f0
@@ -4763,7 +4761,7 @@ Stage_Inits::
     db $18, $f0
     db $20, $f0
 
-whatwhatwhat2::
+whatwhatwhat2:
     add hl, bc
     ld a, [bc]
     add hl, bc
@@ -4774,7 +4772,7 @@ whatwhatwhat2::
     dec bc
     dec e
 
-Init_Stage::
+Init_Stage:
     ;loop until !z
     ld a, $04
     call Call_000_2e61
@@ -4795,7 +4793,7 @@ Init_Stage::
 jr_003_6784:
     ret
 
-Normal_Process::
+Normal_Process:
     ;if not demoing, jump
     ld a, [demoing]
     and a
@@ -4803,7 +4801,7 @@ Normal_Process::
     ;else, act like a demo
 
     ldh a, [INPUT_PRESS]
-    and $09
+    and PADF_START | PADF_A
     jp nz, Jump_003_694a
 
 jr_003_6792:
@@ -4814,7 +4812,7 @@ jr_003_6792:
     jr z, jr_003_67a6
 
     ldh a, [INPUT_HOLD]
-    cp $02
+    cp PADF_B
     jr nz, jr_003_67a6
 
     set 5, [hl]
@@ -4833,9 +4831,10 @@ jr_003_67b3:
     bit PADB_SELECT, a
     jr z, jr_003_67c6
     ;else
-    ld a, $04
+    ld a, PADF_SELECT
     ldh [INPUT_HOLD], a
     call Call_000_263a
+
     ld a, $08
     ld [procState], a
     ret
@@ -4847,9 +4846,10 @@ jr_003_67c6:
     bit PADB_START, a
     jr z, jr_003_67d9
     ;else
-    ld a, $08
+    ld a, PADF_START
     ldh [INPUT_HOLD], a
     call Call_000_263a
+
     ld a, $0b
     ld [sceneState], a
     ret
@@ -4862,13 +4862,12 @@ jr_003_67d9:
 
 jr_003_67de:
     ldh a, [INPUT_PRESS]
-    and $0c
+    and PADF_START | PADF_SELECT
     jr nz, jr_003_6792
 
 jr_003_67e4:
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+    SWAP_AND_CALL b2_root_2
+
     ;if bit 5 of playerState, jump to ret
     ;disables camera?????
     ld hl, playerState
@@ -4902,9 +4901,7 @@ jr_003_67e4:
     ;
     jr nz, jr_003_685e
 
-    ld a, $01
-    ld hl, $68f8
-    call Call_000_08ae
+    SWAP_AND_CALL jr_001_68f8
 
     ;if checkpoint x != -1, jump
     ld a, [chalvoPosCheckpointX]
@@ -4921,11 +4918,11 @@ jr_003_67e4:
     ld a, [hl]
 
     res 4, a
-    ld [$c97e], a
+    ld [unk_c97e], a
     ld hl, $001c
     add hl, bc
     ld a, [hl]
-    ld [$c97f], a
+    ld [unk_c97f], a
     ld hl, $0004
     add hl, bc
     ld a, [hl]
@@ -4937,11 +4934,11 @@ jr_003_67e4:
     ld a, [$c803]
     ld [screenPosCheckpointX], a
     ld a, [$c804]
-    ld [$c97c], a
+    ld [unk_c97c], a
     ld a, [$c81b]
     ld [chalvoPosCheckpointY], a
     ld a, [$c81c]
-    ld [$c97d], a
+    ld [unk_c97d], a
     jp Jump_003_6985
 
 
@@ -4965,9 +4962,11 @@ jr_003_685e:
     res 0, [hl]
     xor a
     ld [chalvoPosCheckpointX], a
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
+
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, [procState]
     inc a
     ld [procState], a
@@ -4981,9 +4980,11 @@ jr_003_6890:
     call Call_000_0619
     ld hl, $cb2c
     res 5, [hl]
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
+
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, $1f
     ld [procState], a
     jp Jump_003_6985
@@ -4998,9 +4999,11 @@ jr_003_68ac:
     xor a
     ld [chalvoPosCheckpointX], a
     call Call_000_0a65
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
+
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, $19
     ld [procState], a
     jp Jump_003_6985
@@ -5015,9 +5018,11 @@ jr_003_68ce:
     xor a
     ld [chalvoPosCheckpointX], a
     call Call_000_0a65
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
+
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, $16
     ld [procState], a
     jp Jump_003_6985
@@ -5029,7 +5034,7 @@ Jump_003_68f0:
     push af
     ld hl, $1d17
     ld a, $01
-    call Call_000_0aa6
+    call Play_SFX
     pop af
     pop hl
     call Call_000_0619
@@ -5092,20 +5097,21 @@ Jump_003_694a:
     call Call_000_0a84
     jr jr_003_6985
 
-Chalvo_RemoveLife::
+Chalvo_RemoveLife:
     ;playerLives -= 1
     ld hl, playerLives
     dec [hl]
 
-Chalvo_Respawn::
+Chalvo_Respawn:
     ;is playerState a set of bitflags???
     ld hl, playerState
     set 1, [hl]
     res 0, [hl]
-    ld a, $00
-    ld d, $07
-    ;set stuff to 0
-    call Call_000_2df8
+
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, $13
     ld [procState], a
 
@@ -5113,7 +5119,7 @@ Jump_003_6985:
 jr_003_6985:
     ret
 
-Use_Exit::
+Use_Exit:
     ;loop until fade out
     ld a, $04
     call Call_000_2e61
@@ -5121,12 +5127,8 @@ Use_Exit::
     ;loop
 
 
-    ;io stuff?
-    ld de, $ff40
-    ld a, [de]
-    and $7f
+    LCDC_OFF
 
-    call Call_000_240e
     call StartActorCleanup2
 
     ;procState += 1
@@ -5165,25 +5167,22 @@ jr_003_69b0:
     ld a, [$c98a]
     ld [$c81b], a
     call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    LCDC_ON
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
+    SWAP_AND_CALL b2_root_2
 
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
     ld a, $04
     call Call_000_2e61
     jr z, jr_003_6a17
@@ -5201,7 +5200,7 @@ jr_003_6a17:
     ld hl, actors
     ld de, $c480
     ld bc, $0380
-    call Call_000_03b2
+    call copy
     ld a, [$c803]
     ld [$c809], a
     ld a, [$c804]
@@ -5213,12 +5212,12 @@ jr_003_6a17:
 
 
     ldh a, [INPUT_HOLD]
-    bit 2, a
+    bit PADB_SELECT, a
     jp z, Jump_003_6aeb
 
     ld de, $0000
     ldh a, [INPUT_HOLD]
-    bit 4, a
+    bit PADB_RIGHT, a
     jr z, jr_003_6a5d
 
     ld a, [$c803]
@@ -5238,7 +5237,7 @@ Jump_003_6a5b:
 
 jr_003_6a5d:
     ldh a, [INPUT_HOLD]
-    bit 5, a
+    bit PADB_LEFT, a
     jr z, jr_003_6a75
 
     ld a, [$c803]
@@ -5257,7 +5256,7 @@ jr_003_6a73:
 
 jr_003_6a75:
     ldh a, [INPUT_HOLD]
-    bit 6, a
+    bit PADB_UP, a
     jr z, jr_003_6a8d
 
     ld a, [$c804]
@@ -5276,7 +5275,7 @@ jr_003_6a8b:
 
 jr_003_6a8d:
     ldh a, [INPUT_HOLD]
-    bit 7, a
+    bit PADB_DOWN, a
     jr z, jr_003_6aa8
 
     ld a, [$c804]
@@ -5344,14 +5343,15 @@ Jump_003_6aeb:
     ld hl, $c480
     ld de, actors
     ld bc, $0380
-    call Call_000_03b2
+    call copy
     ld a, [$c809]
     ld [$c803], a
     ld a, [$c80a]
     ld [$c804], a
     ld a, $03
     ld [procState], a
-    ld a, $04
+
+    ld a, PADF_SELECT
     ldh [INPUT_HOLD], a
 
 jr_003_6b0c:
@@ -5385,9 +5385,10 @@ jr_003_6b0c:
     ld [$c812], a
     jr z, jr_003_6b5a
 
-    ld a, $00
-    ld d, $07
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %111
+    call Pal_Fade
+
     ld a, [procState]
     inc a
     ld [procState], a
@@ -5417,10 +5418,9 @@ jr_003_6b5a:
     jr z, jr_003_6ba6
 
     call Call_000_2f39
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+
+    LCDC_OFF
+
     call StartActorCleanup2
     ld a, [procState]
     inc a
@@ -5472,18 +5472,18 @@ jr_003_6bc5:
     ld [hl], a
     call Call_003_7038
     call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
+
+    LCDC_ON
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
     ld a, [$c842]
     call Call_000_2f12
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [procState]
     inc a
     ld [procState], a
@@ -5506,9 +5506,9 @@ jr_003_6bc5:
     ld de, $c840
     ld a, [$c820]
     call Call_000_240e
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, $20
     call Call_000_2e61
     jr z, jr_003_6c5d
@@ -5539,9 +5539,9 @@ jr_003_6c5d:
     ld de, $c840
     ld a, [$c820]
     call Call_000_240e
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [$c812]
     dec a
     ld [$c812], a
@@ -5587,10 +5587,8 @@ jr_003_6cc1:
     jr jr_003_6cf5
 
 jr_003_6ce2:
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+    LCDC_OFF
+
     call StartActorCleanup2
     ld a, [procState]
     inc a
@@ -5601,11 +5599,11 @@ jr_003_6cf5:
 
 
     ld de, $c120
-    ld a, [$c97e]
+    ld a, [unk_c97e]
     ld hl, $0000
     add hl, de
     ld [hl], a
-    ld a, [$c97f]
+    ld a, [unk_c97f]
     ld hl, $001c
     add hl, de
     ld [hl], a
@@ -5619,11 +5617,11 @@ jr_003_6cf5:
     ld [hl], a
     ld a, [screenPosCheckpointX]
     ld [$c803], a
-    ld a, [$c97c]
+    ld a, [unk_c97c]
     ld [$c804], a
     ld a, [chalvoPosCheckpointY]
     ld [$c81b], a
-    ld a, [$c97d]
+    ld a, [unk_c97d]
     ld [$c81c], a
     ld a, $78
     ld hl, $001b
@@ -5677,25 +5675,23 @@ jr_003_6d6d:
     add hl, de
     ld [hl], a
     call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    LCDC_ON
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
 
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+    SWAP_AND_CALL b2_root_2
+
     ld a, $04
     call Call_000_2e61
     jr z, jr_003_6dca
@@ -5724,10 +5720,8 @@ jr_003_6dca:
     call Call_000_2e61
     jr z, jr_003_6dec
 
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+    LCDC_OFF
+
     call StartActorCleanup2
     ld a, [procState]
     inc a
@@ -5763,25 +5757,23 @@ jr_003_6df6:
     ld a, [$c98a]
     ld [$c81b], a
     call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    LCDC_ON
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
 
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+    SWAP_AND_CALL b2_root_2
+
     ld a, $04
     call Call_000_2e61
     jr z, jr_003_6e60
@@ -5804,10 +5796,8 @@ jr_003_6e60:
     call Call_000_2e61
     jr z, jr_003_6e82
 
-    ld de, $ff40
-    ld a, [de]
-    and $7f
-    call Call_000_240e
+    LCDC_OFF
+
     call StartActorCleanup2
     ld a, [procState]
     inc a
@@ -5838,25 +5828,22 @@ jr_003_6e82:
     ld a, [$c98a]
     ld [$c81b], a
     call Call_000_27f6
-    ld de, $ff40
-    ld a, [de]
-    or $80
-    ld [de], a
-    ld a, $01
-    ld d, $07
-    call Call_000_2df8
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+
+    LCDC_ON
+
+    ld a, PALFADE_LTN
+    ld d, %111
+    call Pal_Fade
+
+    SWAP_AND_CALL b2_root_2
+
     ld a, [procState]
     inc a
     ld [procState], a
     ret
 
+    SWAP_AND_CALL b2_root_2
 
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
     ld a, $04
     call Call_000_2e61
     jr z, jr_003_6ef2
@@ -5875,9 +5862,8 @@ jr_003_6ef2:
     bit 6, a
     jp z, Jump_003_6f07
 
-    ld a, $02
-    ld hl, $4001
-    call Call_000_08ae
+    SWAP_AND_CALL b2_root_2
+
     ld a, $20
     jr jr_003_6f09
 

@@ -21,25 +21,18 @@ Jump_004_400a:
     push hl
     push de
     pop hl
+    ld de, _SCRN0
+    call Draw_EntireScreenTiles
 
-    ;?
-    ld de, $9800
-    call Call_000_0756
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
 
-    ;?
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
-
-    ;?
-    ld a, $93
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_004_4023:
-    ;?
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if c == 0 (z == true), loop
     ld a, c
@@ -54,11 +47,8 @@ resetB:
 jr_004_4033:
     push bc
 
-    ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
-    
+    SWAP_AND_CALL Call_001_6cac
+
     ;dec b
     ;if b > 0, loop
     pop bc
@@ -72,17 +62,14 @@ jr_004_4033:
     jr nz, resetB
     ;else
 
-    ;?
-    ld a, $00
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %001
+    call Pal_Fade
 
 ;end show tile
 jr_004_404a:
     ;wait for fade out
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if c == 0 (z == true), loop
     ld a, c
@@ -90,15 +77,12 @@ jr_004_404a:
     jr z, jr_004_404a
     ;else
 
-    ;?
-    ld a, $01
-    ld hl, $6c89
-    call Call_000_08ae
+    SWAP_AND_CALL Fill_SCRN0
 
     ;return init values
     pop hl
     pop bc
-    
+
     ;c--
     dec c
     ;if c > 0, loop back to main (now showing one more because of dec)
@@ -108,11 +92,13 @@ jr_004_404a:
     ;(ran when finished and faded out)
     ld a, $10
     call Call_000_0a84
-    ld a, $93
+
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
+
     ret
 
-CreditsTiles1::
+CreditsTiles1:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -133,7 +119,7 @@ CreditsTiles1::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles2::
+CreditsTiles2:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -154,7 +140,7 @@ CreditsTiles2::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles3::
+CreditsTiles3:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -175,7 +161,7 @@ CreditsTiles3::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles4::
+CreditsTiles4:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -196,7 +182,7 @@ CreditsTiles4::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles5::
+CreditsTiles5:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -217,7 +203,7 @@ CreditsTiles5::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles6::
+CreditsTiles6:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -238,7 +224,7 @@ CreditsTiles6::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles7::
+CreditsTiles7:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -259,7 +245,7 @@ CreditsTiles7::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTiles8::
+CreditsTiles8:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -280,7 +266,7 @@ CreditsTiles8::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-CreditsTilePointers::
+CreditsTilePointers:
     dw CreditsTiles1
     dw CreditsTiles2
     dw CreditsTiles3
@@ -297,8 +283,9 @@ ShowStageScreen:
     jr nz, jr_004_4bda
     ;else
 
-    ld a, $93
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
+
     ret
 
 
@@ -311,30 +298,24 @@ jr_004_4bda:
     ;get pointer
     ld hl, StageScreenTilePointers
     add hl, bc
-    
+
     ;load pointer into hl
     ld a, [hl+]
     ld h, [hl]
     ld l, a
+    ld de, _SCRN0
+    call Draw_EntireScreenTiles
 
-    ;?
-    ld de, $9800
-    call Call_000_0756
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
 
-    ;?
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
-
-    ;?
-    ld a, $93
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_004_4bf6:
-    ;?
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+
+    SWAP_AND_CALL Call_001_6ca6
 
     ;fade in
     ;if c == 0 (z == true), loop
@@ -349,14 +330,12 @@ jr_004_4c04:
     push bc
 
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
     pop bc
-    ;if $ff9c == 9, loop
-    ldh a, [$9c]
-    and $09
+    ;if INPUT_PRESS & PADF_START | PADF_A, loop
+    ldh a, [INPUT_PRESS]
+    and PADF_START | PADF_A
     jr nz, jr_004_4c17
     ;else
 
@@ -367,26 +346,24 @@ jr_004_4c04:
     ;else
 
 jr_004_4c17:
-    ld a, $00
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %001
+    call Pal_Fade
 
 jr_004_4c1e:
     ;fade out
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
-    
+    SWAP_AND_CALL Call_001_6ca6
+
     ;if c == 0, loop
     ld a, c
     or a
     jr z, jr_004_4c1e
     ;else
-    
+
 
     ret
 
-StageIntro1Tiles::
+StageIntro1Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -407,7 +384,7 @@ StageIntro1Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro2Tiles::
+StageIntro2Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -428,7 +405,7 @@ StageIntro2Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro3Tiles::
+StageIntro3Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -449,7 +426,7 @@ StageIntro3Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro4Tiles::
+StageIntro4Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -470,7 +447,7 @@ StageIntro4Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro5Tiles::
+StageIntro5Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -491,7 +468,7 @@ StageIntro5Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro6Tiles::
+StageIntro6Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -512,7 +489,7 @@ StageIntro6Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro7Tiles::
+StageIntro7Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -533,7 +510,7 @@ StageIntro7Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageIntro8Tiles::
+StageIntro8Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -554,7 +531,7 @@ StageIntro8Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-GameOverTiles::
+GameOverTiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -575,7 +552,7 @@ GameOverTiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro1Tiles::
+StageOutro1Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -596,7 +573,7 @@ StageOutro1Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro2Tiles::
+StageOutro2Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -617,7 +594,7 @@ StageOutro2Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro3Tiles::
+StageOutro3Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -638,7 +615,7 @@ StageOutro3Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro4Tiles::
+StageOutro4Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -659,7 +636,7 @@ StageOutro4Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro5Tiles::
+StageOutro5Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -680,7 +657,7 @@ StageOutro5Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro6Tiles::
+StageOutro6Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -701,7 +678,7 @@ StageOutro6Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro7Tiles::
+StageOutro7Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -722,7 +699,7 @@ StageOutro7Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-StageOutro8Tiles::
+StageOutro8Tiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -744,13 +721,13 @@ StageOutro8Tiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 ;the c
-StageOutroCTiles::
+StageOutroCTiles:
     db 2, 3
     db $c4, $c5
     db $e4, $e5
     db $ac, $ad
 
-StageScreenTilePointers::
+StageScreenTilePointers:
     dw StageIntro1Tiles
     dw StageIntro2Tiles
     dw StageIntro3Tiles
@@ -775,23 +752,19 @@ def continueTickCount EQU 10
 ShowContinue:
     ;load screen bg
     ld hl, ContinueBGTiles
-    ld de, $9800
-    call Call_000_0756
+    ld de, _SCRN0
+    call Draw_EntireScreenTiles
 
-    ;?
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
 
-    ;?
-    ld a, $93
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_004_6475:
     ;fade in
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if c == 0, loop
     ld a, c
@@ -814,15 +787,13 @@ jr_004_648d:
     push bc
 
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
     pop bc
 
-    ;if not bit 0 of 9c, loop
-    ldh a, [$9c]
-    bit 0, a
+    ;if not bit PADB_A of INPUT_PRESS, loop
+    ldh a, [INPUT_PRESS]
+    bit PADB_A, a
     jr nz, jr_004_64b6
     ;else
 
@@ -841,7 +812,7 @@ jr_004_648d:
 jr_004_64a4:
     ;c++
     inc c
-    
+
     ;if c == 10 (timer runs out), jump
     ld a, continueTickCount
     cp c
@@ -873,27 +844,23 @@ jr_004_64bb:
 ShowGameOver:
     ;queue gameover tiles
     ld hl, GameOverTiles
-    ld de, $9800
-    call Call_000_0756
+    ld de, _SCRN0
+    call Draw_EntireScreenTiles
 
     ;?
     ld a, $16
     call Call_000_0903
 
-    ;?
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
 
-    ;?
-    ld a, $93
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_OBJON | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_004_64da:
     ;fade in
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if a == 0, loop
     ld a, c
@@ -903,13 +870,11 @@ jr_004_64da:
 
 jr_004_64e6:
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
-    ;if !(a & $ff9c), jump
-    ldh a, [$9c]
-    and $09
+    ;if !(PADF_A | PADF_START & INPUT_PRESS), jump
+    ldh a, [INPUT_PRESS]
+    and PADF_A | PADF_START
     jr nz, jr_004_64f6
     ;else
 
@@ -923,16 +888,13 @@ jr_004_64f6:
     ld a, $10
     call Call_000_0a84
 
-    ;?
-    ld a, $00
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %001
+    call Pal_Fade
 
 jr_004_6502:
     ;fade out
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if !a, loop
     ld a, c
@@ -985,7 +947,7 @@ Call_004_650f:
     ret
 
 
-ContinueBGTiles::
+ContinueBGTiles:
     db 20, 18
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
@@ -1006,73 +968,73 @@ ContinueBGTiles::
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-Continue9Tiles::
+Continue9Tiles:
     db 2, 3
     db $bc, $bd
     db $dc, $dd
     db $fc, $fd
 
-Continue8Tiles::
+Continue8Tiles:
     db 2, 3
     db $ba, $bb
     db $da, $db
     db $fa, $fb
 
-Continue7Tiles::
+Continue7Tiles:
     db 2, 3
     db $b8, $b9
     db $d8, $d9
     db $f8, $f9
 
-Continue6Tiles::
-    db 2, 3, 
+Continue6Tiles:
+    db 2, 3,
     db $b6, $b7
     db $d6, $d7
     db $f6, $f7
 
-Continue5Tiles::
+Continue5Tiles:
     db 2, 3
     db $f2, $f3
     db $d4, $d5
     db $f4, $f5
 
-Continue4Tiles::
+Continue4Tiles:
     db 2, 3
     db $d0, $d1
     db $f0, $f1
     db $d2, $d3
 
-Continue3Tiles::
+Continue3Tiles:
     db 2, 3
     db $0d, $0e
     db $ce, $cf
     db $1e, $ef
 
-Continue2Tiles::
+Continue2Tiles:
     db 2, 3
     db $0b, $0c
     db $cc, $cd
     db $ae, $af
 
-Continue1Tiles::
+Continue1Tiles:
     db 2, 3
     db $ff, $0a
     db $ff, $cb
     db $ff, $1b
 
-Continue0Tiles::
+Continue0Tiles:
     db 2, 3
     db $66, $67
     db $86, $87
     db $a6, $a7
 
-ContinueUnkTiles::
+ContinueUnkTiles:
     db 16, 3
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
-unkbank4TilePointers2::
+unkbank4TilePointers2:
     dw ContinueBGTiles
     dw Continue9Tiles
     dw Continue8Tiles
@@ -1214,7 +1176,7 @@ jr_004_6795:
     ;if c > 0, loop
     jr nz, jr_004_6795
     ;else
-    
+
     ; left shift c as currentStage
     ld a, [currentStage]
     rlca
@@ -1233,20 +1195,16 @@ jr_004_6795:
     ld a, [hl]
     ld [$c9b1], a
 
-    ;?
-    ld a, $01
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_LTN
+    ld d, %001
+    call Pal_Fade
 
-    ;?
-    ld a, $99
+    ld a, LCDCF_ON | LCDCF_BLK01 | LCDCF_BG9C00 | LCDCF_BGON
     ldh [rLCDC], a
 
 jr_004_67b9:
     ;fade in
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if !c, loop
     ld a, c
@@ -1285,20 +1243,18 @@ jr_004_67e0:
     push bc
 
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
     pop bc
 
-    ;if bit 0 of $ff9c, jump
-    ldh a, [$9c]
-    bit 0, a
+    ;if bit 0 of INPUT_PRESS, jump
+    ldh a, [INPUT_PRESS]
+    bit PADB_A, a
     jr nz, jr_004_6824
     ;else
 
-    ;if bit 3 of $ff9c, jump
-    bit 3, a
+    ;if PADB_START of INPUT_PRESS, jump
+    bit PADB_START, a
     jr nz, jr_004_6824
     ;else
 
@@ -1315,7 +1271,7 @@ jr_004_67e0:
 
     ;set both bc to 0
     ld c, b
-    
+
     ;if c == $60, jump
     ld a, $60
     cp c
@@ -1327,20 +1283,18 @@ jr_004_6804:
     push bc
 
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
     pop bc
 
-    ;if bit 0 of $ff9c, jump
-    ldh a, [$9c]
-    bit 0, a
+    ;if PADB_A of INPUT_PRESS, jump
+    ldh a, [INPUT_PRESS]
+    bit PADB_A, a
     jr nz, jr_004_6824
     ;else
 
-    ;if bit 3 of $ff9c, jump
-    bit 3, a
+    ;if PADB_START of INPUT_PRESS, jump
+    bit PADB_START, a
     jr nz, jr_004_6824
     ;else
 
@@ -1349,7 +1303,7 @@ jr_004_6804:
     dec a
     ld [$c803], a
 
-    ;if a > b (0), loop 
+    ;if a > b (0), loop
     cp b
     jr nz, jr_004_6804
     ;else
@@ -1370,20 +1324,18 @@ jr_004_682f:
     push bc
 
     ;?
-    ld a, $01
-    ld hl, $6cac
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6cac
 
     pop bc
 
-    ;if bit 0 of $ff9c, jump
-    ldh a, [$9c]
-    bit 0, a
+    ;if PADB_A of INPUT_PRESS, jump
+    ldh a, [INPUT_PRESS]
+    bit PADB_A, a
     jr nz, jr_004_6853
     ;else
 
-    ;if bit 3 of $ff9c, jump
-    bit 3, a
+    ;if PADB_START of INPUT_PRESS, jump
+    bit PADB_START, a
     jr nz, jr_004_6853
     ;else
 
@@ -1420,16 +1372,13 @@ jr_004_6853:
     call Call_000_0a84
 
 jr_004_685f:
-    ;?
-    ld a, $00
-    ld d, $01
-    call Call_000_2df8
+    ld a, PALFADE_NTL
+    ld d, %001
+    call Pal_Fade
 
 jr_004_6866:
     ;fade out
-    ld a, $01
-    ld hl, $6ca6
-    call Call_000_08ae
+    SWAP_AND_CALL Call_001_6ca6
 
     ;if c, loop
     ld a, c
@@ -1483,7 +1432,7 @@ jr_004_6898:
 
     ret
 
-;where to place the level map silhouettes 
+;where to place the level map silhouettes
 ;x, y
 WorldMap_placePoints:
     db 3, 7
@@ -1506,7 +1455,7 @@ WorldMap_scrollStop:
     db 96
     db 96
 
-WorldMapBGTiles::
+WorldMapBGTiles:
     db 32, 18
     db $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $00, $01, $02, $02, $03, $66, $67, $fe
     db $fe, $fe, $fe, $57, $58, $59, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $fa, $fe, $fe, $fe, $fe, $fe, $fe, $fe, $04, $05, $06, $07, $08, $09, $86, $87, $fa
@@ -1531,83 +1480,83 @@ WorldMapBGTiles::
 ;therefore, stage 8's is never used.
 ;i actually didnt even realize this but they are actually accurate to physical space
 ;so thats cool i guess
-WorldMapStage1BossTiles::
+WorldMapStage1BossTiles:
     db 5, 4
     db $fd, $fd, $fd, $fe, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-WorldMapStage1Tiles::
+WorldMapStage1Tiles:
     db 5, 4
     db $fd, $fd, $fd, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-WorldMapStage2BossTiles::
+WorldMapStage2BossTiles:
     db 5, 4
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fe, $fe, $fd, $fe, $fe
 
-WorldMapStage2Tiles::
+WorldMapStage2Tiles:
     db 5, 4
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
     db $fe, $fe, $fe, $fe, $fe
 
-WorldMapStage3BossTiles::
+WorldMapStage3BossTiles:
     db 7, 2
     db $fd, $fd, $fd, $fd, $fd, $fd, $fe
     db $fe, $fd, $fd, $fd, $fd, $fd, $fd
 
-WorldMapStage3Tiles::
+WorldMapStage3Tiles:
     db 7, 2
     db $fd, $fd, $fd, $fd, $fd, $fd, $fe
     db $fe, $fd, $fd, $fd, $fd, $fd, $fe
 
-WorldMapStage4BossTiles::
+WorldMapStage4BossTiles:
     db 5, 4
     db $fe, $fd, $fe, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
 
-WorldMapStage4Tiles::
+WorldMapStage4Tiles:
     db 5, 4
     db $fe, $fe, $fe, $fe, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fd
 
-WorldMapStage5BossTiles::
+WorldMapStage5BossTiles:
     db 5, 3
     db $fe, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fd, $fe
 
-WorldMapStage5Tiles::
+WorldMapStage5Tiles:
     db 5, 3
     db $fe, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd, $fe
 
-WorldMapStage6BossTiles::
+WorldMapStage6BossTiles:
     db 4, 3
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fd
 
-WorldMapStage6Tiles::
+WorldMapStage6Tiles:
     db 4, 3
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
     db $fd, $fd, $fd, $fe
 
-WorldMapStage7BossTiles::
+WorldMapStage7BossTiles:
     db 5, 7
     db $fe, $fe, $fe, $fd, $fe
     db $fe, $fe, $fe, $fd, $fe
@@ -1617,7 +1566,7 @@ WorldMapStage7BossTiles::
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fe, $fe
 
-WorldMapStage7Tiles::
+WorldMapStage7Tiles:
     db 5, 7
     db $fe, $fe, $fe, $fe, $fe
     db $fe, $fe, $fe, $fe, $fe
@@ -1627,17 +1576,17 @@ WorldMapStage7Tiles::
     db $fd, $fd, $fd, $fd, $fd
     db $fd, $fd, $fd, $fe, $fe
 
-WorldMapStage8BossTiles::
+WorldMapStage8BossTiles:
     db 3, 3
     db $fe, $fd, $fd
     db $fd, $fd, $fd
     db $fd, $fd, $fd
-    
-WorldMapStage8Tiles::
+
+WorldMapStage8Tiles:
     db 1, 1
     db $fe
 
-WorldMapTilePointers::
+WorldMapTilePointers:
     dw WorldMapBGTiles
     dw WorldMapStage1BossTiles
     dw WorldMapStage1Tiles

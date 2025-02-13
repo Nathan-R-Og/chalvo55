@@ -6,7 +6,9 @@
 00:1bf5 .data:6F1
 00:22e6 .code:A8E
 00:2d74 .data:45
-00:2DB9 .code:F4E
+00:2DB9 .code:7E3
+00:359c .data:20
+00:35BA .code:74D
 00:3d07 .data:f0
 00:3df7 .code:3D
 00:3e34 .data:61
@@ -660,7 +662,9 @@
 
 05:4000 .code:c6f
 05:4c6f .data:1a
-05:4c89 .code:1E26
+05:4c89 .code:5D3
+05:525c .data:1836
+05:6a92 .code:1E
 05:6ab0 StartCutscene_End_Ref
 05:6ab0 .data:2
 05:6ab2 .code:B17

@@ -1,4 +1,4 @@
-demos_3::
+demos_3:
     demo_input PADF_RIGHT, 79
     demo_input PADF_A, 8
     demo_input PADF_NONE, 24

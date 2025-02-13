@@ -4,3 +4,6 @@ tmp/
 *.gb
 disassembly/
 tools/outputs/
+game.o
+game.map
+game.sym

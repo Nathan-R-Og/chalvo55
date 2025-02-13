@@ -32,30 +32,30 @@ def MUSIC_NOTE_LOOP EQU $FF ; arg == offset from ?, arg2 == ?
 ;TODO: cleanup asm's and get a player/editor working
 
 SECTION "Music 1", ROMX[$4000], BANK[$1a]
-MUSIC_stage1:: INCLUDE "../src/music/stage1.asm" ;song 0
-MUSIC_boss:: INCLUDE "../src/music/boss.asm" ;song 8 (goes till 14)
-MUSIC_die:: INCLUDE "../src/music/die.asm" ;song 16
-MUSIC_invincibility:: INCLUDE "../src/music/invincibility.asm" ;song 17
-MUSIC_stageClear:: INCLUDE "../src/music/stageClear.asm" ;song 18
-MUSIC_password:: INCLUDE "../src/music/password.asm" ;song 19
-MUSIC_stage2:: INCLUDE "../src/music/stage2.asm" ;song 1
-MUSIC_ending:: INCLUDE "../src/music/ending.asm" ;song 20
+MUSIC_stage1: INCLUDE "src/music/stage1.asm" ;song 0
+MUSIC_boss: INCLUDE "src/music/boss.asm" ;song 8 (goes till 14)
+MUSIC_die: INCLUDE "src/music/die.asm" ;song 16
+MUSIC_invincibility: INCLUDE "src/music/invincibility.asm" ;song 17
+MUSIC_stageClear: INCLUDE "src/music/stageClear.asm" ;song 18
+MUSIC_password: INCLUDE "src/music/password.asm" ;song 19
+MUSIC_stage2: INCLUDE "src/music/stage2.asm" ;song 1
+MUSIC_ending: INCLUDE "src/music/ending.asm" ;song 20
 SECTION "Music 2", ROMX[$4000], BANK[$1b]
-MUSIC_gameOver:: INCLUDE "../src/music/gameOver.asm" ;song 22
-MUSIC_stage8:: INCLUDE "../src/music/stage8.asm" ;song 7
-MUSIC_stage4:: INCLUDE "../src/music/stage4.asm" ;song 3
-MUSIC_stage5:: INCLUDE "../src/music/stage5.asm" ;song 4
-MUSIC_stage3:: INCLUDE "../src/music/stage3.asm" ;song 2
-MUSIC_stage7:: INCLUDE "../src/music/stage7.asm" ;song 6
-MUSIC_unk1:: INCLUDE "../src/music/unk1.asm" ;song 21
-MUSIC_finalBoss:: INCLUDE "../src/music/finalBoss.asm" ;song 15
+MUSIC_gameOver: INCLUDE "src/music/gameOver.asm" ;song 22
+MUSIC_stage8: INCLUDE "src/music/stage8.asm" ;song 7
+MUSIC_stage4: INCLUDE "src/music/stage4.asm" ;song 3
+MUSIC_stage5: INCLUDE "src/music/stage5.asm" ;song 4
+MUSIC_stage3: INCLUDE "src/music/stage3.asm" ;song 2
+MUSIC_stage7: INCLUDE "src/music/stage7.asm" ;song 6
+MUSIC_unk1: INCLUDE "src/music/unk1.asm" ;song 21
+MUSIC_finalBoss: INCLUDE "src/music/finalBoss.asm" ;song 15
 SECTION "Music 3", ROMX[$4000], BANK[$1c]
-MUSIC_specialStage:: INCLUDE "../src/music/specialStage.asm" ;song 27
-MUSIC_intro2:: INCLUDE "../src/music/intro2.asm" ;song 28
-MUSIC_stageStart:: INCLUDE "../src/music/stageStart.asm" ;song 24
-MUSIC_continue:: INCLUDE "../src/music/continue.asm" ;song 25
-MUSIC_intro1:: INCLUDE "../src/music/intro1.asm" ;song 26
-MUSIC_unk2:: INCLUDE "../src/music/unk2.asm" ;song 29
-MUSIC_stage6:: INCLUDE "../src/music/stage6.asm" ;song 5
-MUSIC_title:: INCLUDE "../src/music/title.asm" ;song 23
-MUSIC_worldMap:: INCLUDE "../src/music/worldMap.asm" ;song 30
+MUSIC_specialStage: INCLUDE "src/music/specialStage.asm" ;song 27
+MUSIC_intro2: INCLUDE "src/music/intro2.asm" ;song 28
+MUSIC_stageStart: INCLUDE "src/music/stageStart.asm" ;song 24
+MUSIC_continue: INCLUDE "src/music/continue.asm" ;song 25
+MUSIC_intro1: INCLUDE "src/music/intro1.asm" ;song 26
+MUSIC_unk2: INCLUDE "src/music/unk2.asm" ;song 29
+MUSIC_stage6: INCLUDE "src/music/stage6.asm" ;song 5
+MUSIC_title: INCLUDE "src/music/title.asm" ;song 23
+MUSIC_worldMap: INCLUDE "src/music/worldMap.asm" ;song 30
